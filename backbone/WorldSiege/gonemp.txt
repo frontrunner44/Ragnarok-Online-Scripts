@@ -1,0 +1,63 @@
+-	script	EmperiumGON	-1,{
+
+OnInit:
+monster "gonryun",159,119,"Siege Crystal",2009,1,"EmperiumGON::OnGON";
+end;
+
+OnGON:
+// --Already Yours
+//================
+if(faction == $gonfaction) { 
+monster "gonryun",159,119,"Siege Crystal",2009,1,"EmperiumGON::OnGON"; 
+dispbottom "This town already belongs to your Faction.";
+end; 
+}
+
+
+// --Capture
+//==========
+if(faction == 1) { 
+set $gonfaction,1; 
+announce "Arzeon has taken over Gonryun",16; 
+monster "gonryun",159,119,"Siege Crystal",2009,1,"EmperiumGON::OnGON"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+if(faction == 2)  { 
+set $gonfaction,2; 
+announce "Destra has  taken over Gonryun",16; 
+monster "gonryun",159,119,"Siege Crystal",2009,1,"EmperiumGON::OnGON"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+}

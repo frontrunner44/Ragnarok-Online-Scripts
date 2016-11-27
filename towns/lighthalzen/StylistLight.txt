@@ -1,0 +1,8 @@
+lighthalzen.gat,164,100,5,67	script	Stylist#LhzLS	122,{
+if(faction == 2) { 
+	mes "I'm sorry, but I cannot help you."; 
+	close; 
+}
+	callfunc "Stylist";
+	end;
+}

@@ -1,0 +1,6 @@
+morocc_in.gat,113,173,5	script	Pet Shop	86,{
+if(faction != $morfaction) {mes "...."; close;}
+callshop "MorPet",0;
+}
+
+-	shop	MorPet	139,643:-1,541:-1,537:-1,10013:-1,10014:-1

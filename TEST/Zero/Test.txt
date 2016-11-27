@@ -1,0 +1,7 @@
+prontera,150,150,5	script	ZeroTest#blah	798,{
+
+set .@stat$,"bStr";
+mes "First value is "+readparam("+.@stat$+")+".";
+mes "The actual strength value is "+readparam(bStr)+".";
+close;
+}

@@ -1,0 +1,71 @@
+alberta,216,49,5	script	Guide#AlbGuide	728,{
+set .@name$,"[^0000ffGuide^000000]";
+
+mes .@name$;
+mes "Welcome to Alberta.";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",L_hotel,"- Weapons & Armor",L_wep,"- Tools",L_tools,"- Sunken Ship",L_sunk,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Alberta!";
+	savepoint "alberta",218,45;
+	close;
+
+	L_hotel:
+	viewpoint 1,138,38,1,0xFF0000;
+	close;
+
+	L_wep:
+	viewpoint 1,117,42,2,0xFF0000;
+	close;
+
+	L_tools:
+	viewpoint 1,102,153,3,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "All marks deleted.";
+	viewpoint 2,138,38,1,0xFF0000;
+	viewpoint 2,117,42,2,0xFF0000;
+	viewpoint 2,102,153,3,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30855,.@amount;
+	close;
+
+	L_sunk:
+	mes .@name$;
+	mes "Would you like a warp to Sunken Ship?";
+	next;
+	menu "- Yes",L_ysunk,"- No thanks",-;
+	close;
+
+		L_ysunk:
+		warp "alb2trea",51,59;
+		end;
+}

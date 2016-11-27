@@ -1,0 +1,11 @@
+lou_in02.gat,240,176,5	script	Point Trader#LouP	774,{
+
+if(faction != $loufaction) {
+mes "[Trader Mary]";
+mes "Begone!";
+close;
+} else {
+set .@name$,"[^0000ffTrader Mia^000000]";
+callfunc "PointTrader";
+ }
+}

@@ -1,0 +1,11 @@
+lhz_in02.gat,35,275,5	script	Point Trader#LhzP	861,{
+
+if(faction == 2) {
+mes "[Trader Mary]";
+mes "Begone!";
+close;
+} else {
+set .@name$,"[^0000ffTrader Mary^000000]";
+callfunc "PointTrader";
+ }
+}

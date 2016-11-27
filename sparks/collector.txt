@@ -1,0 +1,15 @@
+rachel,85,121,5	script	Spark of Knowledge#13	802,{
+set .@name$,"[^0000ffSpark^000000]";
+mes .@name$;
+mes "When you see an npc with exclamation marks in it's name, this means it is a 'collector'.";
+next;
+mes .@name$;
+mes "Collectors will allow you to go 'Faction Farming'. They will request that you farm them a specific item.";
+next;
+mes .@name$;
+mes "If you collect it for them, you can trade them in for faction points. This process can be done repeatedly.";
+close;
+}
+
+lighthalzen,119,118,5	duplicate(Spark of Knowledge#13)	Spark of Knowledge#D01	802
+eathena,261,266,5	duplicate(Spark of Knowledge#13)	Spark of Knowledge#D022	802

@@ -1,0 +1,8 @@
+hu_in01,23,311,6	script	Tools#Hug01	701,{
+callshop "GlobTool01",0;
+}
+//==================
+// -- Duplicates
+//==================
+hu_in01,240,369,6	duplicate(Tools#Hug01)	Tool Dealer#HugDupe01	961
+hu_in01,253,369,2	duplicate(Tools#Hug01)	Tool Dealer#HugDupe02	700

@@ -1,0 +1,11 @@
+lhz_in01,13,19,4	script	Manager#LhzM01	69,{
+
+mes "[Waitress]";
+mes "Welcome! What would you like to eat?";
+callshop "LhzFood",0;
+}
+
+-	shop	LhzFood	139,575:-1,580:-1,515:-1,548:-1,573:-1,562:-1,563:-1,567:-1
+
+lhz_in01,29,27,5	duplicate(Manager#LhzM01)	Waitress#Dupe1	80	
+lhz_in01,28,44,5	duplicate(Manager#LhzM01)	Waitress#Dupe2	80

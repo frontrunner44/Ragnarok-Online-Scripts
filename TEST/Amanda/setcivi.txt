@@ -1,0 +1,57 @@
+-	script	SetCivi#01	-1,{
+
+OnInit:
+set $civil01,"Civilization 1"; // Sets a global name for Civilization 1.
+set $civil02,"Civilization 2"; // Sets a global name for Civilization 2.
+if($civil$[0] == "") set $civil$[0],"Create"; // Toggles blank player based civilization variables to "Create", to display in the menu.
+if($civil$[1] == "") set $civil$[1],"Create";
+if($civiowner2$[0] == "") set $civiowner2$[0],"Add Leader";
+if($civiowner3$[0] == "") set $civiowner3$[0],"Add Leader";
+if($civiowner2$[1] == "") set $civiowner2$[1],"Add Leader";
+if($civiowner3$[1] == "") set $civiowner3$[1],"Add Leader";
+end;
+
+OnPCLoginEvent:
+// Civilization 1
+if(#incivil == 1 || civil == 1){
+	atcommand "@fakename [Civil 1] "+strcharinfo(0); // Sets civil name in player name.
+	end;
+	}
+
+// Civilization 2
+if(#incivl == 2 || civil == 2) {
+	atcommand "@fakename [Civil 2] "+strcharinfo(0); // Sets civil name in player name.
+	end;
+	}
+
+// Player Civilization 1
+if(#incivil == 3 && $civil$[0] == "Create") goto L_disbanded;
+if(#incivil == 3 || civil == 3) {
+	atcommand "@fakename ["+$civil$[0]+"] "+strcharinfo(0); // Sets civil name in player name.
+	}
+
+
+// Player Civilization 2
+if(#incivil == 4 && $civil$[1] == "Create") goto L_disbanded;
+if(#incivil == 4 || civil == 4) {
+	atcommand "@fakename ["+$civil$[1]+"] "+strcharinfo(0); // Sets civil name in player name.
+	}
+end;
+
+L_disbanded:
+sleep2 5000;
+set .@rand,rand(1,2);
+if(.@rand == 1) {
+	set civil,1;
+	set #incivil,1;
+	atcommand "@fakename [Civil 1] "+strcharinfo(0);
+	announce "The player based civilization you were in has been disbanded. You have been forced into civilization 1.",bc_self;
+	}
+if(.@rand == 2) {
+	set civil,2;
+	set #civil,2;
+	atcommand "@fakename [Civil 2] "+strcharinfo(0);
+	announce "The player based civilization you were in has been disbanded. You have been forced into civilization 2.",bc_self;
+}
+end;
+}

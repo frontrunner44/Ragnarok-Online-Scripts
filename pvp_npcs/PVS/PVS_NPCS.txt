@@ -1,0 +1,410 @@
+//------------------------------------------------------------------------------------------------------
+//= NPCs
+//= Note : DO NOT put your NPC at indoor map, like arena_room, else the party wont warp,
+//=	   I dont know what is the problem...even i remove all the mapflag at the map =(
+//=	   And don't forget to completely remove the mapflag of a Waiting Room.
+//------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------
+//= Warp to Arena NPC
+//------------------------------------------------------------------------------------------------------
+eathena_in,164,44,5	script	PVS Employee#Warper	868,{
+	set .@PVS_PLAYERS,getmapusers($@PVS_W_MAP$);
+	if (.@PVS_PLAYERS > 100) set .@PVS_DISP$,"^FF0000»";
+	else set .@PVS_DISP$,"^808080»";
+	if (.@PVS_PLAYERS > 90) set .@PVS_DISP$,"^FF4000» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 80) set .@PVS_DISP$,"^FF8000» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 70) set .@PVS_DISP$,"^FFC000» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 60) set .@PVS_DISP$,"^FFFF00» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 50) set .@PVS_DISP$,"^C0FF00» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 40) set .@PVS_DISP$,"^80FF00» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 30) set .@PVS_DISP$,"^40FF00» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 20) set .@PVS_DISP$,"^00FF00» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 10) set .@PVS_DISP$,"^00C000» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+	if (.@PVS_PLAYERS > 0) set .@PVS_DISP$,"^008000» "+.@PVS_DISP$;
+	else set .@PVS_DISP$,"^808080» "+.@PVS_DISP$;
+
+	mes $@PVS_NPC_N$;
+	mes "Would you like to go Party Versus arena?...";
+	mes "";
+	mes "Current waiting room status : ";
+	mes "[ " + .@PVS_DISP$ + " ^000000]";
+	next;
+	menu "Bring me in",-,"Bye...",L_bb;
+	callfunc "F_PVS_Warp";
+	close;
+
+	L_bb:
+		close;
+}
+
+
+//------------------------------------------------------------------------------------------------------
+//= Inside Arena/Waiting Map, Register NPC
+//------------------------------------------------------------------------------------------------------
+
+force_1-1,100,100,4	script	PVS Employee#Register	868,{
+	mes $@PVS_NPC_N$;
+	mes $@COLOR_CHIP$[0]+"Welcome to PVS!";
+	mes "What would you like to do today?";
+
+L_menu:
+	if (getcharid(1) == 0) goto L_skip;
+
+	//If the player is register,then will run the code below
+		for ( set @x,1 ; @x < getarraysize($@FIRST_PID) ; set @x,@x+1 ){
+			if (($@FIRST_PID[@x] == getcharid(1))  && (getpartyleader(getcharid(1),2) == getcharid(0))){
+			next;
+			menu "Cancel Register",-,"Information",L_info,"PVS Ranking",L_rank,"Leave",L_leave;
+			mes $@PVS_NPC_N$;
+			mes "Your challanger still haven't come yet,";
+			mes "Do you wish to cancel the register?";
+			next;
+			switch(select("Yes:No")){
+				case 1:
+					if ($@PVS_PAYBACK == 1) set Zeny,Zeny + $@PVS_ENTRY;
+					mes $@PVS_NPC_N$;
+					set $@FIRST_PID[@x],0;
+					set $@PVS_REG[@x],0;
+					mes "Your register for your party is cancel, thanks you.";
+					close;
+
+				case 2:
+					mes $@PVS_NPC_N$;
+					mes "As you wish if you wanted to wait for challanger.";
+					close;
+		}}}
+
+L_skip:
+	next;
+	//Newly register player
+	menu "Register",-,"Spectator",L_Spec,"PVS Ranking",L_rank,"Information",L_Info,"Leave",L_leave;
+
+		if (getpartyleader(getcharid(1),2) != getcharid(0))	{
+			mes $@PVS_NPC_N$;
+			mes "You don't own a party or";
+			mes "You are not the party leader, please ask you party leader to register for battle.";
+			goto L_menu;
+		}
+
+		if(Zeny < $@PVS_ENTRY)	{
+			mes $@PVS_NPC_N$;
+			mes "You don't have enough Zeny.";
+			mes "The fee for register is " + $@COLOR_CHIP$[3] + $@PVS_ENTRY + $@COLOR_CHIP$[0] + " Zeny.";
+			goto L_menu;
+		}
+
+	set @selec_map,callfunc("F_PVS_MENU");
+	
+		if (getmapusers($@PVS_B_MAP$[@selec_map]) > 0){
+		mes "I'm sorry, the battle is begining";
+		goto L_menu;
+		}
+
+//Check for the party neither at current NPC map or not
+	if ($@PVS_REG[@selec_map] == 1){
+		getpartymember($@FIRST_PID[@selec_map]);
+			for ( set @on,0 ; @on < $@FIRST_PNUM[@selec_map] ; set @on,@on+1 ){
+				getmapxy(@findmap$,@findx,@findy,0,$@partymembername$[@on]);
+				if (@findmap$ == $@PVS_NPC_MAP$) goto L_onair;
+				}
+
+		mes $@PVS_NPC_N$;
+		mes "I'm sorry, but your opponent party has gone, do you wish to continue your register?";
+		next;
+		menu "Yes",-,"Oh no, thank you",L_menu;
+		set $@PVS_REG[@selec_map],0;
+		goto L_offmap;
+
+	L_onair:
+		set @partymembercount,0;
+		getpartymember($@FIRST_PID[@selec_map]);
+//Calculate the oppenent party number
+		for ( set @pl,0 ; @pl < $@partymembercount ; set @pl,@pl+1 )	{
+		if (getmapxy(@tempmap$,@tempx,@tempy,0,$@partymembername$[@pl]) == 0)
+			if (@tempmap$ == $@PVS_NPC_MAP$)
+			set @partymembercount,@partymembercount + 1;	}
+
+		mes $@PVS_NPC_N$;
+		mes "There is a party is waiting,";
+		mes "is the party of ^0000FF" + $@FIRST_PNAME$[@selec_map] + $@COLOR_CHIP$[0] + " with ^FF0000" + @partymembercount + $@COLOR_CHIP$[0] + " players,";
+		mes "would you like to sign up for the challange?";
+		next;
+		menu "Yes of cause!",-,"No, tOo sCarY...",L_leave;
+
+			//To prevent conflict while someone is in progress to warp
+			if ($@isgoing == 1){
+			mes $@PVS_NPC_N$;
+			mes "Please try again later, some party is in progress.";
+			emotion 17;
+			next;
+			goto L_menu;
+			}
+
+		set Zeny,Zeny - $@PVS_ENTRY;
+		set $@PVS_REG[@selec_map],0;
+		set $@SECOND_PID[@selec_map],getcharid(1);
+		set $@SECOND_PNAME$[@selec_map],getpartyname(getcharid(1));
+		getpartymember(getcharid(1));
+				set .battle,@selec_map;
+				set $@isgoing,1;
+				mes $@PVS_NPC_N$;
+				mes "Your register is done, we will announce the match later.";
+				close2;
+				sleep 1000;
+				mapannounce $@PVS_NPC_MAP$,$@FIRST_PNAME$[.battle] + " and " + $@SECOND_PNAME$[.battle] + " party, please prepare for battle.",1,0x80FFFF;
+				Initnpctimer;
+				end;
+				}
+
+L_offmap:
+	getpartymember(getcharid(1));
+	set Zeny,Zeny - $@PVS_ENTRY;
+	set $@FIRST_PID[@selec_map],getcharid(1);
+	set $@FIRST_PNAME$[@selec_map],getpartyname(getcharid(1));
+	set $@FIRST_PNUM[@selec_map],$@partymembercount;
+	set $@PVS_REG[@selec_map],1;
+
+	mes $@PVS_NPC_N$;
+	mes "Please wait for another party to register,";
+	mes "we will announce you when the battle will begin.";
+	mes "If you wish to cancel the register, please talk with me.";
+	close;
+
+L_info:
+	mes $@PVS_NPC_N$;
+	mes "PVS stand for Party Versus Party,";
+	mes "You need to register to enter the battle between party.";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "Once you have register,";
+	mes "you have to wait another party to register.";
+	mes "Once your challanger have register,";
+	mes "you will be announce to begin the battle with the register party.";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "The register can be cancel,";
+	mes "neither you cancel your self or";
+	mes "your whole party is not in sight";
+	if ($@PVS_ENTRY > 0) mes "The register fee is " + $@COLOR_CHIP$[3] + $@PVS_ENTRY + $@COLOR_CHIP$[0] + " Zeny";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "Register and unregister must be perform by party leader,";
+	mes "party member can join the battle without party leader.";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "Notice that the player who die will be expel from the match.";
+	mes "[From Creator] : Your whole party will be warp into the battle even your party member is not at that waiting room.";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "You can view the battle while the battle is begining,";
+	mes "but you MUST wait until the battle is over and you wont able to attack or using skill.";
+	mes "You cannot enter an empty arena.";
+	if ($@PVS_SPECZ > 0) mes "The fee for spectator is " + $@COLOR_CHIP$[3] + $@PVS_SPECZ + $@COLOR_CHIP$[0] + " Zeny";
+	next;
+	mes $@PVS_NPC_N$;
+	mes "You will able to see the status of each map -";
+	mes $@COLOR_CHIP$[6] + "Empty" + $@COLOR_CHIP$[0] + " : There is no player in battle";
+	mes $@COLOR_CHIP$[5] + "Waiting" + $@COLOR_CHIP$[0] + " : There is a party waiting for challange";
+	mes $@COLOR_CHIP$[4] + "In Battle" + $@COLOR_CHIP$[0] + " : There are player in battle";
+	if ($@PVS_PRIZE_TYPE != 0){
+	next;
+	mes $@PVS_NPC_N$;
+	mes "There will be a bonus of getting prize for each party that have won the battle,";
+	mes "You have to speak with me after the battle to take the bonus.";
+	}
+	goto L_menu;
+
+L_Spec:
+	if (Zeny < $@PVS_SPECZ)	{
+	mes $@PVS_NPC_N$;
+	mes "You don't have enough Zeny";
+	mes "The fee for spectator is " + $@PVS_SPECZ + " Zeny";
+	goto L_menu;
+	}
+
+	set @selec_map,callfunc("F_PVS_MENU");
+
+		//Check the map got player or not
+		if (getmapusers($@PVS_B_MAP$[@selec_map]) < 1){
+		mes $@PVS_NPC_N$;
+		mes "I'm sorry but the battle haven't begin yet.";
+		goto L_menu;
+		}
+
+	set @optionactive,1;
+	atcommand "@option 6 0 64";
+	warp $@PVS_B_MAP$[@selec_map],$@PVS_S_MAPX[@selec_map],$@PVS_S_MAPY[@selec_map];
+	close;
+L_rank:
+	mes "WIP";
+	goto L_menu;
+
+L_Leave:
+	mes $@PVS_NPC_N$;
+	mes "Ok, please come again!";
+	close2;
+	warp $@PVS_BACK_MAP$,$@PVS_BACK_X - 2,$@PVS_BACK_Y - 2;
+	end;
+
+
+OnTimer3000:
+	for ( set .@timer,10 ; .@timer >= 1 ; set .@timer,.@timer-1 ){
+	mapannounce $@PVS_NPC_MAP$,"The battle will be start in " + .@timer + " seconds",1,0x80FFFF;
+	sleep 1000;
+	}
+	end;
+
+OnTimer13000:
+	warpparty $@PVS_B_MAP$[.battle],$@PVS_BMAPX_P1[.battle],$@PVS_BMAPY_P1[.battle],$@FIRST_PID[.battle];
+	warpparty $@PVS_B_MAP$[.battle],$@PVS_BMAPX_P2[.battle],$@PVS_BMAPY_P2[.battle],$@SECOND_PID[.battle];
+	set $@PVS_REG[.battle],0;
+	set $@FIRST_PNUM,0;
+	set $@FIRST_PNAME$[.battle],"";
+	set $@SECOND_PNAME$[.battle],"";
+	set $@FIRST_PID[.battle],0;
+	set $@SECOND_PID[.battle],0; 
+	set $@isgoing,0;
+	set .battle,0;
+	stopnpctimer;
+	end;
+}
+
+
+//------------------------------------------------------------------------------------------------------
+//= NPC that give prize
+//------------------------------------------------------------------------------------------------------
+force_1-1,100,48,3	script	PVS Employee#Prize	754,{
+	if($@PVS_PRIZE_TYPE != 0){
+	mes $@PVS_NPC_N$;
+	//Check for party that won the battle
+	for ( set @temp,0 ; @temp < 10 ; set @temp,@temp + 1)	{
+		if ($@PVS_WONP[@temp] == getcharid(1))	{
+
+		set .@attachback,getcharid(3);
+		getpartymember(getcharid(1),2);
+		for ( set .@w,0 ; .@w < $@partymembercount ; set .@w,.@w+1 )	{
+		if (getmapxy(@cmap$,@tempx,@tempy,0,$@partymembername$[.@w]) == 0)	{
+		if (@cmap$ == $@PVS_W_MAP$)	{
+			set .@partymembercount,.@partymembercount + 1;
+		}}}
+
+		set $@PVS_WONP[@temp],0;
+		if ($@PVS_SOUND != 0) soundeffect "complete.wav",0;
+
+		copyarray .@partymemberaid[0],$@partymemberaid[0],$@partymembercount;
+
+		switch($@PVS_PRIZE_TYPE){
+		case 1:
+			set .@af,$@PVS_STPOINT/.@partymembercount;
+			for ( set .@pc,0 ; .@pc < .@partymembercount ; set .@pc,.@pc+1 )	{
+				if (isloggedin($@partymemberaid[.@pc]))	{
+					getmapxy(@cmap$,@tempx,@tempy,0,$@partymembername$[.@pc]);
+					if (@cmap$ == $@PVS_W_MAP$)	{
+						attachrid(.@partymemberaid[.@pc]);
+						specialeffect2 338;
+						set StatusPoint,StatusPoint + .@af;
+					}
+				}
+			}
+			break;
+
+		case 2:
+			for ( set .@pc,0 ; .@pc < .@partymembercount ; set .@pc,.@pc+1 )	{
+				if (isloggedin($@partymemberaid[.@pc]))	{
+					getmapxy(@cmap$,@tempx,@tempy,0,$@partymembername$[.@pc]);
+					if (@cmap$ == $@PVS_W_MAP$)	{
+					attachrid(.@partymemberaid[.@pc]);
+					specialeffect2 338;
+					set @array,rand(getarraysize($@PVS_ITEM));
+					getitem $@PVS_ITEM[@array],$@PVS_ITEM_NUM[@array];
+					}
+				}
+			}
+			break;
+
+		case 3:
+			set .@af,$@PVS_EXP/.@partymembercount;
+			for ( set .@pc,0 ; .@pc < .@partymembercount ; set .@pc,.@pc+1 )	{
+				if (isloggedin($@partymemberaid[.@pc]))	{
+					getmapxy(@cmap$,@tempx,@tempy,0,$@partymembername$[.@pc]);
+					if (@cmap$ == $@PVS_W_MAP$)	{
+					attachrid(.@partymemberaid[.@pc]);
+					specialeffect2 338;
+					set BaseExp,BaseExp + .@af;
+					}
+				}
+			}
+			break;
+
+		case 4:
+			set .@af,$@PVS_ZENY/.@partymembercount;
+			for ( set .@pc,0 ; .@pc < .@partymembercount ; set .@pc,.@pc+1 )	{
+				if (isloggedin($@partymemberaid[.@pc]))	{
+					getmapxy(@cmap$,@tempx,@tempy,0,$@partymembername$[.@pc]);
+					if (@cmap$ == $@PVS_W_MAP$)	{
+					attachrid(.@partymemberaid[.@pc]);
+					specialeffect2 338;
+					set Zeny,Zeny + .@af;
+					}
+				}
+			}
+			break;
+
+		default:
+			mes "Bug detected! Please report to your GMs!";
+			debugmes "[Error] : Please check your PVS setting or someone is hacking?";
+			break;
+		}
+
+		attachrid(.@attachback);
+		mes "Congratulation! Your party has won the battle!";
+		mes "Here's a little award for your party!";
+		close2;
+		warpparty $@PVS_NPC_MAP$,$@PVS_NPC_X + rand(-5,5),$@PVS_NPC_Y + rand(-5,5),getcharid(1);
+		}
+	}
+	}
+	callfunc "F_PVS_Warp";
+	end;
+}
+
+
+//------------------------------------------------------------------------------------------------------
+//= Menu Function
+//------------------------------------------------------------------------------------------------------
+Function	script	F_PVS_MENU	{
+	set @menu$,"";
+	mes $@PVS_NPC_N$;
+	mes "Which one would you like to go?";
+	mes "Current arena status:";
+		for ( set @int,1 ; @int < getarraysize($@PVS_B_MAP$) ; set @int,@int+1 ){
+		mes ">"+$@PVS_B_MN$[@int]+" - ^FF0000" + getmapusers($@PVS_B_MAP$[@int]) + $@COLOR_CHIP$[0] + " players";
+		}
+	next;
+		for ( set @int,1 ; @int < getarraysize($@PVS_B_MN$) ; set @int,@int+1 ){
+			if ($@PVS_REG[@int] == 1) set @extra$,$@COLOR_CHIP$[5] + "Waiting";
+			if ($@PVS_REG[@int] == 0) set @extra$,$@COLOR_CHIP$[6] + "Empty";
+			if (getmapusers($@PVS_B_MAP$[@int]) > 0) set @extra$,$@COLOR_CHIP$[4] + "On Battle";
+			set @menu$,@menu$ + ":" + $@COLOR_CHIP$[0] + $@PVS_B_MN$[@int] + $@COLOR_CHIP$[1] + " (" + @extra$ + $@COLOR_CHIP$[1] + ")" + $@COLOR_CHIP$[0];
+			}
+
+	return (select (@menu$))-1;
+}
+
+//------------------------------------------------------------------------------------------------------
+//= Warp Function
+//------------------------------------------------------------------------------------------------------
+Function	script	F_PVS_Warp	{
+	warp $@PVS_NPC_MAP$, $@PVS_NPC_X + rand(-5,5), $@PVS_NPC_Y + rand(-5,5);
+	end;
+}

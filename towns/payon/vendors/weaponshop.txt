@@ -1,0 +1,8 @@
+payon_in01.gat,8,120,6	script	Weapons & Armor#Pay01	73,{
+if(faction != $payfaction) {mes "......."; close;}
+callshop "PayWep1",0;
+}
+
+-	shop	PayWep1	139,1750:-1,1751:-1,1701:-1,1704:-1,1705:5500,1710:-1,1707:-1,1708:15000,2330:-1,2307:-1,2405:-1,2401:-1,2403:-1,2503:-1,2226:-1,2220:-1
+
+payon_in01,15,120,5	duplicate(Weapons & Armor#Pay01)	Weapon & Armor#PayDupe1	91

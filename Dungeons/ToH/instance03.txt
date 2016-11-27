@@ -1,0 +1,70 @@
+-	script	tohInst3	-1,{
+
+	OnTower:
+	set $@tohcount3,$@tohcount3+1;
+	if($@tohcount3 == 4) {
+		monster "toh05_3",34,11,"Madzen Kolanoa",2008,1,"tohInst3::OnBoss";
+		announce "Server: The seals have been broken. Madzen Kolanoa is in the loose!",bc_map;
+		set $@tohcount3,0;
+		end;
+		}
+	announce "Server: "+ $@tohcount3 +" of 4 Chaos Seals have been broken!",bc_map;
+	end;
+	
+	OnBoss:
+	announce "Server: Madzen Kolanoa has been defeated!",bc_map;
+	monster "toh01_3",149,227,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh02_3",149,285,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh03_3",149,228,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh05_3",130,52,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	// Treasure Chests
+	set .@num,rand(24,34);
+	areamonster "toh05_3",10,21,16,37,"Treasure Chest",1324,.@num;
+	end;
+
+	OnLimitation:
+	initnpctimer;
+	end;
+
+	OnTimer7200000:
+	mapannounce "toh01_3","You have 30 minutes left in this instance.",0;
+	mapannounce "toh02_3","You have 30 minutes left in this instance.",0;
+	mapannounce "toh03_3","You have 30 minutes left in this instance.",0;
+	mapannounce "toh04_3","You have 30 minutes left in this instance.",0;
+	mapannounce "toh05_3","You have 30 minutes left in this instance.",0;
+	end;
+
+
+	OnTimer9000000:
+	stopnpctimer;
+	mapannounce "toh01_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "toh02_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "toh03_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "toh04_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "toh05_3","Your time has ended. You will now be warped out of the instance.",0;
+	sleep2 3000;
+	mapwarp "toh01_3","payon",20,142,$@tohparty;
+	mapwarp "toh02_3","payon",20,142,$@tohparty;
+	mapwarp "toh03_3","payon",20,142,$@tohparty;
+	mapwarp "toh04_3","payon",20,142,$@tohparty;
+	mapwarp "toh05_3","payon",20,142,$@tohparty;
+	set $@tohparty3,0;
+	end;
+
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "toh01_3") {
+	viewpoint 1,149,227,1,0xFF0000;
+	}
+if(.@map$ == "toh02_3") {
+	viewpoint 1,149,285,3,0xFF0000;
+	}
+if(.@map$ == "toh03_3") {
+	viewpoint 1,149,228,4,0xFF0000;
+	}
+if(.@map$ == "toh05_3") {
+	viewpoint 1,130,52,4,0xFF0000;
+	}
+end;
+}

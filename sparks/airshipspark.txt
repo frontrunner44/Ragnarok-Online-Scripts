@@ -1,0 +1,29 @@
+lhz_airport,135,33,5	script	Spark of Knowledge#01	802,{
+set .@name$,"[^0000ffSpark^000000]";
+
+mes .@name$;
+mes "Riding the airship is an important form of travel on ChaosRO.";
+next;
+mes .@name$;
+mes "On ChaosRO, the two main types of travel would be by walking on foot, or using the airships.";
+next;
+mes .@name$;
+mes "The airships will allow you to travel to any town that ^ff0000your faction currently owns^000000.";
+next;
+mes .@name$;
+mes "So in turn, this is another benefit of taking over towns for your faction.";
+next;
+mes .@name$;
+mes "The more towns your faction owns, the more places you can travel to quickly.";
+next;
+mes .@name$;
+mes "If you are confused as to where to go once on the airship, simply walk upstairs and out of the portal to reach your destination.";
+next;
+mes .@name$;
+mes "The airships also contain some of the important NPCs which can be found in your home town, such as the basic shops and hotel.";
+close;
+}
+eathena,208,146,5	duplicate(Spark of Knowledge#01)	Spark of Knowledge#02	802,{
+rachair,135,33,5	duplicate(Spark of Knowledge#01)	Spark of Knowledge#03	802,{
+
+		

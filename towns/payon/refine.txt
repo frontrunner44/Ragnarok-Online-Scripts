@@ -1,0 +1,4 @@
+payon_in01.gat,7,130,5	script	Refiner#Pay01	826,{
+set @name$,"Akido";
+callfunc "G_Refine";
+}

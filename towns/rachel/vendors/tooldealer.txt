@@ -1,0 +1,4 @@
+ra_in01.gat,256,269,4	script	Tools#Rach01	102,{
+callshop "GlobTool01",0;
+end;
+}

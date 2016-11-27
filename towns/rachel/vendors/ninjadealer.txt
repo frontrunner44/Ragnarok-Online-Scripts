@@ -1,0 +1,17 @@
+ra_in01.gat,266,278,5	script	Ninja Dealer#Rach01	99,{
+if(faction == 1) {
+mes "[Maruk]";
+mes ".......";
+close;
+}
+mes "[Maruk]";
+mes "I heard that in a town called Amatsu, they sell these even cheaper!";
+next;
+mes "[Maruk]";
+mes "It's not me making these prices, blame my boss!";
+next;
+callshop "RachNinja",0;
+close;
+}
+
+-	shop	RachNinja	139,7521:400,7522:400,7523:400,7524:700

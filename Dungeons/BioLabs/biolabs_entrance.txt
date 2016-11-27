@@ -1,0 +1,147 @@
+einbroch,61,201,5	script	Biolabs#Ent	819,{
+
+//=================
+// -- Config
+//=================
+set .@name$,"[^0000ffInstance Crystal^000000]";
+if(faction != $einbfaction) {
+	mes .@name$;
+	mes "Access denied.";
+	close;
+	}
+
+//===============
+// -- Check
+//===============
+if(BaseLevel < 60) {
+	mes .@name$;
+	mes "You must be at least level 60 to enter.";
+	close;
+	}
+
+//===============
+// -- Script
+//===============
+mes .@name$;
+mes "^880000Instance Name:^000000 The biolabs";
+mes "^880000Instance Level^000000: High";
+mes "^880000Minimum Level^000000: 60";
+mes "^880000Party Limit^000000: 1 per instance";
+mes "^880000Dungeon Boss^000000: Unknown";
+mes "^880000Boss Rewards^000000: 15 to 20 Chests";
+mes "^880000Entry Fee^000000: 100FP";
+next;
+mes .@name$;
+mes "Would you like to enter this instance?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	mes .@name$;
+	mes "Be sure that all of the party members you wish to bring along are ready to be warped.";
+	next;
+	mes .@name$;
+	mes "Any party members left behind can not enter once you are inside of the dungeon.";
+	next;
+	mes .@name$;
+	mes "You will be allowed 2 and a half hours in the instance to allow others to get a chance to enter as well.";
+	next;
+	menu "- I'm ready!",instance01,"- Not yet",-;
+	close;
+
+	instance01:
+	if(fpoints < 100) {
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		}
+	if(getcharid(1) == 0) {
+		mes .@name$;
+		mes "You must be in a party to enter.";
+		close;
+		}
+	if(getmapusers("biolabs01_1") != 0) goto instance02;
+	if(getmapusers("biolabs02_1") != 0) goto instance02;
+	if(getmapusers("biolabs03_1") != 0) goto instance02;
+	set fpoints,fpoints-100;
+	set $@biocount,0;
+	set $@bioparty,getcharid(1);
+	donpcevent "BioInst::OnLimitation";
+	warpparty "biolabs01_1",150,288,getcharid(1);
+	sleep2 5000;
+	mapannounce "biolabs01_1","You are in instance 1 of 4.",0;
+	killmonster "biolabs01_1","All";
+	killmonster "biolabs02_1","All";
+	killmonster "biolabs03_1","All";
+	monster "biolabs01_1",165,28,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs01_1",149,270,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs02_1",16,81,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs03_1",139,260,"Chaos Seal",2010,1,"BioInst::OnTower";
+	end;
+
+	instance02:
+	if(getmapusers("biolabs01_2") != 0) goto L_full;
+	if(getmapusers("biolabs02_2") != 0) goto L_full;
+	if(getmapusers("biolabs03_2") != 0) goto L_full;
+	set fpoints,fpoints-100;
+	set $@biocount2,0;
+	set $@bioparty2,getcharid(1);
+	donpcevent "BioInst2::OnLimitation";
+	warpparty "biolabs01_2",150,288,getcharid(1);
+	sleep2 5000;
+	mapannounce "biolabs01_2","You are in instance 2 of 4.",0;
+	killmonster "biolabs01_2","All";
+	killmonster "biolabs02_2","All";
+	killmonster "biolabs03_2","All";
+	monster "biolabs01_2",165,28,"Chaos Seal",2010,1,"BioInst2::OnTower";
+	monster "biolabs01_2",149,270,"Chaos Seal",2010,1,"BioInst2::OnTower";
+	monster "biolabs02_2",16,81,"Chaos Seal",2010,1,"BioInst2::OnTower";
+	monster "biolabs03_2",139,260,"Chaos Seal",2010,1,"BioInst2::OnTower";
+	end;
+
+	instance03:
+	if(getmapusers("biolabs01_3") != 0) goto instance04;
+	if(getmapusers("biolabs02_3") != 0) goto instance04;
+	if(getmapusers("biolabs03_3") != 0) goto instance04;
+	set fpoints,fpoints-100;
+	set $@biocount3,0;
+	set $@bioparty3,getcharid(1);
+	donpcevent "BioInst3::OnLimitation";
+	warpparty "biolabs01_3",150,288,getcharid(1);
+	sleep2 5000;
+	mapannounce "biolabs01_3","You are in instance 3 of 4.",0;
+	killmonster "biolabs01_3","All";
+	killmonster "biolabs02_3","All";
+	killmonster "biolabs03_3","All";
+	monster "biolabs01_3",165,28,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs01_3",149,270,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs02_3",16,81,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs03_3",139,260,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	end;
+
+	instance04:
+	if(getmapusers("biolabs01_4") != 0) goto L_full;
+	if(getmapusers("biolabs02_4") != 0) goto L_full;
+	if(getmapusers("biolabs03_4") != 0) goto L_full;
+	set fpoints,fpoints-100;
+	set $@biocount4,0;
+	set $@bioparty4,getcharid(1);
+	donpcevent "BioInst4::OnLimitation";
+	warpparty "biolabs01_4",150,288,getcharid(1);
+	sleep2 5000;
+	mapannounce "biolabs01_4","You are in instance 4 of 4.",0;
+	killmonster "biolabs01_4","All";
+	killmonster "biolabs02_4","All";
+	killmonster "biolabs03_4","All";
+	monster "biolabs01_4",165,28,"Chaos Seal",2010,1,"BioInst4::OnTower";
+	monster "biolabs01_4",149,270,"Chaos Seal",2010,1,"BioInst4::OnTower";
+	monster "biolabs02_4",16,81,"Chaos Seal",2010,1,"BioInst4::OnTower";
+	monster "biolabs03_4",139,260,"Chaos Seal",2010,1,"BioInst4::OnTower";
+	end;
+
+	L_full:
+	mes .@name$;
+	mes "All instances are currently full.";
+	close;
+}

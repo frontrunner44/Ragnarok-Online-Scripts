@@ -1,0 +1,242 @@
+//===== Athena Script =============================================
+//= Natural weather
+//===== By ========================================================
+//= Information
+//===== Current Version ===========================================
+//= 1.7.1
+//===== Compatible With ===========================================
+//= Any eAthena version with Setmapflag
+//===== Description ===============================================
+//= 1.8 - Add feature, manual change weather by whisper
+//=		 > Usage > [To NPC:weatherchanger] <mapname>#<weather(In number)>
+//= 1.7.1 - Optimize the script a bit
+//= 1.7 - More user friendly for now
+//= 1.6.1 - Display map real name
+//= 1.6 - Final Version,fixed day and night [Lupus]
+//= 1.5 - Fix OnTimer and more random timer 
+//= 1.4 - Fix bug
+//= 1.3 - Change timer to 1 hour [Kelvin], added map, add night of winter season
+//= 1.2 - Remove rain effect, Einbroch map, fix some bugs
+//= 1.1.1 - Remove PVP and GVG map [Myzter]
+//= 1.1 - Added auto Day and Night System
+//= 1.0 - Beta release,Working for city only
+//===== Comments ==================================================
+//= Correct me if got any bugs.
+//= Special thanks to Ruru,Brainstorm,Myzter and others who help me on.
+//=================================================================
+
+-	script	weatherchanger	-1,{
+
+OnTimer2700000:
+
+//	If enable third array,please set value to 3
+	set .@rv,2;
+
+//	Enable or disable weather report (Default: 1)
+	set .@report,1;
+
+//	If you want to set the random timer range (Default: min: 0 , max: 900000)
+	set .@min,0;
+	set .@max,900000;
+
+	setarray .@gat0$,
+	"prontera","alberta","aldebaran","izlude","morocc","payon","geffen","comodo","yuno","amatsu","gonryun","umbala","niflheim","louyang","jawaii","ayothaya",
+	"einbech","lighthalzen","hugel","rachel","veins","nameless_i","nameless_n","alb2trea","glast_01","izlu2dun","pay_arche","moc_ruins","tur_dun01",
+	"gef_fild00","gef_fild01","gef_fild02","gef_fild03","gef_fild04","gef_fild05","gef_fild06","gef_fild07","gef_fild08","gef_fild09","gef_fild10","gef_fild11",
+	"gef_fild12","gef_fild13","gef_fild14","mjolnir_01","mjolnir_02","mjolnir_03","mjolnir_04","mjolnir_05","mjolnir_06","mjolnir_07","mjolnir_08","mjolnir_09",
+	"mjolnir_10","mjolnir_11","mjolnir_12","moc_fild01","moc_fild02","moc_fild03","moc_fild04","moc_fild05","moc_fild06","moc_fild07","moc_fild08","moc_fild09",
+	"moc_fild10","moc_fild11","moc_fild12","moc_fild13","moc_fild14","moc_fild15","moc_fild16","moc_fild17","moc_fild18","moc_fild19","pay_fild01","pay_fild02",
+	"pay_fild03","pay_fild04","pay_fild05","pay_fild06","pay_fild07","pay_fild08","pay_fild09","pay_fild10","pay_fild11","prt_fild00","prt_fild01","prt_fild02",
+	"prt_fild03","prt_fild04","prt_fild05","prt_fild06","prt_fild07","prt_fild08","prt_fild09","prt_fild10","prt_fild11";
+
+	setarray .@mapname0$,
+	"Prontera","Alberta","Aldebaran","Izlude","Morocc","Payon","Geffen","Comodo","Yuno","Amatsu","Gonryun","Wootan Tribe's Village, Umbala","Niflheim","Louyang","Jawaii","Ayothaya",
+	"Einbech","Lighthalzen","Hugel","Rachel","Veins","The Nameless Island","The Nameless Island","Alberta Island","Glast Heim","Byalan Island","Archer Village","Morocc Ruins","Turtle Island",
+	"Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field","Geffen Field",
+	"Geffen Field","Geffen Field","Geffen Field","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir",
+	"Mt.Mjolnir","Mt.Mjolnir","Mt.Mjolnir","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert",
+	"Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Sograt Desert","Payon Forest","Payon Forest",
+	"Payon Forest","Payon Forest","Payon Forest","Payon Forest","Payon Forest","Payon Forest","Payon Forest","Payon Forest","Payon Forest","Prontera Field","Prontera Field","Prontera Field",
+	"Prontera Field","Prontera Field","Prontera Field","Prontera Field","Prontera Field","Prontera Field","Prontera Field","Prontera Field","Prontera Field";
+
+	setarray .@gat1$,
+	"prt_maze01","prt_maze02","prt_maze03","prt_monk","cmd_fild01","cmd_fild02","cmd_fild03","cmd_fild04","cmd_fild05","cmd_fild06","cmd_fild07","cmd_fild08",
+	"cmd_fild09","yuno_fild01","yuno_fild02","yuno_fild03","yuno_fild04","yuno_fild05","yuno_fild07","yuno_fild08","yuno_fild09","yuno_fild11","yuno_fild12",
+	"yuno_fild06","yuno_fild10","ama_fild01","gon_fild01","lou_fild01","nif_fild01","nif_fild02","ayo_fild01","ayo_fild02","um_fild01","um_fild02","um_fild03",
+	"um_fild04","new_zone01","new_zone03","ein_fild06","ein_fild07","ein_fild08","ein_fild09","ein_fild10","ein_fild03","ein_fild04","lhz_fild02","lhz_fild03",
+	"lhz_fild01","odin_tem01","odin_tem02","odin_tem03","ein_fild01","ein_fild02","ein_fild05","hu_fild07","hu_fild05","hu_fild04","hu_fild01","hu_fild02",
+	"hu_fild03","hu_fild06","ra_fild01","ra_fild02","ra_fild03","ra_fild04","ra_fild05","ra_fild06","ra_fild07","ra_fild08","ra_fild09","ra_fild10","ra_fild11",
+	"ra_fild12","ra_fild13","ve_fild01","ve_fild02","ve_fild03","ve_fild04","ve_fild05","ve_fild06","ve_fild07";
+
+	setarray .@mapname1$,
+	"Labyrinth Forest F1","Labyrinth Forest F2","Labyrinth Forest F3","St. Capitolina Abbey","Papuchicha Forest","Kokomo Beach","Zenhai Marsh","Kokomo Beach","Border of Papuchica Forest","Fortress Saint Darmain (West)","Beacon Island, Pharos","Fortress Saint Darmain (East)",
+	"Fortress Saint Darmain (South)","Border Posts","Kiel Hyre's Cottage","El Mes Plateau","El Mes Plateau","El Mes Plateau","El Mes Gorge (Valley of Abyss)","Kiel Hyre's Academy","Schwarzwald Guards Camp","Yuno Field","Border Checkpoint",
+	"El Mes Plateau","Yuno Field","Amatsu Field","Gonryun Field","Louyang Field","Skellington, a Solitary Village in Niflheim","Valley of Gyoll","Ayothaya Field","Ayothaya Field","Luluka Forest","Hoomga Forest","Kalala Swamp",
+	"Hoomga Jungle","Training Ground","Training Ground","Einbroch Field","Einbroch Field","Einbroch Field","Einbroch Field","Einbroch Field","Einbroch Field","Einbroch Field","Lighthalzen Field (Grim Reaper's Valley)","Lighthalzen Field",
+	"Lighthalzen Field","Odin Shirine F1","Odin Shirine F2","Odin Shirine F3","Einbroch Field","Einbroch Field","Einbroch Field","Hugel Field","The Abyss Lakes","Hugel Field","Thanatos Tower","Hugel Field",
+	"Hugel Field","Hugel Field","Audumra Grass Land","Oz Gorge","Ida Plane","Audumra Grass Land","Audumra Grass Land","Fortu Luna","Oz Gorge","Ida Plane","Audumra Grass Land","Oz Gorge","Ida Plane",
+	"Ida Plane","Beach of Tears","Veins Field","Veins Field","Veins Field","Veins Field","Veins Field","Veins Field","Veins Field";
+
+//	Add your map here!
+//	setarray .@gat2$,"gat";
+
+//	Add your map name here!Must be same position as map above!
+//	setarray .@mapname2$,"Map Name";
+
+//	to prevent weather conflict
+	setarray .allweather,16,17,18,19,20,23,24,25;
+
+//	Monthly Check
+	if(gettime(6)>=3 && gettime(6)<=5) goto L_Spring;
+	else if(gettime(6)>=6 && gettime(6)<=8) goto L_Summer;
+	else if(gettime(6)>=9 && gettime(6)<=11) goto L_Autumn;
+	else goto L_Winter;
+
+	L_Spring:
+		if(gettime(3)>=7 && gettime(3)<19) {
+		setarray .@weather,0,17,23;
+		}
+
+		else {
+		setarray .@weather,0,17,23,25;
+		}
+
+		goto L_end;
+
+	L_Summer:
+		if(gettime(3)>=7 && gettime(3)<19) {
+		setarray .@weather,0,18,23;
+		}
+
+		else {
+		setarray .@weather,0,18,23,25;
+		}
+
+		goto L_end;
+
+	L_Autumn:
+		if(gettime(3)>=7 && gettime(3)<19) {
+		setarray .@weather,0,19,23;
+		}
+
+		else {
+		setarray .@weather,0,19,23,25;
+		}
+
+		goto L_end;
+
+	L_Winter:
+		if(gettime(3)>=7 && gettime(3)<19) {
+		setarray .@weather,0,16;
+		}
+
+		else {
+		setarray .@weather,0,16,23;
+		}
+
+	L_end:
+		set .@size,rand(.@rv);
+		set .@int,rand(getarraysize(getd(".@gat"+.@size+"$")));
+		set .@gat$,getd(".@gat"+.@size+"$["+.@int+"]");
+		set .@display$,getd(".@mapname"+.@size+"$["+.@int+"]");
+
+//	To remove all the weather from the map
+	for (set .@x,0; .@x < getarraysize(.allweather); set .@x, .@x + 1) {
+	removemapflag .@gat$,.allweather[.@x];
+	}
+
+	set .@weather,.@weather[rand(getarraysize(.@weather))];
+
+	if (.@report == 1) {
+		switch(.@weather) {
+		case 0:
+			announce "Weather Report : Currently "+.@display$+" is clear weather",0,0xFF9B00;
+			break;
+
+		case 16:
+			announce "Weather Report : Currently "+.@display$+" is snowing",0,0xC8C8FF;
+			break;
+
+		case 17:
+			announce "Weather Report : Currently "+.@display$+" is fogging",0,0x8080C0;
+			break;
+
+		case 18:
+			announce "Weather Report : Currently "+.@display$+" is droping sakura flower",0,0xFF9B00;
+			break;
+
+		case 19:
+			announce "Weather Report : Currently "+.@display$+" is droping leaves",0,0x00FF80;
+			break;
+
+		case 23:
+			announce "Weather Report : Currently "+.@display$+" is cloudy",0,0xC0C0C0;
+			break;
+
+		case 24:
+			announce "Weather Report : Currently "+.@display$+" appeared small cloud",0,0xC0C0C0;
+			break;
+
+		case 25:
+			announce "Weather Report : Currently "+.@display$+" is having a firework",0,0xFF0000;
+			break;
+		}
+
+//		Apply the weather
+		if(.@weather)	setmapflag .@gat$,.@weather;
+	}
+
+	Stopnpctimer;
+	Initnpctimer;
+	set .@again,rand(.@min,.@max);
+	setnpctimer .@again;
+	end;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 98) end;	//Set GM level here
+	set .@tempmu,getmapusers(@whispervar0$);
+	if (.@tempmu != -1) goto L_dcheck1;
+	dispbottom "Map is not existed!";
+	end;
+
+L_dcheck1:
+	set .@tempweather,@whispervar1$;
+	for (set .@x,0; .@x < getarraysize(.allweather); set .@x, .@x + 1) {
+		if(.@tempweather == .allweather[.@x]) goto L_dcheck2;
+	}
+	dispbottom "Weather is not exist in the weather list!";
+	end;
+	
+L_dcheck2:
+	for (set .@x,0; .@x < getarraysize(.allweather); set .@x, .@x + 1) {
+	removemapflag .@gat$,.allweather[.@x];
+	}
+	setmapflag @whispervar0$,@whispervar1$;
+	dispbottom "Weather has been change for "+ @whispervar0$ + " map.";
+	end;
+
+OnInit:
+//	Enable or disable Day and Night function (Default: 0)
+	set .@dn,1;
+
+	donpcevent "weatherchanger::OnTimer2700000";
+	If(!.@dn) disablenpc "DayNight";
+	end;
+}
+
+//Please disable/set 0 for day_duration & night_duration in misc.conf when you use this
+-	script	DayNight	-1,{
+
+OnHour07:
+day;
+end;
+
+OnHour19:
+night;
+end;
+
+OnInit:
+if(gettime(3)>=7 && gettime(3)<19) day;
+else night;
+end;
+}

@@ -1,0 +1,18 @@
+-	script	Faction_Grinding	-1,{
+
+//==========================
+// -- Faction Grinding
+//==========================
+OnNPCKillEvent:
+set fpoints,fpoints+1;
+dispbottom "You have gained +1FP from Faction Grinding!";
+set mobgrind,mobgrind+1;
+if(mobgrind >= 3) {
+	if(faction == 1) set $zarpoints,$zarpoints+1;
+	if(faction == 2) set $dragpoints,$dragpoints+1;
+	set mobgrind,0;
+	dispbottom "You have gained Global FP from Faction Grinding!";
+	end;
+	}
+end;
+}

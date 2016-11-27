@@ -1,0 +1,3 @@
+This is a compilation of scripts that I wrote when I was 16 years old when I ran a private server for the Korean MMORPG "Ragnarok Online". The scripting language has similarities to the C programming language. I used these scripts to heavily modify the gameplay by adding, modifying and removing npcs, quests, features and other things. More information can be found on the wikipedia page at https://en.wikipedia.org/wiki/EAthena, which is a wiki page for the emulation software these scripts were written for called "eAthena".
+
+A quote from the wiki about the scripting language: Additionally, eAthena features a fully custom, C-like scripting engine for configuration of NPCs, quests, warp portals, and monster spawns, among other interactive in-game systems.

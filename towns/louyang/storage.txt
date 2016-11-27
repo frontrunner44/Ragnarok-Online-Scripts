@@ -1,0 +1,18 @@
+lou_in02.gat,204,166,5	script	Storage#LouS	50,{
+if(faction != $loufaction) {
+	mes "[Storage]";
+	mes "Leave now...";
+	close;
+	}
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage; 
+
+close;
+}

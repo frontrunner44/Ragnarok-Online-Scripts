@@ -1,0 +1,111 @@
+//------------------------------------------------------------------------------------------------------
+//= Event related
+//------------------------------------------------------------------------------------------------------
+-	script	Trigger	-1,{
+OnPCDieEvent:
+//Check the map is event map or not
+	getmapxy(.@CUR_MAP$,.@uselessx,.@uselessy,0);
+	for ( set .@checker,1  ; .@checker < getarraysize($@PVS_B_MAP$) ; set .@checker,.@checker+1 ){
+		if (.@CUR_MAP$ == $@PVS_B_MAP$[.@checker])
+		goto L_granted;
+	}
+	end;
+
+L_granted:
+	warp $@PVS_W_MAP$,$@PVS_W_MAPX + rand(-2,2),$@PVS_W_MAPY + rand(-2,2);
+	set .@killed$, strcharinfo(0);
+	getpartymember(getcharid(1));
+	set .@killedpartyname$,getpartyname(getcharid(1));
+	set .@killedpartynumber,0;
+	for ( set .@pl,0 ; .@pl < $@partymembercount ; set .@pl,.@pl+1 ) {
+	getmapxy(@temp$,@tempx,@tempy,0,$@partymembername$[.@pl]);
+	if (@temp$ == .@CUR_MAP$)
+	set .@killedpartynumber,.@killedpartynumber+1;
+	}
+
+	attachrid(killerrid);
+	set @killed$,.@killed$;
+	set @killedpartyname$,.@killedpartyname$;
+	set @killedpartynumber,.@killedpartynumber;
+	set @CUR_MAP$,.@CUR_MAP$;
+
+	set @killer$,strcharinfo(0);
+	set @killerid,getcharid(0);
+	set @killerpartyname$,getpartyname(getcharid(1));
+	set @killerpartyid,getcharid(1);
+	set @kill_count,@kill_count+1;
+	getpartymember(getcharid(1));
+
+	for ( set .@pl,0 ; .@pl < getarraysize($@partymembercount) ; set .@pl,.@pl+1 ) {
+	getmapxy(@temp$,@tempx,@tempy,0,$@partymembername$[.@pl]);
+	if (@temp$ == .@CUR_MAP$)
+	set .@killerpartynumber,.@killerpartynumber+1;
+	}
+
+	if (( @killed$ == @killer$) && ( .@killerpartynumber == 0)) goto L_draw;
+
+	mapannounce @CUR_MAP$,@killer$+" pawned " + @killed$ + " head!",0,0xFFFFFF;
+
+	if (@kill_count >= 3){
+	if ($@PVS_SOUND != 0) soundeffect "triple_kill.wav",0;
+	mapannounce @CUR_MAP$,@killer$ + " just got a Triple Kill!!!",0,0x00FF00;
+	goto L_next;
+	}
+	if (@kill_count == 2){
+	if ($@PVS_SOUND != 0) soundeffect "Double_kill.wav",0;
+	mapannounce @CUR_MAP$,@killer$ + " just got a Double Kill!!",0,0x0000FF;
+	}
+
+L_next:
+	addtimer 5000,"Trigger::On5Sec";
+	end;
+
+On5Sec:
+	set @kill_count,0;
+	if (@killedpartynumber == 0)goto L_battleover;
+	mapannounce @CUR_MAP$,@killedpartyname$+" party left "+@killedpartynumber+" people!",0,0xFFFFFF;
+	end;
+
+L_draw:
+	mapannounce @CUR_MAP$,"How pity, is a draw match...",0,0xFF9B00;
+	mapannounce $@PVS_W_MAP$,"How pity, is a draw match...",0,0xFF9B00;
+	goto L_dendbattle;
+
+L_battleover:
+	if ($@PVS_SOUND != 0) soundeffect "battlewon.wav",0;
+	for ( set @temp,0 ; @temp < 10 ; set @temp,@temp + 1 )	{
+	if ($@PVS_WONP[@temp] == getcharid(1)) end;
+		if ($@PVS_WONP[@temp] == 0)	{
+		set $@PVS_WONP[@temp],getcharid(1);
+		goto L_endbattle;
+		}
+	}
+
+L_endbattle:
+	mapannounce @CUR_MAP$,@killerpartyname$+" party has won the battle! Congratulation!!",0,0xFF9B00;
+	mapannounce $@PVS_W_MAP$,@killerpartyname$+" party has won the battle! Congratulation!!",0,0xFF9B00;
+
+L_dendbattle:
+	sleep2 1500;
+//	for ( set @timer,3 ; @timer >= 1 ; set @timer,@timer-1 ){
+//	mapannounce @CUR_MAP$,"The battle will be end in " + @timer + " seconds",0,0xFFFFFF;
+//	sleep2 1000;
+//	}
+	mapwarp @CUR_MAP$,$@PVS_W_MAP$,$@PVS_W_MAPX + rand(-2,2),$@PVS_W_MAPY + rand(-2,2);
+	end;
+
+OnPCLoadMapEvent:
+	getmapxy(@map$,@x,@y,0);
+	if ((@map$ == $@PVS_W_MAP$) && (@optionactive == 1)){
+	sc_end sc_all;
+	set @optionactive,0;
+	set @kill_count,0;
+	}
+
+	if ((@map$ == $@PVS_W_MAP$) && (Hp == 0))
+	atcommand "@alive";
+
+	if ((@map$ == $@PVS_NPC_MAP$) || (@map$ == $@PVS_W_MAP$) )
+	set @kill_count,0;
+end;
+}

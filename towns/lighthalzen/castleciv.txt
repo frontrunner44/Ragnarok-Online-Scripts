@@ -1,0 +1,24 @@
+RDacademy.gat,91,19,5	script	Miranda	882,{
+
+mes "[Miranda]";
+mes "But I don't want daddy to go!";
+close;
+}
+
+RDacademy.gat,90,21,5	script	Miranda's Mom	66,{
+
+mes "[Rebecca]";
+mes "Come on now, get up, honey.";
+close;
+}
+
+lhz_in01.gat,125,152,7	script	Dorky Researcher	57,{
+
+mes "[Dorky Researcher]";
+mes "Legend says that there were once men big enough to wear this armor.";
+next;
+mes "[Dorky Researcher]";
+mes "Can you imagine how powerful they must have been? It's just so interesting.";
+close;
+}
+

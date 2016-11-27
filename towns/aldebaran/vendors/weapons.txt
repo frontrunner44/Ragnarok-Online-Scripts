@@ -1,0 +1,11 @@
+aldeba_in,148,243,5	script	Weapon Dealer#Alde01	751,{
+if(faction != $aldfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "If you don't leave, I'll use these weapons on ya!";
+	close;
+	}
+callshop "AldeWeps01",0;
+}
+-	shop	AldeWeps01	139,1750:-1,1751:-1,1701:-1,1201:-1,1204:-1,1207:-1,1601:-1,1101:-1,1104:-1,1107:-1,1110:-1,1113:-1,1122:-1,1119:-1,1123:-1,1126:-1,1129:-1,1116:-1,1301:-1,1401:-1,1404:-1,1407:-1,1451:-1,1454:-1,1457:-1,1460:-1,1463:-1,1410:-1,1146:-1,1245:-1,1801:-1,1803:-1,1805:-1
+
+aldeba_in,29,54,7	duplicate(Weapon Dealer#Alde01)	Weapon Dealer#Aldupe01	751

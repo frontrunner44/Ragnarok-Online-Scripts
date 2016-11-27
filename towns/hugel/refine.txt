@@ -1,0 +1,9 @@
+hu_in01,96,318,6	script	Refiner#Hug01	826,{
+set @name$,"[^0000ffMac The Refiner^000000]";
+if(faction != $hugfaction) {
+	mes .@name$;
+	mes "Leave at once.";
+	close;
+}
+callfunc "G_Refine";
+}

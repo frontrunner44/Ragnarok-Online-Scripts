@@ -1,0 +1,408 @@
+function	script	AirportLady	{
+
+set .@name$,"[^0000ffAirport Lady^000000]";
+if($@airraid[0] > 1 || $@airraid[1] > 1) goto airshipraids;
+
+// Prepares the menu list.
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+set .@neutralloc$,"- Ground Zero(Main Home)";										      //|
+if(faction == 1) {set .@locationhome$,"- Lighthalzen(Faction Home)"; } else {set .@locationhome$,"- Rachel(Faction Home)";}   //|
+if(faction == $prtfaction) {set .@location1$,"- Prontera";}    			    					      //|
+if(faction == $aldfaction) {set .@location2$,"- Aldebaran";}    							      //|
+if(faction == $loufaction) {set .@location3$,"- Louyang";}      							      //|
+if(faction == $einfaction) {set .@location4$,"- Einbech";}     								      //|
+if(faction == $einbfaction) {set .@location5$,"- Einbroch";}    							      //|
+if(faction == $geffaction) {set .@location6$,"- Geffen";}     								      //|
+if(faction == $hugfaction) {set .@location7$,"- Hugel";}       								      //|
+if(faction == $ayofaction) {set .@location8$,"- Ayothaya";}    								      //|
+if(faction == $morfaction) {set .@location9$,"- Morocc";}     								      //|
+if(faction == $payfaction) {set .@location10$,"- Payon";}     								      //|
+if(faction == $izlfaction) {set .@location11$,"- Izlude";}    								      //|
+if(faction == $comfaction) {set .@location12$,"- Comodo";}         							      //|
+if(faction == $gonfaction) {set .@location13$,"- Gonryun";}     							      //|
+if(faction == $umbfaction) {set .@location14$,"- Umbala";}     								      //|
+if(faction == $amafaction) {set .@location15$,"- Amatsu";}    								      //|
+if(faction == $veinfaction) {set .@location16$,"- Veins";}								      //|
+if(faction == $albfaction) {set .@location17$," - Alberta";}								      //|
+if(faction == $yunofaction) {set .@location18$,"- Yuno";}								      //|
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+
+ladystart:
+mes .@name$;
+mes "Traveling to another city will cost 100z and 5FP.";
+next;
+mes .@name$;
+mes "Traveling to your faction's home town or Ground Zero is free. Please choose a destination.";
+next;
+menu .@neutralloc$,neutral,.@locationhome$,lochome,.@location1$,pront,.@location2$,alde,.@location3$,louy,.@location4$,einb,.@location5$,einbr,.@location6$,geff,.@location7$,huge,.@location8$,ayot,.@location9$,moro,.@location10$,payo,.@location11$,izlu,.@location12$,como,.@location13$,gonry,.@location14$,umbal,.@location15$,amat,.@location16$,veins,.@location17$,L_alb,.@location18$,L_yun,"- None",-;
+close;
+
+//==================
+// -- Labels
+//==================
+getmapxy(.@map$,.@x,.@y,0);
+
+	pront:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,1;
+	set @mapname2$,"Prontera Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	alde:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,2;
+	set @mapname2$,"Aldebaran Airport";
+	next;
+	warp @mapname$,86,188; end;
+
+	louy:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,3;
+	set @mapname2$,"Louyang Airport";
+	next;
+	warp @mapname$,86,188;
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	einb:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,4;
+	set @mapname2$,"Einbech Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	einbr:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,5;
+	set @mapname2$,"Einbroch Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	L_yun:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,19;
+	set @mapname2$,"Yuno Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	geff:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,6;
+	set @mapname2$,"Geffen Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	huge:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,7;
+	set @mapname2$,"Hugel Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	ayot:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,8;
+	set @mapname2$,"Ayothaya Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+	
+	moro:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,9;
+	set @mapname2$,"Morocc Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	payo:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,10;
+	set @mapname2$,"Payon Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	izlu:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,11;
+	set @mapname2$,"Izlude Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	como:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,12;
+	set @mapname2$,"Comodo Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	gonry:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,13;
+	set @mapname2$,"Gonryun Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	umbal:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,14;
+	set @mapname2$,"Umbala Airport";
+	next;
+	warp @mapname$,86,188;
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	amat:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,15;
+	set @mapname2$,"Amatsu Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	veins:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,16;
+	set @mapname2$,"Veins Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	L_alb:
+	if(fpoints < 5 || zeny < 100) {
+		mes .@name$; 
+		mes "You don't have enough Zeny or Faction Points."; 
+		close;
+	}
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	set warpselect,18;
+	set @mapname2$,"Alberta Airport";
+	next;
+	warp @mapname$,86,188; 
+	set zeny,zeny-100;
+	set fpoints,fpoints-5;
+	end;
+
+	lochome:
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	if(faction == 1) {
+		set warpselect,111;
+		set @mapname2$,"Lighthalzen";
+	} else {
+		set warpselect,222;
+		set @mapname2$,"Rachel Airport";
+	}
+	next;
+	warp @mapname$,86,188; 
+	end;
+	
+	neutral:
+	mes .@name$;
+	mes "Please step behind the desk and enter the airplane.";
+	next;
+	set warpselect,17;
+	set @mapname2$,"Ground Zero";
+	warp @mapname$,86,188; 
+	end;
+
+
+//====================
+// -- Airship Raids
+//====================
+airshipraids:
+if($@airraid[0] == 2 && faction == 1) {
+	mes .@name$;
+	mes "Your faction is currently attacking Destra's Airship, would you like to participate?";
+	next;
+	menu "Yes",L_yes,"No",ladystart;
+}
+if($@airraid[0] == 2 && faction == 2) {
+	mes .@name$;
+	mes "Arzeon is attemping to destroy your airship. Would you like to help defend it?";
+	next;
+	menu "Yes",L_yes,"No",ladystart;
+}
+if($@airraid[0] == 3 && faction == 2) {
+	mes .@name$;
+	mes "Your airship is currently undergoing repairs. Please wait a maximum of 15 minutes for the repairs to complete.";
+	close;
+}
+if($@airraid[0] == 3 && faction == 1) {
+	goto ladystart;
+}
+if($@airraid[1] == 2 && faction == 2) {
+	mes .@name$;
+	mes "Your faction is currently attacking Arzeon's Airship, would you like to participate?";
+	next;
+	menu "Yes",L_yes,"No",ladystart;
+}
+if($@airraid[1] == 2 && faction == 1) {
+	mes .@name$;
+	mes "Destra is attemping to destroy your airship. Would you like to help defend it?";
+	next;
+	menu "Yes",L_yes2,"No",ladystart;
+}
+if($@airraid[1] == 3 && faction == 1) {
+	mes .@name$;
+	mes "Your airship is currently undergoing repairs. Please wait a maximum of 15 minutes for the repairs to complete.";
+	close;
+}
+if($@airraid[1] == 3 && faction == 2) {
+	goto ladystart;
+}
+
+	L_yes:
+	warp "airplane_01",93,180;
+	end;
+
+	L_yes2:
+	warp "airplane",93,180;
+	end;
+
+
+}

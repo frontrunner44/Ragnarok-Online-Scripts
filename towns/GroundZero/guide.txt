@@ -1,0 +1,310 @@
+eathena,256,163,8	script	?Guide?#GZ	708,{
+
+set .@name$,"[^0000ffGuide^000000]";
+
+mes .@name$;
+mes "Welcome to the peaceful island that we call Ground Zero!";
+next;
+mes .@name$;
+mes "What would you like me to do for you? Remember, I can mark locations on your map for you.";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Prontera Church",L_church,"- WoE Castles",L_castles,"- Moscovia",L_mosc,"- Endless Tower",L_endless,"- Ice Dungeon",L_icedun,"- Biolabs",L_bio,"- Rachel Dungeon",L_rach,"- Glast Heim",L_heim,"- Quests",L_quests,"- Airship",L_air,"- Head Staff & Bank",L_main,"- Hotel",L_hotel,"- Weapons, Armor & Storage",L_gear,"- Tool Shop",L_tools,"- Boat Captain",L_boat,"- PvP Area",L_pvp,"- Point Trader",L_point,"- Collectors",L_collect,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_mosc:
+	mes .@name$;
+	mes "Would you like to warp to Moscovia?";
+	next;
+	menu "- Yes",L_ymosc,"- No thanks",-;
+	close;
+
+		L_ymosc:
+		warp "moscovia",223,184;
+		end;
+
+	L_endless:
+	mes .@name$;
+	mes "Would you like to warp to the Endless Tower island?";
+	next;
+	menu "- Yes",L_yend,"- No",-;
+	close;
+
+		L_yend:
+		warp "e_tower",76,98;
+		end;
+
+	L_church:
+	mes .@name$;
+	mes "Would you like to visit Prontera Church";
+	next;
+	menu "- Yes",L_cyes,"- No",-;
+	close;
+	
+		L_cyes:
+		warp "prt_church",100,61;
+		end;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Ground Zero!";
+	savepoint "eathena",256,167;
+	close;
+
+	L_hotel:
+	viewpoint 1,198,131,2,0xFF0000;
+	close;
+
+	L_gear:
+	viewpoint 1,310,190,3,0xFF0000;
+	close;
+
+	L_tools:
+	viewpoint 1,244,244,4,0xFF0000;
+	close;
+
+	L_pvp:
+	viewpoint 1,202,111,5,0xFF0000;
+	close;
+
+	L_point:
+	viewpoint 1,301,172,6,0xFF0000;
+	close;
+
+	L_main:
+	viewpoint 1,311,170,7,0xFF0000;
+	close;
+
+	L_air:
+	viewpoint 1,210,144,8,0xFF0000;
+	close;
+
+	L_collect:
+	viewpoint 1,261,264,9,0xFF0000;
+	close;
+
+	L_boat:
+	viewpoint 1,224,42,10,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "Deleted all marks.";
+	viewpoint 2,198,131,2,0xFF0000;
+	viewpoint 2,310,190,3,0xFF0000;
+	viewpoint 2,244,244,4,0xFF0000;
+	viewpoint 2,202,111,5,0xFF0000;
+	viewpoint 2,301,172,6,0xFF0000;
+	viewpoint 2,311,170,7,0xFF0000;
+	viewpoint 2,210,144,8,0xFF0000;
+	viewpoint 2,261,264,9,0xFF0000;
+	viewpoint 2,224,42,10,0xFF0000;
+	close;
+
+	//=================
+	// -- Quests
+	//=================
+	L_quests:
+	if(mandell < 1) set .@questlist$[0],"- Mandell Fruit";
+	mes .@name$;
+	mes "Here is a list of currently available quests.";
+	next;
+	menu .@questlist$[0],L_mandell,"- Nothing",-;
+	close;
+
+		L_mandell:
+		if(mandell == 1) {
+			mes .@name$;
+			mes "Please hurry, before the child dies.";
+			close;
+			}
+		mes .@name$;
+		mes "A man in Morocc requested that someone deliver 5 mandell fruits to him.";
+		next;
+		mes .@name$;
+		mes "His daughter is sick, and he said he'll pay well.";
+		next;
+		mes .@name$;
+		mes "Do you accept this mission?";
+		next;
+		menu "- Yes",L_yes,"- No",-;
+		close;
+
+			L_yes:
+			mes .@name$;
+			mes "Mandell fruit can be found all over this island.";
+			close2;
+			announce "Quest added to your Adventure Logs.",bc_self;
+			set mandell,1;
+			set mandellq$,"Mandell Fruit";
+			viewpoint 1,83,191,10,0xFF0000;
+			viewpoint 1,200,232,11,0xFF0000;
+			viewpoint 1,324,321,12,0xFF0000;
+			viewpoint 1,321,240,13,0xFF0000;
+			viewpoint 1,365,268,14,0xFF0000;
+			close;
+
+	//========================
+	// -- Town Scrolls
+	//========================
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30853,.@amount;
+	close;
+
+	L_bio:
+	mes .@name$;
+	mes "This biolabs dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter Biolabs anyway?";
+	next;
+	menu "- Yes",L_yesbio,"- No thanks",-;
+	close;
+
+		L_yesbio:
+		mes .@name$;
+		mes "Be careful in there!";
+		next;
+		warp "lhz_dun01",149,282;
+		end;
+
+	L_rach:
+	mes .@name$;
+	mes "This Rachel dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter the Rachel dungeon anyway?";
+	next;
+	menu "- Yes",L_yesrach,"- No thanks",-;
+	close;
+
+		L_yesrach:
+		mes .@name$;
+		mes "Be careful in there!";
+		next;
+		warp "ra_san01",140,129;
+		end;
+
+	L_heim:
+	mes .@name$;
+	mes "This dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter Glast Heim anyway?";
+	next;
+	menu "- Yes",L_yesheim,"- No thanks",-;
+	close;
+
+		L_yesheim:
+		warp "glast_01",287,146;
+		end;
+
+	L_icedun:
+	mes .@name$;
+	mes "This dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter Ice Dungeon anyway?";
+	next;
+	menu "- Yes",L_yicedun,"- No thanks",-;
+	close;
+
+		L_yicedun:
+		warp "ice_dun01",157,15;
+		end;
+
+	
+	//=====================
+	// -- WoE Castles
+	//=====================
+	L_castles:
+	if(agitcheck() == 0) { 
+		mes .@name$;
+		mes "I can not warp you to castle areas when WoE is not active.";
+		close;
+		}
+	mes .@name$;
+	mes "Which castle area would you like to travel to?";
+	next;
+	menu "- Prontera Castles",L_prtcas,"- Payon Castles",L_paycas,"- Geffen Castles",L_gefcas,"- Aldebaran Castles",L_aldcas,"- Yuno Castles",L_yuncas,"- Veins Castles",L_veincas,"- None",-;
+	close;
+
+		L_prtcas:
+		warp "prt_gld",159,35;
+		end;
+
+		L_paycas:
+		warp "pay_gld",365,149;
+		end;
+
+		L_gefcas:
+		warp "gef_fild13",41,366;
+		end;
+		
+		L_aldcas:
+		warp "alde_gld",276,160;
+		end;
+
+		L_yuncas:
+		warp "sch_gld",348,89;
+		end;
+
+		L_veincas:
+		warp "aru_gld",196,352;
+		end;
+
+
+
+OnPCLoadMapEvent:
+getmapxy (.@map$,.@x,.@y,0);
+if(.@map$ == "eathena" && mandell == 1 && countitem(30008) < 5) {
+	if(mfruit1 == 0) viewpoint 1,83,191,10,0x000000;
+	if(mfruit2 == 0) viewpoint 1,200,232,11,0x000000;
+	if(mfruit3 == 0) viewpoint 1,324,321,12,0x000000;
+	if(mfruit4 == 0) viewpoint 1,321,240,13,0x000000;
+	if(mfruit5 == 0) viewpoint 1,365,268,14,0x000000;
+	end;
+	}
+if(.@map$ == "morocc" && mandell == 1 && countitem(30008) == 5) {
+	viewpoint 1,44,132,15,0x000000;
+	viewpoint 2,83,132,15,0x000000;
+	viewpoint 3,85,177,15,0x000000;
+	viewpoint 4,26,172,15,0x000000;
+	}
+end;
+}
+
+eathena,269,222,7	duplicate(?Guide?#GZ)	Guide#GZ01	708
+eathena,175,123,4	duplicate(?Guide?#GZ)	Guide#GZ02	708

@@ -1,0 +1,26 @@
+airport,135,35,5	script	?Markus?#Einb1	904,{
+set .@name$,"[^0000ffMarkus^000000]";
+if(countitem(30009) >= 30) goto L_questdone;
+
+mes .@name$;
+mes "How are you today?";
+close;
+
+	L_questdone:
+	mes .@name$;
+	mes "Why thank you very much. We appreciate your service.";
+	close2;
+	announce "Quest Update: Material Farming quest complete!",bc_self;
+	set fpoints,fpoints+1500;
+	set zeny,zeny+80000;
+	dispbottom "Gained +1500FP.";
+	dispbottom "Gained 80,000z.";
+	getexp 8000000,5000000;
+	getitem 30860,3;
+	getitem 30881,6;
+	delitem 30009,countitem(30009);
+	soundeffect "battlewon.wav",0;
+	set axeremovel$,"";
+	set axeremove,2;
+	end;
+}

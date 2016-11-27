@@ -1,0 +1,27 @@
+eathena,262,265,5	script	!Will!#Collector101	83,{
+set .@name$,"[^0000ffWill^000000]";
+
+mes .@name$;
+mes "Hey there. Think you can farm me some grasshopper legs? I'll give you 2FP per leg.";
+next;
+menu "- Give grasshopper legs",L_give,"- Nah",-;
+close;
+
+	L_give:
+	mes .@name$;
+	mes "How many would you like to give?";
+	input .@amount;
+	next;
+	if(.@amount == 0) close;
+	if(.@amount > countitem(940)) {
+		mes .@name$;
+		mes "You don't have that many legs, kid.";
+		close;
+		}
+	mes .@name$;
+	mes "Thanks!";
+	delitem 940,.@amount;
+	set fpoints,fpoints+(.@amount*2);
+	dispbottom "Gained +"+.@amount*2+"FP.";
+	close;
+}

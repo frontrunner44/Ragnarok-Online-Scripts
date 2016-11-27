@@ -1,0 +1,73 @@
+gonryun.gat,163,142,5	script	Guide#Gon01	708,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $gonfaction) { 
+	mes .@name$; 
+	mes "What are you doing in this city? Get out of here!"; 
+	close;
+	}
+
+mes .@name$;
+mes "Welcome to Gonyrun. What would you like to mark on your minimap?";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",hotel,"- Storage",storage,"- Weapons & Armor",weparm,"- Tool Shop",toolshop,"- Delete Markers",delmarks,"- Nothing",-;
+close;
+
+L_save:
+mes .@name$;
+mes "You have been saved in Gonyrun.";
+savepoint "gonryun",164,132;
+close;
+
+hotel:
+viewpoint 1,213,114,1,0xFF0000;
+close;
+
+storage:
+viewpoint 1,218,162,2,0xFF0000;
+close;
+
+weparm:
+viewpoint 1,174,98,3,0xFF0000;
+close;
+
+toolshop:
+viewpoint 1,186,110,4,0xFF0000;
+close;
+
+emperium:
+viewpoint 1,158,117,5,0xFF0000;
+close;
+
+delmarks:
+viewpoint 2,213,114,1,0xFF0000;
+viewpoint 2,218,162,2,0xFF0000;
+viewpoint 2,174,98,3,0xFF0000;
+viewpoint 2,186,110,4,0xFF0000;
+viewpoint 2,158,117,5,0xFF0000;
+close;
+
+L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30863,.@amount;
+	close;
+}

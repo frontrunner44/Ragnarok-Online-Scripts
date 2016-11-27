@@ -1,0 +1,99 @@
+pvp_n_room,29,85,5	script	Death Match Staff#FFA	832,{
+
+//==================
+// -- Configs
+//==================
+set .@name$,"[^0000ffDM Staff^000000]";
+
+//===============
+// -- Script
+//===============
+mes .@name$;
+mes "Welcome to the Death Match Arena. This is the Free For All room where all levels are welcome, what can I do for you?";
+next;
+menu "- Join",L_register,"- Nothing",-;
+close;
+
+	L_register:
+	if(fpoints < 20) {
+		mes .@name$;
+		mes "You need 20 Faction Points to join.";
+		close;
+		}
+	mes .@name$;
+	mes "Everytime you join a Death Match room, your points will be reset. Are you sure you want to join?";
+	next;
+	menu "- Yes",L_yes,"- No",-;
+	close;
+
+		L_yes:
+		mes .@name$;
+		mes "Prepare to fight!";
+		close2;
+		set fpoints,fpoints-20;
+		set dmpoints,0;
+		set dmdeaths,0;
+		warp "pvp_n_1-5",100,110;
+		savepoint "pvp_n_1-5",0,0;
+		sleep2 2000;
+		mapannounce "pvp_n_1-5","Server: "+strcharinfo(0)+" has joined the Death Match!",0;
+		end;
+
+//==================
+// -- Kill Event
+//==================
+OnPCKillEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "pvp_n_1-5") {
+	set dmpoints,dmpoints+1;
+	mapannounce "pvp_n_1-5","Server: "+strcharinfo(0)+" has "+dmpoints+" kills and "+dmdeaths+" deaths.",0;
+	attachrid killedrid;
+	set dmdeaths,dmdeaths+1;
+	dispbottom "You have been killed "+dmdeaths+" of "+ $@dmamount +" times.";
+	if(dmdeaths >= $@dmamount) {
+		mapannounce "pvp_n_1-5","Server: "+strcharinfo(0)+" has been killed "+ $@dmamount +" times and is taken out of the Death Match!",0;
+		set dmdeaths,0;
+		savepoint "pvp_n_room",53,34;
+		end;
+		}
+	savepoint "pvp_n_1-5",0,0;
+	end;
+	}
+end;
+
+//====================
+// -- Waiting Room
+//====================
+OnInit:
+waitingroom "Free For All",0;
+end;
+}
+
+//====================//
+// <-- Exit NPC -- > //
+//==================//
+pvp_n_1-5,97,106,5	script	Death Match Staff#Exit2	894,{
+
+//==================//
+// <-- Configs --> //
+//================//
+set .@name$,"[^0000ffDM Staff^000000]";
+
+//==================//
+// <-- Script -- > //
+//================//
+mes .@name$;
+mes "You have "+ dmpoints +" kills and "+ dmdeaths +" deaths. Would you like to exit to the main Arena room?";
+next;
+mes .@name$;
+mes "If you decide to leave, your deaths will be reset, but each time you enter a DM room, your points will reset as well.";
+next;
+menu "- Leave",L_leave,"- Stay",-;
+close;
+
+	L_leave:
+	set dmdeaths,0;
+	warp "pvp_n_room",49,43;
+	savepoint "eathena",255,170;
+	end;
+}

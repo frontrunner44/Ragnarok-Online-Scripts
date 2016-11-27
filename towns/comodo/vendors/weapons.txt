@@ -1,0 +1,12 @@
+cmd_in01,129,165,5	script	Weapon Dealer#ComWep	828,{
+if(faction != $comfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "What's a chump like you doin here?";
+	close;
+	}
+callshop "ComWeps01",0;
+}
+
+-	shop	ComWeps01	139,1901:-1,1903:-1,1905:-1,1909:-1,1911:-1,1907:-1,1950:-1,1952:-1,1954:-1,1958:-1,1960:-1,1956:-1
+
+cmd_fild07,250,98,2	shop	Weapon Dealer#cmd2	49,1401:-1,1404:-1,1407:-1,1451:-1,1454:-1,1457:-1,1460:-1,1463:-1,1410:-1

@@ -1,0 +1,14 @@
+//=============================================
+//===========Written By Zero===================
+//=============================================
+ra_temsky.gat,100,60,5	script	Head Staff#Rach	861,{
+
+if(faction == 1) { 
+	mes "[^0000ffHead Staff^000000]";
+	mes "Go back to where you belong, you're not getting any information out of me!"; 
+	close;
+	}
+
+callfunc "MainStaff";
+end;
+}

@@ -1,0 +1,9 @@
+lou_in02,121,182,5	script	Armor#Lou02	818,{
+if(faction != $loufaction) {
+	mes "[Armor Merchant]";
+	mes "Get the hell out of here!";
+	close;
+	}
+callshop "LouArm1",0;
+}
+-	shop	LouArm1	818,2211:-1,2401:-1,2403:-1,2501:-1,2503:-1,2101:-1,2103:-1,2305:-1,2321:-1,2332:-1,2328:-1,2627:-1

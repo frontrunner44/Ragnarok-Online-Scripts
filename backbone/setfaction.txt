@@ -1,0 +1,111 @@
+-	script	SetFactions#1337	-1,{
+
+OnPCLoginEvent:
+//==============================
+// -- Autoloot & No Shift
+//==============================
+atcommand "@main on";
+atcommand "/noshift";
+
+		//===========================
+		// -- Adventure Logs
+		//===========================
+		if(countitem(30000) < 1) {
+			getitem 30000, 1;
+			announce "Obtained Adventure Logs. Please check your inventory. It is advised that you hotkey your Adventure Logs.",bc_self;
+			}
+		if(getgmlevel() >= 80) end;
+
+//=================
+// -- Safeguard
+//=================
+if(#factionin == 1) {
+	atcommand "@fakename [Arzeon] "+strcharinfo(0);
+	set faction,1;
+	set #factionin,1;
+}
+if(#factionin == 2) {
+	atcommand "@fakename [Destra] "+strcharinfo(0);
+	set faction,2;
+	set #factionin,2;
+}
+if(faction == 0 || #factionin == 0) {
+	dispbottom "You are currently not in a faction. If you are not in the starting area, please contact a Game Master.";
+}
+//====================================
+// -- Can't login to Instances
+//====================================
+getmapxy(.@map$,.@x,.@y,0);
+//setarray .@instancemap$[0],"abyss01_1","abyss02_1","abyss03_1","abyss04_1","abyss05_1"
+if(.@map$ == "abyss01_1") goto L_loginst;
+if(.@map$ == "abyss02_1") goto L_loginst;
+if(.@map$ == "abyss03_1") goto L_loginst;
+if(.@map$ == "abyss04_1") goto L_loginst;
+if(.@map$ == "abyss05_1") goto L_loginst;
+if(.@map$ == "abyss01_2") goto L_loginst;
+if(.@map$ == "abyss02_2") goto L_loginst;
+if(.@map$ == "abyss03_2") goto L_loginst;
+if(.@map$ == "abyss04_2") goto L_loginst;
+if(.@map$ == "abyss05_2") goto L_loginst;
+if(.@map$ == "abyss01_3") goto L_loginst;
+if(.@map$ == "abyss02_3") goto L_loginst;
+if(.@map$ == "abyss03_3") goto L_loginst;
+if(.@map$ == "abyss04_3") goto L_loginst;
+if(.@map$ == "abyss05_3") goto L_loginst;
+if(.@map$ == "abyss01_4") goto L_loginst;
+if(.@map$ == "abyss02_4") goto L_loginst;
+if(.@map$ == "abyss03_4") goto L_loginst;
+if(.@map$ == "abyss04_4") goto L_loginst;
+if(.@map$ == "abyss05_4") goto L_loginst;
+if(.@map$ == "biolabs01_1") goto L_loginst;
+if(.@map$ == "biolabs02_1") goto L_loginst;
+if(.@map$ == "biolabs03_1") goto L_loginst;
+if(.@map$ == "biolabs01_2") goto L_loginst;
+if(.@map$ == "biolabs02_2") goto L_loginst;
+if(.@map$ == "biolabs03_2") goto L_loginst;
+if(.@map$ == "biolabs01_1") goto L_loginst;
+if(.@map$ == "biolabs02_1") goto L_loginst;
+if(.@map$ == "biolabs03_1") goto L_loginst;
+if(.@map$ == "biolabs01_2") goto L_loginst;
+if(.@map$ == "biolabs02_2") goto L_loginst;
+if(.@map$ == "biolabs03_2") goto L_loginst;
+if(.@map$ == "biolabs01_3") goto L_loginst;
+if(.@map$ == "biolabs02_3") goto L_loginst;
+if(.@map$ == "biolabs03_3") goto L_loginst;
+if(.@map$ == "biolabs01_4") goto L_loginst;
+if(.@map$ == "biolabs02_4") goto L_loginst;
+if(.@map$ == "biolabs03_4") goto L_loginst;
+if(.@map$ == "toh01_1") goto L_loginst;
+if(.@map$ == "toh02_1") goto L_loginst;
+if(.@map$ == "toh03_1") goto L_loginst;
+if(.@map$ == "toh04_1") goto L_loginst;
+if(.@map$ == "toh05_1") goto L_loginst;
+if(.@map$ == "toh01_2") goto L_loginst;
+if(.@map$ == "toh02_2") goto L_loginst;
+if(.@map$ == "toh03_2") goto L_loginst;
+if(.@map$ == "toh04_2") goto L_loginst;
+if(.@map$ == "toh05_2") goto L_loginst;
+if(.@map$ == "toh01_3") goto L_loginst;
+if(.@map$ == "toh02_3") goto L_loginst;
+if(.@map$ == "toh03_3") goto L_loginst;
+if(.@map$ == "toh04_3") goto L_loginst;
+if(.@map$ == "toh05_3") goto L_loginst;
+if(.@map$ == "toh01_4") goto L_loginst;
+if(.@map$ == "toh02_4") goto L_loginst;
+if(.@map$ == "toh03_4") goto L_loginst;
+if(.@map$ == "toh04_4") goto L_loginst;
+if(.@map$ == "toh05_4") goto L_loginst;
+end;
+
+	L_loginst:
+	dispbottom "Server: You have logged into an instance map. Now being sent to your faction's home...";
+	sleep2 2000;
+	if(faction == 1) {
+		warp "lighthalzen",158,92;
+		}
+	if(faction == 2) {
+		warp "rachel",130,110;
+		}
+
+end;
+}

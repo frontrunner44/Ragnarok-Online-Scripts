@@ -1,0 +1,38 @@
+lighthalzen.gat,126,214,5	script	Little Girl	96,{
+
+mes "[Little Girl]";
+mes "Tehehehehe!";
+next;
+mes "[Little Girl]";
+mes "This water is warm from the sun! I love playing in it!";
+close;
+}
+
+lighthalzen.gat,129,216,3	script	Little Girl 2	703,{
+
+mes "[Little Girl 2]";
+mes "Wiiiiiiiiiiii!!";
+close;
+}
+
+lighthalzen.gat,129,210,7	script	Dog	81,{
+
+mes "[Dog]";
+mes "Bark!!!";
+close;
+}
+
+lighthalzen.gat,81,203,5	script	Jackie	103,{
+
+mes "[Jackie]";
+mes "Ahhh! I love coming out here and smelling the fresh breeze!";
+close;
+}
+
+lighthalzen.gat,68,231,3	script	Young Woman	68,{
+
+mes "[Young Woman]";
+mes "I just love watching frogs jump around on lilly pads.";
+mes "It's so relaxing.";
+close;
+}

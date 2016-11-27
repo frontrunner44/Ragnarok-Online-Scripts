@@ -1,0 +1,9 @@
+um_in,160,125,5	script	Weapon Dealer#UmbWeps01	789,{
+if(faction != $umbfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "What are you lookin' at?!";
+	close;
+	}
+callshop "UmbWeps01",0;
+}
+-	shop	UmbWeps01	139,1501:-1,1504:-1,1507:-1,1510:-1,1513:-1,1519:-1,1807:-1,1811:-1,1809:-1

@@ -1,0 +1,131 @@
+pronair,124,13,0	warp	#Warp1	1,1,pronair,19,21
+pronair,19,18,0	warp	#Warp2	1,1,pronair,122,16
+pronair,161,13,0	warp	#Warp3	1,1,pronair,47,21
+pronair,47,18,0	warp	#Warp03	1,1,pronair,163,16
+pronair,142,15,0	warp	PronExit	1,1,prontera,156,181
+
+morair,124,13,0	warp	#Warp4	1,1,morair,19,21
+morair,19,18,0	warp	#Warp5	1,1,morair,122,16
+morair,161,13,0	warp	#Warp6	1,1,morair,47,21
+morair,47,18,0	warp	#Warp7	1,1,morair,163,16
+morair,142,15,0	warp	MorExit	1,1,morocc,156,94
+
+payair,124,13,0	warp	#Warp8	1,1,payair,19,21
+payair,19,18,0	warp	#Warp9	1,1,payair,122,16
+payair,161,13,0	warp	#Warp10	1,1,payair,47,21
+payair,47,18,0	warp	#Warp11	1,1,payair,163,16
+payair,142,15,0	warp	PayExit	1,1,payon,157,227
+	
+
+geffair,124,13,0	warp	#Warp12	1,1,geffair,19,21
+geffair,19,18,0	warp	#Warp13	1,1,geffair,122,16
+geffair,161,13,0	warp	#Warp14	1,1,geffair,47,21
+geffair,47,18,0	warp	#Warp15	1,1,geffair,163,16
+geffair,142,15,0	warp	GeffExit	1,1,geffen,123,99
+
+
+louair,124,13,0	warp	#Warp16	1,1,louair,19,21
+louair,19,18,0	warp	#Warp17	1,1,louair,122,16
+louair,161,13,0	warp	#Warp18	1,1,louair,47,21
+louair,47,18,0	warp	#Warp19	1,1,louair,163,16
+louair,142,15,0	warp	LouExit	1,1,louyang,217,156
+
+
+einair,124,13,0	warp	#Warp20	1,1,einair,19,21
+einair,19,18,0	warp	#Warp21	1,1,einair,122,16
+einair,161,13,0	warp	#Warp22	1,1,einair,47,21
+einair,47,18,0	warp	#Warp23	1,1,einair,163,16
+einair,142,15,0	warp	EinExit	1,1,einbech,151,253
+
+veinair,124,13,0	warp	#Warp24	1,1,veinair,19,21
+veinair,19,18,0	warp	#Warp25	1,1,veinair,122,16
+veinair,161,13,0	warp	#Warp26	1,1,veinair,47,21
+veinair,47,18,0	warp	#Warp27	1,1,veinair,163,16
+veinair,142,15,0	warp	VeinExit	1,1,veins,229,146
+
+
+hugair,124,13,0	warp	#Warp28	1,1,hugair,19,21
+hugair,19,18,0	warp	#Warp29	1,1,hugair,122,16
+hugair,161,13,0	warp	#Warp30	1,1,hugair,47,21
+hugair,47,18,0	warp	#Warp31	1,1,hugair,163,16
+hugair,142,15,0	warp	HugExit	1,1,hugel,178,151
+
+
+ayoair,124,13,0	warp	#Warp32	1,1,ayoair,19,21
+ayoair,19,18,0	warp	#Warp33	1,1,ayoair,122,16
+ayoair,161,13,0	warp	#Warp34	1,1,ayoair,47,21
+ayoair,47,18,0	warp	#Warp35	1,1,ayoair,163,16
+ayoair,142,15,0	warp	AyoExit	1,1,ayothaya,147,117
+
+
+izlair,124,13,0	warp	#Warp36	1,1,izlair,19,21
+izlair,19,18,0	warp	#Warp37	1,1,izlair,122,16
+izlair,161,13,0	warp	#Warp38	1,1,izlair,47,21
+izlair,47,18,0	warp	#Warp39	1,1,izlair,163,16
+izlair,142,15,0	warp	IzlExit	1,1,izlude,129,110
+
+
+comair,124,13,0	warp	#Warp40	1,1,comair,19,21
+comair,19,18,0	warp	#Warp41	1,1,comair,122,16
+comair,161,13,0	warp	#Warp42	1,1,comair,47,21
+comair,47,18,0	warp	#Warp43	1,1,comair,163,16
+comair,142,15,0	warp	ComExit	1,1,comodo,209,140
+
+
+rachair,124,13,0	warp	#Warp44	1,1,rachair,19,21
+rachair,19,18,0	warp	#Warp45	1,1,rachair,122,16
+rachair,161,13,0	warp	#Warp46	1,1,rachair,47,21
+rachair,47,18,0	warp	#Warp47	1,1,rachair,163,16
+rachair,142,15,0	Warp	RachExit	1,1,rachel,130,110
+
+
+aldair,124,13,0	warp	#Warp49	1,1,aldair,19,21
+aldair,19,18,0	warp	#Warp50	1,1,aldair,122,16
+aldair,161,13,0	warp	#Warp51	1,1,aldair,47,21
+aldair,47,18,0	warp	#Warp52	1,1,aldair,163,16
+aldair,142,15,0	warp	AldExit	1,1,aldebaran,138,120
+
+
+amaair,124,13,0	warp	#Warp53	1,1,amaair,19,21
+amaair,19,18,0	warp	#Warp54	1,1,amaair,122,16
+amaair,161,13,0	warp	#Warp55	1,1,amaair,47,21
+amaair,47,18,0	warp	#Warp56	1,1,amaair,163,16
+amaair,142,15,0	warp	AmaExit	1,1,amatsu,192,161
+
+umbair,124,13,0	warp	#Warp57	1,1,umbair,19,21
+umbair,19,18,0	warp	#Warp58	1,1,umbair,122,16
+umbair,161,13,0	warp	#Warp59	1,1,umbair,47,21
+umbair,47,18,0	warp	#Warp60	1,1,umbair,163,16
+umbair,142,15,0	warp	UmbExit	1,1,umbala,102,149
+
+albair,124,13,0	warp	#Warp61	1,1,albair,19,21
+albair,19,18,0	warp	#Warp62	1,1,albair,122,16
+albair,161,13,0	warp	#Warp63	1,1,albair,47,21
+albair,47,18,0	warp	#Warp64	1,1,albair,163,16
+albair,142,15,0	warp	AlbExit	1,1,alberta,218,46
+
+
+y_airport,124,13,0	warp	#Warp65	1,1,y_airport,19,21
+y_airport,19,18,0	warp	#Warp66	1,1,y_airport,122,16
+y_airport,161,13,0	warp	#Warp67	1,1,y_airport,47,21
+y_airport,47,18,0	warp	#Warp68	1,1,y_airport,163,16
+
+lhz_airport,124,13,0	warp	#Warp69	1,1,lhz_airport,19,21
+lhz_airport,19,18,0	warp	#Warp70	1,1,lhz_airport,122,16
+lhz_airport,161,13,0	warp	#Warp71	1,1,lhz_airport,47,21
+lhz_airport,47,18,0	warp	#Warp72	1,1,lhz_airport,163,16
+lhz_airport,142,13,0	warp	#Warp73	1,1,lighthalzen,261,75
+lighthalzen,266,75	warp	#WarpLHZ-Air	1,1,lhz_airport,142,16
+
+airport,124,13,0	warp	#Warp74	1,1,airport,19,21
+airport,19,18,0	warp	#Warp75	1,1,airport,122,16
+airport,161,13,0	warp	#Warp76	1,1,airport,47,21
+airport,47,18,0	warp	#Warp77	1,1,airport,163,16
+airport,142,13,0	warp	#Warp78	1,1,einbroch,64,197
+einbroch,64,208,0	warp	#Warp79	1,1,airport,142,18
+
+gonair,124,13,0	warp	#Warp80	1,1,gonair,19,21
+gonair,19,18,0	warp	#Warp81	1,1,gonair,122,16
+gonair,161,13,0	warp	#Warp82	1,1,gonair,47,21
+gonair,47,18,0	warp	#Warp83	1,1,gonair,163,16
+gonair,142,15,0	warp	GonExit	1,1,gonryun,167,133

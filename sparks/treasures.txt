@@ -1,0 +1,27 @@
+RDacademy,67,11,5	script	Spark of Knowledge#t01	802,{
+set .@name$,"[^0000ffSpark^000000]";
+
+mes .@name$;
+mes "If you click near the flower pot next to me, you will find a hidden treasure.";
+next;
+mes .@name$;
+mes "Treasures like this can be found all over the world of Midgard, and can't be seen before your mouse hovers over them.";
+next;
+mes .@name$;
+mes "So be sure to hover your mouse over suspicious areas.";
+next;
+mes .@name$;
+mes "This unique feature is called 'item gathering', and mimics the common feature found in console RPGs.";
+next;
+mes .@name$;
+mes "You can only obtain each hidden item once, but you can reset all of the hidden items you've obtained to collect them again.";
+next;
+mes .@name$;
+mes "So be sure to remember where all of the treasures are so you can tell your friends their locations!";
+next;
+mes .@name$;
+mes "Remember, the harder the item is to find, the more valuable it'll be!";
+close;
+}
+
+new_zone02,104,117,5	duplicate(Spark of Knowledge#t01)	Spark of Knowledge#tdupe	802

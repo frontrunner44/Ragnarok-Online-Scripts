@@ -1,0 +1,75 @@
+map,0,0,0	script	Tax Manager	SpriteID,{
+set .@name$,"[^0000ffTax Manager^000000]";
+if(WoEIsOn) {
+	mes .@name$;
+	mes "You cannot manage taxes during WoE.";
+	close;
+	}
+if(notguildleader) {
+	mes .@name$;
+	mes "I'm sorry, but you must be the guild leader to manage these features.";
+	close;
+	}
+mes .@name$;
+mes "What would you like to do?";
+next;
+menu "- Manage Taxes",L_tax,"- Collect Funds",L_colfund,"- Nothing",-; // More choices later
+close;
+
+	L_tax:
+	mes .@name$;
+	mes "What feature would you like to change the taxes on?";
+	next;
+	menu "- Healer",L_healtax,"- Warper",L_warptax,"- Nothing",-;
+	close;
+
+		L_healtax:
+		mes .@name$;
+		mes "Please insert a percentage to tax players. You can only input 10, 20 or 30 percent.";
+		input .@tax;
+		next;
+		if(.@tax != 10 && .@tax != 20 && .@tax != 30) {
+			mes .@name$;
+			mes "You have input an invalid amount.";
+			close;
+			}
+		mes .@name$;
+		mes "Done! Players will now pay "+.@tax+" percent tax when healing.";
+		set $healtax,30; // May need to be set to a static amount instead of a percentage.
+		close;
+
+		L_warptax:
+		mes .@name$;
+		mes "Please insert a percentage to tax players. You can only input 10, 20 or 30 percent.";
+		input .@tax; 
+		next;
+		if(.@tax != 10 && .@tax != 20 && .@tax != 30) {
+			mes .@name$;
+			mes "You have input an invalid amount.";
+			close;
+			}
+		mes .@name$;
+		mes "Done! Players will now pay "+.@tax+" percent tax when healing.";
+		set $warptax,30; // May need to be set to a static amount instead of a percentage.
+		close;
+
+	L_colfund:
+	mes .@name$;
+	mes "Currently, your guild has collected "+$leadguildfund+"z from player taxes.";
+	next;
+	mes .@name$;
+	mes "Would you like to collect these funds now?";
+	next;
+	menu "- Yes",L_yescol,"- No",-;
+	close;
+
+		L_yescol:
+		mes .@name$;
+		mes "Here you go!";
+		set zeny,zeny+$leadguildfund; // May allow players to choose how much funds to withdraw.
+		set $leadguildfund,0; 
+		close;
+}
+
+// $leadguildfund stores the amount of funds gained from player taxes for the "lead" guild.
+// &healtax stores the amount of tax that will be charged when players use the healer.

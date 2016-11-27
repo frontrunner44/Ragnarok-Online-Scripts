@@ -1,0 +1,265 @@
+eathena,261,171,2	script	Mission Board#GZ01	857,{
+//====================
+// -- Configs
+//====================
+set .@name$,"[^0000ffMission Board^000000]";
+if(zombie50phase == 0) set .@questlist$[0],"- Zombie Slaying";
+if(zombie50phase == 1) set .@questlist$[0],"- Zombie Slaying(In Progress)";
+if(noiseyphase == 0) set .@questlist$[1],"- Noisey Skeletons";
+if(noiseyphase == 1) set .@questlist$[1],"- Noisey Skeletons(In Progress)";
+if(zombie50phase == 2 && noiseyphase == 2) set .@questlist$[2],"- King of Zombies";
+if(kozphase == 1) set .@questlist$[2],"- King of Zombies(In Progress)";
+if(soldierskelz == 0) set .@questlist$[3],"- Skeleton Slayer";
+if(soldierskelz == 1) set .@questlist$[3],"- Skeleton Slayer(In Progress)";
+if(eggdelivery == 0) set .@questlist$[4],"- Tough Egg Shells";
+if(eggdelivery == 1) set .@questlist$[4],"- Tough Egg Shells(In Progress)";
+
+//=================
+// -- Script
+//=================
+mes .@name$;
+mes "Currently available missions:";
+next;
+menu .@questlist$[0],zombie_mission,.@questlist$[1],noisey,.@questlist$[2],kingzombie,.@questlist$[3],skel_slayer,.@questlist$[4],eggshell,"- Nothing",-;
+close;
+
+	//=========================
+	// -- Zombie Slaying
+	//=========================
+	zombie_mission:
+	if(BaseLevel < 20) {
+		mes .@name$;
+		mes "You do not meet the level requirement.";
+		close;
+		}
+	if(zombie50phase == 1) goto on_zombiequest;
+	mes .@name$;
+	mes "We need to kill off some of the Zombies inside of the dungeon.";
+	next;
+	mes .@name$;
+	mes "Their population is somehow increasing, and it's getting dangerous. Please kill off at least 50 of them.";
+	next;
+	menu "- Accept",accept_zombie,"- Nothing",-;
+	close;
+	
+		accept_zombie:
+		mes .@name$;
+		mes "Quest Accepted.";
+		close2;
+		announce "New quest added to Adventure Logs.",bc_self;
+		set zombie50$,"Zombie Slayer";
+		set zombie50phase,1;
+		end;
+
+			on_zombiequest:
+			if(zombieslayed >= 50) {
+				mes .@name$;
+				mes "Quest completion confirmed. Here are your rewards.";
+				close2;
+				soundeffect "battlewon.wav",0;
+				announce "Quest Update: Zombie Slayer quest complete!",bc_self;
+				dispbottom "Gained +500FP.";
+				dispbottom "Gained 5,000z.";
+				set fpoints,fpoints+500;
+				getexp 50000,35000;
+				getitem 30881,6;
+				set zeny,zeny+5000;
+				set zombie50phase,2;
+				set zombie50$,"";
+				end;
+				}
+			mes .@name$;
+			mes "You have killed "+ zombieslayed +"/50 Zombies.";
+			close;
+
+
+		//============================
+		// -- Noisey Skeletons
+		//============================
+		noisey:
+		if(BaseLevel < 20) {
+			mes .@name$;
+			mes "You do not meet the level requirement.";
+			close;
+			}
+		if(noiseyphase == 1) goto on_noisey;
+		mes .@name$;
+		mes "The faction instructors are getting tired of hearing so much noise when teaching their students in the dungeon.";
+		next;
+		mes .@name$;
+		mes "Please, someone go into the dungeon and clear out some of the Skeletons.";
+		next;
+		menu "- Accept",accept_noisey,"- Nothing",-;
+		close;
+
+			accept_noisey:
+			mes .@name$;
+			mes "Go into the Neutral Dungeon and kill off at least 60 Skeletons.";
+			close2;
+			announce "New quest added to Adventure Logs.",bc_self;
+			set noiseyskel$,"Noisey Skeletons";
+			set noiseyphase,1;
+			end;
+
+				on_noisey:
+				if(noiseykilled >= 60) {
+					mes .@name$;
+					mes "Quest completetion confirmed.";
+					close2;
+					soundeffect "battlewon.wav",0;
+					announce "Quest Update: Noisey Skeleton quest complete!",bc_self;
+					dispbottom "Recieved 250FP.";
+					set fpoints,fpoints+250;
+					getexp 40000,20000;
+					getitem 30881,5;
+					set noiseyskel$,"";
+					set noiseyphase,2;
+					end;
+					}
+				mes .@name$;
+				mes "Mission still in progress.";
+				close;
+
+
+			//==========================
+			// -- King of Zombies
+			//==========================
+			kingzombie:
+			if(BaseLevel < 60) {
+				mes .@name$;
+				mes "You do not meet the level requirement.";
+				close;
+				}
+			if(kozphase > 0) goto on_koz;
+			mes .@name$;
+			mes "A reward will be given to anyone who can take out a brutal zombie living within The Abyss.";
+			next;
+			mes .@name$;
+			mes "Accept this task?";
+			next;
+			menu "- Yes",L_yes,"- No",-;
+			close;
+
+				L_yes:
+				mes .@name$;
+				mes "Please go into The Abyss and kill 'King Zombie'.";
+				close2;
+				announce "Quest added to your Adventure Logs.",bc_self;
+				set kingzombie$,"King of Zombies";
+				set kozphase,1;
+				set zombie50phase,3;
+				set noiseyphase,3;
+				end;
+
+				on_koz:
+				if(kingkilled > 0) {
+					mes .@name$;
+					mes "Quest completion confirmed. Here are your rewards.";
+					close2;
+					soundeffect "battlewon.wav",0;
+					getexp 6500000,4000000;
+					set zeny,zeny+450000;
+					dispbottom "Gained 450,000z.";
+					set fpoints,fpoints+8000;
+					getitem 30881,40;
+					dispbottom "Gained +8000FP.";
+					set kingzombie$,"";
+					set kozphase,2;
+					set kingkilled,0;
+					end;
+					}
+				mes .@name$;
+				mes "Mission still in progress.";
+				close;
+
+			//========================
+			// -- Skeleton Slayer
+			//========================
+			skel_slayer:
+			if(BaseLevel < 40) {
+				mes .@name$;
+				mes "You do not meet the level requirement.";
+				close;
+				}
+			if(soldierskelz == 1) goto on_sslayer;
+			mes .@name$;
+			mes "A request has been made to slay 70 Soldier Skeletons, and 70 Skeleton Archers.";
+			next;
+			menu "- Accept",accept_slayer,"- Nothing",-;
+			close;
+
+				accept_slayer:
+				mes .@name$;
+				mes "Mission accepted.";
+				close2;
+				announce "Quest added to your Adventure Logs.",bc_self;
+				set skelslayer$,"Skeleton Slayer";
+				set soldierskelz,1;
+				end;
+
+				on_sslayer:
+				if(soldierkilled >= 70 && archerskilled >= 70) {
+					mes .@name$;
+					mes "Quest completion verified.";
+					close2;
+					set skelslayer$,"";
+					set soldierskelz,2;
+					set soldierkilled,0;
+					set archerskilled,0;
+					getexp 800000,600000;
+					set zeny,zeny+10000;
+					getitem 30881,15;
+					set fpoints,fpoints+2500;
+					dispbottom "Gained 10,000z and +2500 FP.";
+					soundeffect "battlewon.wav",0;
+					announce "Quest Update: Skeleton Slayer quest complete!",bc_self;
+					end;
+					}
+				mes .@name$;
+				mes "Mission still in progress...";
+				close;
+
+
+			//============================
+			// -- Tough Egg Shells
+			//============================
+			eggshell:
+			if(BaseLevel < 40) {
+				mes .@name$;
+				mes "You do not meet the level requirement.";
+				close;
+				}
+			if(eggdelivery == 1) goto onegg;
+			mes .@name$;
+			mes "A request has been made for the delivery of 10 Hard Egg Shells to Samuel.";
+			next;
+			mes .@name$;
+			mes "Go into The Abyss and get 10 Hard Egg Shells from Egyra and deliver them to a scientist named Samuel.";
+			next;
+			mes .@name$;
+			mes "Samuel can be found in a building at Ground Zero, located at co-ords 180,103.";
+			next;
+			menu "- Accept",accept_egg,"- Nothing",-;
+			close;
+
+				accept_egg:
+				mes .@name$;
+				mes "Mission Accepted.";
+				close2;
+				announce "Quest added to Adventure Logs.",bc_self;
+				set eggdelv$,"Tough Egg Shells";
+				set eggdelivery,1;
+				end;
+
+				onegg:
+				mes .@name$;
+				mes "Mission still in progress.";
+				close;
+
+				OnPCLoadMapEvent:
+				getmapxy(.@map$,.@x,.@y,0);
+				if(.@map$ == "eathena" && countitem(30007) >= 10) {
+					viewpoint 1,180,103,1,0x000000;
+					}
+				end;
+}

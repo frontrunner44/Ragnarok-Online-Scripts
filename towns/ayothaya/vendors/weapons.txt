@@ -1,0 +1,9 @@
+ayo_in01,90,192,5	script	Weapon Dealer#AyoWeps	85,{
+if(faction != $ayofaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "Please leave, I have nothing to offer you.";
+	close;
+	}
+callshop "AyoWeps01",0;
+}
+-	shop	AyoWeps01	139,1207:-1,1216:-1,1107:-1,1122:-1,1116:-1,1154:-1,1407:-1,1457:-1,1354:-1,1519:-1

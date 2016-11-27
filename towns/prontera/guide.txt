@@ -1,0 +1,90 @@
+prontera.gat,155,186,5	script	Guide#Prt	105,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $prtfaction) { 
+	mes .@name$; 
+	mes "Leave now!";
+	close;
+	}
+mes .@name$;
+mes "Hello, Soldier. Welcome to the great city of Prontera!";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Prontera Maze",L_maze,"- Unamed Instance",instance,"- Weapons & Armor",gearshop,"- Tools & Storage",toolstorage,"- Resetter",statreset,"- Hotel",hotel,"- Prontera Sewers",L_sewers,"- Delete all marks.",delmarks,"- Nothing.",-;
+close;
+
+L_save:
+mes "[Guard]";
+mes "You have been saved in Prontera!";
+savepoint "prontera",156,191;
+close;
+
+instance:
+viewpoint 1,155,360,1,0xFF00000;
+close;
+
+gearshop:
+viewpoint 1,174,219,2,0xFF0000;
+close;
+
+toolstorage:
+viewpoint 1,136,219,3,0xFF0000;
+close;
+
+statreset:
+viewpoint 1,136,186,4,0xFF0000;
+close;
+
+hotel:
+viewpoint 1,204,189,5,0xFF0000;
+close;
+
+
+delmarks:
+viewpoint 2,155,360,1,0xFF00000;
+viewpoint 2,174,219,2,0xFF0000;
+viewpoint 2,136,219,3,0xFF0000;
+viewpoint 2,136,186,4,0xFF0000;
+viewpoint 2,204,189,5,0xFF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30850,.@amount;
+	close;
+
+	L_maze:
+	mes .@name$;
+	mes "Here we go!";
+	warp "prt_maze01",15,50;
+	end;
+
+	L_sewers:
+	mes .@name$;
+	mes "Would you like a warp to Prontera Sewers?";
+	next;
+	menu "- Yes",L_ysewers,"- No thanks",-;
+	close;
+
+		L_ysewers:
+		warp "prt_sewb1",129,247;
+		end;
+}

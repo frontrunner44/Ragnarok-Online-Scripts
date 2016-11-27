@@ -1,0 +1,20 @@
+lhz_in01.gat,35,227,5	script	BioGuy	97,{
+if(faction == 2) {mes "[Bioguy]"; mes "You're from Destra? Hah! You can't handle it inside."; close;}
+
+mes "[BioGuy]";
+mes "Well, we've seemed to have cleaned out at least the first level of biolabs.";
+next;
+mes "[BioGuy]";
+mes "Only the little nublet mobs are left down there. Nice place for lowbies to level I guess.";
+next;
+mes "[BioGuy]";
+mes "Would you like to go check it out?";
+next;
+menu "Yes",yes,"No",-;
+close;
+
+yes:
+warp "lhz_in01",23,129;
+end;
+
+}

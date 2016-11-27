@@ -1,0 +1,681 @@
+// Prontera's Airport Warper
+//==========================
+prontera.gat,154,180,5	script	Airport Staff#1	873,{
+if(faction != $prtfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "pronair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+
+// Hugel Airport Warper
+//==========================
+hugel.gat,178,144,5	script	Airport Staff#2	873,{
+
+if(faction != $hugfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "This is a large model of an airship. We use it to find new ways to improve on the design.";
+next;
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "hugair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Aldebaran Airport Warper
+//==========================
+aldebaran.gat,135,120,5	script	Airport Staff#3	873,{
+
+if(faction != $aldfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "aldair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Louyang Airport Warper
+//==========================
+louyang.gat,212,157,5	script	Airport Staff#4	873,{
+
+if(faction != $loufaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "louair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Einbech Airport Warper
+//==========================
+einbech.gat,150,248,5	script	Airport Staff#5	873,{
+
+if(faction != $einfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "einair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Geffen Airport Warper
+//==========================
+geffen.gat,117,104,5	script	Airport Staff#6	873,{
+
+if(faction != $geffaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "geffair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Ayothaya Airport Warper
+//==========================
+ayothaya.gat,146,119,5	script	Airport Staff#7	873,{
+
+if(faction != $ayofaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "ayoair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Morocc Airport Warper
+//==========================
+morocc.gat,153,97,5	script	Airport Staff#8	873,{
+
+if(faction != $morfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "morair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Payon Airport Warper
+//==========================
+payon.gat,151,228,5	script	Airport Staff#9	873,{
+
+if(faction != $payfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "payair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Izlude Airport Warper
+//==========================
+izlude.gat,126,110,5	script	Airport Staff#10	873,{
+
+if(faction != $izlfaction) {  
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "izlair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Comodo Airport Warper
+//==========================
+comodo.gat,206,140,5	script	Airport Staff#11	873,{
+
+if(faction != $comfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "comair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Gonryun Airport Warper
+//==========================
+gonryun.gat,163,136,5	script	Airport Staff#12	873,{
+
+if(faction != $gonfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "gonair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+// Umbala Airport Warper
+//==========================
+umbala.gat,104,150,5	script	Airport Staff#13	873,{
+
+if(faction != $umbfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "umbair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Amatsu Airport Warper
+//==========================
+amatsu.gat,187,160,5	script	Airport Staff#14	873,{
+
+if(faction != $amafaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "amaair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Veins Airport Warper
+//==========================
+veins.gat,226,145,5	script	Airport Staff#15	873,{
+
+if(faction != $veinfaction) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "veinair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+
+// Alberta Airport Warper
+//==========================
+alberta.gat,221,48,5	script	Airport Staff#16	873,{
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "albair",143,22; end;
+
+	airshipstat:
+	mes .@name$;
+	mes "*Radios In*";
+	next;
+	callfunc "StatusChecker";
+	  
+
+
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}
+
+// Rachel Airport Warper
+//======================
+rachel.gat,127,114,5	script	Airport Staff#17	873,{
+
+if(faction == 1) { 
+	mes "[^0000ffAirport Staff^000000]"; 
+	mes "Begone, fool!"; 
+	close; 
+	}
+set .@name$,"[^0000ffAirport Staff^000000]";
+
+mes .@name$;
+mes "What would you like to do?";
+next;
+mes .@name$;
+mes "Would you like me to send you to the airship which floats above this city?";
+next;
+menu "Go to the airport",airport,"Nothing",nothing;
+
+	airport:
+	mes .@name$;
+	mes "Entry granted. Prepare to be warped.";
+	next;
+	warp "rachair",143,22; end;
+
+	nothing:
+	mes .@name$;
+	mes "Let me know if you need anything!";
+	close;
+}

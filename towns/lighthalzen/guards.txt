@@ -1,0 +1,59 @@
+RDacademy.gat,87,127,5	script	Guard#Lhz1	852,{
+
+if(faction == 2) {mes "Leave this castle now!"; close;}
+
+mes "[Guard]";  
+mes "What profession do you specialize in?";
+close;
+}
+RDacademy.gat,42,164,5	script	Guard#Lhz2	852,{
+mes "[Guard]";
+mes "Welcome to Arzeon's begginer training zone.";
+close;
+}
+
+RDacademy.gat,70,31,5	script	Guard#Lhz3	852,{
+
+if(faction == 2) {mes "You do not belong here, I suggest you leave."; close;}
+
+mes "[Guard]";  
+mes "..... Welcome, soldier.";
+close;
+}
+
+RDacademy.gat,129,28,3	script	Guard#Lhz4	852,{
+
+mes "[Guard]";  
+mes "I can't believe I'm getting paid just to stand around.";
+close;
+}
+
+lighthalzen.gat,146,285,5	script	Guard#Lhz5	852,{
+
+mes "[Guard]";  
+mes "......";
+close;
+}
+
+lighthalzen.gat,123,212,5	script	Guard#Lhz6	852,{
+
+mes "[Guard]";  
+mes "I'd protect this Kingdom with my life!";
+next;
+mes "[Guard]";  
+mes "Watching these kids play just motiviates me even more.";
+close;
+}
+
+lhz_in01.gat,22,52,5	script	Guard#Lhz7	852,{
+
+mes "[Guard]";  
+mes ".........";
+close;
+}
+lhz_in01.gat,33,52,5	script	Guard#Lhz8	852,{
+
+mes "[Guard]";  
+mes ".......";
+close;
+}

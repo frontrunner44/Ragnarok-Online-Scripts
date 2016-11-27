@@ -1,0 +1,6 @@
+ra_in01.gat,167,362,5	script	Gear#Rach02	90,{
+
+if(faction == 1) { mes "[Merchant]"; mes "......."; close; }
+
+callshop "GlobGear01",0;
+}

@@ -1,0 +1,9 @@
+yuno_in01,105,35,5	script	Armor Dealer#YunADeal01	74,{
+if(faction != $yunofaction) {
+	mes "[^0000ffArmor Dealer^000000]";
+	mes "Leave at once.";
+	close;
+	}
+callshop "YunoArmor01",0;
+}
+-	shop	YunoArmor01	139,2628:-1,2101:-1,2107:-1,2401:-1,2501:-1,2230:-1,2301:-1,2303:-1,2305:-1,2321:-1,2332:-1,2340:-1,2341:-1,2411:-1,2222:-1,2230:-1,1721:-1

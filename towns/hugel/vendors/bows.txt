@@ -1,0 +1,9 @@
+hu_in01,95,314,6	script	Bow Dealer#Hug01	832,{
+if(faction != $hugfaction) {
+	mes "[^0000ffBow Dealer^000000]";
+	mes "Sorry, but I can't sell you anything.";
+	close;
+	}
+callshop "HugelBows01",0;
+}
+-	shop	HugelBows01	139,1701:-1,1707:-1,1718:-1,1714:-1

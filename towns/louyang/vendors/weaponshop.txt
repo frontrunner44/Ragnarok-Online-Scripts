@@ -1,0 +1,10 @@
+lou_in02,130,182,5	script	Weapons#Lou02	822,{
+if(faction != $loufaction) {
+	mes "[Weapon Merchant]";
+	mes "Leave now...";
+	close;
+	}
+callshop "LouWep1",0;
+}
+
+-	shop	LouWep1	822,1207:-1,1216:-1,1107:-1,1122:-1,1116:-1,1154:-1,1407:-1,1457:-1,1354:-1,1519:-1,1721:-1

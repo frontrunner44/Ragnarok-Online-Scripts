@@ -1,0 +1,3 @@
+lou_in02,235,176,5	script	Tools#Lou01	776,{
+callshop "GlobTool01",0;
+}

@@ -1,0 +1,238 @@
+function	script	LhzRaid	{
+
+// Prepares The Menu
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+if(faction != $prtfaction) {set .@location1$,"- Prontera";}    			    	        //|
+if(faction != $alfaction) {set .@location2$,"- Aldebaran";}    				        //|
+if(faction != $loufaction) {set .@location3$,"- Louyang";}      		                //|
+if(faction != $einfaction) {set .@location4$,"- Einbech";}     				        //|
+if(faction != $einbfaction) {set .@location5$,"- Einbroch";}    			        //|
+if(faction != $geffaction) {set .@location6$,"- Geffen";}     			                //|
+if(faction != $hugfaction) {set .@location7$,"- Hugel";}       			                //|
+if(faction != $ayofaction) {set .@location8$,"- Ayothaya";}    			                //|
+if(faction != $morfaction) {set .@location9$,"- Morocc";}     			                //|
+if(faction != $payfaction) {set .@location10$,"- Payon";}     				        //|
+if(faction != $izlfaction) {set .@location11$,"- Izlude";}    				        //|
+if(faction != $comfaction) {set .@location12$,"- Comodo";}         		                //|
+if(faction != $gonfaction) {set .@location13$,"- Gonryun";}     			        //|
+if(faction != $umbfaction) {set .@location14$,"- Umbala";}     				        //|
+if(faction != $amafaction) {set .@location15$,"- Amatsu";}    			                //|
+if(faction != $veinfaction) {set .@location16$,"- Veins";}    					//|
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//|
+set .@name$,"[^0000ffOrin^000000]";
+
+mes .@name$;
+mes "Please choose a town to Raid.";
+next;
+menu .@location1$,pront,.@location2$,alde,.@location3$,louy,.@location4$,einb,.@location5$,einbr,.@location6$,geff,.@location7$,huge,.@location8$,ayot,.@location9$,moro,.@location10$,payo,.@location11$,izlu,.@location12$,como,.@location13$,gonry,.@location14$,umbal,.@location15$,amat,.@location16$,veins,"- None",-;
+close;
+
+
+	pront:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Prontera. A portal to Prontera is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidprt"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidprt"; // Disables portal
+	announce "Arzeon's raid on Prontera has ended.",0;
+	end;
+	
+	alde:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Aldebaran. A portal to Aldebaran is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidalde"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidalde"; // Disables portal
+	announce "Arzeon's raid on Aldebaran has ended.",0;
+	end;
+
+	louy:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Louyang. A portal to Louyang is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidlou"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidlou"; // Disables portal
+	announce "Arzeon's raid on Louyang has ended.",0;
+	end;
+
+	einb:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Einbech. A portal to Einbech is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raideinb"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raideinb"; // Disables portal
+	announce "Arzeon's raid on Einbech has ended.",0;
+	end;
+
+	einbr:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Einbroch. A portal to Einbroch is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raideinbr"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raideinbr"; // Disables portal
+	announce "Arzeon's raid on Einbroch has ended.",0;
+	end;
+
+	geff:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Geffen. A portal to Geffen is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidgeff"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidgeff"; // Disables portal
+	announce "Arzeon's raid on Geffen has ended.",0;
+	end;
+
+	huge:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Hugel. A portal to Hugel is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidhug"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidhug"; // Disables portal
+	announce "Arzeon's raid on Hugel has ended.",0;
+	end;
+
+	ayot:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Ayothaya. A portal to Ayothaya is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidayo"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidayo"; // Disables portal
+	announce "Arzeon's raid on Ayothaya has ended.",0;
+	end;
+	
+	moro:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Morocc. A portal to Morocc is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidmor"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidmor"; // Disables portal
+	announce "Arzeon's raid on Morocc has ended.",0;
+	end;
+
+	payo:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Payon. A portal to Payon is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidpay"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidpay"; // Disables portal
+	announce "Arzeon's raid on Payon has ended.",0;
+	end;
+
+	izlu:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Izlude. A portal to Izlude is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidizl"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidizl"; // Disables portal
+	announce "Arzeon's raid on Izlude has ended.",0;
+	end;
+
+	como:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Comodo. A portal to Comodo is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidcom"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidcom"; // Disables portal
+	announce "Arzeon's raid on Comodo has ended.",0;
+	end;
+
+	gonry:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Gonryun. A portal to Gonryun is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidgon"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidgon"; // Disables portal
+	announce "Arzeon's raid on Gonryun has ended.",0;
+	end;
+
+	umbal:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Umbala. A portal to Umbala is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidumb"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidumb"; // Disables portal
+	announce "Arzeon's raid on Umbala has ended.",0;
+	end;
+
+	amat:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Amatsu. A portal to Amatsu is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidama"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidama"; // Disables portal
+	announce "Arzeon's raid on Amatsu has ended.",0;
+	end;
+
+	veins:
+	mes .@name$;
+	mes "Prepare for battle..";
+	set Zeny,Zeny-2500000;
+	set $zarpoints,$zarpoints-500000;
+	close2;
+	announce "Arzeon is mounting an attack on Veins. A portal to Veins is now open for 10 minutes. All Arzeon members report to Arzeon Castle to participate.",0;
+	enablenpc "raidvein"; // Enables portal
+	sleep2 600000; // Sleeps for 10 minutes
+	disablenpc "raidvein"; // Disables portal
+	announce "Arzeon's raid on Veins has ended.",0;
+	end;
+}

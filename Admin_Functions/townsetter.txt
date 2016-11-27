@@ -1,0 +1,243 @@
+function	script	TownSetter	{
+	mes "[ System ]";
+	mes "Please choose a town to set, or";
+	mes "choose to randomize all towns.";
+	next;
+
+	setarray @menulist$[0],"Randomize","Aldebaran","Louyang","Einbech","Einbroch","Geffen","Hugel","Ayothaya","Morroc","Payon","Izlude","Comodo","Gonryun","Umbala","Amatsu","Veins","Yuno","Prontera","Alberta";
+
+
+	set @temp,select(@menulist$[0],@menulist$[1],@menulist$[2],@menulist$[3],@menulist$[4],@menulist$[5],@menulist$[6],@menulist$[7],@menulist$[8],@menulist$[9],@menulist$[10],@menulist$[11],@menulist$[12],@menulist$[13],@menulist$[14],@menulist$[15],@menulist$[16],@menulist$[17],@menulist$[18],"Cancel");
+
+//Randomize   0
+//Aldebaran   1
+//Louyang     2
+//Einbech     3
+//Einbroch    4
+//Geffen      5
+//Hugel       6
+//Ayothaya    7
+//Morroc      8
+//Payon       9
+//Izlude      10
+//Comodo      11
+//Gonryun     12
+//Umbala      13
+//Amatsu      14
+//Veins       15
+//Yuno        16
+//Prontera    17
+//Alberta     18
+//Cancel      19
+	set @temp, @temp-1;
+	set @townset,0;
+	set @townname$,"";
+	if (@temp == 1) { set @townname$,"Aldebaran"; set $aldfaction,callfunc("townsetter"); }
+	else if (@temp == 2) { set @townname$,"Louyang"; set $loufaction,callfunc("townsetter"); }
+	else if (@temp == 3) { set @townname$,"Einbech"; set $einfaction,callfunc("townsetter"); }
+	else if (@temp == 4) { set @townname$,"Einbroch"; set $einbfaction,callfunc("townsetter"); }
+	else if (@temp == 5) { set @townname$,"Geffen"; set $geffaction,callfunc("townsetter"); }
+	else if (@temp == 6) { set @townname$,"Hugel"; set $hugfaction,callfunc("townsetter"); }
+	else if (@temp == 7) { set @townname$,"Ayothaya"; set $ayofaction,callfunc("townsetter"); }
+	else if (@temp == 8) { set @townname$,"Morroc"; set $morfaction,callfunc("townsetter"); }
+	else if (@temp == 9) { set @townname$,"Payon"; set $payfaction,callfunc("townsetter"); }
+	else if (@temp == 10) { set @townname$,"Izlude"; set $izlfaction,callfunc("townsetter"); }
+	else if (@temp == 11) { set @townname$,"Comodo"; set $comfaction,callfunc("townsetter"); }
+	else if (@temp == 12) { set @townname$,"Gonryun"; set $gonfaction,callfunc("townsetter"); }
+	else if (@temp == 13) { set @townname$,"Umbala"; set $umbfaction,callfunc("townsetter"); }
+	else if (@temp == 14) { set @townname$,"Amatsu"; set $amafaction,callfunc("townsetter"); }
+	else if (@temp == 15) { set @townname$,"Veins"; set $veinfaction,callfunc("townsetter"); }
+	else if (@temp == 16) { set @townname$,"Yuno"; set $yunofaction,callfunc("townsetter"); }
+	else if (@temp == 17) { set @townname$,"Prontera"; set $prtfaction,callfunc("townsetter"); }
+	else if (@temp == 18) { set @townname$,"Alberta"; set $albfaction,callfunc("townsetter"); }
+	else if (@temp == 0) {
+		set @randomize,1;
+		set @zeros,0;
+		set @ones,0;
+		
+		//Alberta
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $albfaction, @val;
+
+		//Aldebaran
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $aldfaction, @val;
+
+		//Louyang
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $loufaction, @val;
+
+		//Einbech
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $einfaction, @val;
+
+		//Einbroch
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $einbfaction, @val;
+
+		//Geffen
+		set @val,rand(1,2);
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $geffaction, @val;
+
+		//Hugel
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $hugfaction, @val;
+
+		//Ayothaya
+		set @val,rand(1,2);		
+		if(@val == 1) set @zeros, @zeros+1;
+		if(@val == 2) set @ones, @ones+1;
+		set $ayofaction, @val;
+
+		//Morroc
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $morfaction, @val;
+
+		//Payon
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $payfaction, @val;
+
+		//Izlude
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $izlfaction, @val;
+
+		//Comodo
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $comfaction, @val;
+
+		//Gonryun
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $gonfaction, @val;
+
+		//Umbala
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $umbfaction, @val;
+
+		//Amatsu
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $amafaction, @val;
+
+		//Veins
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $veinfaction, @val;
+
+		//Yuno
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $yunofaction, @val;
+		//Prontera
+		set @val,rand(1,2);		
+		if(@val == 1) {
+			if(@zeros >= 7) { set @val, 2; } else { set @zeros, @zeros+1; }
+		}
+		if(@val == 2) {
+			if(@ones >= 7) { set @val, 1;
+				set @zeros, @zeros+1; } else { set @ones, @ones+1; }
+		}
+		set $prtfaction, @val;
+	} else if (@temp == 17) { mes "Have a nice day!"; close; }
+
+	if(@townset == 1) {
+		if (@temp == 1) { set @tempname$,"Arzeon"; } else if (@temp == 2) { set @tempname$,"Destra"; }
+		mes "" + @townname$ +" has been given to " + @tempname$ + ".";
+		announce "An Admin has given " + @townname$ + " to " + @tempname$ + ".",16;
+		close;
+	} else {
+		if (@randomize == 1) {
+			mes "All towns were randomized.";
+			announce "An Admin has randomized town ownership, please view your Adventure Logs.",16;
+		} else {
+			mes "No town was set.";
+		}
+		close;
+	}
+
+		
+
+}
+
+
+
+function	script	townsetter	{
+	mes "[ System ]";
+	mes "Which faction should own " + @townname$ + "?";
+	set @temp,select("Arzeon","Destra");
+	set @townset,1;
+	return @temp;
+}

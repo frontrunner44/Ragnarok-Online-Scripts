@@ -1,0 +1,65 @@
+-	script	EmperiumYun	-1,{
+
+OnInit:
+
+monster "yuno",158,167,"Siege Crystal",2009,1,"EmperiumYun::OnYun";
+end;
+
+OnYun:
+// --Already Yours
+//================
+
+if(faction == $yunofaction) { 
+monster "yuno",158,167,"Siege Crystal",2009,1,"EmperiumYun::OnYun";
+dispbottom "This town already belongs to your Faction.";
+end; 
+}
+
+
+// --Capture
+//==========
+if(faction == 1) { 
+set $yunofaction,1; 
+announce "Arzeon has taken over Yuno",16; 
+monster "yuno",158,167,"Siege Crystal",2009,1,"EmperiumYun::OnYun"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+if(faction == 2)  { 
+set $yunofaction,2; 
+announce "Destra has  taken over Yuno",16; 
+monster "yuno",158,167,"Siege Crystal",2009,1,"EmperiumYun::OnYun";
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+}

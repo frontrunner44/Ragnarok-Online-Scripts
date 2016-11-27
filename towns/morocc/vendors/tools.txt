@@ -1,0 +1,7 @@
+morocc_in.gat,114,161,5	script	Tools#Mor01	101,{
+callshop "GlobTool01",0;
+}
+
+morocc_in.gat,114,168,5	script	Tools#Mor02	66,{
+callshop "GlobTool01",0;
+}

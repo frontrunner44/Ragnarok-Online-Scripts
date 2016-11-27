@@ -1,0 +1,76 @@
+amatsu.gat,199,165,5	script	Guide#Ama01	780,{
+
+if(faction != $amafaction) { mes "[Guard]"; mes "If you love life, I consider you leave now."; close;}
+mes "[Guard]";
+mes "Welcome to Amatsu. Are you looking for a location?";
+next;
+mes "[Guard]";
+mes "What would you like to mark?";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Emperium",emp,"- Hotel",hotel,"- Weapon & Armor",gearshop,"- Secret Shops",secret,"- Tool Shop",tools,"- Delete Markers",delmarks,"- Nothing",-;
+close;
+
+L_save:
+mes "[Guard]";
+mes "You have been saved in Amatsu!";
+savepoint "amatsu",197,165;
+close;
+
+emp:
+viewpoint 1,200,143,1,0xFF0000;
+close;
+
+hotel:
+viewpoint 1,213,116,2,0xF0000;
+close;
+
+gearshop:
+viewpoint 1,129,117,3,0xF0000;
+close;
+
+secret:
+mes "[Guard]";
+mes "I heard there is a secret shop somewhere around this area.";
+mes " Psst. I didn't mention this.";
+next;
+viewpoint 1,147,136,4,0xF0000;
+close;
+
+tools:
+viewpoint 1,98,117,5,0xF0000;
+close;
+
+delmarks:
+viewpoint 2,200,143,1,0xFF0000;
+viewpoint 2,213,116,2,0xF0000;
+viewpoint 2,129,117,3,0xF0000;
+viewpoint 2,147,136,4,0xF0000;
+viewpoint 2,98,117,5,0xF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30857,.@amount;
+	close;
+
+}

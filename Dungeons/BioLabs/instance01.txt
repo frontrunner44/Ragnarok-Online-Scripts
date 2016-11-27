@@ -1,0 +1,63 @@
+-	script	BioInst	-1,{
+
+	OnTower:
+	set $@biocount,$@biocount+1;
+	if($@biocount == 4) {
+		monster "biolabs03_1",120,132,"Madzen Kolanoa",2008,1,"BioInst::OnBoss";
+		announce "Server: The seals have been broken. Madzen Kolanoa is in the loose!",bc_map;
+		set $@biocount,0;
+		end;
+		}
+	announce "Server: "+ $@biocount +" of 4 Chaos Seals have been broken!",bc_map;
+	end;
+	
+	OnBoss:
+	announce "Server: Madzen Kolanoa has been defeated, proceed to the center of biolabs03_1 and collect your rewards!",bc_map;
+	monster "biolabs01_1",165,28,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs01_1",149,270,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs02_1",16,81,"Chaos Seal",2010,1,"BioInst::OnTower";
+	monster "biolabs03_1",139,260,"Chaos Seal",2010,1,"BioInst::OnTower";
+	// Treasure Chests
+	set .@num,rand(24,34);
+	areamonster "biolabs03_1",146,39,132,28,"Treasure Chest",1324,.@num;
+	end;
+
+	OnLimitation:
+	initnpctimer;
+	end;
+
+	OnTimer7200000:
+	mapannounce "biolabs01_1","You have 30 minutes left in this instance.",0;
+	mapannounce "biolabs02_1","You have 30 minutes left in this instance.",0;
+	mapannounce "biolabs03_1","You have 30 minutes left in this instance.",0;
+	end;
+
+
+	OnTimer9000000:
+	stopnpctimer;
+	mapannounce "biolabs01_1","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "biolabs02_1","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "biolabs03_1","Your time has ended. You will now be warped out of the instance.",0;
+	sleep2 3000;
+	mapwarp "biolabs01_1","einbroch",64,200,$@bioparty;
+	mapwarp "biolabs02_1","einbroch",64,200,$@bioparty;
+	mapwarp "biolabs03_1","einbroch",64,200,$@bioparty;
+	set $@bioparty,0;
+	end;
+
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "biolabs01_1") {
+	viewpoint 1,165,28,1,0xFF0000;
+	viewpoint 1,149,270,2,0xFF0000;
+	}
+if(.@map$ == "biolabs02_1") {
+	viewpoint 1,16,81,3,0xFF0000;
+	}
+if(.@map$ == "biolabs03_1") {
+	viewpoint 1,139,260,4,0xFF0000;
+	}
+end;
+
+}

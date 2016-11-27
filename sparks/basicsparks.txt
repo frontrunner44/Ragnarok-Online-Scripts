@@ -1,0 +1,49 @@
+lhz_in02,236,277,5	script	Spark of Knowledge#06	802,{
+set .@name$,"[^0000ffSpark^000000]";
+mes .@name$;
+mes "Inns benefit you in many ways and can be found in every town.";
+next;
+mes .@name$;
+mes "When sleeping at a Hotel, your HP and MP will be fully restored.";
+next;
+mes .@name$;
+mes "Sleeping at an Inn will also give you a 50% increase in experience and drop rates for 1 hour, including a small buff.";
+close;
+}
+
+lighthalzen,157,99,5	script	Spark of Knowledge#09	802,{
+set .@name$,"[^0000ffSpark^000000]";
+mes .@name$;
+mes "The npc next to me is a 'Guide' npc. You will find these in every town.";
+next;
+mes .@name$;
+mes "They are used to help new players find all of the important npcs. They can also be used to save in a specific town.";
+next;
+mes .@name$;
+mes "Please note that not every guide NPC uses the same sprite ID.";
+mes "So be sure to keep an eye out for them.";
+close;
+}
+
+eathena_in,197,307,5	script	Spark of Knowledge#Wep1	802,{
+set .@name$,"[^0000ffSpark^000000]";
+mes .@name$;
+mes "These are basic shops. These type of shops can be found in all three home towns.";
+next;
+mes .@name$;
+mes "The basic shops contain all of the basic weapon types, including swords, staffs, guns, and basic armor as well.";
+next;
+mes .@name$;
+mes "In order to gain access to better shops with more advanced weapons and armor, you must have access to other towns by captureing them.";
+close;
+}
+
+lhz_in02,277,94,5	duplicate(Spark of Knowledge#Wep1)	Spark of Knowledge#Wep2	802
+ra_in01,172,387,5	duplicate(Spark of Knowledge#Wep1)	Spark of Knowledge#Wep3	802
+eathena,255,164,5	duplicate(Spark of Knowledge#09)	Spark of Knowledge#010	802
+rachel,133,114,5	duplicate(Spark of Knowledge#09)	Spark of Knowledge#011	802
+ra_in01,379,64,5	duplicate(Spark of Knowledge#06)	Spark of Knowledge#07	802
+ea_in02,63,139,5	duplicate(Spark of Knowledge#06)	Spark of Knowledge#08	802
+
+
+

@@ -1,0 +1,259 @@
+RO2,18,185,4	script	?Guard?#RO201	733,{
+
+cutin "starterdude",0;
+set .@name$,"[^0000ffGuard^000000]";
+if(begphase == 1) goto L_1done;
+if(begphase == 2) goto L_onkui;
+if(begphase == 3) goto L_onpuku;
+if(begphase == 4) goto L_scorp;
+if(begphase == 5) goto L_leave;
+mes .@name$;
+mes "Please go back inside and choose a faction.";
+close;
+
+	L_1done:
+	mes .@name$;
+	mes "Great, I see you've chosen a faction.";
+	next;
+	mes .@name$;
+	mes "Here are your rewards.";
+	announce "Quest Update: Training Time quest complete.",bc_self;
+	getexp 240,100;
+	set fpoints,fpoints+20;
+	getitem 30881,1;
+	dispbottom "Recieved +20FP.";
+	delitem 30004,countitem(30004);
+	delitem 30005,countitem(30005);
+	set beginner$,"";
+	next;
+	mes .@name$;
+	mes "I think it's time for some training. We need to toughen you up for the dangerous ^000077World of ChaosRO^000000.";
+	next;
+	mes .@name$;
+	mes "When you have killed 15 kuikui, return to me for a reward.";
+	close2;
+	cutin "",255;
+	set kuikiller$,"First Mission";
+	set begphase,2;
+	announce "New quest added to Adventure Logs.",bc_self;
+	end;
+
+		L_onkui:
+		if(kuikilled >= 15) {
+			mes .@name$;
+			mes "Great job. I see you're a natural.";
+			set kuikilled,0;
+			set kuikiller$,"";
+			announce "Quest Update: First Mission quest complete!",bc_self;
+			getexp 800,100;
+			set fpoints,fpoints+50;
+			getitem 30881,1;
+			getitem 501,20;
+			dispbottom "You have gained +50FP.";
+			next;
+			mes .@name$;
+			mes "It isn't over yet. I still have some work for you.";
+			next;
+			mes .@name$;
+			mes "This time I need you to kill 20 pukupuku. If you can complete this task, return to me for a reward.";
+			close2;
+			cutin "",255;
+			announce "New quest added to Adventure Logs.",bc_self;
+			set pukukiller$,"Puku Killer";
+			set begphase,3;
+			end;
+			}
+		mes .@name$;
+		mes "Come on, you can do it!";
+		close2;
+		cutin "",255;
+		end;
+
+
+		L_onpuku:
+		if(pukukilled >= 20) {
+			mes .@name$;
+			mes "You really do have some potential in you.";
+			announce "Quest Update: Puku Killer quest complete.",bc_self;
+			set pukukiller$,"";
+			set pukukilled,0;
+			getexp 1500,200;
+			set zeny,zeny+800;
+			set fpoints,fpoints+100;
+			getitem 30881,1;
+			set begphase,5;
+			dispbottom "You have recieved +100FP and +300z.";
+			next;
+			mes .@name$;
+			mes "I have one last mission. However, this one is optional since you have already impressed me.";
+			next;
+			menu "- Leave Now",L_leave,"- Final Quest",-;
+			mes .@name$;
+			mes "This time, even I'm unsure if you're going to come back alive.";
+			next;
+			mes .@name$;
+			mes "I need you to take out a dangerous scorpian that has been terrorrizing the newbie island.";
+			next;
+			mes .@name$;
+			mes "He can be found on the island far North East of here. You may have to zoom out on your map.";
+			close2;
+			cutin "",255;
+			announce "New quest added to Adventure Logs.",bc_self;
+			set begphase,4;
+			set scorp$,"Final Test";
+			viewpoint 1,332,327,1,0x000000;
+			end;
+			}
+		mes .@name$;
+		mes "It's not that hard, what's taking you so long?";
+		close2;
+		cutin "",255;
+		end;
+
+		L_scorp:
+		if(countitem(30006) >= 1) {
+			mes .@name$;
+			mes "Wow... you actually did it? That's amazing!";
+			next;
+			mes .@name$;
+			mes "Here's your reward. Now, it's time for you to leave this zone. You're no longer a newbie.";
+			set scorp$,"";
+			delitem 30006,(countitem(30006));
+			getexp 4800,2400;
+			set fpoints,fpoints+115;
+			set zeny,zeny+1200;
+			getitem 30702,1;
+			getitem 30881,1;
+			announce "Quest Update: Final Test quest complete!",bc_self;
+			dispbottom "You have recieved +115FP and +1,200z.";
+			set begphase,5;
+			next;
+			goto L_leave;
+			}
+		mes .@name$;
+		mes "You're still alive? O-oh.. you didn't fight him yet. Well, good luck on that.";
+		close;
+
+		L_leave:
+		set begphase,5;
+		mes .@name$;
+		mes "It's time for you to leave this island. But before you go, a word of advise.";
+		next;
+		mes .@name$;
+		mes "There are three seperate home towns in ChaosRO. One for each faction, and a third where all are welcome.";
+		next;
+		mes .@name$;
+		mes "Arzeon's home town is Lighthalzen, Destra's is Rachel and the ^000077main^000000 home town is Ground Zero.";
+		next;
+		mes .@name$;
+		mes "Where would you like to go?";
+		next;
+		menu "- Faction Home",L_fachome,"- Ground Zero",-;
+		next;
+		warp "eathena",256,169;
+		savepoint "eathena",256,169;
+		end;
+
+			L_fachome:
+			if(faction == 1) {
+				warp "lighthalzen",158,92;
+				savepoint "lighthalzen",158,92;
+				end;
+				}
+			if(faction == 2) {
+				warp "rachel",130,110;
+				savepoint "rachel",130,110;
+				end;
+				}
+			mes .@name$;
+			mes "This script has errored, contact an Admin.";
+			close;
+
+	
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "RO2" && countitem(30004) > 0 || countitem(30005) > 0) {
+	viewpoint 1,18,185,1,0x000000;
+	}
+if(.@map$ == "RO2" && begphase == 4) {
+	viewpoint 1,332,327,1,0x000000;
+	}
+end;
+}
+
+//==================
+// -- Mob Scripts
+//==================
+-	script	RO2Mobs	-1,{
+
+OnInit:
+monster "RO2",332,327,"Sea Scorpion",2006,30,"RO2Mobs::OnBig";
+end;
+
+OnLun:
+if(getcharid(1) != 0){
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(begphase == 2 && kuikilled < 15) {
+			set kuikilled,kuikilled+1;
+			announce "Quest Update: You have killed "+kuikilled+"/15 kuikui.",bc_self;
+			}
+		}
+	}
+	end;
+}
+if(begphase == 2) {
+	set kuikilled,kuikilled+1;
+	announce "Quest Update: You have killed "+kuikilled+"/15 kuikui.",bc_self;
+	}
+end;
+
+OnFelir:
+if(getcharid(1) != 0) {
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(begphase == 3) {
+			set pukukilled,pukukilled+1;
+			announce "Quest Update: Killed "+pukukilled+"/20 pukupuku.",bc_self;
+			}
+		}
+	}
+	end;
+}
+if(begphase == 3) {
+	set pukukilled,pukukilled+1;
+	announce "Quest Update: Killed "+pukukilled+"/20 pukupuku.",bc_self; 
+	}
+end;
+
+OnBig:
+if(getcharid(1) != 0){
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(begphase == 4 && countitem(30006) < 1) {
+			getitem 30006,1;
+			announce "Quest Update: Adventure Logs updated.",bc_self;
+			monster "RO2",332,327,"Sea Scorpion",2006,1,"RO2Mobs::OnBig";
+			}
+		}
+	}
+	end;
+}
+if(begphase == 4 && countitem(30006) < 1) {
+		getitem 30006,1;
+		announce "Quest Update: Adventure Logs updated.",bc_self;
+		}
+monster "RO2",332,327,"Sea Scorpion",2006,1,"RO2Mobs::OnBig";
+end;
+
+}

@@ -1,0 +1,19 @@
+gonryun.gat,174,104,5	script	Bows and Arrows#Gon02	67,{
+if(faction != $gonfaction) { 
+	mes "....."; 
+	close;
+	}
+callshop "WeaponsArr#GonWep1",0;
+}
+
+gonryun.gat,174,98,5	script	Weapon Shop#Gon01	66,{
+if(faction != $gonfaction) { 
+	mes "....."; 
+	close;
+	}
+callshop "Weapons#GonWep2",0;
+}
+
+-	shop	WeaponsArr#GonWep1	139,1750:-1,1751:-1,1753:-1,1701:-1,1704:-1,1707:-1,1718:-1
+
+-	shop	Weapons#GonWep2	139,1201:-1,1204:-1,1207:-1,1216:-1,1107:-1,1110:-1,1117:-1,1151:-1,1504:-1

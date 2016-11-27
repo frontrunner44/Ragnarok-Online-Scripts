@@ -1,0 +1,51 @@
+rachel,84,121,2	script	!Jade!	919,{
+
+mes "[Jade]";
+mes "Hey there. Would you mind getting me the mane of a ^ff0000savage^000000?";
+next;
+mes "[Jade]";
+mes "I promise to put a good word in to the faction leaders for ya!";
+next;
+mes "[^ff0000Server^000000]";
+mes "Collecting manes for Jade will reward you with Faction Points.";
+mes "For every 50 main you give her, you will recieve 100 faction points.";
+next;
+menu "- Where can I find them?",wherefind,"- Trade Manes",trade,"- Nothing",-;
+close;
+
+	wherefind:
+	mes "[Jade]";
+	mes "If you head out the southern portal, you'll run into those little savages.";
+	close;
+
+	trade:
+	mes "[Jade]";
+	mes "How many do you have for me? I will only accept stacks of 50 or 100.";
+	input .@amount;
+	next;
+	// Input Error
+	if(.@amount != 50 && .@amount != 100) {
+		mes "[Jade]";
+		mes "Please enter either 50 or 100.";
+		next;
+		goto trade; }
+	// Not enough
+	if(countitem(1028) < .@amount) {
+		mes "[Jade]";
+		mes "Stop trying to fool me, you don't have that many manes!";
+		close; }
+	// Successful trade
+	mes "[Jade]";
+	mes "Why thank you! This should make a nice rug!";
+	set fpoints,fpoints+.@amount*2;
+	dispbottom "Recieved "+.@amount*2+" Faction Points.";
+	delitem 1028,.@amount;
+	close;
+
+}
+rachel,82,121,8	script	Camel#Rach	938,{
+
+mes "[^0000ffCamel^000000]";
+mes "....";
+close;
+}

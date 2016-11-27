@@ -1,0 +1,4 @@
+new_zone02,28,185,5	script	Stylist#New01	122,{
+callfunc "Stylist";
+end;
+}

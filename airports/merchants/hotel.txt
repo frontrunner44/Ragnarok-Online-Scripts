@@ -1,0 +1,71 @@
+airplane,81,188,5	script	Hotel Clerk#HAir1	73,{
+set .@name$,"[^0000ffClerk^000000]";
+
+mes .@name$;
+mes "Welcome to the Airship Hotel. Please note that sleeping here will only grant you a 30% increase on exp and drops.";
+next;
+mes .@name$;
+mes "Sleeping at a town's hotel as apposed to this one will grant you with a 50% increase in experience and drop rates instead of 10%.";
+next;
+mes .@name$;
+mes "Would you like to stay here anyway? It will cost you 1,000z.";
+next;
+menu "- Yes",L_sleep,"- No thanks",-;
+close;
+
+L_sleep:
+if(Zeny < 1000) {
+mes .@name$;
+mes "You do not seem to have enough money. Sorry.";
+close;
+}
+set zeny,zeny-1000;
+mes .@name$;
+mes "Hope you enjoy your stay!";
+next;
+warp "airplane",54,174;
+specialeffect2 579;
+specialeffect2 14;
+sc_start 30,900000,10;
+sc_start SC_EXPBOOST,1800000,30;
+sc_start SC_ITEMBOOST,1800000,30;
+percentheal 100,100;
+end;
+}
+
+airplane_01,81,188,5	script	Hotel Clerk#HAir2	73,{
+set .@name$,"[^0000ffClerk^000000]";
+
+mes .@name$;
+mes "Welcome to the Airship Hotel. Please note that sleeping here will only grant you a 10% increase on exp and drops.";
+next;
+mes .@name$;
+mes "Sleeping at a town's hotel as apposed to this one will grant you with a 30% increase in experience and drop rates instead of 10%.";
+next;
+mes .@name$;
+mes "Would you like to stay here anyway? It will cost you 1,000z.";
+next;
+menu "- Yes",L_sleep,"- No thanks",-;
+close;
+
+L_sleep:
+if(Zeny < 1000) {
+mes .@name$;
+mes "You do not seem to have enough money. Sorry.";
+close;
+}
+set zeny,zeny-1000;
+mes .@name$;
+mes "Hope you enjoy your stay!";
+next;
+warp "airplane_01",54,174;
+specialeffect2 579;
+specialeffect2 14;
+sc_start 30,900000,10;
+sc_start SC_EXPBOOST,900000,10;
+sc_start SC_ITEMBOOST,900000,10;
+percentheal 100,100;
+end;
+}
+
+

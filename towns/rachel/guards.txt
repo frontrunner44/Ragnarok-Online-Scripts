@@ -1,0 +1,114 @@
+ra_temsky,57,144,5	script	Guard#Rach01	966,{
+mes "[Guard]";
+mes "Welcome to Destra training grounds. The statue of the Goddess shal watch over you as you fight.";
+close;
+}
+
+ra_temin,166,44,5	script	Guard#Rach02	966,{
+
+mes "[Guard]";
+mes "May the power of the Gods bless you in battle!";
+close;
+}
+
+ra_temin,173,44,5	script	Guard#Rach03	966,{
+
+mes "[Guard]";
+mes "Welcome home soldier.";
+close;
+}
+
+ra_temin,211,80,5	script	Guard#Rach04	966,{
+
+mes "[Guard]";
+mes "Upstairs you will find the bank.";
+close;
+}
+
+ra_temin.gat,70,141,5	script	Guard#Rach05	966,{
+
+mes "[Guard]";
+mes "We may be a small and poor Kingdom, but we have more determination to win this war!";
+close;
+}
+
+ra_temin.gat,234,141,5	script	Guard#Rach055	966,{
+
+mes "[Guard]";
+mes "This helmet surely is hot to wear in the summer time...";
+mes "-Fiddles with helmet-";
+close;
+}
+
+ra_temin.gat,290,143,5	script	Guard#Rach06	966,{
+mes "[Guard]";
+mes "......";
+close;
+}
+
+ra_temin.gat,295,143,5	script	Guard#Rach07	966,{
+mes "[Guard]";
+mes "How are you?";
+close;
+}
+
+ra_temin.gat,165,139,5	script	Guard#Rach08	966,{	
+mes "[Guard]";
+mes "Please, do not fiddle around the faction leader's stand.";
+close;
+}
+
+ra_temin.gat,174,139,5	script	Guard#Rach09	966,{
+mes "[Guard]";
+mes "Do not block the faction leader's entrance, please.";
+close;
+}
+
+ra_temple.gat,99,153,5	script	Guard#Rach10	966,{
+mes "[Guard]";
+mes "Welcome to Draganth's castle.";
+close;
+}
+
+ra_temple.gat,141,153,5	script	Guard#Rach11	966,{
+mes "[Guard]";
+mes "Welcome home. The Gods have brought you back safely.";
+close;
+}
+
+rachel.gat,136,231,5	script	Guard#Rach12	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+
+rachel.gat,136,201,5	script	Guard#Rach13	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+rachel.gat,163,219,5	script	Guard#Rach14	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+rachel.gat,136,231,5	script	Guard#Rach15	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+rachel.gat,136,219,5	script	Guard#Rach16	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+rachel.gat,163,200,5	script	Guard#Rach17	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}
+rachel.gat,163,231,5	script	Guard#Rach18	966,{	
+mes "[Guard]";
+mes "This way to Destra Castle.";
+close;
+}

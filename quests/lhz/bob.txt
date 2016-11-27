@@ -1,0 +1,108 @@
+lhz_in02,264,95,5	script	?Bob?	752,{
+
+set .@name$,"[^0000ffBob^000000]";
+if(faction == 2) {
+	mes .@name$;
+	mes "The hell are you doing in this town?!";
+	close; 
+}
+
+if(bobqphase == 1) goto phase_1;
+if(bobqphase == 2) goto quest_two;
+if(bobqphase == 3) goto phase_3;
+if(bobqphase == 4) goto quests_done;
+mes .@name$;
+mes "Arghh.. I'm running out of screws here.";
+mes "Would you go and get me some? I'll repay ya! I only need about 30.";
+next;
+menu "Where do I find them",wherefind,"Sure - Log Quest",yes,"No way!",-;
+close;
+
+	wherefind:
+	mes .@name$;
+	mes "Just head north out of Lighthalzen and smack those metalings around.";
+	mes "I'm sure they'll drop a few!";
+	close;
+	
+	yes:
+	mes .@name$;
+	mes "Aha-Awesome! Let me know when you have'em!";
+	close2;
+	announce "New quest added to your Adventure Logs!",bc_self;
+	set bobqphase,1;
+	set bobquest1$,"Screw Hunt";
+	end;
+
+// Screw Hunter Quest
+phase_1:
+	if(countitem(7317) < 30) {
+		mes .@name$;
+		mes "Still ain't got'em?";
+		close; }
+	mes .@name$;
+	mes "Aww yeah! Just what I needed!";
+	next;
+	mes .@name$;
+	mes "Thanks alot, bro!";
+	close2;
+	set fpoints,fpoints+80;
+	set bobquest1$,"";
+	set bobqphase,2;
+	getexp 1800,0;
+	delitem 7317,30;
+	getitem 30881,3;
+	dispbottom "Gained +80FP.";
+	soundeffect "battlewon.wav",0;
+	announce "Screw Hunter quest complete!",bc_self;
+	end;
+
+// Ore Collector Quest
+quest_two:
+	mes .@name$;
+	mes "Shit, these screws are in worse shape than I expected!";
+	mes "Eha, bud... Would you mind helpin a friend out one more time?";
+	next;
+	menu "I'll do it.",yes2,"Too busy.",-;
+	close;
+		
+		yes2:
+		mes .@name$;
+		mes "Man! You sure are a helpful soldier! Guess it's the way we train'em!";
+		next;
+		mes .@name$;
+		mes "I need you to get me 100 iron ore. That way I can fix these screws right up and maybe even make more.";
+		close2;
+		set bobqphase,3;
+		set bobquest2$,"Ore Collector";
+		announce "New quest added to your Adventure Logs!",bc_self;
+		end;
+
+phase_3:
+	if(countitem(1002) < 100) {
+			mes .@name$;
+			mes "Thanks in advance!";
+			close; 
+	}
+		mes .@name$;
+		mes "Whoo! Thanks alot.";
+		close2;
+		set fpoints,fpoints+130;
+		set zeny,zeny+1000;
+		set bobqphase,4;
+		set bobquest2$,"";
+		delitem 1002,100;
+		getitem 30881,3;
+		getexp 1520,0;
+		announce "Ore Collector quest complete!",bc_self;
+		dispbottom "Gained +130FP.";
+		dispbottom "Gained 1,000 Zeny.";
+		soundeffect "battlewon.wav",0;
+		end;
+
+quests_done:
+	mes .@name$;
+	mes "Heya, bud!";
+	close;
+		
+
+}

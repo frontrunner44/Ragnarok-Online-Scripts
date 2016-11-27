@@ -1,0 +1,63 @@
+morocc,57,147,5	script	?Harold?#01	54,{
+set .@name$,"[^0000ffHarold^000000]";
+if(faction != $morfaction) {
+	mes .@name$;
+	mes "What are you doing here?";
+	close;
+	}
+
+
+if(countitem(30008) == 5) {
+	mes .@name$;
+	mes "Oh, my! Thank you so much!";
+	next;
+	mes .@name$;
+	mes "Here is 60,000z for bringing me these fruits. Now my daughter can get well.";
+	next;
+	menu "- I'll give them to you for only 30% of that.",L_cheap,"- Thank you.",-;
+	announce "Mandell Fruit quest complete!",bc_self;
+	soundeffect "battlewon.wav",0;
+	getexp 9500,3000;
+	getitem 30881,5;
+	set zeny,zeny+60000;
+	set fpoints,fpoints+500;
+	dispbottom "Gained 60,000z and +500FP.";
+	set mandell,2;
+	set mandellq$,"";
+	set mfruit1,0;
+	set mfruit2,0;
+	set mfruit3,0;
+	set mfruit4,0;
+	set mfruit5,0;
+	delitem 30008,5;
+	close;
+
+		L_cheap:
+		mes .@name$;
+		mes "Are you sure?! Oh, thank you!";
+		next;
+		mes .@name$;
+		mes "I really needed these fruits for my sick daughter, and I was scared no one was going to take me up on my offer";
+		next;
+		mes .@name$;
+		mes "if I didn't offer enough. But here you come! Know what? I'll give you these scrolls since you're so generous!";
+		close2;
+		announce "Mandell Fruit quest complete!",bc_self;
+		soundeffect "battlewon.wav",0;
+		getexp 20000,6000;
+		set zeny,zeny+18000;
+		set fpoints,fpoints+1500;
+		getitem 30851,5;
+		getitem 30881,5;
+		dispbottom "Gained 18,000z and +1500FP.";
+		set mandell,3;
+		set mandellq$,"";
+		set mfruit1,0;
+		set mfruit2,0;
+		set mfruit3,0;
+		set mfruit4,0;
+		set mfruit5,0;
+		delitem 30008,5;
+		end;
+		}
+}

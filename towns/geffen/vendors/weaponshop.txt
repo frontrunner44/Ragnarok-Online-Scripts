@@ -1,0 +1,11 @@
+geffen_in,77,167,5	script	Weapons#Gef01	47,{
+if(faction != $geffaction) {
+	mes "[Weapons]";
+	mes "Leave...";
+	close;
+	}
+callshop "Weapons#gef",0;
+}
+
+-	shop	Weapons#gef	47,1750:-1,1751:-1,1101:-1,1701:-1,1201:-1,1204:-1,1207:-1,1210:-1,1213:-1,1216:-1,1601:-1,1604:-1,1607:-1,1610:-1,1146:-1,1245:-1
+

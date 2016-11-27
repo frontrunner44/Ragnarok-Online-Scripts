@@ -1,0 +1,20 @@
+alberta_in,188,21,5	script	Weapon Dealer#AlbWep01	85,{
+if(faction != $albfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "Meh...";
+	close;
+	}
+callshop "AlbWepShop01",0;
+}
+
+alberta_in,175,97,5	script	Weapon Dealer#AlbWep02	74,{
+if(faction != $albfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "Uhh..., mind leaving?";
+	close;
+	}
+callshop "AlbWepShop02",0;
+}
+-	shop	AlbWepShop01	139,1750:-1,1751:-1,1101:-1,1104:-1,1107:-1,1201:-1,1204:-1,1207:-1,1601:-1,1701:-1,1301:-1,1351:-1,1354:-1,1357:-1,1360:-1
+
+-	shop	AlbWepShop02	139,1146:-1,1245:-1

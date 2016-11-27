@@ -1,0 +1,3 @@
+prt_in.gat,128,75,5	script	Tools#Prt	95,{
+callshop "GlobTool01",0;
+}

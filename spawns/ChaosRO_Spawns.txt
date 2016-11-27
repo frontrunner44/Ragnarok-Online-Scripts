@@ -1,0 +1,112 @@
+//=====================
+// -- Ground Zeros
+//=====================
+eathena,255,314,0,0	monster	Poring	1002,30,0,0,0
+eathena,339,355,0,0	monster	Poring	1002,30,0,0,0
+eathena,304,345,0,0	monster	Lunatic	1063,30,0,0,0
+eathena,206,340,0,0	monster	Lunatic	1063,30,0,0,0
+eathena,340,285,0,0	monster	ChonChon	1011,20,0,0,0
+eathena,355,257,0,0	monster	Condor	1009,20,0,0,0
+eathena,345,248,0,0	monster	Fabre	1007,20,0,0,0
+eathena,115,283,0,0	monster	Drops	1113,20,0,0,0
+eathena,72,228,0,0	monster	Willow	1010,20,0,0,0
+eathena,177,255,0,0	monster	Poporing	1031,20,0,0,0
+eathena,50,196,0,0	monster	Poporing	1031,20,0,0,0
+eathena,0,0,0,0	monster	Poporing	1031,30,0,0,0
+eathena,0,0,0,0	monster	Hornet	1004,20,0,0,0
+eathena,0,0,0,0	monster	Poring	1002,50,0,0,0
+eathena,0,0,0,0	monster	Lunatic	1063,50,0,0,0
+eathena,0,0,0,0	monster	ChonChon	1011,30,0,0,0
+eathena,0,0,0,0	monster	Creamy	1018,40,0,0,0
+eathena,0,0,0,0	monster	Snake	1025,20,0,0,0
+eathena,0,0,0,0	monster	Drops	1113,50,0,0,0
+eathena,59,223,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,61,226,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,62,229,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,63,232,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,97,64,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,124,40,0,0	monster	Mandragora	1020,1,0,0,0
+eathena,0,0,0,0	monster	Rocker	1052,70,0,0,0
+
+
+
+
+//==========================
+// -- Lighthalzen Spawns
+//==========================
+lhz_fild01.gat,0,0,0,0	monster	Poring	1002,40,0,0,0
+lhz_fild01.gat,0,0,0,0	monster	Drops	1113,80,0,0,0
+lighthalzen,0,0,0,0	monster	Bunnyring	2003,120,0,0,0
+// -- Plants
+lhz_fild01.gat,68,43,0,0	monster	Red Plant	1078,1,0,0,0
+lhz_fild01.gat,68,41,0,0	monster	Red Plant	1078,1,0,0,0
+lhz_fild01.gat,60,44,0,0	monster	Red Plant	1078,1,0,0,0
+lhz_fild01.gat,51,44,0,0	monster	Red Plant	1078,1,0,0,0
+lhz_fild01.gat,55,46,0,0	monster	Green Plant	1080,1,0,0,0
+lhz_fild01.gat,52,53,0,0	monster	Green Plant	1080,1,0,0,0
+lhz_fild01.gat,64,53,0,0	monster	Green Plant	1080,1,0,0,0
+lhz_fild01.gat,64,44,0,0	monster	Yellow Plant	1081,1,0,0,0
+lhz_fild01.gat,48,49,0,0	monster	Yellow Plant	1081,1,0,0,0
+lhz_fild01.gat,45,52,0,0	monster	Yellow Plant	1081,1,0,0,0
+lhz_fild01.gat,53,39,0,0	monster	Yellow Plant	1081,1,0,0,0
+lhz_fild01.gat,57,42,0,0	monster	Blue Plant	1079,1,0,0,0
+lhz_fild01.gat,47,53,0,0	monster	Blue Plant	1079,1,0,0,0
+lhz_fild01.gat,53,56,0,0	monster	Blue Plant	1079,1,0,0,0
+lhz_fild01.gat,68,47,0,0	monster	Blue Plant	1079,1,0,0,0
+lhz_fild01.gat,50,60,0,0	monster	Blue Plant	1079,1,0,0,0
+
+
+
+//=======================
+// -- Training Grounds
+//=======================
+RO2,0,0,0,0	monster	Poring	1002,200,0,0,0
+RO2,0,0,0,0	monster	ChonChon	1011,200,0,0,0
+RO2,0,0,0,0	monster	Lunatic	1063,200,0,0,0
+RO2,0,0,0,0	monster	Drops	1113,200,0,0,0
+RO2,0,0,0,0	monster	Willow	1010,200,0,0,0
+RO2,0,0,0,0	monster	kuikui	2004,400,0,0,RO2Mobs::OnLun
+RO2,0,0,0,0	monster	pukupuku	2005,200,0,0,RO2Mobs::OnFelir
+
+//===============================
+// -- Arzeon Training Room
+//===============================
+RDacademy,25,175,0,0	monster	Poring	1002,5,0,0,0
+RDacademy,25,175,0,0	monster	ChonChon	1011,5,0,0,0
+RDacademy,25,175,0,0	monster	Lunatic	1063,5,0,0,0
+RDacademy,25,175,0,0	monster	Drops	1113,5,0,0,0
+RDacademy,25,175,0,0	monster	Condor	1009,2,0,0,0
+RDacademy,25,175,0,0	monster	Willow	1010,2,0,0,0
+RDacademy,25,175,0,0	monster	Poporing	1031,6,0,0,0
+
+//=============================
+// -- Destra Training Room
+//=============================
+ra_temsky,47,134,0,0	monster	Poring	1002,5,0,0,0
+ra_temsky,47,134,0,0	monster	ChonChon	1011,5,0,0,0
+ra_temsky,47,134,0,0	monster	Lunatic	1063,5,0,0,0
+ra_temsky,47,134,0,0	monster	Drops	1113,5,0,0,0
+ra_temsky,47,134,0,0	monster	Condor	1009,2,0,0,0
+ra_temsky,47,134,0,0	monster	Willow	1010,2,0,0,0
+ra_temsky,47,134,0,0	monster	Poporing	1031,6,0,0,0
+
+//========================
+// -- Rachel Spawns
+//========================
+ra_fild12.gat,0,0,0,0	monster	Ant Egg	1097,25,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Ant Egg	1097,25,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Baby Desert Wolf	1107,50,0,0,GuardMobs::OnDwolf
+ra_fild12.gat,0,0,0,0	monster	Baby Desert Wolf	1107,50,0,0,GuardMobs::OnDwolf
+ra_fild12.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Picky	1049,20,0,0,0
+ra_fild12.gat,0,0,0,0	monster	Picky	1049,20,0,0,0
+ra_fild12.gat,0,0,0,0	monster	Deniro	1105,50,0,0,GuardMobs::OnAndre
+ve_fild02.gat,0,0,0,0	monster	Deniro	1105,50,0,0,GuardMobs::OnAndre
+ra_fild12.gat,0,0,0,0	monster	Poring	1002,30,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Poring	1002,30,0,0,0
+
+//=======================
+// -- Clock Tower 1
+//=======================
+c_tower1.gat,0,0,0,0	monster	Bathory	1102,200,0,0,0

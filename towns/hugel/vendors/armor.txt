@@ -1,0 +1,9 @@
+hu_in01,90,316,6	script	Armor#HugArmor01	827,{
+if(faction != $hugfaction) {
+	mes "[^0000ffArmor Dealer^000000]";
+	mes "Psh, like I'd serve the likes of you!";
+	close;
+	}
+callshop "HugArmor01",0;
+}
+-	shop	HugArmor01	139,2224:-1,2232:-1,2226:-1,2101:-1,2103:-1,2401:-1,2501:-1,2307:-1,2105:-1

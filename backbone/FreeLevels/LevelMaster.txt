@@ -1,0 +1,69 @@
+new_zone02,79,101,5	script	Level Master	89,{
+set .@name$,"[^0000ffLevel Master^000000]";
+
+mes .@name$;
+mes "You currently have "+freelevels+" levels to give away.";
+next;
+mes .@name$;
+mes "Would you like for me to store these levels so that you can give them to another level one character?";
+next;
+menu "- How does this work?",L_how,"- Store Levels",L_store,"- Recieve Levels",L_recieve,"- Nothing",-;
+mes .@name$;
+mes "Have a nice day!";
+close;
+
+	L_how:
+	close;
+
+	L_store:
+	mes .@name$;
+	mes "Are you sure you want to store your gained Free Levels now?";
+	next;
+	menu "- Yes",L_ystore,"- Nevermind",-;
+	close;
+
+		L_ystore:
+		if(freelevelblock == 1) {
+			mes .@name$;
+			mes "This character is not allowed to store Free Levels.";
+			close;
+		}
+		if((#freelevelchar != 0) && (getcharid(0) != #freelevelchar)) {
+			mes .@name$;
+			mes "One of your other characters has recently donated his or her free levels.";
+			next;
+			mes .@name$;
+			mes "You must use up these free levels before you can donate levels from another character.";
+			next;
+			mes .@name$;
+			mes "Do not worry though, your free levels will be stored on your characters, and can be donated at the proper time.";
+			close;
+		}
+		mes .@name$;
+		mes "Thank you. You have stored "+freelevels+" Free Levels for use on another character.";
+		set #freelevelchar,getcharid(0);
+		set #storedlevels,freelevels;
+		set freelevels,0;
+		close;
+
+	L_recieve:
+	mes .@name$;
+	mes "You will "+#freelevels+" free levels, or 99 if the number exeeds 99, are you sure you want to do this?";
+	next;
+	menu "- Yes",L_yrecieve,"- Nevermind",-;
+	close;
+
+		L_yrecieve:
+		if(BaseLevel > 1) {
+			mes .@name$;
+			mes "You must be level one to recieve free levels.";
+			close;
+		}
+		mes .@name$;
+		mes "Here we go!";
+		set freelevelblock,1;
+		atcommand "@baselevelup "+#freelevels;
+		set #freelevels,0;
+		set #freelevelchar,0;
+		close;
+}

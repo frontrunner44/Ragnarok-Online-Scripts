@@ -1,0 +1,494 @@
+function	script	MainStaff	{
+set .@name$,"[^0000ffHead Staff^000000]";
+
+	mainstart:
+	mes .@name$;
+	mes "Hello there, what would you like to do?";
+	next;
+	menu "- Donate FP",donate,"- Check Global FP",globalfac,"- Reset Quests",questreset,"- Reset",L_reset,"- FP Coins",L_coins,"- Faction Change",L_changefac,"- PK History",pkhistory,"- Faction Statistics",L_facstat,"- Nothing",-;
+	close;
+
+////////////////*
+///Donate FP///*
+//////////////*
+	donate:
+	mes .@name$;
+	mes "How many FP would you like to donate to your Faction?";
+	input .@inputf;
+	next;
+	mes .@name$;
+	mes "Are you sure you want to donate "+.@inputf+" to your Faction?";
+	next;
+	menu "Yes",yes,"No",-;
+	close;
+
+		yes:
+		if(fpoints < .@inputf) { 
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		} 
+		mes .@name$;
+		mes "You have donated "+.@inputf+" FP to your faction.";
+		if(faction == 1) {
+			announce "Server: "+strcharinfo(0)+" has donated "+.@inputf+" FP to Arzeon.",0,0;
+			}
+		if(faction == 2) {
+			announce "Server: "+strcharinfo(0)+" has donated "+.@inputf+" FP to Destra.",0,0;
+			}
+		set fpoints,fpoints-.@inputf;
+		if(faction == 1) {
+			set $zarpoints,$zarpoints+.@inputf; 
+		} else {
+			set $dragpoints,$dragpoints+.@inputf; 
+		}
+		close;
+
+//////////////////////*
+///Check Global FP///*
+////////////////////*
+	globalfac:
+	mes .@name$;
+	if(faction == 1) { 
+	mes "Arzeon currently has "+$zarpoints+" Global FP."; 
+	} else {
+	mes "Destra currently has "+$dragpoints+" Global FP.";
+	}
+	close;
+
+
+/////////////////*
+///PK History///*
+///////////////*
+	pkhistory:
+	mes .@name$;
+	mes "You have Player Killed "+plkilled+" enemies in your lifetime.";
+	close;
+
+
+/////////////////////*
+///Quest Resetter///*
+///////////////////*
+	questreset:
+	mes .@name$;
+	mes "I can reset all of the quests you have accepted or completed, as well as any treasures you have already discovered.";
+	next;
+	mes .@name$;
+	mes "Please understand that if you are in the process of finishing a chain of quests, it may not be a good idea to reset your quests.";
+	next;
+	mes .@name$;
+	mes "Resetting your quests will allow you to perform all of the quests you've already completed once more.";
+	next;
+	mes .@name$;
+	mes "This will allow you to obtain each quests rewards yet again.";
+	next;
+	mes .@name$;
+	mes "Would you like to reset your quests? This will cost you 13,000FP and 500,000z.";
+	next;
+	menu "- Yes",yesreset,"- No",-;
+	mes .@name$;
+	mes "Ok, just come back if you ever change your mind.";
+	next;
+	goto mainstart;
+
+		yesreset:
+		if(fpoints < 13000 || zeny < 500000) {
+			mes .@name$;
+			mes "I'm sorry, you do not have that much FP or zeny.";
+			next;
+			goto mainstart;
+			}
+		set fpoints,fpoints-13000;
+		set zeny,zeny-500000;
+		mes .@name$;
+		mes "Here we go. Time to reset all of the quests you have done or accepted!";
+		next;
+		callfunc "QuestReset";
+		end;
+
+//=================
+// -- Reset
+//=================
+L_reset:
+set .@cost1,80000;
+set .@cost2,140000;
+set .@fpcost1,2000;
+set .@fpcost2,3000;
+mes .@name$;
+mes "I can reset your stats or skills.";
+next;
+mes .@name$;
+mes "Here are the prices:";
+mes " ";
+mes "Reset Stats: "+.@cost1+"z and "+.@fpcost1+"FP.";
+mes "Reset Skills: "+.@cost1+"z and "+.@fpcost1+"FP.";
+mes "Reset Both: "+.@cost2+"z and "+.@fpcost2+"FP.";
+next;
+mes .@name$;
+mes "Remember, you may have to relog for changes to take effect.";
+next;
+menu "- Reset Stats",L_stats,"- Reset Skills",L_skills,"- Reset Both",L_both,"- Nevermind",-;
+close;
+
+	L_stats:
+	if(zeny < .@cost1) goto L_shortzen;
+	if(fpoints < .@fpcost1) goto L_shortfac;
+	mes .@name$;
+	mes "Your stats have been reset!";
+	ResetStatus;
+	set zeny,zeny-.@cost1;
+	set fpoints,fpoints-.@fpcost1;
+	close;
+
+	L_skills:
+	if(zeny < .@cost1) goto L_shortzen;
+	if(fpoints < .@fpcost1) goto L_shortfac;
+	mes .@name$;
+	mes "Your skills have been reset!";
+	ResetSkill;
+	set zeny,zeny-.@cost1;
+	set fpoints,fpoints-.@fpcost1;
+	close;
+
+	L_both:
+	if(zeny < .@cost2) goto L_shortzen;
+	if(fpoints < .@fpcost2) goto L_shortfac;
+	mes .@name$;
+	mes "Your stats and skills have been reset!";
+	ResetSkill;
+	ResetStatus;
+	set zeny,zeny-.@cost2;
+	set fpoints,fpoints-.@fpcost2;
+	close;
+
+		L_shortzen:
+		mes .@name$;
+		mes "You do not have enough Zeny.";
+		close;
+
+		L_shortfac:
+		mes .@name$;
+		mes "You do not have enough faction points.";
+		close;
+
+//================================
+// -- Faction Statistics
+//================================
+	L_facstat:
+	if($albfaction == 1) {
+		set .@arztc,.@arztc+1;	}
+	if($albfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($aldfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($aldfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($amafaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($amafaction == 2) {
+		set .@destc,.@destc+1; }
+	if($ayofaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($ayofaction == 2) {
+		set .@destc,.@destc+1; }
+	if($comfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($comfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($einfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($einfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($einbfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($einbfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($geffaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($geffaction == 2) {
+		set .@destc,.@destc+1; }
+	if($gonfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($gonfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($hugfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($hugfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($izlfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($izlfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($loufaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($loufaction == 2) {
+		set .@destc,.@destc+1; }
+	if($morfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($morfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($payfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($payfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($prtfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($prtfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($umbfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($umbfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($veinfaction == 1) {
+		set .@arztc,.@arztc+1; }
+	if($veinfaction == 2) {
+		set .@destc,.@destc+1; }
+	if($yunfaction == 1) {
+		set .@arztc,.@arztc+1;
+		}
+	if($yunfaction == 2) {
+		set .@destc,.@destc+1;
+		}
+	mes "[^0000ffArzeon^000000]";
+	mes "Enemies Killed: "+$arzkp;
+	mes "Territory Owned: "+.@arztc;
+	mes " ";
+	mes "[^0000ffDestra^000000]";
+	mes "Enemies Killed: "+$deskp;
+	mes "Territory Owned: "+.@destc;
+	close;
+
+
+
+L_coins:
+mes .@name$;
+mes "What would you like to do?";
+next;
+menu "- Trade FP for FP Coins",L_trade1,"- Trade Coins for FP",L_trade2,"- Nothing",-;
+close;
+
+	L_trade1:
+	mes .@name$;
+	mes "What type of coin do you want to trade for?";
+	mes " ";
+	mes "Silver Coin: 50FP";
+	mes "Gold Coin: 100FP";
+	mes "Mithril Coin: 1,000FP";
+	mes "Platinum Coin: 10,000FP";
+	next;
+	menu "- Silver",L_silver1,"- Gold",L_gold1,"- Mithril",L_mith1,"- Platinum",L_plat1,"- Nevermind",-;
+	close;
+
+		L_silver1:
+		mes .@name$;
+		mes "Input the amount you wish to trade for.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "See you again!";
+			close;
+			}
+		if(fpoints < .@amount*50) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints-(.@amount*50);
+		getitem 30871,.@amount;
+		close;
+		
+		L_gold1:
+		mes .@name$;
+		mes "Input the amount you wish to trade for.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "See you again!";
+			close;
+			}
+		if(fpoints < .@amount*100) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints-(.@amount*100);
+		getitem 30872,.@amount;
+		close;
+
+		L_mith1:
+		mes .@name$;
+		mes "Input the amount you wish to trade for.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "See you again!";
+			close;
+			}
+		if(fpoints < .@amount*1000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints-(.@amount*1000);
+		getitem 30873,.@amount;
+		close;
+
+		L_plat1:
+		mes .@name$;
+		mes "Input the amount you wish to trade for.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "See you again!";
+			close;
+			}
+		if(fpoints < .@amount*10000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints-(.@amount*10000);
+		getitem 30874,.@amount;
+		close;
+
+	L_trade2:
+	mes .@name$;
+	mes "What type of coin do you want to trade in for FP?";
+	mes " ";
+	mes "Silver Coin: 50FP";
+	mes "Gold Coin: 100FP";
+	mes "Mithril Coin: 1,000FP";
+	mes "Platinum Coin: 10,000FP";
+	next;
+	menu "- Silver",L_silver2,"- Gold",L_gold2,"- Mithril",L_mith2,"- Platinum",L_plat2,"- Nevermind",-;
+	close;
+
+		L_silver2:
+		mes .@name$;
+		mes "Please input the amount of coins you wish to trade in.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "Maybe next time.";
+			close;
+			}
+		if(countitem(30871) < .@amount) {
+			mes .@name$;
+			mes "You do not have that many Silver Coins.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints+(.@amount*50);
+		delitem 30871,.@amount;
+		dispbottom "Recieved "+.@amount*50+"FP.";
+		close;
+
+		L_gold2:
+		mes .@name$;
+		mes "Please input the amount of coins you wish to trade in.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "Maybe next time.";
+			close;
+			}
+		if(countitem(30872) < .@amount) {
+			mes .@name$;
+			mes "You do not have that many Gold Coins.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints+(.@amount*100);
+		delitem 30872,.@amount;
+		dispbottom "Recieved "+.@amount*100+"FP.";
+		close;
+
+		L_mith2:
+		mes .@name$;
+		mes "Please input the amount of coins you wish to trade in.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "Maybe next time.";
+			close;
+			}
+		if(countitem(30873) < .@amount) {
+			mes .@name$;
+			mes "You do not have that many Mithril Coins.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints+(.@amount*1000);
+		delitem 30873,.@amount;
+		dispbottom "Recieved "+.@amount*1000+"FP.";
+		close;
+
+		L_plat2:
+		mes .@name$;
+		mes "Please input the amount of coins you wish to trade in.";
+		input .@amount;
+		next;
+		if(.@amount == 0) {
+			mes .@name$;
+			mes "Maybe next time.";
+			close;
+			}
+		if(countitem(30874) < .@amount) {
+			mes .@name$;
+			mes "You do not have that many Gold Coins.";
+			close;
+			}
+		mes .@name$;
+		mes "Here you go!";
+		set fpoints,fpoints+(.@amount*10000);
+		delitem 30874,.@amount;
+		dispbottom "Recieved "+.@amount*10000+"FP.";
+		close;
+
+	L_changefac:
+	mes .@name$;
+	mes "Changing factions will cost 150,000FP.";
+	next;
+	menu "- Change Factions",L_ychange,"- No thanks",-;
+	close;
+
+		L_ychange:
+		if(fpoints < 150000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Your faction has been changed. Please relog for the changes to take affect.";
+		if(faction == 1) {
+			set faction,2;
+			set #factionin,2;
+			}
+		if(faction == 2) {
+			set faction,1;
+			set factionin,1;
+			}
+		savepoint "eathena",256,168;
+		set fpoints,fpoints-150000;
+		close;
+}
+
+

@@ -1,0 +1,99 @@
+einbroch,59,201,5	script	?Mission Board?#Einb1	857,{
+
+//=================
+// -- Config 
+//=================
+set .@name$,"[^0000ffMission Board^000000]";
+if(axeremove == 0) set .@questlist$[0],"- Material Farming";
+if(axeremove == 1) set .@questlist$[0],"- Material Farming(In Progress)";
+if(biofly == 0) set .@questlist$[1]," - Exterminator";
+if(biofly == 1) set .@questlist$[1]," - Exterminator(In Progress)";
+
+if(BaseLevel < 60) {
+	mes .@name$;
+	mes "You must be at least level 60 to view the missions on this board.";
+	close;
+	}
+if(faction != $einbfaction) {
+	mes .@name$;
+	mes "Access denied.";
+	close;
+	}
+
+//==================
+// -- Script
+//==================
+mes .@name$;
+mes "Here is a list of currently available quests.";
+next;
+menu .@questlist$[0],L_remover,.@questlist$[1],L_ext,"- Nothing",-;
+close;
+
+	L_remover:
+	if(axeremove == 1) {
+		mes .@name$;
+		mes "Mission in progress. Collected "+countitem(30009)+" of 30 Worn Axes.";
+		close;
+		}
+	mes .@name$;
+	mes "The faction leaders need extra material to continue forging weapons for it's shops.";
+	next;
+	mes .@name$;
+	mes "Go into Biolabs and retrieve 30 Worn Axes from Removers and deliver them to Markus in the airport.";
+	next;
+	menu "- Accept",L_remaccept,"- Nothing",-;
+	close;
+
+		L_remaccept:
+		mes .@name$;
+		mes "Mission accepted.";
+		close2;
+		announce "New quest added to Adventure Logs.",bc_self;
+		set axeremove,1;
+		set axeremovel$,"Material Farming";
+		end;
+
+	L_ext:
+	if(bioflykilled >= 70) goto L_bioflydone;
+	if(biofly == 1) {
+		mes .@name$;
+		mes "Mission still in progress. Killed "+bioflykilled+" of 70 Anopheles.";
+		close;
+		}
+	mes .@name$;
+	mes "Fly population has been rapidly increasing in biolabs. We need someone to clear it up for us.";
+	next;
+	mes .@name$;
+	mes "We need someone to go in and kill at least 70 Anopheles.";
+	next;
+	menu "- Accept",L_flyaccept,"- Nothing",-;
+	close;
+	
+		L_flyaccept:
+		mes .@name$;
+		mes "Mission accepted.";
+		close2;
+		announce "New quest added to Adventure Logs.",bc_self;
+		set biofly,1;
+		set bioflyl$,"Fly Exterminator";
+		end;
+
+		L_bioflydone:
+		mes .@name$;
+		mes "Mission completion verified.";
+		close2;
+		announce "Quest Update: Fly Exterminator quest complete!",bc_self;
+		set biofly,2;
+		set bioflyl$,"";
+		set bioflykilled,0;
+		getexp 6000000,5000000;
+		set fpoints,fpoints+2500;
+		set zeny,zeny+60000;
+		dispbottom "Gained +2,500FP.";
+		dispbottom "Gained 60,000z.";
+		soundeffect "battlewon.wav",0;
+		getitem 601,70;
+		getitem 602,30;
+		getitem 30881,15;
+		end;
+}

@@ -1,0 +1,53 @@
+//------------------------------------------------------------------------------------------------------
+//= Option/Configuration/Setting Part
+//------------------------------------------------------------------------------------------------------
+-	script	PVSOption	-1,{
+Oninit:
+	setarray $@COLOR_CHIP$[0],	"^000000",	"^004080",	"^0080FF",	"^0000FF",
+					"^FF0000",	"^00FF00",	"^808080";
+
+	setarray $@PVS_B_MAP$[1],"rwc01","rwc02","rwc03";
+	setarray $@PVS_B_MN$[1],"First Arena","Second Arena","Third Arena";
+
+	setarray $@PVS_BMAPX_P1[1],9,14,10;
+	setarray $@PVS_BMAPY_P1[1],49,45,50;
+
+	setarray $@PVS_BMAPX_P2[1],92,88,89;
+	setarray $@PVS_BMAPY_P2[1],49,60,50;
+
+	setarray $@PVS_S_MAPX[1],50,49,50;
+	setarray $@PVS_S_MAPY[1],46,45,44;
+
+	set $@PVS_NPC_N$,"PVS Employee";
+
+	set $@PVS_W_MAP$,"force_1-1";
+	set $@PVS_W_MAPX,99;
+	set $@PVS_W_MAPY,43;
+
+	set $@PVS_ENTRY,100000;
+
+	set $@PVS_PAYBACK,0;
+
+	set $@PVS_SPECZ,500;
+
+	set $@PVS_SOUND,1;
+
+	set $@PVS_PRIZE_TYPE,1;
+
+	set $@PVS_STPOINT,100;
+
+	setarray $@PVS_ITEM[0],615,756,757,984,985,12045,12050,12055,12060,12065,12070;
+	setarray $@PVS_ITEM_NUM[0],1,10,10,5,5,10,10,10,10,10,10;
+
+	set $@PVS_EXP,1000000;
+
+	set $@PVS_ZENY,1000000;
+
+	getmapxy($@PVS_NPC_MAP$,$@PVS_NPC_X,$@PVS_NPC_Y,1,"PVS Employee#Register");
+	getmapxy($@PVS_BACK_MAP$,$@PVS_BACK_X,$@PVS_BACK_Y,1,"PVS Employee#Warper");
+	
+//>>>>>>>>>>>>>>>>>>>Below this line is fobidden to edit<<<<<<<<<<<<<<<<<<<<<<<
+
+	set $@PVS_NPC_N$,$@COLOR_CHIP$[1]+"["+$@COLOR_CHIP$[2]+$@PVS_NPC_N$+$@COLOR_CHIP$[1]+"]"+$@COLOR_CHIP$[0];
+end;
+}

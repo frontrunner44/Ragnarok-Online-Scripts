@@ -1,0 +1,14 @@
+aldeba_in,24,246,5	script	Armor Dealer#AldeArm01	85,{
+if(faction != $aldfaction) {
+	mes "[^0000ffArmor Dealer^000000]";
+	mes "Eh.. what are you doing in this town?";
+	close;
+	}
+callshop "AldebaTools01",0;
+}
+-	shop	AldebaTools01	139,2101:-1,2103:-1,2401:-1,2403:-1,2501:-1,2503:-1,2220:-1,2226:-1,2301:-1,2303:-1,2305:-1,2328:-1,2307:-1,2309:-1,2312:-1,2314:-1,2628:-1,2627:-1
+
+//===================
+// -- Duplicates
+//===================
+aldeba_in,26,54,3	duplicate(Armor Dealer#AldeArm01)	Armor Dealer#Aldupe02	85

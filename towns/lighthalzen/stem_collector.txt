@@ -1,0 +1,85 @@
+lighthalzen,117,119,5	script	!Timothy!	48,{
+
+// Trades Faction Points for plant stems.
+mes "[Timothy]";
+mes "Hey! If you farm me some plant stems, I'll put a good word in for you with the Faction Leaders.";
+mes "I'm sure you'll recieve faction points for it!";
+next;
+mes "[^ff0000Server^000000]";
+mes "You will recieve 5 faction points for every 10 plant stems you trade to Timothy.";
+next;
+menu "Where's a good place to find plant stems?",wherefind,"Trade plant stems",tradeplant,"Why do you want them?",whywant,"Nothing",-;
+close;
+
+	whywant:
+	mes "[Timothy]";
+	mes "Plant stems are useful for alot of things. I make all sorts of foods with it, and not only that,";
+	mes "but they're sterdy, so making tools is another thing they're good for.";
+	close;
+
+	wherefind:
+	mes "[Timothy]";
+	mes "Just out of the northern gate, you can head southwest untill you see a small hill.";
+	mes "On this hill, you'll find a ton of plants growing there.";
+	next;
+	mes "[Timothy]";
+	mes "For people like me, it's a gold mine! I just don't have the time or patience to farm there.";
+	close;
+
+
+	tradeplant:
+	mes "[Timothy]";
+	mes "So, how many plant stems do you have for me? -rubs hands together-";
+	next;
+	menu "10",L_10,"20",L_20,"30",L_30,"...100",L_100,"None",-;
+	close;
+
+
+		L_10:
+		if(countitem(905) < 10) { 
+			mes "[Server]"; 
+			mes "You've chosen to trade more plant stems than you currently have.";
+			close; }
+		mes "[Timothy]";
+		mes "Thanks!";
+		set fpoints,fpoints+5;
+		delitem 905,10;
+		dispbottom "Recieved 5 Faction Points.";
+		close;
+
+		L_20:
+		if(countitem(905) < 20) { 
+			mes "[Server]"; 
+			mes "You've chosen to trade more plant stems than you currently have.";
+			close; }
+		mes "[Timothy]";
+		mes "Thanks!";
+		set fpoints,fpoints+10;
+		delitem 905,20;
+		dispbottom "Recieved 10 Faction Points.";
+		close;
+
+		L_30:
+		if(countitem(905) < 30) { 
+			mes "[Server]"; 
+			mes "You've chosen to trade more plant stems than you currently have.";
+			close; }
+		mes "[Timothy]";
+		mes "Thanks!";
+		set fpoints,fpoints+15;
+		delitem 905,30;
+		dispbottom "Recieved 15 Faction Points.";
+		close;
+
+		L_100:
+		if(countitem(905) < 100) { 
+			mes "[Server]"; 
+			mes "You've chosen to trade more plant stems than you currently have.";
+			close; }
+		mes "[Timothy]";
+		mes "Thanks!";
+		set fpoints,fpoints+50;
+		delitem 905,100;
+		dispbottom "Recieved 50 Faction Points.";
+		close;
+}

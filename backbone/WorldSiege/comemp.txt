@@ -1,0 +1,62 @@
+-	script	EmperiumCom	-1,{
+
+OnInit:
+
+monster "comodo",189,163,"Siege Crystal",2009,1,"EmperiumCom::OnCom";
+end;
+
+OnCom:
+// --Already Yours
+//================
+
+if(faction == $comfaction) { 
+monster "comodo",189,163,"Siege Crystal",2009,1,"EmperiumCom::OnCom"; 
+dispbottom "This town already belongs to your Faction.";
+end; 
+}
+
+if(faction == 1) { 
+set $comfaction,1; 
+announce "Arzeon has taken over Comodo",16; 
+monster "comodo",189,163,"Siege Crystal",2009,1,"EmperiumCom::OnCom"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+if(faction == 2)  { 
+set $comfaction,2; 
+announce "Destra has  taken over Comodo",16; 
+monster "comodo",189,163,"Siege Crystal",2009,1,"EmperiumCom::OnCom"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+}

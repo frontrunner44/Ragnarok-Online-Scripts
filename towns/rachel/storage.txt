@@ -1,0 +1,16 @@
+ra_in01.gat,115,386,5	script	Storage#Rach122	50,{
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}
+
+ra_in01,117,335,5	duplicate(Storage#Rach122)	Storage#R01	727
+ra_temin,178,108,6	duplicate(Storage#Rach122)	Storage#R02	106

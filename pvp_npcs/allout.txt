@@ -1,0 +1,19 @@
+eathena,261,183,6	script	All Out PvP	734,{
+mes .@name$;
+mes "Would you like to enter the All Out PvP room? Remember, when you enter you will be saved to Ground Zero, and you will not recieve pvp rewards while inside.";
+next;
+mes .@name$;
+mes "Remember you can warp back to Ground Zero using your adventure logs.";
+next;
+mes .@name$;
+mes "There are currently "+getmapusers("alloutpvp")+" users inside.";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	savepoint "eathena",257,166;
+	warp "alloutpvp",0,0;
+	announce strcharinfo(0)+" has entered the PvP room.",0;
+	end;
+}

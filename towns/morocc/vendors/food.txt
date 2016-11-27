@@ -1,0 +1,11 @@
+morocc_in.gat,170,76,5	script	Food#Mor01	69,{
+if(faction != $morfaction) {mes "....."; close;}
+callshop "MorFood",0;
+}
+morocc_in.gat,166,76,5	script	Food#Mor02	66,{
+if(faction != $morfaction) {mes "....."; close;}
+callshop "MorFood2",0;
+}
+-	shop	MorFood	139,553:-1,580:-1,515:-1,548:-1,562:-1,563:-1,581:-1,574:-1,559:-1,560:-1,536:-1,517:-1,554:-1
+
+-	shop	MorFood2	139,553:-1,580:-1,515:-1,548:-1,562:-1,563:-1,581:-1,574:-1,560:-1,536:-1,517:-1,554:-1

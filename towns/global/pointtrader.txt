@@ -1,0 +1,810 @@
+//***********************************************************|
+//* Allows players to trade FP for items.		    *|
+//***********************************************************|
+
+function	script	PointTrader	{
+
+//========================
+// -- Name Setting
+//========================
+set .@name$,"[^0000ffPoint Trader^000000]";
+
+//=======================
+// -- Menu Variables
+//=======================
+set .@menuitem$[0],"- Battle Manual Lv.1";
+set .@menuitem$[1],"- Battle Manual Lv.2";
+set .@menuitem$[2],"- Battle Manual Lv.3";
+set .@menuitem$[3],"- Poison Bottle Ingredients";
+set .@menuitem$[4],"- Acid Bottle Ingredients";
+//set .@menuitem$[5],"- Yggdrasil Berry";
+set .@menuitem$[6],"- Meteor Plate[1]";
+set .@menuitem$[7],"- Ninja Suit[1]";
+set .@menuitem$[8],"- Poring Backpack[1]";
+set .@menuitem$[9],"- Alice Doll[1]";
+set .@menuitem$[10],"- Angel Wing Ears";
+set .@menuitem$[11],"- Clock Tower Hat[1]";
+set .@menuitem$[12],"- Bullock Helm";
+set .@menuitem$[13],"- Moonowl Cap";
+set .@menuitem$[14],"- Dark Bacilium[1]";
+set .@menuitem$[15],"- Thief Clothes[1]";
+set .@menuitem$[16],"- Sniping Suit[1]";
+set .@menuitem$[17],"- Cygnus Helm[1]";
+set .@menuitem$[18],"- Shadowmaster Jur[4]";
+set .@menuitem$[19],"- Wind Rider's Bow[4]";
+set .@menuitem$[20],"- Heaven's Blade[4]";
+set .@menuitem$[21],"- Staff of Oblivion[4]";
+set .@menuitem$[22],"- Death Pistol[4]";
+set .@menuitem$[23],"- Death Creator[4]";
+set .@menuitem$[24],"- Lord's Spear[4]";
+set .@menuitem$[25],"- Lord's Sword[4]";
+
+
+//===================
+// -- Script
+//===================
+mes .@name$;
+mes "Here is a list of items you can purchase using Faction Points.";
+next;
+menu .@menuitem$[0],L_book1,.@menuitem$[1],L_book2,.@menuitem$[2],L_book3,.@menuitem$[3],L_edp,.@menuitem$[4],L_abe,.@menuitem$[6],L_item6,.@menuitem$[7],L_item7,.@menuitem$[8],L_psack,.@menuitem$[9],L_alice,.@menuitem$[10],L_awinge,.@menuitem$[11],L_item11,.@menuuitem$[12],L_bull,.@menuitem$[13],L_cat,.@menuitem$[14],L_dbac,.@menuitem$[15],L_fifteen,.@menuitem$[16],L_sixteen,.@menuitem$[17],L_item17,.@menuitem$[18],L_item18,.@menuitem$[19],L_item19,.@menuitem$[20],L_item20,.@menuitem$[21],L_item21,.@menuitem$[22],L_item22,.@menuitem$[23],L_item23,.@menuitem$[24],L_item24,.@menuitem$[25],L_item25,"- Nothing",-;
+close;
+
+	L_book1:
+	mes .@name$;
+	mes "This battle manual will boost your experience by 250% for one hour. You can buy this item for 6,000FP.";
+	next;
+	menu "- Buy",L_buybook1,"- No thanks",-;
+	close;
+
+		L_buybook1:
+		if(fpoints < 6000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks, come again soon!";
+		getitem 30505,1;
+		set fpoints,fpoints-6000;
+		close;
+
+	L_book2:
+	mes .@name$;
+	mes "This battle manual will boost your experience by 300% for one hour. You can buy this item for 8,000FP.";
+	next;
+	menu "- Buy",L_buybook2,"- No Thanks",-;
+	close;
+
+		L_buybook2:
+		if(fpoints < 8000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks, come again soon!";
+		set fpoints,fpoints-8000;
+		getitem 30506,1;
+		close;
+
+	L_book3:
+	mes .@name$;
+	mes "This battle manual will boost your experience by 350% for one hour. You can buy this item for 10,000FP.";
+	next;
+	menu "- Buy",L_buybook3,"- No thanks",-;
+	close;
+
+		L_buybook3:
+		if(fpoints < 10000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks, come again soon!";
+		set fpoints,fpoints-10000;
+		getitem 30507,1;
+		close;
+
+	L_psack:
+	mes .@name$;
+	mes "These poring backpacks come in two seperate colors, blue and pink. They give you +3 Def, +2 Dex and +12% Max HP.";
+	next;
+	mes .@name$;
+	mes "This item can be bought for 120,000FP.";
+	next;
+	menu "- Buy(Blue)",L_packblue,"- Buy(Pink)",L_packpink,"- Rent Blue",L_rentblue,"- Rent Pink",L_rentpink,"- No thanks",-;
+	close;
+
+		L_packblue:
+		if(fpoints < 120000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks, come again soon!";
+		set fpoints,fpoints-120000;
+		getitem 30710,1;
+		close;
+
+		L_packpink:
+		if(fpoints < 120000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks, come again soon!";
+		set fpoints,fpoints-120000;
+		getitem 30711,1;
+		close;
+
+		L_rentblue:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 30710,60;
+		close;
+
+		L_rentpink:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 30711,60;
+		close;
+
+	L_item6:
+	mes .@name$;
+	mes "You can purchase a Meteor Plate[1] for 45,000FP.";
+	next;
+	mes .@name$;
+	mes "Meteor Plate[1] gives 10 Defence and a 30% resistence to Stun and Freeze.";
+	next;
+	menu "- Buy",L_bitem6,"- Rent Item",L_ritem6,"- Nevermind",-;
+	close;
+
+		L_bitem6:
+		if(fpoints < 45000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		set fpoints,fpoints-45000;
+		getitem 2364,1;
+		close;
+
+		L_ritem6:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 2364,60;
+		close;
+
+	L_item7:
+	mes .@name$;
+	mes "You can purchase a Ninja Suit[1] for 30,000FP.";
+	next;
+	mes .@name$;
+	mes "Ninja Suit[1] gives +7 Defence, +1 Agility and +3 Magic Defence.";
+	next;
+	menu "- Buy Item",L_bitem7,"- Rent Item",L_ritem7,"- Nevermind",-;
+	close;
+
+		L_bitem7:
+		if(fpoints < 30000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		set fpoints,fpoints-30000;
+		getitem 2359,1;
+		close;
+
+		L_ritem7:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 2359,60;
+		close;
+		
+
+	
+
+	L_edp:
+	mes .@name$;
+	mes "I can sell you a set of Poison Bottle ingredients for 2000FP each.";
+	next;
+	menu "- Buy",L_bedp,"- No thanks",-;
+	close;
+
+		L_bedp:
+		mes .@name$;
+		mes "How many sets of ingredients would you like?";
+		input .@amount;
+		next;
+		if(fpoints < 2000*.@amount) {
+			mes .@name$;
+			mes "You do not have enough FP to purchase that many sets of ingredients.";
+			close;
+			}
+		mes .@name$;
+		mes "This will cost you "+2000*.@amount+" FP. Would you like to purchase this many?";
+		next;
+		menu "- Yes",L_ybedp,"- Nevermind",-;
+		close;
+			
+			L_ybedp:
+			mes .@name$;
+			mes "Thanks for your business!";
+			getitem 937,.@amount;
+			getitem 952,.@amount;
+			getitem 939,.@amount;
+			getitem 7033,.@amount;
+			getitem 972,.@amount;
+			getitem 657,.@amount;
+			getitem 713,.@amount;
+			set fpoints,fpoints-5000*.@amount;
+			close;
+
+	L_abe:
+	mes .@name$;
+	mes "I can sell you the ingredients for Acid Bottles for 150FP each.";
+	next;
+	menu "- Buy",L_babe,"- No thanks",-;
+	close;
+
+		L_babe:
+		mes .@name$;
+		mes "How many sets would you like?";
+		input .@amount;
+		next;
+		if(fpoints < 150*.@amount) {
+			mes .@name$;
+			mes "You do not have enough FP to purchase that many sets of ingredients.";
+			close;
+			}
+		mes .@name$;
+		mes "This will cost you "+150*.@amount+"FP. Would you like to buy this many?";
+		next;
+		menu "- Yes",L_ybabe,"- No thanks",-;
+		close;
+
+			L_ybabe:
+			mes .@name$;
+			mes "Thanks for your purchase!";
+			getitem 929,.@amount;
+			getitem 7134,.@amount;
+			getitem 713,.@amount;
+			set fpoints,fpoints-150*.@amount;
+			close;
+
+	L_alice:
+	mes .@name$;
+	mes "You can purchase this slotted upper headgear for 150,000FP.";
+	next;
+	mes .@name$;
+	mes "This item allows you to deal 10% more damage to demi-humans, increases strength by 1, has a low chance of casting sleep on yourself and can not be refined.";
+	next;
+	menu "- Buy",L_balice,"- Rent Item",L_rentalice,"- No thanks",-;
+	close;
+
+		L_balice:
+		if(fpoints < 150000) {
+			mes .@name$;
+			mes "You do not have that much FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase!";
+		getitem 5137,1;
+		set fpoints,fpoints-150000;
+		close;
+
+		L_rentalice:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 5137,60;
+		close;
+
+	L_awinge:
+	mes .@name$;
+	mes "You can purchase Angel Wing Ears for 50,000FP.";
+	next;
+	mes .@name$;
+	mes "This item gives you +1 strength.";
+	next;
+	menu "- Buy",L_bawinge,"- Rent Item",L_rawinge,"- No thanks",-;
+	close;
+
+		L_bawinge:
+		if(fpoints < 50000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		getitem 5074,1;
+		set fpoints,fpoints-50000;
+		close;
+
+		L_rawinge:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 5074,60;
+		close;
+
+	
+
+	L_item11:
+	mes .@name$;
+	mes "You can buy a Clock Tower Hat[1] for 75,000FP.";
+	next;
+	mes .@name$;
+	mes "The Clock Tower Hat[1] gives +4 Intelligence, +1 Dexterity, +5% Magic Attack and reduces damage from demi-humans by 10%.";
+	next;
+	menu "- Buy Item",L_bitem11,"- Rent Item",L_ritem11,"- Nothing",-;
+	close;
+
+		L_bitem11:
+		if(fpoints < 75000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		set fpoints,fpoints-75000;
+		getitem 30707,1;
+		close;
+
+		L_ritem11:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 30707,60;
+		close;
+	
+
+	L_bull:
+	mes .@name$;
+	mes "You can buy a Bullock Helm for 120,000FP.";
+	next;
+	mes .@name$;
+	mes "This item gives you +100 Max HP and has a 3% chance to reflect some magic damage back at the enemy.";
+	next;
+	menu "- Buy",L_bbull,"- Rent Item",L_rbull,"- No thanks",-;
+	close;
+
+		L_bbull:
+		if(fpoints < 120000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		getitem 5300,1;
+		set fpoints,fpoints-120000;
+		close;
+
+		L_rbull:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 5300,60;
+		close;
+
+	L_cat:
+	mes .@name$;
+	mes "You can purchase a Moonowl Cap for 100,000FP.";
+	next;
+	mes .@name$;
+	mes "This item gives you +2 Dex and has a chance to cast Increase Agility on you when taking physical damage.";
+	next;
+	menu "- Buy",L_bcat,"- Rent Item",L_rcat,"- No thanks",-;
+	close;
+
+		L_bcat:
+		if(fpoints < 100000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		getitem 5214,1;
+		set fpoints,fpoints-100000;
+		close;
+
+		L_rcat:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 5214,60;
+		close;
+
+		L_bdbac:
+		if(fpoints < 300000) {
+			mes .@name$;
+			mes "You do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase!";
+		getitem 5808,1;
+		set fpoints,fpoints-300000;
+		close;
+
+		L_rdbac:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory after one minute.";
+		rentitem 5808,60;
+		close;
+
+
+	L_dbac:
+	mes .@name$;
+	mes "You can purchase a Dark Bacilium[1] for 300,000FP.";
+	next;
+	mes .@name$;
+	mes "This item gives you a 20% resistence to Freeze, Stone and Stun. Each refine increases this resistence by 2%.";
+	next;
+	menu "- Buy",L_bdbac,"- Rent Item",L_rdbac,"- No thanks",-;
+	close;
+
+	L_fifteen:
+	mes .@name$;
+	mes "You can by Thief Clothes[1] for 35,000FP.";
+	next;
+	mes .@name$;
+	mes "Thief Clothes[1] has 6 defence and gives you +1 agility.";
+	next;
+	menu "- Buy",L_bfifteen,"- Rent Item",L_rfifteen,"- No Thanks",-;
+	close;
+
+		L_bfifteen:
+		if(fpoints < 35000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase!";
+		getitem 2336,1;
+		set fpoints,fpoints-35000;
+		close;
+
+		L_rfifteen:
+		mes .@name$;
+		mes "Here you go! The item will leave your inventory in one minute.";
+		rentitem 2336,60;
+		close;
+
+	L_sixteen:
+	mes .@name$;
+	mes "You can buy a Sniping Suit[1] for 45,000FP.";
+	next;
+	mes .@name$;
+	mes "Sniping Suit[1] gives you Critical Rate + 6, Bonus (LUK/10) Critical Rate depending on your LUK rate. MDEF + 5, Reduces after-cast skill delay by 23%.";
+	next;
+	menu "- Buy Item",L_bsixteen,"- Rent Item",L_rsixteen,"- No Thanks",-;
+	close;
+
+		L_bsixteen:
+		if(fpoints < 45000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		getitem 2367,1;
+		set fpoints,fpoints-45000;
+		close;
+
+		L_rsixteen:
+		mes .@name$;
+		mes "Here you go! The item will leave your inventory in one minute.";
+		rentitem 2367,60;
+		close;
+
+	L_item17:
+	mes .@name$;
+	mes "You can purchase a Cygnus Helm[1] for 75,000FP.";
+	next;
+	mes .@name$;
+	mes "Cygnus Helm[1] gives +2 Dexterity, +3% Max HP, Reflects 4% of all Melee Damage Recieved and reduces damage from demi-humans by 10%.";
+	next;
+	menu "- Buy Item",L_bitem17,"- Rent Item",L_ritem17,"- Nevermind",-;
+	close;
+
+		L_bitem17:
+		if(fpoints < 75000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough Faction Points.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		getitem 30708,1;
+		set fpoints,fpoints-75000;
+		close;
+
+		L_ritem17:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 30708,60;
+		close;
+
+	L_item18:
+	mes .@name$;
+	mes "You can purchase a Shadowmaster Jur[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item gives has 160 Attack, gives +15 Hit, +5 Critical, has a low chance of cursing your enemy when attacking and does 5% more damage to Demi-Humans.";
+	next;
+	menu "- Buy Item",L_bitem18,"- Rent Item",L_ritem18,"- Nothing",-;
+	close;
+
+		L_bitem18:
+		if(faction != $morfaction) {
+			mes .@name$;
+			mes "Your faction must control Morocc in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny to purchase this item.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase!";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1279,1;
+		close;
+
+		L_ritem18:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1279,60;
+		close;
+
+	L_item19:
+	mes .@name$;
+	mes "You can purchase a Wind Rider's Bow[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This bow has 200 attack, has a low chance of casting Level 10 Decrease Agility on your foe, a low chance of casting Level 10 Increase Agility on yourself and does 5% more damage to Demi-Humans.";
+	next;
+	menu "- Buy Item",L_bitem19,"- Rent Item",L_ritem19,"- Nothing",-;
+	close;
+
+		L_bitem19:
+		if(faction != $payfaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Payon in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase!";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1729,1;
+		close;
+
+		L_ritem19:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1729,60;
+		close;
+
+	L_item20:
+	mes .@name$;
+	mes "You can purchase a Heaven's Blade[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item has 170 attack, gives +3% Max HP, increases the damage of Sacrifice by 5% and increases damage done to Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem20,"- Rent Item",L_ritem20,"- Nothing",-;
+	close;
+
+		L_bitem20:
+		if(faction != $yunofaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Yuno in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thanks for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1137,1;
+		close;
+
+		L_ritem20:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1137,60;
+		close;
+
+	L_item21:
+	mes .@name$;
+	mes "You can purchase a Staff of Oblivion[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This staff gives +20% Magic Attack, has a low chance of casting Safety wall or Pneuma on yourself when taking damage increases damage against Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem21,"- Rent Item",L_ritem21,"- Nothing",-;
+	close;
+
+		L_bitem21:
+		if(faction != $geffaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Geffen in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1622,1;
+		close;
+
+		L_ritem21:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1622,60;
+		close;
+
+	L_item22:
+	mes .@name$;
+	mes "You can purchase a Death Pistol[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item has 110 Attack, gives +5 Dexterity, has a low chance of Stone Cursing your target and increases damage against Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem22,"- Rent Item",L_ritem22,"- Nothing",-;
+	close;
+
+		L_bitem22:
+		if(faction != $einbfaction) {
+			mes .@name$;
+			mes "Your faction must control Einbroch in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny<  1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 13110,1;
+		close;
+
+		L_ritem22:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 13110,60;
+		close;
+
+	L_item23:
+	mes .@name$;
+	mes "You can purchase a Death Creator[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item has 190 Attack, gives +5 Intelligence, reduces damage from Demi-Humans by 5% and increases damage against Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem23,"- Rent Item",L_ritem23,"- Nothing",-;
+	close;
+
+		L_bitem23:
+		if(faction != $aldfaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Aldebaran in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1303,1;
+		close;
+
+		L_ritem23:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1303,60;
+		close;
+
+	L_item24:
+	mes .@name$;
+	mes "You can purchase a Lord's Spear[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item has 180 Attack, 530 weight, ignores 4% of Demi-Humans defence and increases damage against Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem24,"- Rent Item",L_ritem24,"- Nothing",-;
+	close;
+
+		L_bitem24:
+		if(faction != $prtfaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Prontera in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1419,1;
+		close;
+
+		L_ritem24:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1419,60;
+		close;
+
+	L_item25:
+	mes .@name$;
+	mes "You can purchase a Lord's Sword[4] for 180,000FP and 1,500,000z.";
+	next;
+	mes .@name$;
+	mes "This item has 240 Attack, +15 Critical, +2 Attack Speed, and increases damage against Demi-Humans by 5%.";
+	next;
+	menu "- Buy Item",L_bitem25,"- Rent Item",L_ritem25,"- Nothing",-;
+	close;
+
+		L_bitem25:
+		if(faction != $prtfaction) {
+			mes .@name$;
+			mes "Your faction must be in control of Prontera in order for you to purchase this item.";
+			close;
+			}
+		if(fpoints < 180000 || zeny < 1500000) {
+			mes .@name$;
+			mes "I'm sorry, but you do not have enough FP or Zeny.";
+			close;
+			}
+		mes .@name$;
+		mes "Thank you for your purchase.";
+		set fpoints,fpoints-180000;
+		set zeny,zeny-1500000;
+		getitem 1185,1;
+		close;
+
+		L_ritem25:
+		mes .@name$;
+		mes "Here you go. The item will leave your inventory in one minute.";
+		rentitem 1185,60;
+		close;
+
+}

@@ -1,0 +1,165 @@
+//========================================
+//== Specialist
+//== Script Version: 1.0
+//== by: [Leon]
+//== MSN/e-mail: leuzu@yahoo.com.br
+//========================================
+//== NPC that identifies all
+//== of your items at once.        
+//== It requires a zeny fee per item,
+//== and gives 1% discount for each of    
+//== them. It also requires you to have
+//== a certain amount of magnifiers per    
+//== item.
+//========================================
+
+morocc,166,106,6	script	Specialist#Mor	754,{
+if(faction != $morfaction) {mes "......."; close;}
+
+    // ==================== NPC SETTING ===================================
+    // Set the base price here (per item), without discounts. Default: 2500
+    set @zeny, 2500;
+    // Set the max discount a player can get. Default:15
+    set @maxdc, 15;
+    // Set how many magnifiers are required per item. Default: 1
+    set @magni, 1;
+    // ==================== /NPC SETTING ==================================
+
+    emotion 12;
+    mes "[^CE7900Specialist^000000]";
+    mes "Hello.";
+    mes "I am the ^CE7900Specialist^000000.";
+    mes "People call me like that because";
+    mes "since I am a little boy I love to";
+    mes "analyse the world around me,";
+    mes "which made me being able to analyse";
+    mes "and identify many things with";
+    mes "incredible speed and skills.";
+    next;
+    set @itemcount, 0; //rests the count of unidentified items
+    getinventorylist;
+    // a loop to locate every unidentified item.
+    for (set @i, 0; @i < 99; set @i, @i + 1)
+    {
+        if ((@inventorylist_id[@i] > 400) && (@inventorylist_identify[@i] == 0))
+            // unidentified item found.
+            set @itemcount, @itemcount+1;
+    }
+
+    mes "[^CE7900Specialist^000000]";
+
+    if (@itemcount < 1)
+    {
+        //No unidentified item in inventory.
+        mes "If any day you have items which";
+        mes "you don't know what they are, just";
+        mes "bring them to me and I'll quickly";
+        mes "identify.";
+        close;
+    }
+
+    mes "Oh~ so you do know me?";
+    mes "And you want me to identify";
+    mes "all of the things you have";
+    mes "in there, right?";
+    next;
+
+    if (select("Yes, please.","No, thanks.") == 1)
+    {
+        //--- Identificar TODOS os itens --
+        mes "[^CE7900Specialist^000000]";
+        mes "Hum, you posess";
+        if (@itemcount > 1)
+            mes "^ff0000" + @itemcount + " unidentified items.";
+        else
+            mes "^ff0000" + @itemcount + " unidentified item.";
+        if (@zeny > 0){
+            mes "^000000In this case, there'll be";
+            if (@itemcount < @maxdc)
+                { set @zeny, @zeny - (@zeny * @itemcount / 100); }
+            else
+                { set @zeny, @zeny - (@zeny * @maxdc / 100); }
+            mes "a ^0000ff" + @zeny + " zeny^000000 fee per item,";
+            set @zeny, @zeny * @itemcount;
+            mes "which means ^0000ff" + @zeny + " zeny^000000 total.";
+        }
+        if (@magni > 0) {
+            if (@zeny > 0)
+                mes "Plus, I'll need ^0000ff" + @itemcount + " magnifiers^000000.";
+            else
+                mes "^000000In this case, I'll need ^0000ff" + @itemcount + " magnifiers^000000.";
+        }
+        next;
+        if (select ("Identify!","Nevermind!") == 2) goto O_nevermind;
+        mes "[^CE7900Specialist^000000]";
+        if (zeny < @zeny) goto C_nozeny;
+        if (countitem(611) < @itemcount * @magni) goto C_nomag; // no magnifiers found!
+        mes "So, let me start.";
+        set zeny, zeny - @zeny;
+        delitem 611, @itemcount*@magni;
+        next;
+
+        mes "[^CE7900Specialist^000000]";
+        set @ii,0;
+        // deletes all unidentified item and adds them identified, one by one.
+        for (set @i, 0; @i < 99; set @i, @i + 1)
+        {
+            if ((@inventorylist_id[@i] > 0) && (@inventorylist_identify[@i] == 0))
+            {
+                //deletes unidentified items.
+                delitem2 @inventorylist_id[@i], //Item's ID
+                     1, //amount: 1
+                     0, //identification: 0 [unidentified]
+                     @inventorylist_refine[@i], //since you can get broken or refined
+                     @inventorylist_attribute[@i], //unidentified items through the
+                     @inventorylist_card1[@i], //@item2 and getitem2 commands, this verification
+                     @inventorylist_card2[@i], //is done.
+                     @inventorylist_card3[@i],
+                     @inventorylist_card4[@i];
+
+                //return the item, now identified.
+                getitem2 @inventorylist_id[@i], //Item's ID
+                     1, //amount: 1
+                     1, //identification: 1 [identified]
+                     @inventorylist_refine[@i], //since you can get broken or refined
+                     @inventorylist_attribute[@i], //unidentified items through the
+                     @inventorylist_card1[@i], //@item2 and getitem2 commands, this verification
+                     @inventorylist_card2[@i], //is done.
+                     @inventorylist_card3[@i],
+                     @inventorylist_card4[@i];
+
+                set @ii, @ii +1;
+                //This will create a list of identified items.
+                mes "Item #" + @ii + " identified:";
+                mes "^0000ff" + getitemname(@inventorylist_id[@i]) + "[" + getitemslots(@inventorylist_id[@i]) + "]^000000.";
+            }
+        }
+
+        mes "You can check the list of identified items above.";
+        specialeffect 594; // little effect :3
+        next;
+        mes "[^CE7900Specialist^000000]";
+        mes "Thank you. I'll be here if you ever need my services again.";
+        emotion 21;
+        close;
+    }
+
+O_nevermind:
+        mes "[^CE7900Specialist^000000]";
+        mes "FINE. It'll be fun to watch you try on your own, bye.";
+        close;
+        
+    
+
+C_nozeny:
+        mes "Hey, you don't have enough zeny! Outta here!";
+        emotion 36;
+        close;
+
+C_nomag:
+        mes "Hey, you don't have the magnifiers! Outta here!";
+        emotion 36;
+        close;
+
+
+}

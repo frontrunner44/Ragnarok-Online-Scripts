@@ -1,0 +1,107 @@
+//==================
+// -- Instance 1
+//==================
+toh01_1,0,0,0,0	monster	Mimic	1191,20,0,0,0
+toh01_1,0,0,0,0	monster	Alarm	1193,50,0,0,PayBoard::OnAlarm
+toh01_1,0,0,0,0	monster	Bathory	1102,50,0,0,0
+toh01_1,0,0,0,0	monster	Brilight	1211,60,0,0,0
+
+toh02_1,0,0,0,0	monster	Skeleton Prisoner	1196,40,0,0,0
+toh02_1,0,0,0,0	monster	Zombie Prisoner	1197,40,0,0,0
+toh02_1,0,0,0,0	monster	Evil Druid	1117,30,0,0,0
+toh02_1,0,0,0,0	monster	Photon Cannon	1666,25,0,300000,0
+
+toh03_1,0,0,0,0	monster	Evil Cloud Hermit	1412,40,0,0,0
+toh03_1,0,0,0,0	monster	Clock	1269,50,0,0,0
+toh03_1,0,0,0,0	monster	Dragon Tail	1321,35,0,0,0
+
+toh04_1,0,0,0,0	monster	Injustice	1257,60,0,0,0
+toh04_1,0,0,0,0	monster	Zherlthsh	1200,5,0,900000,0
+toh04_1,0,0,0,0	monster	Joker	1131,15,0,0,0
+toh04_1,0,0,0,0	monster	Isis	1029,25,0,0,0
+
+toh05_1,0,0,0,0	monster	Sting	1207,2,0,0,0
+toh05_1,0,0,0,0	monster	Pasana	1154,2,0,0,0
+toh05_1,0,0,0,0	monster	Tengu	1405,2,0,0,0
+toh05_1,0,0,0,0	monster	Owl Baron	1295,1,0,900000,0
+
+//===================
+// -- Instance 2
+//===================
+toh01_2,0,0,0,0	monster	Mimic	1191,20,0,0,0
+toh01_2,0,0,0,0	monster	Alarm	1193,50,0,0,PayBoard::OnAlarm
+toh01_2,0,0,0,0	monster	Bathory	1102,50,0,0,0
+toh01_2,0,0,0,0	monster	Brilight	1211,60,0,0,0
+
+toh02_2,0,0,0,0	monster	Skeleton Prisoner	1196,40,0,0,0
+toh02_2,0,0,0,0	monster	Zombie Prisoner	1197,40,0,0,0
+toh02_2,0,0,0,0	monster	Evil Druid	1117,30,0,0,0
+toh02_2,0,0,0,0	monster	Photon Cannon	1666,25,0,300000,0
+
+toh03_2,0,0,0,0	monster	Evil Cloud Hermit	1412,40,0,0,0
+toh03_2,0,0,0,0	monster	Clock	1269,50,0,0,0
+toh03_2,0,0,0,0	monster	Dragon Tail	1321,35,0,0,0
+
+toh04_2,0,0,0,0	monster	Injustice	1257,60,0,0,0
+toh04_2,0,0,0,0	monster	Zherlthsh	1200,5,0,900000,0
+toh04_2,0,0,0,0	monster	Joker	1131,15,0,0,0
+toh04_2,0,0,0,0	monster	Isis	1029,25,0,0,0
+
+toh05_2,0,0,0,0	monster	Sting	1207,2,0,0,0
+toh05_2,0,0,0,0	monster	Pasana	1154,2,0,0,0
+toh05_2,0,0,0,0	monster	Tengu	1405,2,0,0,0
+toh05_2,0,0,0,0	monster	Owl Baron	1295,1,0,900000,0
+
+//===================
+// -- Instance 3
+//===================
+toh01_3,0,0,0,0	monster	Mimic	1191,20,0,0,0
+toh01_3,0,0,0,0	monster	Alarm	1193,50,0,0,PayBoard::OnAlarm
+toh01_3,0,0,0,0	monster	Bathory	1102,50,0,0,0
+toh01_3,0,0,0,0	monster	Brilight	1211,60,0,0,0
+
+toh02_3,0,0,0,0	monster	Skeleton Prisoner	1196,40,0,0,0
+toh02_3,0,0,0,0	monster	Zombie Prisoner	1197,40,0,0,0
+toh02_3,0,0,0,0	monster	Evil Druid	1117,30,0,0,0
+toh02_3,0,0,0,0	monster	Photon Cannon	1666,25,0,300000,0
+
+toh03_3,0,0,0,0	monster	Evil Cloud Hermit	1412,40,0,0,0
+toh03_3,0,0,0,0	monster	Clock	1269,50,0,0,0
+toh03_3,0,0,0,0	monster	Dragon Tail	1321,35,0,0,0
+
+toh04_3,0,0,0,0	monster	Injustice	1257,60,0,0,0
+toh04_3,0,0,0,0	monster	Zherlthsh	1200,5,0,900000,0
+toh04_3,0,0,0,0	monster	Joker	1131,15,0,0,0
+toh04_3,0,0,0,0	monster	Isis	1029,25,0,0,0
+
+toh05_3,0,0,0,0	monster	Sting	1207,2,0,0,0
+toh05_3,0,0,0,0	monster	Pasana	1154,2,0,0,0
+toh05_3,0,0,0,0	monster	Tengu	1405,2,0,0,0
+toh05_3,0,0,0,0	monster	Owl Baron	1295,1,0,900000,0
+
+//===================
+// -- Instance 4
+//===================
+toh01_4,0,0,0,0	monster	Mimic	1191,20,0,0,0
+toh01_4,0,0,0,0	monster	Alarm	1193,50,0,0,PayBoard::OnAlarm
+toh01_4,0,0,0,0	monster	Bathory	1102,50,0,0,0
+toh01_4,0,0,0,0	monster	Brilight	1211,60,0,0,0
+
+toh02_4,0,0,0,0	monster	Skeleton Prisoner	1196,40,0,0,0
+toh02_4,0,0,0,0	monster	Zombie Prisoner	1197,40,0,0,0
+toh02_4,0,0,0,0	monster	Evil Druid	1117,30,0,0,0
+toh02_4,0,0,0,0	monster	Photon Cannon	1666,25,0,300000,0
+
+toh03_4,0,0,0,0	monster	Evil Cloud Hermit	1412,40,0,0,0
+toh03_4,0,0,0,0	monster	Clock	1269,50,0,0,0
+toh03_4,0,0,0,0	monster	Dragon Tail	1321,35,0,0,0
+
+toh04_4,0,0,0,0	monster	Injustice	1257,60,0,0,0
+toh04_4,0,0,0,0	monster	Zherlthsh	1200,5,0,900000,0
+toh04_4,0,0,0,0	monster	Joker	1131,15,0,0,0
+toh04_4,0,0,0,0	monster	Isis	1029,25,0,0,0
+
+toh05_4,0,0,0,0	monster	Sting	1207,2,0,0,0
+toh05_4,0,0,0,0	monster	Pasana	1154,2,0,0,0
+toh05_4,0,0,0,0	monster	Tengu	1405,2,0,0,0
+toh05_4,0,0,0,0	monster	Owl Baron	1295,1,0,900000,0

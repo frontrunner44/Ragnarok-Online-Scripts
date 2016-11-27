@@ -1,0 +1,54 @@
+eathena,83,191,5	script	Mandell Fruit#01	111,{
+if(mandell == 1 && mfruit1 == 0 && countitem(30008) < 5) {
+	getitem 30008,1;
+	announce "Quest Update: Collected "+countitem(30008)+" of 5 Mandell Fruits.",bc_self;
+	set mfruit1,1;
+	viewpoint 2,83,191,10,0x000000;
+	end;
+	}
+end;
+}
+
+eathena,200,232,5	script	Mandell Fruit#02	111,{
+if(mandell == 1 && mfruit2 == 0 && countitem(30008) < 5) {
+	getitem 30008,1;
+	announce "Quest Update: Collected "+countitem(30008)+" of 5 Mandell Fruits.",bc_self;
+	set mfruit2,1;
+	viewpoint 2,200,232,11,0x000000;
+	end;
+	}
+end;
+}
+
+eathena,324,321,5	script	Mandell Fruit#03	111,{
+if(mandell == 1 && mfruit3 == 0 && countitem(30008) < 5) {
+	getitem 30008,1;
+	announce "Quest Update: Collected "+countitem(30008)+" of 5 Mandell Fruits.",bc_self;
+	set mfruit3,1;
+	viewpoint 2,324,321,12,0x000000;
+	end;
+	}
+end;
+}
+
+eathena,321,240,5	script	Mandell Fruit#04	111,{
+if(mandell == 1 && mfruit4 == 0 && countitem(30008) < 5) {
+	getitem 30008,1;
+	announce "Quest Update: Collected "+countitem(30008)+" of 5 Mandell Fruits.",bc_self;
+	set mfruit4,1;
+	viewpoint 2,321,240,13,0x000000;
+	end;
+	}
+end;
+}
+
+eathena,365,268,5	script	Mandell Fruit#05	111,{
+if(mandell == 1 && mfruit5 == 0 && countitem(30008) < 5) {
+	getitem 30008,1;
+	announce "Quest Update: Collected "+countitem(30008)+" of 5 Mandell Fruits.",bc_self;
+	set mfruit5,1;
+	viewpoint 2,365,268,14,0x000000;
+	end;
+	}
+end;
+}

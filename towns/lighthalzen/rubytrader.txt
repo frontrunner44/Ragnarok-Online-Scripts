@@ -1,0 +1,42 @@
+lhz_in02.gat,105,21,5	script	!?Trader?!	97,{
+
+
+if(faction == 2) { mes "[Trader]"; mes "......"; close; }
+mes "[Trader]";
+mes "Hello, I'll give you faction points for your materials.";
+mes "What would you like to trade?";
+next;
+menu "Sapphire",saph,"Nothing",-;
+close;
+
+
+
+
+saph:
+mes "[Trader]";
+mes "I'll give you 2 Faction Points for every Sapphire.";
+next;
+mes "[Trader]";
+mes "How mamy sapphire do you wish to trade me?";
+next;
+input $@sapphire;
+next;
+mes "[Trader]";
+mes "Are you sure you want to trade "+$@sapphire+" Sapphire(s) for Faction Points?";
+next;
+menu "Yes",yessaph,"Nevermind",-;
+close;
+
+
+yessaph:
+if(countitem(726) < $@sapphire) { 
+mes "[Trader]"; mes "You do not have enough Sapphire."; 
+close;	
+	} else {
+set fpoints,fpoints+$@sapphire*2;
+mes "[Trader]";
+mes "You have recieved "+$@sapphire*2+" faction points!";
+delitem 726,$@sapphire;
+close;
+}
+  }

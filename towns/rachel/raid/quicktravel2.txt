@@ -1,0 +1,130 @@
+function	script	QuickTravel2	{
+
+// Prepares The Menu
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+if(faction != $prtfaction) {set .@location1$,"- Prontera";}    			    	        //|
+if(faction != $alfaction) {set .@location2$,"- Aldebaran";}    				        //|
+if(faction != $loufaction) {set .@location3$,"- Louyang";}      		                //|
+if(faction != $einfaction) {set .@location4$,"- Einbech";}     				        //|
+if(faction != $einbfaction) {set .@location5$,"- Einbroch";}    			        //|
+if(faction != $geffaction) {set .@location6$,"- Geffen";}     			                //|
+if(faction != $hugfaction) {set .@location7$,"- Hugel";}       			                //|
+if(faction != $ayofaction) {set .@location8$,"- Ayothaya";}    			                //|
+if(faction != $morfaction) {set .@location9$,"- Morocc";}     			                //|
+if(faction != $payfaction) {set .@location10$,"- Payon";}     				        //|
+if(faction != $izlfaction) {set .@location11$,"- Izlude";}    				        //|
+if(faction != $comfaction) {set .@location12$,"- Comodo";}         		                //|
+if(faction != $gonfaction) {set .@location13$,"- Gonryun";}     			        //|
+if(faction != $umbfaction) {set .@location14$,"- Umbala";}     				        //|
+if(faction != $amafaction) {set .@location15$,"- Amatsu";}    			                //|
+if(faction != $veinfaction) {set .@location16$,"- Veins";}    					//|
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//|
+set .@name$,"[^0000ffRai^000000]";
+
+mes .@name$;
+mes "Please consult your map after being warped to ensure you do not head in the wrong direction.";
+next;
+mes .@name$;
+mes "Please choose a town to warp your party near.";
+next;
+menu .@location1$,pront,.@location2$,alde,.@location3$,louy,.@location4$,einb,.@location5$,einbr,.@location6$,geff,.@location7$,huge,.@location8$,ayot,.@location9$,moro,.@location10$,payo,.@location11$,izlu,.@location12$,como,.@location13$,gonry,.@location14$,umbal,.@location15$,amat,.@location16$,veins,"- None",-;
+close;
+
+
+	pront:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "prt_fild07",37,252,getcharid(1);
+	end;
+
+	alde:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "yuno_fild09",224,361,getcharid(1);
+	end;
+
+	louy:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "lou_fild01",192,107,getcharid(1);
+	end;
+
+	einb:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "ein_fild10",196,363,getcharid(1);
+	end;
+
+	einbr:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "lhz_fild03",158,343,getcharid(1);
+	end;
+
+	geff:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "prt_fild00",186,66,getcharid(1);
+	end;
+
+	huge:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "hu_fild05",91,50,getcharid(1);
+	end;
+
+	ayot:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "ayo_fild01",318,204,getcharid(1);
+	end;
+	
+	moro:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "moc_fild06",370,315,getcharid(1);
+	end;
+
+	payo:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "moc_fild03",51,63,getcharid(1);
+	end;
+
+	izlu:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "moc_fild01",364,163,getcharid(1);
+	end;
+
+	como:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "um_fild01",52,289,getcharid(1);
+	end;
+
+	gonry:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "gon_fild01",272,106,getcharid(1);
+	end;
+
+	umbal:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "um_fild04",176,99,getcharid(1);
+	end;
+
+
+	amat:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "ama_fild01",156,293,getcharid(1);
+	end;
+
+	veins:
+	set $dragpoints,$dragpoints-4000;
+	set zeny,zeny-700000;
+	warpparty "ve_fild07",307,38,getcharid(1);
+	end;
+}

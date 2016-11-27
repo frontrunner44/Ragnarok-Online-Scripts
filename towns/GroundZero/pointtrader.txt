@@ -1,0 +1,5 @@
+eathena_in,304,305,5	script	Point Trader#Lhz01	860,{
+
+set .@name$,"[^0000ffTrader Misty^000000]";
+callfunc "PointTrader";
+}

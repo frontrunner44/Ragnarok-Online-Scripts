@@ -1,0 +1,10 @@
+new_zone02,103,118,5	script	Treasure#t03	111,{
+if(treasure03 == 0) {
+	mes "[^0000ff???^000000]";
+	mes "Found 2,000z in the flower pot!";
+	set zeny,zeny+2000;
+	set treasure03,1;
+	close;
+	}
+end;
+}

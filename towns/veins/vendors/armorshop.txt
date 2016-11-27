@@ -1,0 +1,6 @@
+ve_in.gat,373,231,5	script	Armor Shop#Veins01	67,{
+if(faction != $veinfaction) {mes "....."; close;}
+callshop "VeinEquip",0;
+}
+
+-	shop	VeinEquip	139,2101:-1,2220:-1,2312:-1,2314:-1,2316:-1,2341:-1,2405:-1,2505:-1

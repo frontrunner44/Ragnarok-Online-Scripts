@@ -1,0 +1,85 @@
+ayothaya,153,121,5	script	Guide#AyoG01	768,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $ayofaction) {
+	mes .@name$;
+	mes "Get out of my town now, I'd hate to have to kill a youngster like you.";
+	close;
+	}
+mes .@name$;
+mes "Welcome to Ayothaya.";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Ayothaya Field 2",L_ayo2,"- Hotel",L_hotel,"- Weapons & Armor",L_gear,"- Tools",L_tools,"- Ancient Shrine",L_ancient,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_ayo2:
+	mes .@name$;
+	mes "Would you like to go to hugel field 2?";
+	next;
+	menu "- Yes",L_yes,"- No",-;
+	close;
+		L_yes:
+		warp "ayo_fild02",54,196;
+		end;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Ayothaya.";
+	savepoint "ayothaya",151,117;
+	close;
+
+	L_hotel:
+	viewpoint 1,187,150,1,0xFF0000;
+	close;
+
+	L_gear:
+	viewpoint 1,162,90,2,0xFF0000;
+	close;
+
+	L_tools:
+	viewpoint 1,133,86,3,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "All marks removed.";
+	viewpoint 2,187,150,1,0xFF0000;
+	viewpoint 2,162,90,2,0xFF0000;
+	viewpoint 2,133,86,3,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30858,.@amount;
+	close;
+
+	L_ancient:
+	mes .@name$;
+	mes "Would you like a warp to Ancient Shrine?";
+	next;
+	menu "- Yes",L_yancient,"- No thanks",-;
+	close;
+
+		L_yancient:
+		warp "ayo_fild02",279,150;
+		end;
+}

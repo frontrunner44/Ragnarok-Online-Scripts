@@ -1,0 +1,198 @@
+lighthalzen,155,99,5	script	Guide#LhzG1	852,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction == 2) { 
+	mes .@name$;
+	mes "If you love life, I consider you leave now.";
+	close;
+}
+
+mes .@name$;
+mes "Welcome, Soldier. I can mark locations of important npcs on your minimap.";
+next;
+goto start;
+
+start:
+mes .@name$;
+mes "What would you like to mark?";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- WoE Castles",L_castles,"- Biolabs",L_bio,"- Rachel Dungeon",L_rach,"- Head Staff",markmain,"- Raid Instructor",raidguy,"- Job Master",markjob,"- Point Trader",markstor,"- Gear Shops",markshops,"- Tool Shop",marktool,"- Airport",markair,"- Hotel",markhotel,"- Bank",markbank,"- Collector(s)",L_traders,"- Delete All Points",delmarks;
+
+L_save:
+mes .@name$;
+mes "You have been saved in Lighthalzen!";
+savepoint "lighthalzen",158,92;
+close;
+
+
+markjob:
+mes .@name$;
+mes "The Job Master is located inside of Arzeon castle, right beside the Head Staff.";
+viewpoint 1,103,242,1,0xFF0000;
+next; 
+goto start;
+
+markstor:
+viewpoint 1,238,216,2,0xFF0000;
+next; 
+goto start;
+
+markshops:
+viewpoint 1,187,52,3,0xFF0000;
+next; 
+goto start;
+
+markair:
+viewpoint 1,260,75,4,0xFF0000;
+next; 
+goto start;
+
+marktool:
+viewpoint 1,201,161,5,0xF0000;
+next; 
+goto start;
+
+markhotel:
+viewpoint 1,159,131,6,0xF0000;
+next; 
+goto start;
+
+markbank:
+viewpoint 1,203,257,7,0xF0000;
+next; goto start;
+
+markmain:
+viewpoint 1,103,242,8,0xF0000;
+next; 
+goto start;
+
+raidguy:
+mes .@name$;
+mes "Enter the castle and then head towards the north eastern portal on the second floor.";
+viewpoint 1,103,242,9,0xF0000;
+next; 
+goto start;
+
+L_traders:
+viewpoint 1,118,120,10,0xFF0000;
+next;
+goto start;
+
+delmarks:
+viewpoint 2,103,242,1,0xFF0000;
+viewpoint 2,238,216,2,0xFF0000;
+viewpoint 2,187,52,3,0xFF0000;
+viewpoint 2,260,75,4,0xFF0000;
+viewpoint 2,201,161,5,0xF0000;
+viewpoint 2,159,131,6,0xF0000;
+viewpoint 2,203,257,7,0xF0000;
+viewpoint 2,103,242,8,0xF0000;
+viewpoint 2,103,242,9,0xF0000;
+viewpoint 2,118,120,10,0xFF0000;
+next; 
+goto start;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30865,.@amount;
+	close;
+
+	L_bio:
+	mes .@name$;
+	mes "This biolabs dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter Biolabs anyway?";
+	next;
+	menu "- Yes",L_yesbio,"- No thanks",-;
+	close;
+
+		L_yesbio:
+		mes .@name$;
+		mes "Be careful in there!";
+		next;
+		warp "lhz_dun01",149,282;
+		end;
+
+	L_rach:
+	mes .@name$;
+	mes "This Rachel dungeon is a non-instance dungeon, and is contested territory. You will not get double experience inside.";
+	next;
+	mes .@name$;
+	mes "Any player, regardless of faction, can enter this dungeon. Players are also allowed to player kill within the dungeon.";
+	next;
+	mes .@name$;
+	mes "Would you like to enter the Rachel dungeon anyway?";
+	next;
+	menu "- Yes",L_yesrach,"- No thanks",-;
+	close;
+
+		L_yesrach:
+		mes .@name$;
+		mes "Be careful in there!";
+		next;
+		warp "ra_san01",140,129;
+		end;
+
+
+	//=====================
+	// -- WoE Castles
+	//=====================
+	L_castles:
+	if(agitcheck() == 0) { 
+		mes .@name$;
+		mes "I can not warp you to castle areas when WoE is not active.";
+		close;
+		}
+	mes .@name$;
+	mes "Which castle area would you like to travel to?";
+	next;
+	menu "- Prontera Castles",L_prtcas,"- Payon Castles",L_paycas,"- Geffen Castles",L_gefcas,"- Aldebaran Castles",L_aldcas,"- Yuno Castles",L_yuncas,"- Veins Castles",L_veincas,"- None",-;
+	close;
+
+		L_prtcas:
+		warp "prt_gld",159,35;
+		end;
+
+		L_paycas:
+		warp "pay_gld",365,149;
+		end;
+
+		L_gefcas:
+		warp "gef_fild13",41,366;
+		end;
+		
+		L_aldcas:
+		warp "alde_gld",276,160;
+		end;
+
+		L_yuncas:
+		warp "sch_gld",348,89;
+		end;
+
+		L_veincas:
+		warp "aru_gld",196,352;
+		end;
+}

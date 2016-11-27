@@ -1,0 +1,9 @@
+hu_in01,96,383,5	script	Weapon Dealer#HugWep01	810,{
+if(faction != $hugfaction) {
+	mes "[^0000ffWeapon Dealer^000000]";
+	mes "I can't offer you my services. Leave now before trouble starts.";
+	close;
+	}
+callshop "HugWeapons01",0;
+}
+-	shop	HugWeapons01	139,1116:-1,1154:-1,1354:-1,1201:-1

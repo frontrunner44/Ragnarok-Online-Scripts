@@ -1,0 +1,13 @@
+aldeba_in,85,167,5	script	Storage#AldS01	48,{
+
+mes "[^0000ffStorage^000000]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

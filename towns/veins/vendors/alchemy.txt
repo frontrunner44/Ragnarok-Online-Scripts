@@ -1,0 +1,19 @@
+ve_in.gat,244,308,5	script	Alchemist#Vein01	740,{
+if(faction != $veinfaction) {mes "...."; close;}
+mes "[Ricardo]";
+mes "So, you want to buy some alchemist supplies?";
+next;
+	switch(select("Items:Books:Cancel")) {
+
+	case 1: callshop "Alchemy#Vein13",0; break;
+	case 2: callshop "Alchemybook#Vein13",0; break;
+	default:
+		mes "[Ricardo]";
+		mes "Come back any time you need supplies!";
+		close;
+	}
+}
+
+
+-	shop	Alchemy#Vein13	139,1092:-1,7134:-1
+-	shop	AlchemyBook#Vein13	139,7144:-1,7434:-1,7133:-1,7132:-1,7131:-1,7130:-1,7129:-1,7128:-1,7127:-1

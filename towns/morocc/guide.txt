@@ -1,0 +1,104 @@
+morocc.gat,161,100,5	script	Guide#Mor	708,{
+
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $morfaction) { 
+	mes .@name$; 
+	mes "If you love life, I consider you leave now."; 
+	close;
+	}
+
+mes .@name$;
+mes "Eh there. Welcome to the good ole town of Morocc.";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Hotel",hotel,"- Storage",storage,"- Weapon & Armor",weparm,"- Tool Shop",toolshop,"- Ant Hell Dungeon",L_ant,"- Pyramid Dungeon",L_pyra,"- Sphinx Dungeon",L_sphinx,"- Delete Markers",delmarks,"- Nothing",-;
+close;
+
+L_save:
+mes .@name$;
+mes "You have been saved in Morocc!";
+savepoint "morocc",156,93;
+close;
+
+hotel:
+viewpoint 1,199,64,1,0xFF0000;
+close;
+
+storage:
+viewpoint 1,100,70,2,0xFF0000;
+close;
+
+weparm:
+viewpoint 1,100,70,3,0xFF0000;
+viewpoint 1,251,59,4,0xFF0000;
+close;
+
+toolshop:
+viewpoint 1,283,173,5,0xFF0000;
+close;
+
+delmarks:
+viewpoint 2,199,64,1,0xFF0000;
+viewpoint 2,100,70,2,0xFF0000;
+viewpoint 2,100,70,3,0xFF0000;
+viewpoint 2,251,59,4,0xFF0000;
+viewpoint 2,283,173,5,0xFF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30851,.@amount;
+	close;
+
+	L_ant:
+	mes .@name$;
+	mes "Would you like a warp to Ant Hell dungeon?";
+	next;
+	menu "- Yes",L_yant,"- No thanks",-;
+	close;
+
+		L_yant:
+		warp "anthell01",35,260;
+		end;
+
+	L_pyra:
+	mes .@name$;
+	mes "Would you like a warp to Pyramid Dungeon?";
+	next;
+	menu "- Yes",L_ypyra,"- No thanks",-;
+	close;
+
+		L_ypyra:
+		warp "moc_pryd01",190,19;
+		end;
+
+	L_sphinx:
+	mes .@name$;
+	mes "Would you like a warp to Sphinx Dungeon?";
+	next;
+	menu "- Yes",L_ysphinx,"- No thanks",-;
+	close;
+
+		L_ysphinx:
+		warp "in_sphinx1",288,9;
+		end;
+}

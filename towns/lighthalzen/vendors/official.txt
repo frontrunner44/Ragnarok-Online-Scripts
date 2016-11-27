@@ -1,0 +1,16 @@
+lighthalzen,69,75,5	shop	Fruit Gardener	102,512:-1,513:-1
+lighthalzen,112,44,0	shop	Flower Girl	90,712:-1,744:-1,748:-1
+lighthalzen,124,129,0	shop	Vegetable Gardener	91,515:-1,516:-1,535:-1
+lighthalzen,220,122,3	shop	Vendor from Milk Ranch	90,519:-1
+lighthalzen,222,191,4	shop	Pet Groomer	125,537:-1,643:-1,10013:-1,10014:-1
+lhz_in02,286,95,4	shop	Beginner's Merchant	62,5112:-1,2416:-1,2113:-1,2512:-1
+lhz_in02,17,220,5	shop	Vegetable Gardener	91,515:-1,516:-1,535:-1
+lhz_in02,21,220,5	shop	Fruit Gardener	102,512:-1,513:-1
+lhz_in02,32,219,5	shop	Butcher	54,517:-1
+lhz_in02,38,145,5	shop	Gift Merchant	91,734:-1,735:-1,736:-1,737:-1,746:-1
+lhz_in02,47,148,3	shop	Wedding Shop Dealer	71,744:-1,745:-1,2338:-1,2206:-1,7170:-1
+lhz_in02,85,216,5	shop	Doll Supplier	862,740:-1,741:-1,742:-1
+lhz_in02,87,208,3	shop	Toy Supplier	715,2243:-1,2212:-1,2242:-1,2241:-1
+lhz_in03,239,106,5	shop	Tool Dealer	850,501:-1,502:-1,506:-1,645:-1,656:-1,601:-1,602:-1,1065:-1,611:-1
+lhz_in03,258,101,3	shop	Arrow Merchant	855,1750:-1,1770:-1,1752:-1,1751:-1
+lhz_in03,249,24,4	shop	Merchant	855,911:-1,910:-1,912:-1,528:-1

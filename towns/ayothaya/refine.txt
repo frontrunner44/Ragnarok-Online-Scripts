@@ -1,0 +1,4 @@
+ayo_in01,85,193,5	script	Refiner#AyoRefine	813,{
+set @name$,"Bard the Refiner";
+callfunc "G_Refine";
+}

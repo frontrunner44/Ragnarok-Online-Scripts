@@ -1,0 +1,3 @@
+um_in,104,124,5	script	Tool Dealer#Umb	788,{
+callshop "GlobTool01",0;
+}

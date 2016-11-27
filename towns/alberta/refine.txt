@@ -1,0 +1,4 @@
+alberta_in,172,90,2	script	Refiner#AlbRefine	52,{
+set @name$,"[^0000ffArk the Refiner^000000]";
+callfunc "G_Refine";
+}

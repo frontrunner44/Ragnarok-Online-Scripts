@@ -1,0 +1,3 @@
+ein_in01,189,15,8	script	Tool Dealer#EinbTools	750,{
+callshop "GlobTool01",0;
+}

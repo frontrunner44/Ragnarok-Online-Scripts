@@ -1,0 +1,25 @@
+RO2,16,185,5	script	Spark of Knowledge#12	802,{
+set .@name$,"[^0000ffSpark^000000]";
+
+mes .@name$;
+mes "Any npc which has question marks in it's name will either give you a quest, or be part of a quest.";
+next;
+mes .@name$;
+mes "Quests are a very large part of ChaosRO. Quests will be one of the main paths to obtaining custom headgears, wings and more.";
+next;
+mes .@name$;
+mes "Quests on ChaosRO will also always reward you with 'FP' or 'Faction Points' and experience as well.";
+next;
+mes .@name$;
+mes "When you logged into ChaosRO, your character should have recieved an 'Adventure Logs' item.";
+next;
+mes .@name$;
+mes "This item will allow you to do many things, including track all of your quests for you. Use it as a quest logger.";
+next;
+mes .@name$;
+mes "Please note that SOMTIMES you will recieve a different quest reward depending on your Faction.";
+next;
+mes .@name$;
+mes "But do not worry, Alberta serves as a neutral home town where players can trade or sell items between factions.";
+close;
+}

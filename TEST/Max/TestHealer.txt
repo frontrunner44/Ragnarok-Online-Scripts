@@ -1,0 +1,26 @@
+map,0,0,0	script	Healer	SpriteID,{
+set .@cost,100; // Normal cost for healer. For easy management.
+set .@name$,"[^0000ffHealer^000000]";
+
+mes .@name$;
+mes "Would you like a heal?";
+next;
+mes .@name$;
+mes "Healing will cost you "+.@cost+$healtax+" with tax included. Current tax is "+$healtax+"z.";
+next;
+menu "- Heal",L_heal,"- No thanks",-;
+close;
+
+	L_heal:
+	if(zeny < .@cost+$healtax) {
+		mes .@name$;
+		mes "You do not have enough money.";
+		close;
+		}
+	mes .@name$;
+	mes "Here you go! I bet you feel refreshed!";
+	set zeny,zeny-(.@cost+$healtax);
+	set $leadguildfund,$leadguildfund+$healtax;
+	percentheal 100,100;
+	close;
+}

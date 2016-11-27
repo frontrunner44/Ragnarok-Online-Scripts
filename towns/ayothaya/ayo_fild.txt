@@ -1,0 +1,12 @@
+ayo_fild02,39,198,5	script	Guide#BTT	768,{
+set .@name$,"[^0000ffGuide^000000]";
+mes .@name$;
+mes "Would you like to go back to town?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	warp "ayothaya",151,117;
+	end;
+}

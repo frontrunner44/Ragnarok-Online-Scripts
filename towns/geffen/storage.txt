@@ -1,0 +1,17 @@
+geffen_in,82,172,5	script	Storage#Gef01	50,{
+if(faction != $geffaction) {
+	mes "[Storage]";
+	mes "Get out of here!";
+	close;
+	}
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Yes",yes,"- No",-;
+close;
+
+yes:
+openstorage;
+close;
+}

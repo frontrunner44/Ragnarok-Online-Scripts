@@ -1,0 +1,13 @@
+morocc_in.gat,142,68,5	script	Weapon Shop#Mor01	48,{
+if(faction != $morfaction) { mes "....."; close;}
+callshop "MorWep1",0;
+}
+
+morocc_in.gat,52,166,5	script	Weapon Shop#Mor02	106,{
+if(faction != $morfaction) { mes "....."; close;}
+callshop "MorWep1",0;
+}
+
+
+-	shop	MorWep1	139,1213:-1,1222:-1,1210:-1,1219:-1,1216:-1,1254:-1,1250:-1,1252:-1
+

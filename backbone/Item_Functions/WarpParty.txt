@@ -1,0 +1,23 @@
+function	script	RecallParty	{
+mes "[^ff0000Server^000000]";
+mes "Recall your entire party?";
+next;
+menu "- Yes",yes,"- No",-;
+close;
+
+	yes:
+	mes "Attemping to warp party...";
+	close2;
+	if(!getcharid(1)) { 
+		dispbottom "You are not in a party.";
+		end;
+	}
+	misceffect "35";
+	sleep2 2000;
+	getmapxy(.@map$,.@x,.@y,0);
+	set .@id,getcharid(1);
+	warpparty .@map$,.@x,.@y,.@id;
+	delitem 30510,1;
+	end;
+
+}

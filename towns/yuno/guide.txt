@@ -1,0 +1,91 @@
+yuno,159,84,5	script	Guide#YunoGuide	872,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $yunofaction) {
+	mes .@name$;
+	mes "Hmph!";
+	close;
+	}
+mes .@name$;
+mes "Welcome to Yuno. Need help with anything?";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Airport",L_air,"- Hotel",L_hotel,"- Weapons & Armor",L_shops,"- Tool Shop",L_tools,"- Kiel Dungeon",L_kiel,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Yuno.";
+	savepoint "yuno",157,52;
+	close;
+
+	L_hotel:
+	viewpoint 1,51,105,1,0xFF0000;
+	close;
+
+	L_shops:
+	viewpoint 1,121,138,2,0xFF0000;
+	close;
+
+	L_tools:
+	viewpoint 1,193,142,3,0xFF0000;
+	close;
+
+	L_air:
+	viewpoint 1,52,207,4,0xFF0000;
+	close;
+
+	L_delete:
+	viewpoint 2,51,105,1,0xFF0000;
+	viewpoint 2,121,138,2,0xFF0000;
+	viewpoint 2,193,142,3,0xFF0000;
+	viewpoint 2,52,207,4,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30870,.@amount;
+	close;
+
+
+	L_kiel:
+	mes .@name$;
+	mes "Would you like to warp to Kiel Dungeon?";
+	next;
+	menu "- Yes",L_ykiel,"- No thanks",-;
+	close;
+
+		L_ykiel:
+		warp "kh_dun01",16,222;
+		end;
+}
+kh_dun01,19,225,5	script	Yuno Warper	106,{
+set .@name$,"[^0000ffYuno Warper^000000]";
+mes .@name$;
+mes "Would you like to warp to Yuno?";
+next;
+menu "- Yes",L_yes,"- No thanks",-;
+close;
+
+	L_yes:
+	warp "yuno",157,51;
+	end;
+}

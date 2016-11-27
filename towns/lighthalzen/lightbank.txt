@@ -1,0 +1,204 @@
+//===== eAthena Script ========================================
+//= Lighthalzen Bank Area
+//===== By: ==================================================
+//= Au{R}oN (Translate by Alan)
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= eAthena 1.0+
+//===== Description: =========================================
+//= Lighthalzen Bank
+//===== Additional Comments: =================================
+//= Converted from Aegis
+//= 1.0 Add all Bank NPC (TEMPORARY NAME and FACING PROBABLY INCORRECT) [Au{R}oN]
+//= 1.1 Add correct name, and change some dialogue. [Au{R}oN]
+//============================================================
+
+//==========================
+//============NPCs==========
+//==========================
+
+lhz_in02.gat,34,41,7	script	Arthur::Test	849,{
+
+	mes "[Arthur]";
+	mes "The chairs here are";
+	mes "so not ergonomic. And";
+	mes "they're uncomfortable too!";
+	mes "But it's sooo cool inside this";
+	mes "bank and I just wanted to get";
+	mes "get away from all this heat...";
+	close;
+}
+
+lhz_in02.gat,28,39,3	script	Helen	703,{
+
+	mes "[Helen]";
+	mes "You know, maybe when";
+	mes "I grow up, i'll be a bank";
+	mes "clerk. That sounds liek a";
+	mes "really nice jobm, don't you";
+	mes "think? It's laid back and posh...";
+	close;
+}
+
+lhz_in02.gat,31,34,3	script	Tadem	847,{
+
+	mes "[Tadem]";
+	mes "I do so enjoy the";
+	mes "architectural structure";
+	mes "of this bank. It's quite";
+	mes "artistic with both classical";
+	mes "and modern elements. Would";
+	mes "you not agree? Fascinating";
+	close;
+}
+
+lhz_in02.gat,31,33,3	script	Gracie	863,{
+
+	mes "[Gracie]";
+	mes "Oh, it's so comfortable";
+	mes "in there~Though, why are";
+	mes "we inside the bank when";
+	mes "the bank services aren't even";
+	mes "working? Yes, we're standing,";
+	mes "but we're doing it in comfort";
+	next;
+	mes "[Gracie]";
+	mes "In fact, it's so";
+	mes "comfortable here,";
+	mes "I think I'll refuse to leave.";
+	mes "Though, I'm willing to change";
+	mes "my mind if you can find a place";
+	mes "that's even more comfortable.";
+	close;
+}
+
+//=============================================
+//==================Bankers====================
+//=============================================
+
+
+lhz_in02,21,25,9	script	Bank Clerk::1_st	755,{
+
+
+if(faction == 2) {mes "I can't offer you my services. Please leave this town before you get hurt."; close;}
+
+mes "[Banker]";
+mes "What would you like to do?";
+next;
+menu "Use the bank",banking,"Nothing",-;
+close;
+
+banking:
+set @cost,500;
+mes "[Banker]";
+mes "Welcome to the First Bank of Lighthalzen. How can I help you today?";
+next;
+menu "I'd like to make a deposit.",Ldeposit,"I'd like to make a withdrawl.",Lwithdrawl,"What's my current balance?",Lbalance,"Cancel",Lcancel;
+
+Ldeposit:
+	mes "[Banker]";
+	mes "Very well... How much would you like to deposit? The maximum you can deposit at once is 999,999 Zeny.";
+	next;
+	if (@cost > 0) goto Ldepocost;
+	goto Ldepocont;
+
+	Ldepocost:
+		mes "[Banker]";
+		mes "Oh and don't forget there is a " + @cost + " Zeny charge on all transactions.";
+		next;
+		goto Ldepocont;
+
+Ldepocont:
+	input @deposit;
+	if (@deposit < 1) goto Lrealamount;
+	if (@deposit > Zeny) goto Lneedzeny;
+	if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+	set Zeny,Zeny - @deposit;
+	set Zeny,Zeny - @cost;
+	set #bankstorage,#bankstorage + @deposit;
+	mes "[Banker]";
+	mes "Thank you very much... Your zeny is in good hands.";
+	close;
+
+Lwithdrawl:
+	mes "[Banker]";
+	mes "Very well... How much would you like to withdraw? The maximum you can withdraw at one time is 999,999 Zeny";
+	next;
+	if (@cost > 0) goto Lwithcost;
+	goto Lwithcont;
+
+	Lwithcost:
+		mes "[Banker]";
+		mes "Oh and don't forget there is a " + @cost + " Zeny charge on all transactions.";
+		next;
+		goto Lwithcont;
+
+Lwithcont:
+	input @withdrawl;
+	if (@withdrawl < 1) goto Lrealamount;
+	if (@withdrawl > #bankstorage) goto Lneedzeny3;
+	if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask; 
+	if (@cost > Zeny) goto Lneedzeny2;
+	goto Lwithcont2;
+
+	Lcostask:
+		mes "[Banker]";
+		mes "You don't have the Zeny for the transaction fee right now. Would you like me to take the fee directly from your withdrawl?";
+		next;
+		menu "Yes please.",Lwithtake,"No thank you.",Lcancel;
+
+	Lwithtake:
+		mes "[Banker]";
+		mes "Ok then.";
+		set @withdrawl,@withdrawl - @cost;
+		set #bankstorage,#bankstorage - @cost;
+		set @cost,0;
+		next;
+		goto Lwithcont2;
+
+Lwithcont2:
+	set Zeny,Zeny - @cost;
+	set Zeny,Zeny + @withdrawl;
+	set #bankstorage,#bankstorage - @withdrawl;
+	mes "[Banker]";
+	mes "There's your Zeny. Have a good day.";
+	close;
+
+Lbalance:
+	mes "[Banker]";
+	mes "Hmmmm lemme check the paper work.";
+	next;
+	mes "*Rustle, Rustle*";
+	next;
+	mes "[Banker]";
+	mes "You currently have " + #bankstorage + " Zeny in your account.";
+	close;
+
+Lrealamount:
+	mes "[Banker]";
+	mes "Don't play jokes with me please. Next time ask for a real amount.";
+	close;
+
+Lneedzeny:
+	mes "[Banker]";
+	mes "You don't have enough Zeny to make that deposit.";
+	close;
+
+Lneedzeny2:
+	mes "[Banker]";
+	mes "You don't have enough Zeny to cover the transaction fee.";
+	close;
+
+Lneedzeny3:
+	mes "[Banker]";
+	mes "You don't have enough Zeny in your account.";
+	close;
+
+Lcancel:
+	mes "[Banker]";
+	mes "Very well... come again soon.";
+	close;
+}
+lhz_in02,21,38,9	duplicate(Test)	Bank Clerk::3_th	86
+

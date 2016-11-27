@@ -1,0 +1,29 @@
+prt_in,61,142,5	script	Clerk#Prt01	77,{
+
+set .@name$,"[^0000ffClerk^000000]";
+
+mes .@name$;
+mes "Welcome to the Prontera Hotel. Would you like to sleep here for 1,000z?";
+next;
+menu "- Yes",L_sleep,"- No thanks",-;
+close;
+
+L_sleep:
+if(Zeny < 1000) {
+mes .@name$;
+mes "You do not seem to have enough money. Sorry.";
+close;
+}
+set zeny,zeny-1000;
+mes .@name$;
+mes "Hope you enjoy your stay!";
+next;
+warp "prt_in",62,170;
+specialeffect2 579;
+specialeffect2 14;
+sc_start 30,900000,10;
+sc_start SC_EXPBOOST,1800000,50;
+sc_start SC_ITEMBOOST,1800000,50;
+percentheal 100,100;
+end;
+}

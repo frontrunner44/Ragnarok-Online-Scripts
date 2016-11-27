@@ -1,0 +1,4 @@
+eathena_in,202,307,2	script	Refiner#GZ	63,{
+set @name$,"Alfonzo";
+callfunc "G_Refine";
+}

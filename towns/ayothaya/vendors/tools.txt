@@ -1,0 +1,3 @@
+ayo_in01,18,182,5	script	Tool Dealer#AyoT	72,{
+callshop "GlobTool01",0;
+}

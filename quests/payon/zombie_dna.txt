@@ -1,0 +1,154 @@
+pay_arche,44,137,5	script	?Old Man?	804,{
+if(faction != $payfaction) {
+	mes "[Old Man]";
+	mes ".....";
+	close;
+}
+
+if(dnaphase == 3) goto phase_3;
+if(dnaphase == 2) goto quest1_done;
+if(dnaphase == 1) goto onquest1;
+mes "[Old Man]";
+mes "Hmm. These zombies really intrigue me.";
+next;
+mes "[Old Man]";
+mes "If only I could get their dna! I would love to study it!";
+next;
+menu "- Offer to help out",L_help,"- Ignore",-;
+close;
+
+	L_help:
+	mes "[Old Man]";
+	mes "Hey there young'en.. Would you help me collect dna from those zombies?";
+	next;
+	mes "[Old Man]";
+	mes "I need you to collect 15 DNA samples from 'Zombies'. That should be enough for my tests.";
+	close2;
+	announce "New quest added to your Adventure Logs!",bc_self;
+	set dnaquest$,"Zombie DNA";
+	set dnaphase,1;
+	end;
+
+	onquest1:
+	if(countitem(30002) >= 15) {
+		mes "[Old Man]";
+		mes "Oh, thank you! Very fine samples! I can't wait to study these!";
+		close2;
+		set dnaphase,2;
+		set dnaquest$,"";
+		soundeffect "battlewon.wav",0;
+		set fpoints,fpoints+200;
+		getexp 60000,10000;
+		delitem 30002,15;
+		getitem 30881,5;
+		set Zeny,Zeny+3500;
+		dispbottom "Gained 3,500z and +200FP.";
+		announce "Quest Update: Zombie DNA quest complete!",bc_self;
+		end;
+	}
+	mes "[Old Man]";
+	mes "I can't wait to get my hands on those samples!";
+	close;
+
+	quest1_done:
+	mes "[Old Man]";
+	mes "Thanks for all the help ealier! This old geezer is too weak to defeat monsters himself, ya know!";
+	next;
+	mes "[Old Man]";
+	mes "Say... would you mind bringing this report to my student in Prontera?";
+	next;
+	menu "Sure",L_yes,"No thanks..",-;
+	close;
+
+		L_yes:
+		mes "[Old Man]";
+		mes "Really? Thanks! Here, take this to him.";
+		next;
+		mes "[Old Man]";
+		mes "He's usually standing around near the big hands at the northern portion of Prontera.";
+		close2;
+		set repdeliver$,"Report Delivery";
+		set dnaphase,3;
+		getitem 30003,1;
+		announce "New quest added to your Adventure Logs!",bc_self;
+		end;
+
+		phase_3:
+		mes "[Old Man]";
+		mes "Thanks for sending him the report!";
+		close;
+
+
+}
+
+//=====================//
+// <-- Mob Script --> //
+//===================//
+-	script	ZombieDNA	-1,{
+OnDNA:
+if(getcharid(1) !=0){
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(dnaphase == 1) {
+			set .@temp,rand(1,3);
+			if(.@temp == 1) {
+				getitem 30002,1;
+				announce "Quest Update: Found "+ countitem(30002) +"/15 DNA Samples.",bc_self;
+				}
+			}
+		}
+	}
+	end;
+}
+if(dnaphase == 1) {
+	set .@temp,rand(1,3);
+	if(.@temp == 1) {
+		getitem 30002,1;
+		announce "Quest Update: Found "+ countitem(30002) +"/15 DNA Samples.",bc_self;
+		end;
+		}
+announce "Quest Update: DNA sample did not drop.",bc_self;
+}
+end;
+}
+
+//=====================//
+// <-- Second NPC --> //
+//===================//
+prontera,158,285,5	script	?Marno?	57,{
+if(faction != $prtfaction) {
+	mes "[Marno]";
+	mes "........";
+	close;
+}
+if(countitem(30003) > 0) goto quest_done;
+mes "[Marno]";
+mes "How are you?";
+close;
+
+quest_done:
+mes "[Marno]";
+mes "Hmm. Interesting report. Thanks for bringing this to me. Here's a little tip for you.";
+close2;
+soundeffect "battlewon.wav",0;
+set fpoints,fpoints+50;
+set repdeliver$,"";
+getexp 3000,2000;
+dispbottom "Gained +50FP.";
+announce "Zombie Report quest complete!",bc_self;
+getitem 30700,1;
+getitem 30881,10;
+getitem 1736,1;
+delitem 30003,1;
+end;
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "prontera" && countitem(30003)) {
+	viewpoint 1,158,285,1,0x000000;
+	}
+end;
+}

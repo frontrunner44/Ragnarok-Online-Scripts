@@ -1,0 +1,620 @@
+//=============================================
+// -- The Abyss Floor 1 Instance 1
+//=============================================
+abyss01_1,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_1,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_1,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_1,0,0,0,0	monster	Drops	1113,10,0,0,0
+abyss01_1,0,0,0,0	monster	Drops	1113,10,0,0,0
+abyss01_1,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_1,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_1,0,0,0,0	monster	Poporing	1031,30,0,0,0
+abyss01_1,0,0,0,0	monster	Skeleton	1076,100,0,0,GZBoard::OnNoisey
+abyss01_1,0,0,0,0	monster	Poporing	1031,10,0,0,0
+abyss01_1,0,0,0,0	monster	Zombie	1015,40,0,0,GZBoard::OnZombie
+abyss01_1,0,0,0,0	monster	Familiar	1005,30,0,0,0
+
+//==================================================
+// - The Abyss Floor 2 Instance 1
+//==================================================
+abyss02_1,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+abyss02_1,0,0,0,0	monster	Eggyra	1116,15,0,0,GZBoard::OnEggs
+abyss02_1,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss02_1,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss02_1,235,54,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss02_1,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 3 Instance 1
+//==================================================
+abyss03_1,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss03_1,0,0,0,0	monster	Munak	1026,40,0,0,0
+abyss03_1,0,0,0,0	monster	Bongun	1188,30,0,0,0
+abyss03_1,0,0,0,0	monster	Poporing	1031,10,0,0,0
+abyss03_1,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss03_1,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
+abyss03_1,116,199,0,0	monster	Hydra	1068,1,306000,100000,1
+abyss03_1,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,116,190,0,0	monster	Hydra	1068,1,326000,100000,1
+abyss03_1,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
+abyss03_1,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
+abyss03_1,117,197,0,0	monster	Hydra	1068,1,314000,100000,1
+abyss03_1,117,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,118,207,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_1,118,201,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,118,198,0,0	monster	Hydra	1068,1,312000,100000,1
+abyss03_1,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
+abyss03_1,119,205,0,0	monster	Hydra	1068,1,324000,100000,1
+abyss03_1,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,119,196,0,0	monster	Hydra	1068,1,315000,100000,1
+abyss03_1,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
+abyss03_1,120,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,121,200,0,0	monster	Hydra	1068,1,333000,100000,1
+abyss03_1,122,200,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,122,197,0,0	monster	Hydra	1068,1,321000,100000,1
+abyss03_1,110,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,113,194,0,0	monster	Hydra	1068,1,319000,100000,1
+abyss03_1,109,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
+abyss03_1,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,108,191,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_1,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,107,190,0,0	monster	Hydra	1068,1,320000,100000,1
+abyss03_1,110,190,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_1,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_1,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_1,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_1,214,266,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss03_1,37,243,0,0	monster	Black Mushroom	1084,1,600000,300000,1
+abyss03_1,37,243,0,0	monster	Nine Tail	1180,1,3600000,1800000,1
+abyss03_1,111,199,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss03_1,110,216,20,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_1,132,84,10,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_1,197,113,10,10	monster	Red Plant	1078,4,180000,90000,1
+abyss03_1,55,254,10,10	monster	Red Plant	1078,4,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 4 Instance 1
+//==================================================
+abyss04_1,0,0,0,0	monster	Sohee	1170,50,0,0,0
+abyss04_1,0,0,0,0	monster	Munak	1026,3,0,0,0
+abyss04_1,0,0,0,0	monster	Bongun	1188,3,0,0,0
+abyss04_1,0,0,0,0	monster	Nine Tail	1180,1,0,0,0
+abyss04_1,0,0,0,0	monster	Nine Tail	1180,1,3600000,1800000,0
+abyss04_1,0,0,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_1,0,0,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_1,0,0,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_1,0,0,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_1,0,0,0,0	monster	Giant Whisper	1186,1,14400000,0,1
+abyss04_1,66,73,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,68,72,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,67,71,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,63,70,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,58,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,67,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,60,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,69,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,62,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,71,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,64,66,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,57,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,66,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,59,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,68,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,71,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,66,63,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_1,71,243,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,86,248,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,85,178,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,115,190,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,230,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,240,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,219,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,243,220,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,219,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,228,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_1,228,61,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss04_1,138,42,0,0	monster	Blue Plant	1079,1,600000,300000,1
+abyss04_1,120,186,0,0	monster	Green Plant	1080,1,600000,300000,1
+abyss04_1,88,35,0,0	monster	Yellow Plant	1081,1,600000,300000,1
+abyss04_1,126,135,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,126,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,126,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,126,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,126,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,179,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,179,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,179,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,179,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,179,130,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_1,0,0,0,0	monster	Greatest General	1277,3,0,0,0
+abyss04_1,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+abyss04_1,246,56,20,20	monster	White Plant	1082,3,180000,90000,1
+abyss04_1,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 5 Instance 1
+//==================================================
+abyss05_1,0,0,0,0	monster	Dokebi	1110,40,0,0,0
+abyss05_1,0,0,0,0	monster	Horong	1129,30,0,0,0
+abyss05_1,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+abyss05_1,0,0,0,0	monster	Greatest General	1277,15,0,0,0
+abyss05_1,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss05_1,0,0,0,0	monster	Nine Tail	1180,30,60000,30000,0
+abyss05_1,0,0,0,0	monster	Skeleton General	1290,1,0,0,0
+abyss05_1,0,0,0,0	monster	Am Mut	1301,1,0,0,0
+abyss05_1,120,115,0,0	monster	Cat o' Nine Tails	1307,1,3600000,7200000,1
+abyss05_1,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_1,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_1,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+abyss05_1,107,206,5,5	monster	White Plant	1082,2,180000,90000,1
+abyss05_1,28,110,10,10	monster	White Plant	1082,2,180000,90000,1
+abyss05_1,190,207,5,5	monster	White Plant	1082,2,180000,90000,1
+
+//=============================================
+// -- The Abyss Floor 1 Instance 2
+//=============================================
+abyss01_2,158,75,0,0	monster	Poring	1002,5,0,0,0
+abyss01_2,186,80,0,0	monster	Poring	1002,5,0,0,0
+abyss01_2,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_2,165,107,0,0	monster	Drops	1113,10,0,0,0
+abyss01_2,194,51,0,0	monster	Drops	1113,10,0,0,0
+abyss01_2,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_2,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_2,0,0,0,0	monster	Poporing	1031,30,0,0,0
+abyss01_2,0,0,0,0	monster	Skeleton	1076,100,0,0,GZBoard::OnNoisey
+abyss01_2,61,137,0,0	monster	Poporing	1031,10,0,0,0
+abyss01_2,0,0,0,0	monster	Zombie	1015,40,0,0,GZBoard::OnZombie
+abyss01_2,0,0,0,0	monster	Familiar	1005,30,0,0,0
+
+//==================================================
+// - The Abyss Floor 2 Instance 2
+//==================================================
+abyss02_2,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+abyss02_2,0,0,0,0	monster	Eggyra	1116,15,0,0,GZBoard::OnEggs
+abyss02_2,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss02_2,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss02_2,235,54,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss02_2,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 3 Instance 2
+//==================================================
+abyss03_2,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss03_2,0,0,0,0	monster	Munak	1026,40,0,0,0
+abyss03_2,0,0,0,0	monster	Bongun	1188,30,0,0,0
+abyss03_2,0,0,0,0	monster	Poporing	1031,10,0,0,0
+abyss03_2,0,0,0,0	monster	Archer Skeleton	1016,20,180000,90000,GZBoard::OnArcher
+abyss03_2,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
+abyss03_2,116,199,0,0	monster	Hydra	1068,1,306000,100000,1
+abyss03_2,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,116,190,0,0	monster	Hydra	1068,1,326000,100000,1
+abyss03_2,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
+abyss03_2,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
+abyss03_2,117,197,0,0	monster	Hydra	1068,1,314000,100000,1
+abyss03_2,117,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,118,207,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_2,118,201,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,118,198,0,0	monster	Hydra	1068,1,312000,100000,1
+abyss03_2,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
+abyss03_2,119,205,0,0	monster	Hydra	1068,1,324000,100000,1
+abyss03_2,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,119,196,0,0	monster	Hydra	1068,1,315000,100000,1
+abyss03_2,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
+abyss03_2,120,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,121,200,0,0	monster	Hydra	1068,1,333000,100000,1
+abyss03_2,122,200,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,122,197,0,0	monster	Hydra	1068,1,321000,100000,1
+abyss03_2,110,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,113,194,0,0	monster	Hydra	1068,1,319000,100000,1
+abyss03_2,109,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
+abyss03_2,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,108,191,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_2,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,107,190,0,0	monster	Hydra	1068,1,320000,100000,1
+abyss03_2,110,190,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_2,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_2,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_2,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_2,214,266,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss03_2,37,243,0,0	monster	Black Mushroom	1084,1,600000,300000,1
+abyss03_2,37,243,0,0	monster	Nine Tail	1180,1,3600000,1800000,1
+abyss03_2,111,199,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss03_2,110,216,20,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_2,132,84,10,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_2,197,113,10,10	monster	Red Plant	1078,4,180000,90000,1
+abyss03_2,55,254,10,10	monster	Red Plant	1078,4,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 4 Instance 2
+//==================================================
+abyss04_2,0,0,0,0	monster	Sohee	1170,50,0,0,0
+abyss04_2,0,0,0,0	monster	Munak	1026,3,0,0,0
+abyss04_2,0,0,0,0	monster	Bongun	1188,3,0,0,0
+abyss04_2,0,0,0,0	monster	Nine Tail	1180,1,0,0,0
+abyss04_2,0,0,0,0	monster	Nine Tail	1180,1,3600000,1800000,0
+abyss04_2,154,112,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_2,161,117,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_2,81,61,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_2,84,63,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_2,89,147,0,0	monster	Giant Whisper	1186,1,14400000,0,1
+abyss04_2,66,73,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,68,72,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,67,71,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,63,70,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,58,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,67,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,60,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,69,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,62,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,71,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,64,66,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,57,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,66,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,59,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,68,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,71,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,66,63,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_2,71,243,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,86,248,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,85,178,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,115,190,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,230,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,240,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,219,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,243,220,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,219,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,228,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_2,228,61,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss04_2,138,42,0,0	monster	Blue Plant	1079,1,600000,300000,1
+abyss04_2,120,186,0,0	monster	Green Plant	1080,1,600000,300000,1
+abyss04_2,88,35,0,0	monster	Yellow Plant	1081,1,600000,300000,1
+abyss04_2,126,135,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,126,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,126,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,126,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,126,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,179,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,179,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,179,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,179,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,179,130,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_2,0,0,0,0	monster	Greatest General	1277,3,0,0,0
+abyss04_2,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+abyss04_2,246,56,20,20	monster	White Plant	1082,3,180000,90000,1
+abyss04_2,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 5 Instance 2
+//==================================================
+abyss05_2,0,0,0,0	monster	Dokebi	1110,40,0,0,0
+abyss05_2,0,0,0,0	monster	Horong	1129,30,0,0,0
+abyss05_2,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+abyss05_2,0,0,0,0	monster	Greatest General	1277,15,0,0,0
+abyss05_2,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss05_2,0,0,0,0	monster	Nine Tail	1180,30,60000,30000,0
+abyss05_2,0,0,0,0	monster	Skeleton General	1290,1,0,0,0
+abyss05_2,0,0,0,0	monster	Am Mut	1301,1,0,0,0
+abyss05_2,120,115,0,0	monster	Cat o' Nine Tails	1307,1,3600000,7200000,1
+abyss05_2,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_2,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_2,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+abyss05_2,107,206,5,5	monster	White Plant	1082,2,180000,90000,1
+abyss05_2,28,110,10,10	monster	White Plant	1082,2,180000,90000,1
+abyss05_2,190,207,5,5	monster	White Plant	1082,2,180000,90000,1
+
+
+//=============================================
+// -- The Abyss Floor 1 Instance 3
+//=============================================
+abyss01_3,158,75,0,0	monster	Poring	1002,5,0,0,0
+abyss01_3,186,80,0,0	monster	Poring	1002,5,0,0,0
+abyss01_3,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_3,165,107,0,0	monster	Drops	1113,10,0,0,0
+abyss01_3,194,51,0,0	monster	Drops	1113,10,0,0,0
+abyss01_3,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_3,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_3,0,0,0,0	monster	Poporing	1031,30,0,0,0
+abyss01_3,0,0,0,0	monster	Skeleton	1076,100,0,0,GZBoard::OnNoisey
+abyss01_3,61,137,0,0	monster	Poporing	1031,10,0,0,0
+abyss01_3,0,0,0,0	monster	Zombie	1015,40,0,0,GZBoard::OnZombie
+abyss01_3,0,0,0,0	monster	Familiar	1005,30,0,0,0
+
+//==================================================
+// - The Abyss Floor 2 Instance 3
+//==================================================
+abyss02_3,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+abyss02_3,0,0,0,0	monster	Eggyra	1116,15,0,0,GZBoard::OnEggs
+abyss02_3,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss02_3,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss02_3,235,54,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss02_3,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 3 Instance 3
+//==================================================
+abyss03_3,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss03_3,0,0,0,0	monster	Munak	1026,40,0,0,0
+abyss03_3,0,0,0,0	monster	Bongun	1188,30,0,0,0
+abyss03_3,0,0,0,0	monster	Poporing	1031,10,0,0,0
+abyss03_3,0,0,0,0	monster	Archer Skeleton	1016,20,180000,90000,GZBoard::OnArcher
+abyss03_3,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
+abyss03_3,116,199,0,0	monster	Hydra	1068,1,306000,100000,1
+abyss03_3,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,116,190,0,0	monster	Hydra	1068,1,326000,100000,1
+abyss03_3,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
+abyss03_3,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
+abyss03_3,117,197,0,0	monster	Hydra	1068,1,314000,100000,1
+abyss03_3,117,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,118,207,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_3,118,201,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,118,198,0,0	monster	Hydra	1068,1,312000,100000,1
+abyss03_3,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
+abyss03_3,119,205,0,0	monster	Hydra	1068,1,324000,100000,1
+abyss03_3,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,119,196,0,0	monster	Hydra	1068,1,315000,100000,1
+abyss03_3,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
+abyss03_3,120,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,121,200,0,0	monster	Hydra	1068,1,333000,100000,1
+abyss03_3,122,200,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,122,197,0,0	monster	Hydra	1068,1,321000,100000,1
+abyss03_3,110,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,113,194,0,0	monster	Hydra	1068,1,319000,100000,1
+abyss03_3,109,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
+abyss03_3,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,108,191,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_3,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,107,190,0,0	monster	Hydra	1068,1,320000,100000,1
+abyss03_3,110,190,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_3,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_3,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_3,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_3,214,266,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss03_3,37,243,0,0	monster	Black Mushroom	1084,1,600000,300000,1
+abyss03_3,37,243,0,0	monster	Nine Tail	1180,1,3600000,1800000,1
+abyss03_3,111,199,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss03_3,110,216,20,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_3,132,84,10,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_3,197,113,10,10	monster	Red Plant	1078,4,180000,90000,1
+abyss03_3,55,254,10,10	monster	Red Plant	1078,4,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 4 Instance 3
+//==================================================
+abyss04_3,0,0,0,0	monster	Sohee	1170,50,0,0,0
+abyss04_3,0,0,0,0	monster	Munak	1026,3,0,0,0
+abyss04_3,0,0,0,0	monster	Bongun	1188,3,0,0,0
+abyss04_3,0,0,0,0	monster	Nine Tail	1180,1,0,0,0
+abyss04_3,0,0,0,0	monster	Nine Tail	1180,1,3600000,1800000,0
+abyss04_3,154,112,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_3,161,117,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_3,81,61,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_3,84,63,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_3,89,147,0,0	monster	Giant Whisper	1186,1,14400000,0,1
+abyss04_3,66,73,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,68,72,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,67,71,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,63,70,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,58,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,67,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,60,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,69,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,62,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,71,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,64,66,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,57,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,66,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,59,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,68,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,71,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,66,63,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_3,71,243,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,86,248,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,85,178,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,115,190,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,230,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,240,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,219,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,243,220,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,219,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,228,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_3,228,61,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss04_3,138,42,0,0	monster	Blue Plant	1079,1,600000,300000,1
+abyss04_3,120,186,0,0	monster	Green Plant	1080,1,600000,300000,1
+abyss04_3,88,35,0,0	monster	Yellow Plant	1081,1,600000,300000,1
+abyss04_3,126,135,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,126,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,126,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,126,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,126,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,179,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,179,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,179,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,179,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,179,130,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_3,0,0,0,0	monster	Greatest General	1277,3,0,0,0
+abyss04_3,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+abyss04_3,246,56,20,20	monster	White Plant	1082,3,180000,90000,1
+abyss04_3,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 5 Instance 3
+//==================================================
+abyss05_3,0,0,0,0	monster	Dokebi	1110,40,0,0,0
+abyss05_3,0,0,0,0	monster	Horong	1129,30,0,0,0
+abyss05_3,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+abyss05_3,0,0,0,0	monster	Greatest General	1277,15,0,0,0
+abyss05_3,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss05_3,0,0,0,0	monster	Nine Tail	1180,30,60000,30000,0
+abyss05_3,0,0,0,0	monster	Skeleton General	1290,1,0,0,0
+abyss05_3,0,0,0,0	monster	Am Mut	1301,1,0,0,0
+abyss05_3,120,115,0,0	monster	Cat o' Nine Tails	1307,1,3600000,7200000,1
+abyss05_3,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_3,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_3,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+abyss05_3,107,206,5,5	monster	White Plant	1082,2,180000,90000,1
+abyss05_3,28,110,10,10	monster	White Plant	1082,2,180000,90000,1
+abyss05_3,190,207,5,5	monster	White Plant	1082,2,180000,90000,1
+
+//=============================================
+// -- The Abyss Floor 1 Instance 4
+//=============================================
+abyss01_4,158,75,0,0	monster	Poring	1002,5,0,0,0
+abyss01_4,186,80,0,0	monster	Poring	1002,5,0,0,0
+abyss01_4,0,0,0,0	monster	Poring	1002,5,0,0,0
+abyss01_4,165,107,0,0	monster	Drops	1113,10,0,0,0
+abyss01_4,194,51,0,0	monster	Drops	1113,10,0,0,0
+abyss01_4,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_4,0,0,0,0	monster	Poporing	1031,20,0,0,0
+abyss01_4,0,0,0,0	monster	Poporing	1031,30,0,0,0
+abyss01_4,0,0,0,0	monster	Skeleton	1076,100,0,0,GZBoard::OnNoisey
+abyss01_4,61,137,0,0	monster	Poporing	1031,10,0,0,0
+abyss01_4,0,0,0,0	monster	Zombie	1015,40,0,0,GZBoard::OnZombie
+abyss01_4,0,0,0,0	monster	Familiar	1005,30,0,0,0
+
+//==================================================
+// - The Abyss Floor 2 Instance 4
+//==================================================
+abyss02_4,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+abyss02_4,0,0,0,0	monster	Eggyra	1116,15,0,0,GZBoard::OnEggs
+abyss02_4,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss02_4,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss02_4,235,54,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss02_4,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 3 Instance 4
+//==================================================
+abyss03_4,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,GZBoard::OnSoldier
+abyss03_4,0,0,0,0	monster	Munak	1026,40,0,0,0
+abyss03_4,0,0,0,0	monster	Bongun	1188,30,0,0,0
+abyss03_4,0,0,0,0	monster	Poporing	1031,10,0,0,0
+abyss03_4,0,0,0,0	monster	Archer Skeleton	1016,20,180000,90000,GZBoard::OnArcher
+abyss03_4,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
+abyss03_4,116,199,0,0	monster	Hydra	1068,1,306000,100000,1
+abyss03_4,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,116,190,0,0	monster	Hydra	1068,1,326000,100000,1
+abyss03_4,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
+abyss03_4,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
+abyss03_4,117,197,0,0	monster	Hydra	1068,1,314000,100000,1
+abyss03_4,117,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,118,207,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_4,118,201,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,118,198,0,0	monster	Hydra	1068,1,312000,100000,1
+abyss03_4,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
+abyss03_4,119,205,0,0	monster	Hydra	1068,1,324000,100000,1
+abyss03_4,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,119,196,0,0	monster	Hydra	1068,1,315000,100000,1
+abyss03_4,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
+abyss03_4,120,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,121,200,0,0	monster	Hydra	1068,1,333000,100000,1
+abyss03_4,122,200,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,122,197,0,0	monster	Hydra	1068,1,321000,100000,1
+abyss03_4,110,194,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,113,194,0,0	monster	Hydra	1068,1,319000,100000,1
+abyss03_4,109,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
+abyss03_4,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,108,191,0,0	monster	Hydra	1068,1,332000,100000,1
+abyss03_4,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,107,190,0,0	monster	Hydra	1068,1,320000,100000,1
+abyss03_4,110,190,0,0	monster	Hydra	1068,1,300000,100000,1
+abyss03_4,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_4,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_4,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss03_4,214,266,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss03_4,37,243,0,0	monster	Black Mushroom	1084,1,600000,300000,1
+abyss03_4,37,243,0,0	monster	Nine Tail	1180,1,3600000,1800000,1
+abyss03_4,111,199,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+abyss03_4,110,216,20,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_4,132,84,10,10	monster	White Plant	1082,3,180000,90000,1
+abyss03_4,197,113,10,10	monster	Red Plant	1078,4,180000,90000,1
+abyss03_4,55,254,10,10	monster	Red Plant	1078,4,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 4 Instance 4
+//==================================================
+abyss04_4,0,0,0,0	monster	Sohee	1170,50,0,0,0
+abyss04_4,0,0,0,0	monster	Munak	1026,3,0,0,0
+abyss04_4,0,0,0,0	monster	Bongun	1188,3,0,0,0
+abyss04_4,0,0,0,0	monster	Nine Tail	1180,1,0,0,0
+abyss04_4,0,0,0,0	monster	Nine Tail	1180,1,3600000,1800000,0
+abyss04_4,154,112,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_4,161,117,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_4,81,61,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_4,84,63,0,0	monster	Whisper	1185,1,1800000,0,1
+abyss04_4,89,147,0,0	monster	Giant Whisper	1186,1,14400000,0,1
+abyss04_4,66,73,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,68,72,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,67,71,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,63,70,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,58,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,67,69,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,60,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,69,68,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,62,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,71,67,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,64,66,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,57,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,66,65,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,59,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,68,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,71,64,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,66,63,0,0	monster	Hydra	1068,1,600000,300000,1
+abyss04_4,71,243,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,86,248,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,85,178,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,115,190,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,230,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,240,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,219,244,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,243,220,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,219,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,228,185,0,0	monster	Sohee	1170,2,300000,100000,1
+abyss04_4,228,61,0,0	monster	Red Plant	1078,1,600000,300000,1
+abyss04_4,138,42,0,0	monster	Blue Plant	1079,1,600000,300000,1
+abyss04_4,120,186,0,0	monster	Green Plant	1080,1,600000,300000,1
+abyss04_4,88,35,0,0	monster	Yellow Plant	1081,1,600000,300000,1
+abyss04_4,126,135,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,126,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,126,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,126,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,126,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,179,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,179,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,179,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,179,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,179,130,0,0	monster	Mandragora	1020,1,300000,100000,1
+abyss04_4,0,0,0,0	monster	Greatest General	1277,3,0,0,0
+abyss04_4,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+abyss04_4,246,56,20,20	monster	White Plant	1082,3,180000,90000,1
+abyss04_4,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
+
+//==================================================
+// - The Abyss Floor 5 Instance 4
+//==================================================
+abyss05_4,0,0,0,0	monster	Dokebi	1110,40,0,0,0
+abyss05_4,0,0,0,0	monster	Horong	1129,30,0,0,0
+abyss05_4,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+abyss05_4,0,0,0,0	monster	Greatest General	1277,15,0,0,0
+abyss05_4,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,GZBoard::OnArcher
+abyss05_4,0,0,0,0	monster	Nine Tail	1180,30,60000,30000,0
+abyss05_4,0,0,0,0	monster	Skeleton General	1290,1,0,0,0
+abyss05_4,0,0,0,0	monster	Am Mut	1301,1,0,0,0
+abyss05_4,120,115,0,0	monster	Cat o' Nine Tails	1307,1,3600000,7200000,1
+abyss05_4,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_4,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+abyss05_4,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+abyss05_4,107,206,5,5	monster	White Plant	1082,2,180000,90000,1
+abyss05_4,28,110,10,10	monster	White Plant	1082,2,180000,90000,1
+abyss05_4,190,207,5,5	monster	White Plant	1082,2,180000,90000,1

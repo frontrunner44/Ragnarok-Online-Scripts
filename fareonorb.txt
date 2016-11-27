@@ -1,0 +1,268 @@
+// Created by Todd
+
+customjail,16,65,5	script	Tero	118,{
+if(fareonphase == 2) {
+	mes "[Tero]";
+	mes "Shit! Give that back please! It's all I have left in this evil place!";
+	close;
+}
+if(chest == 1) goto L_stage2;
+if(fareonphase == 1) goto L_start;
+mes "[Tero]";
+mes "Leave me alone!";
+mes "Don't make me kill you!";
+close;
+L_start:
+	mes "[Tero]";
+	mes "Get away from here!";
+	mes "I know you are here to ask for the Fareon Orb.";
+	next;
+	menu "[Lie]I will free you if you give it to me",L_lie,"[Bash]Bash him up",L_bash,"[Steal]Pick pocket him",L_steal;
+		
+		L_lie:
+			set .@points,readparam(18)+rand(1,20);
+			if(.@points >= 70) {
+			dispbottom "You got an ugly box that is locked";
+			set chest,1;
+			mes "[Tero]";
+			mes "Take it, it is useless for me.";
+			mes "Get me out of here then I'll open the box for you.";
+			next;
+			goto L_stage2; 
+			}
+			mes "[Tero]";
+			mes "It is impossible to get past the biolab.";
+			mes "Good luck with your next lie.";
+			percentheal -50,0;
+			close;
+		
+		L_bash:
+			set .@points,readparam(13)+readparam(17)+rand(1,20);
+			if(.@points >= 110) {
+			dispbottom "You got an ugly box that is locked";
+			emotion 25;
+			set chest,chest+1;
+			mes "[Tero]";
+			mes "Take it, it is useless for me.";
+			mes "Don't hit me anymore, it hurts.";
+			next;
+			goto L_stage2; 
+			}
+			dispbottom "Tero dodge.";
+			mes "[Tero]";
+			mes "Think you can hit me, huh?";
+			mes "Take this!";
+			percentheal -50,0;
+			close;
+			
+		L_steal:
+			set .@points,readparam(14)+readparam(17)+rand(1,20);
+			if(.@points >= 110) {
+			dispbottom "You got an ugly box that is locked";
+			emotion 29;
+			set chest,chest+1;
+			mes "[Tero]";
+			mes "Damn you, you theif!";
+			mes "Give it back!";
+			next;
+			goto L_stage2; 
+			}
+			dispbottom "Stealing failed";
+			mes "[Tero]";
+			mes "No way you can steal from me!";
+			mes "hahahahahaha!";
+			percentheal -50,0;
+			close;
+			
+		L_stage2:
+			mes "["+strcharinfo(0)+"]";
+			mes "Darn it, I need to get the key to open this!";
+			mes "I shouldn't have did that just now.";
+			next;
+			menu "[Bribe]I'll pay you and get you out for it!.",L_bribe,"[Snatch]Look there!",L_snatch,"[Lie]I will marry you.",L_marry,"[Run away]I am tired of you!",L_run;
+			
+		L_bribe:
+			mes "[Tero]";
+			mes "How much does this key cost?";
+			next;
+			
+		L_enterzenys:	
+			mes "Enter in zenys you wish to bribe.";
+			next;
+			input .@zenys;
+			set .@points,.@zenys+readparam(18)+readparam(16);
+			if(zeny < .@zenys) goto L_enterzenys;
+			if(.@points >= 100050) {
+			dispbottom "You got a key and opened the chest, you took out the orb";
+			set chest,0;
+			set fareonphase,2;
+			mes "[Tero]";
+			mes "Can I get out now?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "No way, I cheated you!";
+			mes "wakakakaka!";
+			mes	"[Tero]";
+			mes "Give it back!";
+			close;
+			}
+			dispbottom "Bribe failed";
+			mes "[Tero]";
+			mes "No way!";
+			mes "I can't even feed myself after getting out!";
+			percentheal -50,0;
+			close;
+			
+		L_snatch:
+			set .@points,rand(1,20)+readparam(18)+readparam(14);
+			if(.@points >= 110) {
+			dispbottom "You got a key and opened the chest, you took out the orb";
+			set chest,0;
+			set fareonphase,2;
+			mes "[Tero]";
+			mes "Noooooooo?";
+			mes "You, you theif!";
+			next;
+			mes "Give it back!";
+			close;
+			}
+			dispbottom "Snatch failed";
+			mes "[Tero]";
+			mes "No way!";
+			mes "I am faster than you!";
+			percentheal -50,0;
+			close;
+			
+		L_run:
+			dispbottom "You ran away with the chest";
+			end;
+
+		L_marry:
+			mes "[Tero]";
+			mes "Yuk! I feel like puking!";
+			mes "Get the hell out of here.";
+			close;
+}
+
+//Very important note
+//Var used: chest,fareonorb
+//set it back after the quest!!*/
+
+lhz_dun03,245,58,8	script	Retired Thug	55,{
+	if(fareonphase > 0 && fareonphase != 3) goto L_start;
+	mes "[Retired Thug]";
+	mes "Stay 10 feet away from me!";
+	close;	
+
+L_start:
+	mes "[Retired Thug]";
+	mes "So, "+strcharinfo(0)+", you were sent by Azlan.";
+	next;
+	mes "[Retired Thug]";
+	menu "Sneak me into jail",-,"Exit",L_exit;
+	mes "You sure?";
+	mes "It is very dangerous there.";
+	menu "Yes",-,"No",L_exit;
+	next;
+	mes "[Retired Thug]";
+	mes "Here's the secret passage.";
+	close2;
+	warp "customjail",18,14;
+	end;
+	
+	L_exit:
+	close;
+}
+
+lighthalzen,245,58,8	script	?Azlan?	98,{
+	if(fareonphase == 1) goto L_onquest;
+	if(fareonphase == 2) goto L_donequest;
+	if(fareonphase == 3) goto L_done;
+	mes "[Azlan]";
+	mes "Greetings, "+strcharinfo(0)+" .";
+	next;
+	mes "[Azlan]";
+	mes "My name is ?Azlan?";
+	mes "I'm the city's thug";
+	next;
+	mes "During my father's time, another thug stole the fareon orb from a rich man, but he was arrested by the stupid guards of Morocc. It is worth 1 million Zeny.";
+	next;
+	mes "[Azlan]";
+	mes "Will you help me retreive it?";
+	menu "Yes",-,"No",L_exit;
+	next;
+	mes "[Azlan]";
+	mes "I advise you to do it with a guild or party.";
+	next;
+	mes "[Azlan]";
+	mes "because you will need to pass through biolabs in order to reach the jail dungeon.";
+	next;
+	mes "[Azlan]";
+	mes "You will meet my friend in lhz_dun03. He will show you the way to the prison.";
+	next;
+	mes "[Azlan]";
+	mes "You can find him in the lower right section of lhz_dun03.";
+	next;
+	mes "[Azlan]";
+	mes "I will give you 30% of the price of the orb if you bring it back to me.";
+	mes "Good luck!";
+	set fareon$, "Fareon Orb";
+	set fareonphase,1;
+	L_exit:
+	close;
+		
+		L_onquest:
+			mes "[Azlan]";
+			mes "I really need the money, I am hungry.";
+			close;
+		
+		L_donequest:
+			mes "[Azlan]";
+			mes "Thanks for your help!";
+			mes "Here's your reward.";
+			set chest,0;
+			set fareonphase,3;
+			set fareon$,"";
+			set zeny,zeny + 300000;
+			set fpoints,fpoints-60;
+			soundeffect "battlewon.wav",0;
+			getexp 30000,0;
+			dispbottom "Gained 300,000 zeny.";
+			dispbottom "Lost 60 faction points for helping a thug.";
+			close;
+			
+		L_done:
+			mes "[Azlan]";
+			mes "I'm rich!";
+			mes "hahahahahaha!";
+			close;
+
+}
+
+lighthalzen,267,207,3	script	Strange Man#11	98,{
+	if(fareonphase > 0 && fareonphase != 3) goto L_onquest;
+	mes "[Strange Man]";
+	mes "Hey you!";
+	mes "I'm enjoying the view!";
+	mes "GET AWAY!";
+	close;
+	
+	L_onquest:
+		mes "[Strange Man]";
+		mes "Hey you!";
+		mes "I'm enjoying the view!";
+		mes "GET AWAY!";
+		next;
+		mes "[Strange Man]";
+		mes "Oh, sorry. You were sent by ?Azlan?.";
+		next;
+		mes "[Strange Man]";
+		mes "Do you want to proceed to bio labs now?";
+		menu "yes",-,"no",L_exit;
+		mes "Here you go.";
+		close2;
+		warp "lhz_dun01",250,287;
+		end;
+}
+
+//Add warp portal back to lhz from jail

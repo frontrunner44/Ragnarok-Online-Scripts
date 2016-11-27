@@ -1,0 +1,115 @@
+function	script	CheckTown	{
+
+
+mes "[^0000ffAdventure Logs^000000]";
+mes "Town Ownership is as followed:";
+	if($albfaction == 1) {
+		mes "[Alberta]: ^0000ffArzeon Faction^000000"; }
+	if($albfaction == 2) {
+		mes "[Alberta]: ^ff0000Destra Faction^000000"; }
+	if($albfaction == 0) {
+		mes "[Alberta]: Unowned"; }
+	if($aldfaction == 1) {
+		mes "[Aldebaran]: ^0000ffArzeon Faction^000000"; }
+	if($aldfaction == 2) {
+		mes "[Aldebaran]: ^ff0000Destra Faction^000000"; }
+	if($aldfaction == 0) {
+		mes "[Aldebaran]: Unowned"; }
+	if($amafaction == 1) {
+		mes "[Amatsu]: ^0000ffArzeon Faction^000000"; }
+	if($amafaction == 2) {
+		mes "[Amatsu]: ^ff0000Destra Faction^000000"; }
+	if($amafaction == 0) {
+		mes "[Amatsu]: Unowned"; }
+	if($ayofaction == 1) {
+		mes "[Ayothaya]: ^0000ffArzeon Faction^000000"; }
+	if($ayofaction == 2) {
+		mes "[Ayothaya]: ^ff0000Destra Faction^000000"; }
+	if($ayofaction == 0) {
+		mes "[Ayothaya]: Unowned"; }
+	if($comfaction == 1) {
+		mes "[Comodo]: ^0000ffArzeon Faction^000000"; }
+	if($comfaction == 2) {
+		mes "[Comodo]: ^ff0000Destra Faction^000000"; }
+	if($comfaction == 0) {
+		mes "[Comodo]: Unowned"; }
+	if($einfaction == 1) {
+		mes "[Einbech]: ^0000ffArzeon Faction^000000"; }
+	if($einfaction == 2) {
+		mes "[Einbech]: ^ff0000Destra Faction^000000"; }
+	if($einfaction == 0) {
+		mes "[Einbech]: Unowned"; }
+	if($einbfaction == 1) {
+		mes "[Einbroch]: ^0000ffArzeon Faction^000000"; }
+	if($einbfaction == 2) {
+		mes "[Einbroch]: ^ff0000Destra Faction^000000"; }
+	if($einbfaction == 0) {
+		mes "[Einbroch]: Unowned"; }
+	if($geffaction == 1) {
+		mes "[Geffen]: ^0000ffArzeon Faction^000000"; }
+	if($geffaction == 2) {
+		mes "[Geffen]: ^ff0000Destra Faction^000000"; }
+	if($geffaction == 0) {
+		mes "[Geffen]: Unowned"; }
+	if($gonfaction == 1) {
+		mes "[Gonryun]: ^0000ffArzeon Faction^000000"; }
+	if($gonfaction == 2) {
+		mes "[Gonryun]: ^ff0000Destra Faction^000000"; }
+	if($gonfaction == 0) {
+		mes "[Gonryun]: Unowned"; }
+	if($hugfaction == 1) {
+		mes "[Hugel]: ^0000ffArzeon Faction^000000"; }
+	if($hugfaction == 2) {
+		mes "[Hugel]: ^ff0000Destra Faction^000000"; }
+	if($hugfaction == 0) {
+		mes "[Hugel]: Unowned"; }
+	if($izlfaction == 1) {
+		mes "[Izlude]: ^0000ffArzeon Faction^000000"; }
+	if($izlfaction == 2) {
+		mes "[Izlude]: ^ff0000Destra Faction^000000"; }
+	if($izlfaction == 0) {
+		mes "[Izlude]: Unowned"; }
+	if($loufaction == 1) {
+		mes "[Louyang]: ^0000ffArzeon Faction^000000"; }
+	if($loufaction == 2) {
+		mes "[Louyang]: ^ff0000Destra Faction^000000"; }
+	if($loufaction == 0) {
+		mes "[Louyang]: Unowned"; }
+	if($morfaction == 1) {
+		mes "[Morocc]: ^0000ffArzeon Faction^000000"; }
+	if($morfaction == 2) {
+		mes "[Morocc]: ^ff0000Destra Faction^000000"; }
+	if($morfaction == 0) {
+		mes "[Morocc]: Unowned"; }
+	if($payfaction == 1) {
+		mes "[Payon]: ^0000ffArzeon Faction^000000"; }
+	if($payfaction == 2) {
+		mes "[Payon]: ^ff0000Destra Faction^000000"; }
+	if($payfaction == 0) {
+		mes "[Payon]: Unowned"; }
+	if($prtfaction == 1) {
+		mes "[Prontera]: ^0000ffArzeon Faction^000000"; }
+	if($prtfaction == 2) {
+		mes "[Prontera]: ^ff0000Destra Faction^000000"; }
+	if($prtfaction == 0) {
+		mes "[Prontera]: Unowned"; }
+	if($umbfaction == 1) {
+		mes "[Umbala]: ^0000ffArzeon Faction^000000"; }
+	if($umbfaction == 2) {
+		mes "[Umbala]: ^ff0000Destra Faction^000000"; }
+	if($umbfaction == 0) {
+		mes "[Umbala]: Unowned"; }
+	if($veinfaction == 1) {
+		mes "[Veins]: ^0000ffArzeon Faction^000000"; }
+	if($veinfaction == 2) {
+		mes "[Veins]: ^ff0000Destra Faction^000000"; }
+	if($veinfaction == 0) {
+		mes "[Veins]: Unowned"; }
+	if($yunofaction == 1) {
+		mes "[Yuno]: ^0000ffArzeon Faction^000000"; }
+	if($yunofaction == 2) {
+		mes "[Yuno]: ^ff0000Destra Faction^000000"; }
+	if($yunofaction == 0) {
+		mes "[Yuno]: Unowned"; }
+return;
+}

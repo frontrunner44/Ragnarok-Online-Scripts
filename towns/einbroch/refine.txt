@@ -1,0 +1,5 @@
+ein_in01,116,63,5	script	Refiner#Einb01	813,{
+if(faction != $einbfaction) {mes "...."; close;}
+set @name$,"Shaun the Refiner";
+callfunc "G_Refine";
+}

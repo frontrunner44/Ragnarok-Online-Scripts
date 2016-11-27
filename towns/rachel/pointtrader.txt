@@ -1,0 +1,10 @@
+ra_temsky.gat,102,59,5	script	Point Trader#Rach	952,{
+
+if(faction == 1) { 
+mes "[Trader Sandy]"; mes "Get out of here!"; 
+close; 
+} else {
+set .@name$,"[^0000ffTrader Sandy^000000]";
+callfunc "PointTrader";
+ }
+}

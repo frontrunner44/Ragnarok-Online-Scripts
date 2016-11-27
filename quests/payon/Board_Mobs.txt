@@ -1,0 +1,38 @@
+-	script	PayBoard	-1,{
+
+OnAlarm:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])) {
+			if(alarmphase == 1 && alarmkilled < 60) {
+				set alarmkilled,alarmkilled+1;
+				announce "Quest Update: Killed "+alarmkilled+"/60 Alarms.",bc_self;
+				}
+			if(apartsphase == 1) {
+				set .@temp,rand(1,2);
+				if(.@temp == 1) {
+					if(countitem(30010) < 40) getitem 30010,1;
+						announce "Quest Update: Found "+countitem(30010)+" of 40 Clock Parts.",bc_self;
+						}			
+				}
+			}
+
+		}
+		end;
+	}
+if(alarmphase == 1 && alarmkilled < 60) {
+	set alarmkilled,alarmkilled+1;
+	announce "Quest Update: Killed "+alarmkilled+"/60 Alarms.",bc_self;
+	}
+if(apartsphase == 1) {
+	set .@temp,rand(1,2);
+	if(.@temp == 1) {
+		if(countitem(30010) < 40) getitem 30010,1;
+			announce "Quest Update: Found "+countitem(30010)+" of 40 Clock Parts.",bc_self;
+			}
+		}
+end;
+}

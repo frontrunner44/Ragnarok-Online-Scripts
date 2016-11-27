@@ -1,0 +1,10 @@
+geffen_in,77,174,5	script	Armor#Gef01	66,{
+if(faction != $geffaction) {
+	mes "[Armor]";
+	mes "Begone...";
+	close;
+	}
+callshop "Armor#gef",0;
+}
+
+-	shop	Armor#gef	66,30709:10000000,2628:-1,2101:-1,2107:-1,2401:-1,2501:-1,2230:-1,2301:-1,2303:-1,2305:-1,2321:-1,2332:-1,2232:-1

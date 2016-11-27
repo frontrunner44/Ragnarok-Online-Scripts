@@ -1,0 +1,109 @@
+// This function may also act as a "Variable Cleaner" when needed.
+function	script	QuestReset	{
+set .@name$,"[^0000ffHead Staff^000000]";
+
+mes .@name$;
+mes "Quest Reset Complete!";
+//================
+// -- Quests
+//================
+	// Beginner Quest 1
+		
+		set beginner1$,"";
+		if(countitem(20004) > 0) delitem 20004,countitem(20004);
+	// Beginner Quest 2
+		set kuikiller$,"";
+		set kuikilled,0;
+		set beginner2$,"";
+		set mobblackl,0;
+	// Beginner Quest 3
+		set pukukiller$,"";
+		set pukukilled,0;
+		set beginner3$,"";
+		set mobfelir,0;
+	// Final Test(Beginner Quest 4)
+		set scorp$,"";
+		set beginner4$,"";
+		if(countitem(30006) > 0) delitem 30006,countitem(30006);
+	// Screw Hunt
+		set bobquest1$,"";
+		set bobqphase,0;
+	// Ore Collector
+		set bobquest2$,"";
+	// Route Clearance
+		set guardphase,0;
+		set guardquest$,"";
+		set dwolfk,0;
+		set asavk,0;
+		set fdenk,0;
+	// Lost Key
+		set guardquest2,"";
+		if(countitem(9001) > 0) delitem 9001,countitem(9001);
+	// Zombie DNA
+		set dnaquest$,"";
+		set dnaphase,0;
+		if(countitem(30002) > 0) delitem 30002,countitem(30002);
+	// Report Delivery
+		set repdeliver$,"";
+		if(countitem(30003) > 0) delitem 30003,countitem(30003);
+	// LhzMission1
+		set lhzmphase,0;
+		set mobmetal,0;
+		set lhzmission$,"";
+	// Fareon Orb
+		set chest,0;
+		set fareonphase,0;
+		set fareon$,"";
+	// Zombie Slayer
+		set zombie50$,"";
+		set zombie50phase,0;
+		set zombieslayed,0;
+	// Noisey Skeletons
+		set noiseykilled,0;
+		set noiseyskel$,"";
+		set noiseyphase,0;
+	// King of Zombies
+		set kingzombie$,"";
+		set kozphase,0;
+	// Skeleton Slayer
+		set skelslayer$,"";
+		set soldierskelz,0;
+		set soldierkilled,0;
+		set archerskilled,0;
+	// Tough Egg Shells
+		set eggdelv$,"";
+		set eggdelivery,0;
+		if(countitem(30007) > 0) delitem 30007,countitem(30007);
+	// Mandell Fruit
+		set mandell,0;
+		set mandellq$,"";
+		set mfruit1,0;
+		set mfruit2,0;
+		set mfruit3,0;
+		set mfruit4,0;
+		set mfruit5,0;
+		if(countitem(30008) > 0) delitem 30008,countitem(30008);
+	// Material Farming
+		set axeremove,0;
+		set axeremovel$,"";
+		if(countitem(30009) > 0) delitem 30009,countitem(30009);
+	// Fly Exterminator
+		set biofly,0;
+		set bioflyl$,"";
+		set bioflykilled,0;
+	// Alarm Killer
+		set alarmkilled,0;
+		set alarmphase,0;
+		set alarmkiller$,"";
+	// Clock Parts
+		set apartsphase,0;
+		set apart$,"";
+		delitem 30010,countitem(30010);
+	// Louyang Quest
+		set mantkilled,0;
+		set gaokilled,0;
+		set mantsand$,"";
+		set mantsandp,0;
+close;
+
+}

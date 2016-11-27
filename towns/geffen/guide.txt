@@ -1,0 +1,92 @@
+geffen,123,104,5	script	Guide#Gef01	110,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $geffaction) {
+	mes .@name$;
+	mes "Leave while you can still walk!";
+	close;
+	}
+
+mes .@name$;
+mes "Welcome to Geffen. Are you looking for anything?";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",L_hotel,"- Weapons, Armor, & Tools",L_shops,"- Point Trader",L_point,"- Storage",L_storage,"- Geffenia",L_gefdun,"- Orc Dungeon",L_orc,"- Delete marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Geffen!";
+	savepoint "geffen",123,99;
+	close;
+
+	L_hotel:
+	viewpoint 1,168,170,1,0xFF0000;
+	close;
+
+	L_shops:
+	viewpoint 1,46,88,2,0xFF0000;
+	close;
+
+	L_point:
+	viewpoint 1,180,61,3,0xFF0000;
+	close;
+
+	L_storage:
+	viewpoint 1,101,138,4,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "Marks deleted.";
+	viewpoint 2,168,170,1,0xFF0000;
+	viewpoint 2,46,88,2,0xFF0000;
+	viewpoint 2,180,61,3,0xFF0000;
+	viewpoint 2,101,138,4,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30861,.@amount;
+	close;
+
+	L_gefdun:
+	mes .@name$;
+	mes "Would you like a warp to Geffenia?";
+	next;
+	menu "- Yes",L_ygefdun,"- No thanks",-;
+	close;
+
+		L_ygefdun:
+		warp "gefenia01",58,169;
+		end;
+	
+	L_orc:
+	mes .@name$;
+	mes "Would you like a warp to Orc Dungeon?";
+	next;
+	menu "- Yes",L_yorc,"- No thanks",-;
+	close;
+
+		L_yorc:
+		warp "in_orcs01",30,160;
+		end;
+}

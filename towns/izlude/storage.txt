@@ -1,0 +1,13 @@
+izlude_in.gat,124,172,5	script	Storage#IzlS	50,{
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

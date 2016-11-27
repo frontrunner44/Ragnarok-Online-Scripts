@@ -1,0 +1,100 @@
+payon,161,223,5	script	Guide#Pay	708,{
+
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $payfaction) { 
+mes .@name$; 
+mes "If you love life, I consider you leave now."; 
+close;
+}
+
+mes .@name$;
+mes "Welcome to Payon. What would you like me to mark for you?";
+next;
+menu "- Save Here",L_save,"-Town Scrolls",L_scrolls,"- Temple of Honor (Instance)",casemp,"- Hotel",hotel,"- Storage",storage,"- Weapon & Armor",weparm,"- Tool Shop",toolshop,"- Card Remover",cardremover,"- Byalan Dungeon",L_byalan,"- Delete Markers",delmarks,"- Nothing",-;
+close;
+
+L_save:
+mes "[Guard]";
+mes "You have been saved in Payon!";
+savepoint "payon",162,233;
+
+emperium:
+viewpoint 1,131,230,1,0xF0000;
+close;
+
+hotel:
+viewpoint 1,219,117,2,0xF0000;
+close;
+
+storage:
+viewpoint 1,186,233,3,0xF0000;
+close;
+
+weparm:
+viewpoint 1,137,158,4,0xF0000;
+close;
+
+toolshop:
+mes .@name$;
+mes "The tool shop is located North East of payon cave.";
+viewpoint 1,228,327,5,0xF0000;
+close;
+
+casemp:
+viewpoint 1,20,142,6,0xF0000;
+close;
+
+cardremover:
+mes "[Guard]";
+mes "There is an old woman in this village with a unique ability.";
+mes "You may find it interesting to visit her.";
+viewpoint 1,203,115,7,0xF0000;
+close;
+
+
+delmarks:
+viewpoint 2,131,230,1,0xFF0000;
+viewpoint 2,219,117,2,0xF0000;
+viewpoint 2,186,233,3,0xF0000;
+viewpoint 2,137,158,4,0xF0000;
+viewpoint 2,228,327,5,0xF0000;
+viewpoint 2,20,142,6,0xF0000;
+viewpoint 2,203,115,7,0xF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30867,.@amount;
+	close;
+
+	L_byalan:
+	mes .@name$;
+	mes "Would you like a warp to Byalan Dungeon?";
+	next;
+	menu "- Yes",L_ybyalan,"- No thanks",-;
+	close;
+
+		L_ybyalan:
+		warp "izlu2dun",108,87;
+		end;
+ }

@@ -1,0 +1,68 @@
+izlude.gat,129,114,5	script	Guide#IzlG	65,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $izlfaction) { 
+	mes .@name$;
+	mes "You are on enemy territory! Begone!";
+	close;
+}
+
+mes .@name$;
+mes "Welcome, Soldier. I can mark locations of important npcs on your minimap.";
+next;
+goto start;
+
+start:
+mes .@name$;
+mes "What would you like to mark?";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Weapons & Armor",markshops,"- Tool Shop",marktool,"- Hotel & Storage",markhotel,"- Delete All Points",delmarks;
+
+L_save:
+mes .@name$;
+mes "You have been saved in Izlude!";
+savepoint "izlude",129,109;
+close;
+
+markshops:
+viewpoint 1,113,147,1,0xF0000;
+close;
+
+marktool:
+viewpoint 1,145,146,2,0xF0000;
+close;
+
+markhotel:
+viewpoint 1,52,136,3,0xF0000;
+close;
+
+delmarks:
+viewpoint 2,113,147,1,0xF0000;
+viewpoint 2,145,146,2,0xF0000;
+viewpoint 2,52,136,3,0xF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30854,.@amount;
+	close;
+}

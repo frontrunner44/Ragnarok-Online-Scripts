@@ -1,0 +1,217 @@
+rachel,120,146,5	script	?Guard?#Rach01	943,{
+set .@name$,"[^0000ffGuard^000000]";
+if(faction == 1) { 
+	mes .@name$; 
+	mes "You do not belong here."; 
+	close; 
+}
+
+if(gardphase == 1) goto onquest;
+if(gardphase == 2) goto donequest1;
+if(gardphase == 3) goto onquest2;
+if(gardphase == 4) goto donequest2;
+mes .@name$;
+mes "Man... My boss wants me to help clear out the southern area outside of Rachel..";
+next;
+mes .@name$;
+mes "-sigh-.. I'm going to be late for my date with Veronica!";
+next;
+menu "I'll help you!",startquest,"Sucks for you..",-;
+mes .@name$;
+mes "......";
+close;
+
+
+	startquest:
+	mes .@name$;
+	mes "You really will? Thanks alot!";
+	next;
+	mes .@name$;
+	mes "If you don't mind, kill the following, and it should be good:";
+	next;
+	mes .@name$;
+	mes "15 Baby Desert Wolves"; // 1107
+	mes "15 Savages"; // 1166
+	mes "and 5 Deniros..."; // 1105
+	next;
+	mes .@name$;
+	mes "They can be found south of Rachel. I was suppose to clear the route for expected travelers.";
+	close2;
+	set guardquest$,"Route Clearance";
+	set gardphase,1;
+	announce "New quest added to your Adventure Logs!",bc_self;
+	end;
+
+	onquest:
+	if(dwolfk < 15 || asavk < 15 || fdenk < 5) {
+		mes .@name$;
+		mes "Please.. I really need to go on this date!";
+		close; 
+	}
+	mes .@name$;
+	mes "Thank you so much!";
+	close2;
+	set fpoints,fpoints+200;
+	set gardphase,2;
+	set dwolfk,0;
+	set asavk,0;
+	set fdenk,0;
+	set guardquest$,"";
+	getexp 6000,0;
+	getitem 30881,3;
+	soundeffect "battlewon.wav",0;
+	dispbottom "Quest Complete!";
+	dispbottom "Gained +200FP.";
+	announce "Quest Update: Route Clearance quest complete!",bc_self;
+	end;
+
+	donequest1:
+	mes .@name$;
+	mes "Oh crap! I can't find my key!!";
+	next;
+	mes .@name$;
+	mes "I'll never be able to get into my house so I can change before the date!";
+	next;
+	mes .@name$;
+	mes "I must have lost it on my way back to Rachel!";
+	mes "Will you help me out?!";
+	next;
+	menu "Yes",yes,"No thanks..",-;
+	close;
+		
+		yes:
+		mes .@name$;
+		mes "Phew! Thanks. Can you look around on ve_fild02 for my key?";
+		next;
+		mes .@name$;
+		mes "That should be the map right out of the southern gate.";
+		close2;
+		set gardphase,3;
+		set guardquest2$,"Lost Key";
+		announce "New quest added to your Adventure Logs!",bc_self;
+		end;
+	
+		onquest2:
+		if(countitem(30001) < 1) {
+			mes .@name$;
+			mes "Still havn't found it yet?!";
+			close; 
+		}
+		mes .@name$;
+		mes "Oh! Thank you! May the Goddess bless you!";
+		close2;
+		set fpoints,fpoints+65;
+		set gardphase,4;
+		set guardquest2$,"";
+		delitem 30001,1;
+		getexp 1600,0;
+		getitem 30881,3;
+		dispbottom "Gained +65FP.";
+		soundeffect "battlewon.wav",0;
+		announce "Lost Key quest complete!",bc_self;
+		end;
+		
+		donequest2:
+		mes .@name$;
+		mes "Welcome to Destra's Home!";
+		close;
+
+		OnPCLoadMapEvent:
+		getmapxy(.@map$,.@x,.@y,0);
+		if(.@map$ == "ve_fild02" && gardphase == 3) {
+			viewpoint 1,189,367,10,0x000000;
+			viewpoint 2,142,365,10,0x000000;
+			viewpoint 3,142,313,10,0x000000;
+			viewpoint 4,189,320,10,0x000000;
+		}
+		end;
+		
+}
+//===============
+// -- The Mobs
+//===============
+-	script	GuardMobs	-1,{
+	
+	OnDwolf:
+	if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(gardphase == 1) {
+				set dwolfk,dwolfk+1;
+				announce "Quest Update: Killed "+dwolfk+"/15 Baby Desert Wolves.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+	if(gardphase == 1) {
+		set dwolfk,dwolfk+1;
+		announce "Quest Update: Killed "+dwolfk+"/15 Baby Desert Wolves.",bc_self;
+		}
+	end;
+
+	OnAsav:
+	if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(gardphase == 1) {
+				set asavk,asavk+1;
+				announce "Quest Update: Killed "+asavk+"/15 Savages.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+	if(gardphase == 1) {
+	set asavk,asavk+1;
+	announce "Quest Update: Killed "+asavk+"/15 Savages.",bc_self;
+	}
+	end;
+
+	OnAndre:
+	if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(gardphase == 1) {
+				set fdenk,fdenk+1;
+				announce "Quest Update: Killed "+fdenk+"/5 Deniro.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+	if(gardphase == 1) {
+		set fdenk,fdenk+1;
+		announce "Quest Update: Killed "+fdenk+"/5 Deniro.",bc_self;
+		}
+	end;
+}
+
+ve_fild02,176,345,5	script	Lost Key	111,{
+
+if(gardphase == 3 && countitem(30001) < 1) {
+	getitem 30001,1;
+	end;
+}
+dispbottom "You find nothing of importance.";
+end;
+
+OnInit:
+initnpctimer;
+end;
+
+OnTimer10000:
+initnpctimer;
+npctalk "*sparkle*";
+end;
+
+}

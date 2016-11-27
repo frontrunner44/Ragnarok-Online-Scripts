@@ -1,0 +1,3 @@
+yuno_in01,25,34,5	script	Tool Shop#YunT01	69,{
+callshop "GlobTool01",0;
+}

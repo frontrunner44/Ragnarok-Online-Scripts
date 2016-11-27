@@ -1,0 +1,9 @@
+ayo_in01,91,160,3	script	Armor Dealer#AyoArm01	74,{
+if(faction != $ayofaction) {
+	mes "[^0000ffArmor Dealer^000000]";
+	mes "..... What are you here for?";
+	close;
+	}
+callshop "AyoArms01",0;
+}
+-	shop	AyoArms01	139,2211:-1,2401:-1,2403:-1,2501:-1,2503:-1,2101:-1,2103:-1,2305:-1,2321:-1,2332:-1,2328:-1,2627:-1

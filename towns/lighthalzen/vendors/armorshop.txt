@@ -1,0 +1,6 @@
+lhz_in02.gat,274,36,5	script	Gear#Lhz02	90,{
+
+if(faction == 2) { mes "[Merchant]"; mes "......."; close; }
+
+callshop "GlobGear01",0;
+}

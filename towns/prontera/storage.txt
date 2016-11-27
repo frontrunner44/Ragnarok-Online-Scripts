@@ -1,0 +1,14 @@
+prt_in.gat,110,69,6	script	Storage#Prt	828,{
+
+if(faction != $prtfaction) {mes "...."; close;}
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

@@ -1,0 +1,13 @@
+eathena_in,187,304,5	script	Storage#GZ01	727,{
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

@@ -1,0 +1,7 @@
+ra_temin,274,323,6	script	Old Woman	761,{
+
+mes "[Old Woman]";
+mes "We believe this statue stops the demons inside of the dungeon";
+mes "which lie behind it from coming out.";
+close;
+}		

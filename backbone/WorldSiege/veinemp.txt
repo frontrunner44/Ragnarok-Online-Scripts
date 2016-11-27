@@ -1,0 +1,64 @@
+-	script	EmperiumVein	-1,{
+
+OnInit:
+monster "veins",229,147,"Siege Crystal",2009,1,"EmperiumVein::OnVein";
+end;
+
+OnVein:
+// --Already Yours
+//================
+
+if(faction == $veinfaction) { 
+monster "veins",229,147,"Siege Crystal",2009,1,"EmperiumVein::OnVein"; 
+dispbottom "This town already belongs to your Faction.";
+end; 
+}
+
+
+// --Capture
+//==========
+if(faction == 1) { 
+set $veinfaction,1; 
+announce "Arzeon has taken over Veins",16; 
+monster "veins",229,147,"Siege Crystal",2009,1,"EmperiumVein::OnVein"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+if(faction == 2)  { 
+set $veinfaction,2; 
+announce "Destra has  taken over Veins",16; 
+monster "veins",229,147,"Siege Crystal",2009,1,"EmperiumVein::OnVein"; 
+// Party Recieves FP
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+1000;
+			dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+			} 
+		} 
+		end;
+	}
+set fpoints,fpoints+1000;
+dispbottom "You have recieved 1,000FP for capturing an enemy town!";
+end;
+}
+
+}

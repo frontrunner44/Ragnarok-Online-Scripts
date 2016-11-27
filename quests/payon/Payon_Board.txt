@@ -1,0 +1,138 @@
+payon,147,230,5	script	?MissionBoard?#PBoard01	857,{
+
+//================
+// -- Config
+//================
+set .@name$,"[^0000ffMission Board^000000]";
+if(alarmphase == 0) set .@questlist$[0],"- Alarm Killing";
+if(alarmphase == 1) set .@questlist$[0],"- Alarm Killing(In Progress)";
+if(apartsphase == 0) set .@questlist$[1],"- Clock Parts";
+if(apartsphase == 1) set .@questlist$[1],"- Clock Parts(In Progress)";
+
+if(baselevel < 70) {
+	mes .@name$;
+	mes "You must be at least level 70 to view the missions on this board.";
+	close;
+	}
+if(faction != $payfaction) {
+	mes .@name$;
+	mes "Your faction is not currently in control of this dungeon.";
+	close;
+	}
+mes .@name$;
+mes "Here is a list of currently available quests.";
+next;
+menu .@questlist$[0],L_alarm,.@questlist$[1],L_aparts,"- Nothing",-;
+close;
+
+	L_alarm:
+	if(alarmkilled >= 60) goto L_alarmdone;
+	if(alarmphase == 1) {
+		mes .@name$;
+		mes "You have killed "+alarmkilled+" of 60 Alarms.";
+		close;
+		}
+	mes .@name$;
+	mes "The alarms inside of the Temple have been waking up the citizens of Payon.";
+	next;
+	mes .@name$;
+	mes "We need someone to go inside and lower their numbers to lower the noise they are creating.";
+	next;
+	menu "- Accept",L_aalarm,"- Nevermind",-;
+	close;
+
+		L_aalarm:
+		mes .@name$;
+		mes "Go into the Temple of Honor and kill 60 Alarms.";
+		close2;
+		announce "New quest added to Adventure Logs.",bc_self;
+		set alarmphase,1;
+		set alarmkiller$,"Alarm Killer";
+		end;
+
+		L_alarmdone:
+		mes .@name$;
+		mes "Quest completion verified.";
+		getexp 3500000,2000000;
+		getitem 30881,15;
+		set fpoints,fpoints+3000;
+		set zeny,zeny+80000;
+		dispbottom "Gained +3,000FP and +80,000z.";
+		soundeffect "battlewon.wav",0;
+		set alarmphase,2;
+		set alarmkiller$,"";
+		close;
+
+	L_aparts:
+	if(countitem(30010) == 40) goto L_apartsdone;
+	if(apartsphase == 1) {
+		mes .@name$;
+		mes "You have collected "+countitem(30010)+" of 40 Clock Parts.";
+		close;
+		}
+	mes .@name$;
+	mes "Demand for Payon wall clocks are in high demand. Problem is, the clock makers are running low on parts.";
+	next;
+	mes .@name$;
+	mes "The parts from Alarms in the Temple of Honor should do. We need someone to slay them and collect at least 40 bundle of parts, then deliver them to Akeer.";
+	next;
+	menu "- Accept",L_aapart,"- Nevermind",-;
+	close;
+
+		L_aapart:
+		mes .@name$;
+		mes "Go into the Temple of Honor and kill clocks for their parts. When you collect 40, deliver them to Akeer in Payon.";
+		close2;
+		set apartsphase,1;
+		set apart$,"Alarm Parts";
+		announce "New quest added to Adventure Logs.",bc_self;
+		end;
+
+		L_apartsdone:
+		mes .@name$;
+		mes "You have collected 40 Clock Parts. Please deliver them to Akeer in Payon.";
+		close;
+
+
+	//====================
+	// -- Load Event
+	//====================
+	OnPCLoadMapEvent:
+	if(apartsphase == 1 && countitem(30010) == 40) {
+		viewpoint 1,156,97,20,0x000000;
+		}
+	end;
+
+
+}
+
+// -- New Script
+//=================
+// -- Akeer
+//=================
+payon,156,97,5	script	?Akeer?	742,{
+
+set .@name$,"[^0000ffAkeer^000000]";
+
+if(countitem(30010) == 40) goto L_done;
+mes .@name$;
+mes "These clock makers are so demanding. Why don't they get their own clock parts!?";
+close;
+
+	L_done:
+	mes .@name$;
+	mes "Thanks for the work, I'll deliver these right away.";
+	close2;
+	getexp 3500000,2000000;
+	getitem 30881,25;
+	delitem 30010,countitem(30010);
+	set fpoints,fpoints+4500;
+	set zeny,zeny+95000;
+	dispbottom "Gained +4,500FP and +95,000z.";
+	soundeffect "battlewon.wav",0;
+	set apartsphase,2;
+	set apart$,"";
+	viewpoint 2,156,97,20,0x000000;
+	end;
+
+}

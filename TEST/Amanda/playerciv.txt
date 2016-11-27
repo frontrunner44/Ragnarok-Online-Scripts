@@ -1,0 +1,272 @@
+prontera,155,179,5	script	Civilizations Leader#01	951,{
+set .@name$,"[^0000ffNPC Name^000000]";
+set .@cost,1; // The cost of creating a new civilization. Edit to your liking.
+
+mes .@name$;
+mes "Hello, "+strcharinfo(0)+".";
+next;
+mes .@name$;
+mes "I am the civilizations leader.";
+next;
+mes .@name$;
+mes "I can allow you to either join a player created civilization, or create your own.";
+next;
+mes .@name$;
+mes "Either choose 'Create' to start a new civilization, or choose the name of an already existing one to join.";
+next;
+menu $civil$[0],L_civi3,$civil$[1],L_civi4,"Nevermind",-;
+close;
+
+	L_civi3:
+	set .@x,0; // Sets a temporary variable to the value of the array element used for the civilization name.
+	set .@y,3; // The value the variable must be set to in order to determine what civiliziation a player is in.
+	if($civiowner$[.@x] == strcharinfo(0)) goto L_owner;
+	if($civiowner2$[.@x] == strcharinfo(0)) goto L_owner;
+	if($civiowner3$[.@x] == strcharinfo(0)) goto L_owner;
+	if($civil$[.@x] != "Create") goto L_join;
+	if(civil > 2 || #incivil > 2) goto L_alreadyin;
+	if(#cowner == 1) goto L_alreadyown;
+	mes .@name$;
+	mes "Creating a new civilization will cost you "+.@cost+" zeny.";
+	next;
+	menu "- Do it",L_yes,"- Nevermind",-;
+	close;
+
+	L_civi4:
+	set .@x,1;
+	set .@y,4;
+	if($civiowner$[.@x] == strcharinfo(0)) goto L_owner;
+	if($civiowner2$[.@a] == strcharinfo(0)) goto L_owner;
+	if($civiowner3$[.@a] == strcharinfo(0)) goto L_owner;
+	if($civil$[.@x] != "Create") goto L_join;
+	if(civil > 2 || #incivil > 2) goto L_alreadyin;
+	if(#cowner == 1) goto L_alreadyown;
+	mes .@name$;
+	mes "Creating a new civilization will cost "+.@cost+" zeny.";
+	next;
+	menu "- Create",L_yes,"- Nevermind",-;
+	close;
+
+		L_yes:
+		if(zeny < .@cost) {
+			mes .@name$;
+			mes "You do not have enough zeny.";
+			}
+		mes .@name$;
+		mes "Please choose a name for your civilization.";
+		input .@civname$;
+		next;
+		if(.@civname$ == "Create") {
+			mes .@name$;
+			mes "You cannot name your civilization create.";
+			close;
+			}
+		mes .@name$;
+		mes "You have successfully created a new civilization!";
+		set $civil$[.@x],.@civname$;
+		set $civiowner$[.@x],strcharinfo(0);
+		atcommand "@fakename ["+.@civname$+"] "+strcharinfo(0);
+		set zeny,zeny-.@cost; 
+		set civil,.@y;
+		set #incivil,.@y;
+		set #cowner,1;
+		announce "A new civilizations has risen. "+strcharinfo(0)+" has created "+.@civname$+".",16;
+		close;
+
+		L_join:
+		if(civil == .@y || #incivil == .@y) goto L_member;
+		mes .@name$;
+		mes "Would you like to join the "+$civil$[.@x]+" civilization?";
+		next;
+		menu "- Join",L_joinciv,"- No",-;
+		close;
+
+			L_joinciv:
+			mes .@name$;
+			mes "You have joined "+$civil$[.@x]+".";
+			set civil,.@y;
+			set #incivil,.@y;
+			atcommand "@fakename ["+$civil$[.@x]+"] "+strcharinfo(0);
+			close;
+
+        L_owner:
+	if($civiowner$[.@x] == "") set .@empty,.@empty+1;
+	if($civiowner2$[.@x] == "Add Leader") set .@empty,.@empty+1;
+	if($civiowner3$[.@x] == "Add Leader") set .@empty,.@empty+1;
+	mes .@name$;
+	mes "Welcome, owner of "+$civil$[.@x]+".";
+	next;
+	mes .@name$;
+	mes "What would you like to do?";
+	next;
+	menu "- Change Civilization's Name",L_name,"- Hire Leader",L_hire,"- Disband Civilization",L_disband,"- Resign Leadership",L_resign,"- Nothing",-;
+	close;
+
+		L_hire:
+		mes .@name$;
+		mes "Please choose 'Add Leader' to hire another civilization leader. Choosing an already existing leader will cancel.";
+		next;
+		mes .@name$;
+		mes "Please make sure that you trust the person you are hiring. They will have as many leader benefits as you have.";
+		next;
+		menu $civiowner2$[.@x],L_hire2,$civiowner3$[.@x],L_hire3;
+
+			L_hire2:
+			if($civiowner2$[.@x] != "Add Leader") {
+				mes .@name$;
+				mes "Someone has already taken this leader position.";
+				close;
+				}
+			mes .@name$;
+			mes "Please enter the name of the player you with to hire.";
+			input .@pname$;
+			next;
+			if(getmapxy(.@map$,@x,@y,0,.@pname$) != 0) goto L_notfound;
+			if(getmapxy(.@map$,@x,@y,0,.@pname$) == 0) goto L_found1;
+
+			L_hire3:
+			if($civiowner3$[.@x] != "Add Leader") {
+				mes .@name$;
+				mes "Someone has already taken this leader position.";
+				close;
+				}
+			mes .@name$;
+			mes "Please enter the name of the player you with to hire.";
+			input .@pname$;
+			next;
+			if(getmapxy(.@map$,@x,@y,0,.@pname$) != 0) goto L_notfound;
+			if(getmapxy(.@map$,@x,@y,0,.@pname$) == 0) goto L_found2;
+
+				L_found1:
+				mes .@name$;
+				mes "If the player is unable to join as leader for any reason, clicking close will do nothing.";
+				next;
+				mes .@name$;
+				mes "If the player is capable of becoming leader, you will see an announcement upon closing this diologue.";
+				close2;
+				set .@invoker,strcharinfo(0);
+				attachrid getcharid(3,.@pname$);
+				if(civil > 2 && civil != .@x) {
+					attachrid getcharid(3,.@invoker);
+					dispbottom "This player cannot become leader because he/she is in another civilization.";
+					}
+				if(#incivil > 2 && #incivil != .@x) {
+					attachrid getcharid(3,.@invoker);
+					dispbottom "This player cannot become leader because he/she is in another civilization.";
+					}
+				set civil,.@x;
+				set #incivil,.@x;
+				set #cowner,1;
+				set $civiowner2$[.@x],.@pname$;
+				announce "System: "+.@pname$+" has been hired as a leader of "+$civil$[.@x]+".",16;
+				atcommand "@fakename ["+$civil$[.@x]+"] "+strcharinfo(0);
+				end;
+
+				L_found2:
+				mes .@name$;
+				mes "The player "+.@pname$+" has been hired as a leader of "+$civil$[.@x]+".";
+				set $civiowner3$[.@x],.@pname$;
+				close2;
+				announce "System: "+.@pname$+" has been hired as a leader of "+$civil$[.@x]+".",16;
+				attachrid getcharid(3,.@pname$);
+				set civil,.@x;
+				set #incivil,.@x;
+				set #cowner,1;
+				atcommand "@fakename ["+$civil$[.@x]+"] "+strcharinfo(0);
+				end;
+
+				L_notfound:
+				mes .@name$;
+				mes "The player you wish to hire must be online. Also check if you spelled the name correctly.";
+				close;
+
+		L_resign:
+		if(.@empty >= 2) {
+			mes .@name$;
+			mes "You can't resign if you are the last leader of a civilization. Please disband the civilization instead.";
+			next;
+			goto L_owner;
+			}
+		mes .@name$;
+		mes "Are you sure you want to resign and become a normal member of this civilization?";
+		next;
+		menu "- Yes, Resign",L_yresign,"- Nevermind",-;
+		close;
+
+			L_yresign:
+			mes .@name$;
+			mes "You have resigned from leadership!";
+			if($civiowner$[.@x] == strcharinfo(0)) set $civiowner$[.@x],"";
+			if($civiowner2$[.@x] == strcharinfo(0)) set $civiowner$[.@x],"Add Leader";
+			if($civiowner3$[.@x] == strcharinfo(0)) set $civiowner$[.@x],"Add Leader";
+			set #incivil,.@x;
+			set civil,.@x;
+			set #cowner,0;
+			announce "System: "+strcharinfo(0)+" has resigned his/her leadership position of "+$civil$[.@x]+".",16;
+			close;
+
+		L_name:
+		mes .@name$;
+		mes "Please input the name you wish to change it to.";
+		input .@civname$;
+		next;
+		mes .@name$;
+		mes "Done. Your civilization's name has been changed to "+.@civiname$+".";
+		set $civil$[.@x],.@civname$;
+		announce "System: "+strcharinfo(0)+" has changed his/her civilization's name to "+$civil$[.@x]+".",16;
+		close;
+
+		L_disband:
+		if(.@empty < 2) {
+			mes .@name$;
+			mes "You can not disband a civilization if you are not the only leader. Please resign instead.";
+			next;
+			goto L_owner;
+			}
+		mes .@name$;
+		mes "When disbanding your civilization, you must also choose to rejoin one of the default civilizations.";
+		next;
+		menu "- Join Civil1",L_civi1,"- Join Civil2",L_civi2,"- Nevermind",-;
+		close;
+
+			L_civi1:
+			mes .@name$;
+			mes "Civilization disbanded.";
+			announce "System: The "+$civil$[.@x]+" civilization has been disbanded.",16;
+			announce "System: All current members are request to relog in order to rejoin one of the basic civilizations.",16;
+			set $civil$[.@x],"Create";
+			set $civiowner$[.@x],"";
+			atcommand "@fakename [Civ 1] "+strcharinfo(0);
+			set civil,1;
+			set #incivil,1;
+			set #cowner,0;
+			close;
+
+			L_civi2:
+			mes .@name$;
+			mes "Civilization disbanded.";
+			announce "System: The "+$civil$[.@x]+" civilization has been disbanded.",16;
+			announce "System: All current members are request to relog in order to rejoin one of the basic civilizations.",16;
+			set $civil$[.@x],"Create";
+			set $civiowner$[.@x],"";
+			atcommand "@fakename [Civ 2] "+strcharinfo(0);
+			set civil,2;
+			set #incivil,2;
+			set #cowner,0;
+			close;
+
+	L_alreadyown:
+	mes .@name$;
+	mes "You already own another civilization. Please choose it from the list of available civilizations.";
+	close;
+
+	L_alreadyin:
+	mes .@name$;
+	mes "You are already in another player based civilization. You must leave your old civilization in order to join this one.";
+	close;
+
+	L_member:
+	mes .@name$;
+	mes "You already belong to this civilization. I will impliment a feature which allows players to leave civilizations.";
+	close;
+}

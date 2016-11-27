@@ -1,0 +1,27 @@
+// +--------------------------------------------+
+// | Advanced Stylist							|
+// +--------------------------------------------+
+// | By: Hudelf									|
+// +--------------------------------------------+
+// | Current Version: 2.0						|
+// +--------------------------------------------+
+// | Description:								|
+// |	This is the traditional banker with 	|
+// |	a few more options, including storage	|
+// |	and several ways to make withdrawing	|
+// |	and depositing zeny easier.				|
+// +--------------------------------------------+
+// | Changelog:									|
+// |	02/08/07 - Created V1.0 [Hudelf]		|
+// |	06/04/07 - Rewrote entire script		|
+// |				Added new features [Hudelf]	|
+// +--------------------------------------------+
+
+ra_temsky.gat,151,140,5	script	Stylist#Rach	122,{
+
+if(faction == 1) { mes "I'm sorry, but I cannot help you."; close; }
+
+callfunc "Stylist";
+end;
+
+}

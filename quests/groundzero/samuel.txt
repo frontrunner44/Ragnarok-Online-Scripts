@@ -1,0 +1,24 @@
+eathena_in,24,307,5	script	?Samuel?#Eggs	47,{
+set .@name$,"[^0000ffSamuel^000000]";
+if(countitem(30007) >= 10) goto questdone;
+mes .@name$;
+mes "Hello there, young'in.";
+close;
+
+	questdone:
+	mes .@name$;
+	mes "Wow, thank you for the quick delivery!";
+	close2;
+	set eggdelv$,"";
+	set eggdelivery,2;
+	delitem 30007,countitem(30007);
+	getexp 600000,300000;
+	set zeny,zeny+120000;
+	set fpoints,fpoints+1200;
+	getitem 30706,1;
+	getitem 30881,15;
+	announce "Quest Update: Tough Egg Shells quest complete!",bc_self;
+	dispbottom "Gained 120,000z and +1,200FP.";
+	soundeffect "battlewon.wav",0;
+	end;
+}

@@ -1,0 +1,843 @@
+function	script	QuestLogger	{
+
+//==================
+// -- Configs
+//==================
+getmapxy(.@map$,.@x,.@y,0);
+set .@name$,"[^0000ffAdventure Logs^000000]";
+if(getgmlevel() >= 98) {
+	set @gmmenu$,"- Admin Menu";
+	}
+
+//=======================
+// -- Quest Logger
+//=======================
+	openquest:
+	mes .@name$;
+	mes "You have "+fpoints+" Faction Points.";
+	next;
+	menu @gmmenu$,gmmenu,"- Quest Logger",questlogger,"- Check Territory",checkterri,"- Territory Benefits",L_benefit,"- Party Recall",L_precall,"- Go to Home Town",L_gzwarp,"- ChaosRO Guide",L_guidez,"- ChaosRO Tips",L_tips,"- Nothing",-;
+	close;
+
+		L_guidez:
+		callfunc "ServerGuide";
+		end;
+
+		L_gzwarp:
+		if(faction == 0) {
+			mes .@name$;
+			mes "You must join a faction before accessing this feature.";
+			close;
+			}
+		mes .@name$;
+		mes "Would you like to warp to Ground Zero or your Faction's Home?";
+		next;
+		menu "- Ground Zero",L_ygzwarp,"- Faction's Home",L_warpfhome,"- No",openquest;
+
+			L_ygzwarp:
+			warp "eathena",256,168;
+			end;
+
+			L_warpfhome:
+			if(faction == 1) warp "lighthalzen",158,92;
+			if(faction == 2) warp "rachel",130,110;
+			end;
+
+		L_tips:
+		mes .@name$;
+		mes "Would you like to turn tips on or off?";
+		next;
+		menu "- On",L_tipson,"- Off",-;
+		if(tipsonoff == 1) {
+			mes .@name$;
+			mes "ChaosRO Tips is already turned off.";
+			next;
+			goto openquest;
+			}
+		mes .@name$;
+		mes "ChaosRO Tips have been turned off.";
+		next;
+		set tipsonoff,1;
+		goto openquest;
+
+			L_tipson:
+			if(tipsonoff == 0) {
+				mes .@name$;
+				mes "ChaosRO Tips are already turned on.";
+				next;
+				goto openquest;
+				}
+			mes .@name$;
+			mes "ChaosRO Tips have been turned on.";
+			next;
+			set tipsonoff,0;
+			goto openquest;
+
+
+//===================
+// -- Quest Menu
+//===================
+	questlogger:
+	mes .@name$;
+	mes "Please choose a quest to inquire about.";
+	next;
+	menu  beginner$,beginner_quest,kuikiller$,beginner_quest2,pukukiller$,beginner_quest3,scorp$,beginner_quest4,bobquest1$,bobquest1,bobquest2$,bobquest2,guardquest$,guardquest,guardquest2$,guardquest2,lhzmission$,lhzmission1,dnaquest$,zombie_dna,repdeliver$,zombiereport,zombie50$,zombie_slaying,noiseyskel$,noisey,kingzombie$,king_zombie,skelslayer$,skel_slayer,eggdelv$,egg_delivery,mandellq$,L_mandell,axeremovel$,L_remaxe,bioflyl$,L_biofly,alarmkiller$,L_alarmkiller,apart$,L_aparts,mantsand$,L_mantsand,"None",-;
+	goto openquest;
+
+//				Start of Quests
+// **********************************************************************************************************************************
+		
+		//======================
+		// -- Beginner Quest
+		//======================
+		beginner_quest:
+			mes .@name$;
+			mes "Bring your referral to the Guard standing outside of the beginner building.";
+			mes "He will give you further instructions.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "240Bexp, 100Jexp, 20FP, Acc. Token x1";
+			next;
+			menu "- Return",openquest,"- Close",-;
+			close;
+	
+		//==================
+		// -- Kuikui
+		//==================
+		beginner_quest2:
+			mes .@name$;
+			mes "Kill 15 kuikui and return to the guard near the beginner building.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+kuikilled+"^000000/15 kuikui.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "800Bexp, 100Jexp, 20 Red Pots, 50FP, Acc. Token x1";
+			next;
+			menu "- Return",openquest,"- Close",-;
+			close;
+		
+		//=====================
+		// -- More Training
+		//=====================
+		beginner_quest3:
+			mes .@name$;
+			mes "Kill 20 pukupuku and return to the guard near the beginner building.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+pukukilled+"^000000/20 pukupuku.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "1500Bexp, 200Jexp, 800z, 100FP, Acc. Token x1";
+			next;
+			menu "- Return",openquest,"- Close",-;
+			close;
+		
+		//===================
+		// -- Final Test
+		//===================
+		beginner_quest4:
+			mes .@name$;
+			mes "Kill 'Sea Scorpion' found on the north eastern island and bring it's pincher back to the Newbie Trainer.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have "+countitem(30006)+"/1 Scorpion Pincher.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "4800Bexp, 2400Jexp, 115FP, 1200z, Newbie Hat, Acc. Token x2";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_finaltest;
+
+			c_finaltest:
+				mes .@name$;
+				mes "Quest Cancled!";
+				close2;
+				set beginner4$,"";
+				set begphase,5;
+				delitem 30006,1;
+				end;
+
+			
+			
+			
+		//=================
+		// -- Screw Hunt
+		//=================
+		bobquest1:
+			mes .@name$;
+			mes "Bring Bob 30 rusty screws from metaling. Bob can be found in Lighthalzen's Weapon Shop.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have ^ff0000"+countitem(7317)+"^000000 of 30 rusty screws.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "1800Bexp, 80FP, Chain Advancement, Acc. Token x3";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",C_bobquest1;
+			
+			C_bobquest1:
+				mes .@name$;
+				mes "Quest Canceled!";
+				set bobquest1$,"";
+				set bobqphase,0;
+				close;
+				
+
+		//=====================
+		// -- Ore Collector
+		//=====================
+		bobquest2:
+			mes .@name$;
+			mes "Bring Bob 100 Iron Ore.";
+			mes "Bob can be found inside of Lighthalzen's Weapon Shop.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have "+countitem(1002)+" of 100 Iron Ore.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "1520Bexp, 130FP, Acc. Token x3";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_bobquest2;
+			close;
+				
+			c_bobquest2:
+				mes .@name$;
+				mes "Quest Canceled!";
+				set bobquest2$,"";
+				set bobqphase,2;
+				close;
+			
+	
+		//========================
+		// -- Route Clearance 
+		//========================
+		guardquest:
+			mes .@name$;
+			mes "Help the Rachel guard finish his work early.";
+			mes "Exit the sourthern portal of Rachel and clear the area for travelers.";
+			mes " ";
+			mes "^000088Progress:^000000";
+			mes "Killed ^ff0000"+dwolfk+"^000000 of 15 Baby Desert Wolves.";
+			mes "Killed ^ff0000"+asavk+"^000000 of 15 Savages.";
+			mes "Killed ^ff0000"+fdenk+"^000000 of 5 Deniro.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "6000Bexp, 200FP, Chain Advancement, Acc. Token x3";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_guardquest;
+		
+			c_guardquest:
+				mes .@name$;
+				mes "Quest Cancled!";
+				set gardphase,0;
+				set dwolfk,0;
+				set asavk,0;
+				set fdenk,0;
+				set guardquest$,"";
+				close;
+	
+
+		//=================
+		// -- Lost Key
+		//=================
+		guardquest2:
+			mes .@name$;
+			mes "Find the Guard's lost key on ve_fild02 and bring it back to him in Rachel.";
+			mes " ";
+			mes "^000088Progress:^000000";
+			mes "Found ^ff0000"+countitem(9001)+"^000000/1 Lost Keys.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "1600Bexp, 65FP, Acc. Token x3";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_guardquest2;
+		
+			c_guardquest2:
+				mes .@name$;
+				mes "Quest Cancled!";
+				set guardquest2$,"";
+				set gardphase,2;
+				delitem 9001,1;
+				close;
+
+		//==================
+		// -- Lhz Mission
+		//==================
+		lhzmission1:
+			mes .@name$;
+			mes "Travel to 'lhz_fild01' and kill 30 ^ff0000'Metaling'^000000 then return to the guard in Arzeon Castle.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+ mobmetal +"^000000 of 30 'Hotwired Metaling'.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "3000Bexp, 155FP, Acc. Token x3";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_lhzmission1;
+
+			c_lhzmission1:
+				mes .@name$;
+				mes "Quest Cancled!";
+				set lhzmphase,0;
+				set lhzmission$,"";
+				set mobmetal,0;
+				close;
+		
+		//=================
+		// -- Zombie DNA
+		//=================
+		zombie_dna:
+			mes .@name$;
+			mes "Head into payon dungeon, and kill 'Zombies' untill you";
+			mes "recieve ^ff000015^000000 DNA samples. Then bring them to the old man outside of the dungeon's entrance.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have ^ff0000"+ countitem(30002) +"^000000/15 DNA samples.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "60000Bexp, 10000Jexp, 3500z, 200FP, Twin Bunny[1] Headgear, Chain Advancement, Acc. Token x5";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_zombiedna;
+
+			c_zombiedna:
+				mes .@name$;
+				mes "Quest Cancled!";
+				set dnaphase,0;
+				set dnaquest$,"";
+				delitem 30002,countitem(300003);
+				close;
+		
+		//=====================
+		// -- Zombie Report
+		//=====================
+		zombiereport:
+			mes .@name$;
+			mes "The old man in Payon wants you to deliver his Zombie Report to his student in Prontera.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "His student can be found near the large hands statue in the northern portion of Prontera.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "3000Bexp, 2000Jexp, 50FP, Floppy Bunny(Headgear), Double Bound(Bow), Acc. Token x10";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_zombiereport;
+
+			c_zombiereport:
+				mes "^0000ffAdventure Logs^000000]";
+				mes "Quest Cancled!";
+				set repdeliver$,"";
+				set dnaphase,2;
+				delitem 30003,1;
+				close;
+
+		//=========================
+		// -- Zombie Slaying
+		//=========================
+		zombie_slaying:
+			mes .@name$;
+			mes "Go into the The Abyss instance found in Ground Zero and kill 50 Zombies to help lower it's population.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+zombieslayed+"^000000/50 Zombies.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "50000Bexp, 35000Jexp, 500FP, 5000z, Chain Advancement, Acc. Token x6";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_zombieslayer;
+
+				c_zombieslayer:
+					mes .@name$;
+					mes "Quest Cancled!";
+					close2;
+					set zombie50$,"";
+					set zombie50phase,0;
+					set zombieslayed,0;
+					end;
+
+		//========================
+		// -- Noisey Skeletons
+		//========================
+		noisey:
+			mes .@name$;
+			mes "Go into the The Abyss instance found in Ground Zero and kill 60 Skeletons to help stop the annoying racket they bring!";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+noiseykilled+"^000000/60 Skeletons.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "40000Bexp, 20000Jexp, 250FP, Chain Advancement, Acc. Token x5";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_noisey;
+
+				c_noisey:
+				mes .@name$;
+				mes "Quest Cancled!";
+				close2;
+				set noiseykilled,0;
+				set noiseyskel$,"";
+				set noiseyphase,0;
+				end;
+
+		//==========================
+		// -- King of Zombies
+		//==========================
+		king_zombie:
+			mes .@name$;
+			mes "Go into the dungeo instance 'The Abyss' and kill 'Zombie King'.";
+			next;
+			mes .@name$;
+			mes "He can be summoned by destroying the 4 Chaos Seals inside of the dungeon.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+kingkilled+"^000000/1 King Zombie.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "6500000Bexp, 4000000Jexp, 8000FP, 450000z, Acc. Token x40";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_koz;
+
+				c_koz:
+					mes .@name$;
+					mes "Quest Cancled!";
+					close2;
+					set kingzombie$,"";
+					set kozphase,0;
+					end;
+
+		//========================
+		// -- Skeleton Slayer
+		//========================
+		skel_slayer:
+			mes .@name$;
+			mes "Go into The Abyss dungeon instance, and kill 70 Soldier Skeletons, and 70 Archer Skeletons.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have killed ^ff0000"+soldierkilled+"^000000/70 Soldier Skeletons.";
+			mes "You have killed ^ff0000"+archerskilled+"^000000/70 Archer Skeletons.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "800000Bexp, 600000Jexp, 10000z, 2500FP, Acc. Token x15";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_slayer;
+
+				c_slayer:
+					mes .@name$;
+					mes "Quest Cancled!";
+					close2;
+					set skelslayer$,"";
+					set soldierskelz,0;
+					set soldierkilled,0;
+					set archerskilled,0;
+					end;
+
+		//==========================
+		// -- Tough Egg Shells
+		//==========================
+		egg_delivery:
+			mes .@name$;
+			mes "Collect 10 Hard Egg Shells from Eggyra in The Abyss dungeon instance and deliver them to Samuel.";
+			mes "Samuel can be found at Ground Zero, at co-ords 180,103.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "You have collected ^ff0000"+countitem(30007)+"^000000/10 Hard Egg Shells.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "600000Bexp, 300000Jexp, 120,000z, 1200FP, Eggyra Hat, Acc. Token x15";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_eggdelv;
+
+				c_eggdelv:
+					mes .@name$;
+					mes "Quest Cancled!";
+					close2;
+					set eggdelivery,0;
+					set eggdelv$,"";
+					delitem 30007,10;
+					end;
+
+		//=======================
+		// -- Mandell Fruit
+		//=======================
+		L_mandell:
+			mes .@name$;
+			mes "Collect 5 Mandell Fruit from Ground Zero and deliver them to Harold in Morocc.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Collected ^ff0000"+countitem(30008)+"^000000 of 5 Mandell Fruit.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "20000Bexp, 6000Jexp, 60000z, 500FP, 5x Scroll of Morocc, 1Acc. Token x5";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_mandell;
+
+				c_mandell:
+					mes .@name$;
+					mes "Quest Cancled!";
+					close2;
+					set mandell,0;
+					set mandellq$,"";
+					set mfruit1,0;
+					set mfruit2,0;
+					set mfruit3,0;
+					set mfruit4,0;
+					set mfruit5,0;
+					delitem 30008,5;
+					end;
+
+		//============================
+		// -- Material Farming
+		//============================
+		L_remaxe:
+			mes .@name$;
+			mes "Go into the Biolabs instance, and collect 30 axes from Removers and deliver them to markus in the airport.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Collected ^ff0000"+countitem(30009)+"^000000 of 30 axes.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "8000000Bexp, 5000000Jexp, 1500FP, 80000z, Scroll of Einbroch x3, Acc. Token x5";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_remaxe;
+
+				c_remaxe:
+				mes .@name$;
+				mes "Quest Canceled!";
+				close2;
+				delitem 30009,countitem(30009);
+				set axeremove,0;
+				set axeremovel$,"";
+				end;
+		
+		//======================
+		// -- Fly Swatter
+		//======================
+		L_biofly:
+			mes .@name$;
+			mes "Go into the Biolabs instance and exterminate 70 Anopheles.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Killed ^ff0000"+bioflykilled+"^000000 of 70 Anopheles.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "6000000Bexp, 5000000Jexp, 2500FP, 60000z, Butterfly Wing x30, Fly Wing x70, Acc. Token x15";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_biofly;
+
+				c_biofly:
+				mes .@name$;
+				mes "Quest Cancled!";
+				close2;
+				set biofly,0;
+				set bioflyl$,"";
+				set bioflykilled,0;
+				end;
+				
+		//======================
+		// -- Alarm Killer
+		//======================
+		L_alarmkiller:
+			mes .@name$;
+			mes "Go into The Temple of Honor(Instance) and kill 60 Alarms.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Killed ^ff0000"+alarmkilled+"^000000 of 60 Alarms.";
+			mes "~";
+			mes "^000088Reward:^000000";
+			mes "3500000Bexp, 2000000Jexp, 3000FP, 80000z, Acc. Token x15";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_alarmkiller;
+
+				c_alarmkiller:
+				mes .@name$;
+				mes "Quest Cancled!";
+				close2;
+				set alarmkilled,0;
+				set alarmphase,0;
+				set alarmkiller$,"";
+				end;
+
+		//====================
+		// -- Clock Parts
+		//====================
+		L_aparts:
+			mes .@name$;
+			mes "Go into the Temple of Honor and kill Alarms for their parts. Collect 40 parts and deliver them to Akeer in Payon.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Collected "+countitem(30010)+" of 40 Clock Parts.";
+			mes "~";
+			mes "^000088Rewards:^000000";
+			mes "3500000Bexp, 2000000Jexp, 4500FP, 95000z, Acc. Token x25";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_aparts;
+
+				c_aparts:
+				mes .@name$;
+				mes "Quest Cancled";
+				close2;
+				delitem 30010,countitem(30010);
+				set aparts$,"";
+				set apartphase,0;
+				end;
+
+		//==========================
+		// -- Clear The Area
+		//==========================
+		L_mantsand:
+			mes .@name$;
+			mes "Kill 60 Mantis and 40 Mi Gao one south of Louyang then return to the Louyang Guide.";
+			mes "~";
+			mes "^000088Progress:^000000";
+			mes "Killed ^0000ff"+mantkilled+"^000000/60 Mantis and ^0000ff"+gaokilled+"^000000/40 Mi Gao.";
+			mes "~";
+			mes "^000088Rewards^000000";
+			mes "19400000Bexp, 15000000Jexp, 2700FP, 230000z, Acc. Token x20";
+			next;
+			menu "- Return",openquest,"- Cancel Quest",c_mantsand;
+
+				c_mantsand:
+				mes .@name$;
+				mes "Quest cancled!";
+				close2;
+				set mantsand$,"";
+				set mantsandp,0;
+				set mantkilled,0;
+				set gaokilled,0;
+				end;
+
+
+// **************************************************************************************************************************
+//				End of Quests
+
+
+
+
+	////////////////////////*
+	///Territory Checker///*
+	//////////////////////*
+	checkterri:
+	if(faction == 0) {mes .@name$; mes "Please join a Faction first."; close;}
+	callfunc "CheckTown";
+	next;
+	goto openquest;
+
+	//=============================
+	// -- Territory Benefits
+	//=============================
+	L_benefit:
+	mes .@name$;
+	mes "All towns are useful because they make traveling easier for your faction.";
+	next;
+	mes .@name$;
+	mes "However, some towns also boast additional benefits. Choose one of the towns below for a list of benefits your faction recieves from owning it:";
+	next;
+	menu "- Einbroch",L_bein,"- Hugel",L_bhug,"- Geffen",L_bgeff,"- Morocc",L_bmor,"- Payon",L_bpay,"- Prontera",L_bpront,"- Return",openquest;
+
+		L_bpront:
+		mes .@name$;
+		mes "* Free Stat/Skill Reset NPC";
+		next;
+		goto L_benefit;
+
+		L_bpay:
+		mes .@name$;
+		mes "* Dark Helm[1] Custom Headgear (3.5mil @ Armor Shop)";
+		mes "* Card Remover NPC";
+		mes "* Temple of Honor Dungeon Instance (Level 70+)";
+		next;
+		goto L_benefit;
+
+		L_bein:
+		mes .@name$;
+		mes "* Biolabs Dungeon Instance (Level 80+)";
+		next;
+		goto L_benefit;
+
+		L_bgeff:
+		mes .@name$;
+		mes "* Geffen Helm[1] Custom Headgear (3.5mil @ Armor Shop)";
+		next;
+		goto L_benefit;
+
+		L_bmor:
+		mes .@name$;
+		mes "* Helm of Rangdris[1] Custom Headgear (3.5mil @ Armor Shop)";
+		next;
+		goto L_benefit;
+
+		L_bhug:
+		mes .@name$;
+		mes "* Hotel which gives +50% drop rate rather than +30%.";
+		next;
+		goto L_benefit;
+
+	L_precall:
+	mes .@name$;
+	mes "When inside of an instance, you can recall your entire party to your current location.";
+	next;
+	mes .@name$;
+	mes "This allows you or your party members to leave the instance and re-enter for no fee as long as someone in the party stays in to recall them back into the instance.";
+	next;
+	menu "- Recall Party",L_recallp,"- Return",openquest;
+
+		L_recallp:
+		setarray
+		.@instmaps$[0],"abyss01_1","abyss02_1","abyss03_1","abyss04_1","abyss05_1","abyss01_2","abyss02_2","abyss03_2","abyss04_2","abyss05_2","abyss01_3","abyss02_3","abyss03_3","abyss04_3","abyss05_3","abyss01_4","abyss02_4","abyss03_4","abyss04_4","abyss05_4","biolabs01_1","biolabs02_1","biolabs03_1","biolabs01_2","biolabs02_2","biolabs03_2","biolabs01_3","biolabs02_3","biolabs03_3","biolabs01_4","biolabs02_4","biolabs03_4","toh01_1","toh02_1","toh03_1","toh04_1","toh05_1","toh01_2","toh02_2","toh03_2","toh04_2","toh05_2","toh01_3","toh02_3","toh03_3","toh04_3","toh05_3","toh01_4","toh02_4","toh03_4","toh04_4","toh05_4";
+		for(set .@i, 0; .@i < getarraysize(.@instmaps$); set .@i, .@i + 1) {
+			if (.@map$ == .@instmaps$[.@i]) {
+				mes .@name$;
+				mes "Your party has been recalled!";
+				set .@id,getcharid(1);
+				warpparty .@map$,.@x,.@y,.@id;
+				close;
+				}
+			}
+		mes .@name$;
+		mes "You are not currently inside of an instance.";
+		close;
+
+
+	////////////////*
+	///Admin Menu///*
+	///////////////*
+	gmmenu:
+	mes .@name$;
+	mes "What would you like to do?";
+	next;
+	menu "- Manage Town Ownership",managetowns,"- Change Faction",changefac,"- Alter Global Faction",giveglobal,"- Use eAMyAdmin NPC",myadmin,"- Get/Delete Faction Points",getdel,"- Get Experience",expget,"- Reset Quests",L_reset,"- Nothing",-;
+	goto openquest;
+
+	
+		L_reset:
+		callfunc "QuestReset";
+
+		managetowns:
+		callfunc "TownSetter";
+
+		myadmin:
+		callfunc "MyAdmin";
+		
+		getdel:
+		callfunc "FactionPoints";
+
+		changefac:
+		mes .@name$;
+		mes "Which faction would you like to switch to? Please note that you will not change guilds.";
+		next;
+		menu "- Arzeon",arzeon,"- Destra",destra,"- Leave Faction",leavefac;
+
+			arzeon:
+			mes .@name$;
+			mes "Faction changed to Arzeon.";
+			set faction,1;
+			set #factionin,1;
+			close;
+
+			destra:
+			mes .@name$;
+			mes "Faction changed to Destra.";
+			set faction,2;
+			set #factionin,2;
+			close;
+
+			leavefac:
+			mes .@name$;
+			mes "Left your Faction. You are no longer in a faction.";
+			set faction,0;
+			set #factionin,0;
+			close;
+
+	
+		giveglobal:
+		mes .@name$;
+		mes "Arzeon currently has "+$zarpoints+" Points and Destra has "+$dragpoints+" Points.";
+		next;
+		mes .@name$;
+		mes "Would you like to give or take away Global Faction?";
+		next;
+		menu "- Give",giveglob,"- Take away",takeglob,"- None",-;
+		close;
+
+			giveglob:
+			mes .@name$;
+			mes "Which Faction would you like to give points to?";
+			next;
+			menu "- Arzeon",globarzeon,"- Destra",globdestra,"- Nevermind",-;
+			close;
+
+
+				globarzeon:
+				mes .@name$;
+				mes "How many Faction Points do you wish to give to Arzeon?";
+				input .@amount;
+				next;
+				mes .@name$;
+				mes "You have given "+.@amount+" Faction Points to Arzeon.";
+				set $zarpoints,$zarpoints+.@amount;
+				announce "An Admin has given "+.@amount+" Global FP to Arzeon.",0;
+				close;
+
+				globdestra:
+				mes .@name$;
+				mes "How many Faction Points do you wish to give to Destra?";
+				input .@amount;
+				next;
+				mes .@name$;
+				mes "You have given "+ .@amount +" Faction Points to Destra.";
+				set $dragpoints,$dragpoints+.@amount;
+				announce "An Admin has given "+.@amount+" Global FP to Destra.",0;
+				close;
+
+			takeglob:
+			mes .@name$;
+			mes "Which faction would you like to take Global Faction from?";
+			next;
+			menu "- Arzeon",takearzeon,"- Destra",takedestra,"- Nothing",-;
+			close;
+
+				takearzeon:
+				mes .@name$;
+				mes "How many Faction Points do you want to take away from Arzeon?";
+				input .@amount;
+				next;
+				mes .@name$;
+				mes "You have taken away "+ .@amount +" Faction Points from Arzeon.";
+				if(.@amount > $zarpoints) {
+					set $zarpoints,0;
+					close;
+				}
+				set $zarpoints,$zarpoints-.@amount;
+				announce "An Admin has taken away "+.@amount+" Global FP from Arzeon.",0;
+				close;
+
+				takedestra:
+				mes .@name$;
+				mes "How many Faction Points do you want to take away from Destra?";
+				input .@amount;
+				next;
+				mes .@name$;
+				mes "You have taken away "+ .@amount +" Faction Points from Destra.";
+				if(.@amount > $dragpoints) {
+					set $dragpoints,0;
+					close;
+				}
+				set $dragpoints,$dragpoints-.@amount;
+				announce "An Admin has taken away "+.@amount+" Global FP from Destra.",0;
+				close;
+
+
+		expget:
+		mes .@name$;
+		mes "How much Experience do you want to recieve?";
+		input .@amount;
+		next;
+		mes .@name$;
+		mes "Recieved "+.@amount+" Experience!";
+		getexp .@amount,0;
+		close;
+
+
+	cashshop:
+	callfunc "cash_shop";
+	end;
+}

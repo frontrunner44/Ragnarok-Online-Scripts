@@ -1,0 +1,11 @@
+-	script	OnPCBaseLvUpEvent	-1,{
+
+OnPCBaseLvUpEvent:
+dispbottom "Test";
+if( ! freelevelblock )&&( ! BaseLevel % 10 || BaseLevel == 99 ){
+        set .@r,( BaseLevel % 10 ? 9 : 10 );
+        set freelevels,freelevels+.@r;
+        dispbottom "This character has gained +"+.@r+" Free Levels to be used on another character.";
+}
+end;
+}

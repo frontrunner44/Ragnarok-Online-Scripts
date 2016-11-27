@@ -1,0 +1,50 @@
+function	script	JailItem	{
+// -- Config
+set .@name$,"[^0000ffServer^000000]";
+getmapxy(.@map$,.@x,.@y,0);
+set .@playerused$,strcharinfo(0);
+if(faction == 1) {
+	set .@facin$,"Arzeon";
+	set .@facin1,1;
+	}
+if(faction == 2) {
+	set .@facin$,"Destra";
+	set .@facin1,2;
+	}
+
+// -- First Player
+mes .@name$;
+mes "Please input the name of the player you wish to catch as hostage. Enter 0 to cancel.";
+input .@hostname$;
+next;
+close2;
+if(getmapxy(.@map$,@x,@y,0,.@hostname$) != 0) goto L_notfound;
+if(getmapxy(.@map$,@x,@y,0,.@hostname$) == 0) goto L_found;
+
+
+	L_found:
+	// -- Second Player
+	attachrid getcharid(3,.@hostname$);
+	getmapxy(.@map2$,.@x2,.@y2,0);
+	set .@playercapped$,strcharinfo(0);
+	set .@facin2,faction;
+	if(.@facin1 == .@facin2) {
+		// -- First Player
+		attachrid getcharid(3,.@playerused$);
+		dispbottom "You can not capture a player of the same faction.";
+		end;
+		}
+	if(.@map$ != .@map2$) {
+		// -- First Player
+		attachrid getcharid(3,.@playerused$);
+		dispbottom "The player being captured must be on the same map that you are on.";
+		end;
+		}
+	atcommand "@die";
+	announce "Alert: "+.@playerused$+" has captured "+.@playercapped$+" as hostage for "+.@facin$+".",0;
+	end;
+
+	L_notfound:
+	dispbottom "The player could not be captured. Please ensure you typed the player's name correctly and that he or she is online.";
+	end;
+}

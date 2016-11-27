@@ -1,0 +1,202 @@
+
+set .@name$,"[^0000ffTier Vendor^000000]";
+
+mes .@name$;
+mes "Welcome to the Tier Shop. What armor sets would you like to view or purhase?";
+next;
+menu "- Tier 1",L_t1,"- Tier 2",L_t2,"- Tier 3",L_t3,"- Nevermind",-;
+
+	L_t1:
+	mes .@name$;
+	mes "Please choose a class.";
+	next;
+	menu "- Assassin Cross",L_sinx1,"- Champion",L_champ1,"- Clown/Gypsy",L_clown1,"- Creator",L_create1,"High Wizard",L_wizard1,"- Ninja",L_ninja1,"- High Priest",L_priest1,"- Paladin",L_pally1,"- Professor",L_prof1,"- Sniper",L_sniper1,"- Star Gladiator",L_star1,"- Whitesmith",L_white1,"-
+
+		L_sinx1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_champ1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_clown1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+		
+		L_create1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_wizard1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_ninja1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_priest1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_pally1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_prof1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_sniper1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_star1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+
+		L_white1:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+	L_t2:
+	mes .@name$;
+	mes "Please choose a class.";
+	next;
+	menu "- Assassin Cross",L_sinx2,"- Champion",L_champ2,"- Clown/Gypsy",L_clown2,"- Creator",L_create2,"High Wizard",L_wizard2,"- Ninja",L_ninja2,"- High Priest",L_priest2,"- Paladin",L_pally2,"- Professor",L_prof2,"- Sniper",L_sniper2,"- Star Gladiator",L_star2,"- Whitesmith",L_white2,"-
+
+		L_sinx2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_champ2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_clown2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+		
+		L_create2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_wizard2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_ninja2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_priest2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_pally2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_prof2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_sniper2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_star2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+
+		L_white2:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+	L_t3:
+	mes .@name$;
+	mes "Please choose a class.";
+	next;
+	menu "- Assassin Cross",L_sinx3,"- Champion",L_champ3,"- Clown/Gypsy",L_clown3,"- Creator",L_create3,"High Wizard",L_wizard3,"- Ninja",L_ninja3,"- High Priest",L_priest3,"- Paladin",L_pally3,"- Professor",L_prof3,"- Sniper",L_sniper3,"- Star Gladiator",L_star3,"- Whitesmith",L_white3,"-
+
+		L_sinx3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_champ3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_clown3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+		
+		L_create3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_wizard3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_ninja3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_priest3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_pally3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_prof3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_sniper3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;
+
+		L_star3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+
+		L_white3:
+		mes .@name$;
+		mes "This gear set is not yet implimented.";
+		close;

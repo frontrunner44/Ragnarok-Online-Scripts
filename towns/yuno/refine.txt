@@ -1,0 +1,4 @@
+yuno_in01,163,28,2	script	Refiner#YunR01	813,{
+set @name$,"Tar The Refiner";
+callfunc "G_Refine";
+}

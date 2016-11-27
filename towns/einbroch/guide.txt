@@ -1,0 +1,65 @@
+einbroch,66,202,5	script	Guide#Einb1	874,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $einbfaction) {
+	mes .@name$;
+	mes "You don't belong here, fool...";
+	close;
+	}
+mes .@name$;
+mes "Welcome to Einbroch!";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",L_hotel,"- Weapons & Armor",L_shops,"- Tool Shop",L_tools,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Einbroch!";
+	savepoint "einbroch",65,198;
+	close;
+
+	L_hotel:
+	viewpoint 1,254,199,1,0xFF0000;
+	close;
+
+	L_shops:
+	viewpoint 1,216,211,2,0xFF0000;
+	close;
+
+	L_tools:
+	mes .@name$;
+	mes "The nearest tool shop is in Einbech.";
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "All marks removed!";
+	viewpoint 2,254,199,1,0xFF0000;
+	viewpoint 2,216,211,2,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30860,.@amount;
+	close;
+}

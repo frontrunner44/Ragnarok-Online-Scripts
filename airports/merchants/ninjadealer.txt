@@ -1,0 +1,24 @@
+airplane,69,89,2	script	Ninja Dealer#NinDAir1	98,{
+set .@name$,"[^0000ffSaku^000000]";
+mes .@name$;
+mes "I heard that in a town called Amatsu, they sell these even cheaper!";
+next;
+mes .@name$;
+mes "It's not me making these prices, blame my boss!";
+close2;
+callshop "NinjaShop#NinAir1",0;
+end;
+}
+airplane_01,69,89,5	script	Ninja Dealer	98,{
+set .@name$,"[^0000ffSaku^000000]";
+mes .@name$;
+mes "I heard that in a town called Amatsu, they sell these even cheaper!";
+next;
+mes .@name$;
+mes "It's not me making these prices, blame my boss!";
+close2;
+callshop "NinjaShop#NinAir1",0;
+end;
+}
+
+-	shop	NinjaShop#NinAir1	139,7521:400,7522:400,7523:400,7524:700

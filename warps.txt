@@ -1,0 +1,83 @@
+//==============
+//-- Rachel
+//==============
+rachel,149,250,0	warp	Rachel#Sky	2,2,ra_temsky,99,12
+ra_temsky,100,7,0	warp	Rachel#Sky2	2,2,rachel,149,243
+
+//===================
+//-- Lighthalzen
+//===================
+lighthalzen,101,248,0	warp	LhzRD	2,2,RDacademy,92,9
+lighthalzen,106,248,0	warp	LhzRD2	2,2,RDacademy,97,9
+RDacademy,44,157,0	warp	RDTrain	2,2,RDacademy,61,41
+RDacademy,92,4,0	warp	RDLhz	2,2,lighthalzen,101,244
+RDacademy,97,4,0	warp	RDLhz2	2,2,lighthalzen,106,244
+RDacademy,90,111,0	warp	RDoffice	2,2,RDacademy,92,58
+RDacademy,92,63,0	warp	RDofficeL	2,2,RDacademy,90,114
+RDacademy,129,43,0	warp	RDclassG	2,2,RDacademy,150,171
+RDacademy,147,167,0	warp	RDclassL	2,2,RDacademy,127,40
+RDacademy,59,44,0	warp	RDextraG	2,2,RDacademy,41,160
+RDacademy,44,157,0	warp	RDextraG2	2,2,RDacademy,63,40
+
+//========================
+// -- Ground Zero
+//========================
+eathena,151,107,0	warp	Gate1-1	2,2,eathena,143,107
+eathena,151,116,0	warp	Gate1-2	2,2,eathena,143,116
+eathena,147,107,0	warp	Gate1-3	2,2,eathena,155,107
+eathena,147,116,0	warp	Gate1-4	2,2,eathena,155,116
+
+eathena,259,288,0	warp	Gate2-1	2,2,eathena,259,296
+eathena,251,288,0	warp	Gate2-2	2,2,eathena,251,296
+eathena,259,292,0	warp	Gate2-3	2,2,eathena,259,284
+eathena,251,292,0	warp	Gate2-4	2,2,eathena,251,284
+
+eathena_in,30,294,0	warp	toolshopin1	2,2,eathena,180,103
+eathena_in,104,295,0	warp	toolshopin2	2,2,eathena,244,244
+eathena_in,299,286,0	warp	armorin	2,2,eathena,299,174
+eathena_in,196,294,0	warp	weaponin	2,2,eathena,310,190
+
+eathena,177,100,0	warp	toolshop1	2,2,eathena_in,30,298
+eathena,241,244,0	warp	toolshop2	2,2,eathena_in,104,299
+eathena,296,177,0	warp	armor	2,2,eathena_in,299,289
+eathena,313,193,0	warp	weapon	2,2,eathena_in,196,297
+
+eathena_in,120,5,0	warp	hallin1	2,2,eathena,195,114
+eathena_in,160,21,0	warp	hallin2	2,2,eathena,202,111
+eathena_in,199,5,0	warp	hallin3	2,2,eathena,208,101
+
+eathena,199,116,0	warp	hall1	2,2,eathena_in,120,9
+eathena,205,114,0	warp	hall2	2,2,eathena_in,160,25
+eathena,210,105,0	warp	hall3	2,2,eathena_in,199,9
+
+eathena,201,131,0	warp	hotel#gz1	2,2,ea_in02,67,136
+ea_in02,67,131,0	warp	hotel#gz2	2,2,eathena,196,131
+ea_in02,69,143,0	warp	hotel#gz3	2,2,ea_in02,70,166
+ea_in02,70,163,0	warp	hotel#gz4	2,2,ea_in02,70,139
+
+eathena,316,165,0	warp	main#GZ	2,2,ea_in02,128,37
+ea_in02,128,44,0	warp	main#GZ2	2,2,eathena,311,171
+
+
+// Hostage
+customjail,19,15,0	warp	JailLhz	2,2,lhz_dun03,246,59
+
+// Starting Area
+RO2,7,181,0	warp	RO2#Start	2,2,new_zone02,24,182
+new_zone02,24,188,0	warp	RO2#Start2	2,2,RO2,12,182
+new_zone02,72,105,0	warp	New2New	2,2,new_zone02,40,172
+new_zone02,46,173,0	warp	New2New2	2,2,new_zone02,78,106
+
+// Contested Areas
+lhz_dun01,149,290,0	warp	BioToGZ	2,2,eathena,256,168
+ra_san01,139,139,0	warp	RaSanToGZ	2,2,eathena,256,168
+
+// Prontera Church
+prt_church,99,57,0	warp	PRTCTOGZ	2,2,eathena,256,168
+
+// Dungeons 
+ice_dun01,157,10,0	warp	icetoea	1,1,eathena,257,166
+glast_01,296,145,0	warp	glastoea	1,1,eathena,257,166
+
+// Missing Warps
+moc_fild12,20,304,0	warp	moctocom	1,1,cmd_fild08,349,329

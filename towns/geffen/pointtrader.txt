@@ -1,0 +1,10 @@
+geffen_in,110,171,5	script	Point Trader#Gef01	112,{
+
+if(faction != $geffaction) {
+	mes "[Trader Lady]";
+	mes "Begone!";
+	close;
+	}
+set .@name$,"[^0000ffTrader Mary^000000]";
+callfunc "PointTrader";
+}

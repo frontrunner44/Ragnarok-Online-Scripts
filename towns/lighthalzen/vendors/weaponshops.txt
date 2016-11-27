@@ -1,0 +1,9 @@
+lhz_in02.gat,277,99,5	script	Gear#Lhz01	85,{
+
+
+// Weapon Shop NPC
+//================
+if(faction == 2) { mes "I can't help you, sorry."; close; }
+callshop "GlobGear01",0;
+
+}

@@ -1,0 +1,14 @@
+abyss01_1,29,166,5	script	Tools#Abyss01	900,{
+callshop "GlobTool01",0;
+}
+abyss01_2,29,166,5	duplicate(Tools#Abyss01)	Tools#Abyss02	900
+abyss01_3,29,166,5	duplicate(Tools#Abyss01)	Tools#Abyss03	900
+abyss01_4,29,166,5	duplicate(Tools#Abyss01)	Tools#Abyss04	900
+biolabs01_1,145,279,5	duplicate(Tools#Abyss01)	Tools#BioTool01	900
+biolabs01_2,145,279,5	duplicate(Tools#Abyss01)	Tools#BioTool0	900
+biolabs01_3,145,279,5	duplicate(Tools#Abyss01)	Tools#BioTool03	900
+biolabs01_4,145,279,5	duplicate(Tools#Abyss01)	Tools#BioTool04	900
+toh01_1,162,127,5	duplicate(Tools#Abyss01)	Tools#ToolsToH01	900
+toh01_2,162,127,5	duplicate(Tools#Abyss01)	Tools#ToolsToH02	900
+toh01_3,162,127,5	duplicate(Tools#Abyss01)	Tools#ToolsToH03	900
+toh01_4,162,127,5	duplicate(Tools#Abyss01)	Tools#ToolsToH04	900

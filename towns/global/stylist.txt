@@ -1,0 +1,474 @@
+//--------------------------------------------------
+// CakeRO stylist NPC.
+//
+// To configure the palette limits, change the limit_hair, limit_hairstyle, and limit_dye variables.
+//
+//--------------------------------------------------
+
+function	script	Stylist	{
+
+	set .@npcname$, "[^0000ffStylist^000000]";
+	// Maximum hair color. 
+	set @limit_hair,251;
+	// Maximum hair style.
+	set @limit_hairstyle,43;
+	// Maximum cloth dye.
+	set @limit_dye,553;
+	// Save old colors for a restore is the player chooses.
+	set @old_hair, getlook(6);
+	set @old_hairstyle, getlook(1);
+	set @old_dye, getlook(7);
+	// Set the "old" colors as the current colors.
+	set @current_hair,@old_hair;
+	set @current_hairstyle,@old_hairstyle;
+	set @current_dye,@old_dye;
+	set .@savemode, 0;
+	if (colors1 == 0) {
+		set colors1hair, 0;
+		set colors1hairdye, 0;
+		set colors1dye, 0;
+	}
+	if (colors2 == 0) {
+		set colors2hair, 0;
+		set colors2hairdye, 0;
+		set colors2dye, 0;
+	}
+	if (colors3 == 0) {
+		set colors3hair, 0;
+		set colors3hairdye, 0;
+		set colors3dye, 0;
+	}
+	L_StartTop:
+	mes .@npcname$;
+	mes "How can I help you today?";
+	menu "Show me your hair styles!",L_Styles,"Show me what hair dyes you have!",L_HairDye,"Show me what outfits you have!",L_Outfit,"Give me one of my memorized outfits!",L_Memo,"Nothing at all.",L_Nothing;
+
+	L_Styles:
+	next;
+	mes .@npcname$;
+	mes "Lets see, out of my ^ff0000"+@limit_hairstyle+"^000000 hair styles, you're starting with number ^ff0000"+@current_hairstyle+"^000000.";
+	mes "What would you like to do?";
+	menu "Change my hair style!",L_CH_HairStyle,"Change something else.",L_Start,"Nothing, thank you.",L_Nothing;
+
+
+	L_CH_HairStyle:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have hairstyle number ^ff0000"+@current_hairstyle+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 1;
+	if (@current_hairstyle < @limit_hairstyle) {
+		if (@current_hairstyle > 0) {
+			menu "See the next Style [^ff0000"+(@current_hairstyle+1)+"^000000]",L_HairStyle_Next,"See the last Style [^ff0000"+(@current_hairstyle-1)+"^000000]",L_HairStyle_Last,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		} else 	{
+			menu "See the next Style [^ff0000"+(@current_hairstyle+1)+"^000000]",L_HairStyle_Next,"See the last Style [^ff0000"+(@limit_hairstyle)+"^000000]",L_HairStyle_Last,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		}
+	} else {
+		if (@current_hairstyle > 0) {
+			menu "See the next Style [^ff0000"+0+"^000000]",L_HairStyle_Next,"See the last Style [^ff0000"+(@current_hairstyle-1)+"^000000]",L_HairStyle_Last,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		} else 	{
+			menu "See the next Style [^ff0000"+0+"^000000]",L_HairStyle_Next,"See the last Style [^ff0000"+(@limit_hairstyle)+"^000000]",L_HairStyle_Last,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		}
+	}
+
+
+	L_CH_HairStyle_B:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have hairstyle number ^ff0000"+@current_hairstyle+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 1;
+	if (@current_hairstyle < @limit_hairstyle) {
+		if (@current_hairstyle > 0) {
+			menu "See the last Style [^ff0000"+(@current_hairstyle-1)+"^000000]",L_HairStyle_Last,"See the next Style [^ff0000"+(@current_hairstyle+1)+"^000000]",L_HairStyle_Next,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		} else 	{
+			menu "See the last Style [^ff0000"+(@limit_hairstyle)+"^000000]",L_HairStyle_Last,"See the next Style [^ff0000"+(@current_hairstyle+1)+"^000000]",L_HairStyle_Next,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		}
+	} else {
+		if (@current_hairstyle > 0) {
+			menu "See the last Style [^ff0000"+(@current_hairstyle-1)+"^000000]",L_HairStyle_Last,"See the next Style [^ff0000"+0+"^000000]",L_HairStyle_Next,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		} else 	{
+			menu "See the last Style [^ff0000"+(@limit_hairstyle)+"^000000]",L_HairStyle_Last,"See the next Style [^ff0000"+0+"^000000]",L_HairStyle_Next,"Pick my own hairstyle",L_HairStyle_Pick,"I like this one! [^ff0000"+(@current_hairstyle)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hairstyle back please",L_OldStyle;
+		}
+	}
+
+	L_HairStyle_Next:
+	if (@current_hairstyle < @limit_hairstyle) {
+		set @current_hairstyle,@current_hairstyle+1;
+	} else {
+		set @current_hairstyle,0;
+	}
+	setlook 1,@current_hairstyle;
+	goto L_CH_Hairstyle;
+
+
+	L_HairStyle_Last:
+	if (@current_hairstyle > 0) {
+		set @current_hairstyle,@current_hairstyle-1;
+	} else {
+		set @current_hairstyle,@limit_hairstyle;
+	}
+	setlook 1,@current_hairstyle;
+	goto L_CH_HairStyle_B;
+
+	L_HairStyle_Pick:
+	next;
+	mes .@npcname$;
+	mes "Please choose a hairstyle between ^ff00000^000000 and ^ff0000"+(@limit_hairstyle)+"^000000.";
+	input @picked;
+	if ((@picked < 0) || (@picked > @limit_hairstyle)) {
+		mes "I'm sorry, I can't use that style";
+		goto L_HairStyle_Pick;
+	}
+	set @current_hairstyle,@picked;
+	setlook 1,@current_hairstyle;
+	goto L_CH_HairStyle;
+
+	L_OldStyle:
+	next;
+	setlook 1,@old_hairstyle;
+	mes .@npcname$;
+	mes "Here you are, enjoy your hair!";
+	goto L_Done;
+
+
+
+
+
+
+	L_Outfit:
+	next;
+	mes .@npcname$;
+	mes "Lets see, out of my ^ff0000"+@limit_dye+"^000000 cloth colors, you're starting with number ^ff0000"+@current_dye+"^000000.";
+	mes "What would you like to do?";
+	menu "Change my cloth color!",L_CH_Dye,"Change something else.",L_Start,"Nothing, thank you.",L_Nothing;
+
+
+	L_CH_Dye:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have cloth color number ^ff0000"+@current_dye+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 2;
+	if (@current_dye < @limit_dye) {
+		if (@current_dye > 0) {
+			menu "See the next Dye [^ff0000"+(@current_dye+1)+"^000000]",L_Dye_Next,"See the last Dye [^ff0000"+(@current_dye-1)+"^000000]",L_Dye_Last,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		} else 	{
+			menu "See the next Dye [^ff0000"+(@current_dye+1)+"^000000]",L_Dye_Next,"See the last Dye [^ff0000"+(@limit_dye)+"^000000]",L_Dye_Last,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		}
+	} else {
+		if (@current_dye > 0) {
+			menu "See the next Dye [^ff0000"+0+"^000000]",L_Dye_Next,"See the last Dye [^ff0000"+(@current_dye-1)+"^000000]",L_Dye_Last,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		} else 	{
+			menu "See the next Dye [^ff0000"+0+"^000000]",L_Dye_Next,"See the last Dye [^ff0000"+(@limit_dye)+"^000000]",L_Dye_Last,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		}
+	}
+
+	L_CH_Dye_B:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have cloth color number ^ff0000"+@current_dye+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 2;
+	if (@current_dye < @limit_dye) {
+		if (@current_dye > 0) {
+			menu "See the last Dye [^ff0000"+(@current_dye-1)+"^000000]",L_Dye_Last,"See the next Dye [^ff0000"+(@current_dye+1)+"^000000]",L_Dye_Next,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		} else 	{
+			menu "See the last Dye [^ff0000"+(@limit_dye)+"^000000]",L_Dye_Last,"See the next Dye [^ff0000"+(@current_dye+1)+"^000000]",L_Dye_Next,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		}
+	} else {
+		if (@current_dye > 0) {
+			menu "See the last Dye [^ff0000"+(@current_dye-1)+"^000000]",L_Dye_Last,"See the next Dye [^ff0000"+0+"^000000]",L_Dye_Next,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		} else 	{
+			menu "See the last Dye [^ff0000"+(@limit_dye)+"^000000]",L_Dye_Last,"See the next Dye [^ff0000"+0+"^000000]",L_Dye_Next,"Pick my own Dye",L_Dye_Pick,"I like this one! [^ff0000"+(@current_dye)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old cloth color back please",L_OldDye;
+		}
+	}
+
+	L_Dye_Next:
+	if (@current_dye < @limit_dye) {
+		set @current_dye,@current_dye+1;
+	} else {
+		set @current_dye,0;
+	}
+	setlook 7,@current_dye;
+	goto L_CH_Dye;
+
+
+	L_Dye_Last:
+	if (@current_dye > 0) {
+		set @current_dye,@current_dye-1;
+	} else {
+		set @current_dye,@limit_dye;
+	}
+	setlook 7,@current_dye;
+	goto L_CH_Dye_B;
+
+	L_Dye_Pick:
+	next;
+	mes .@npcname$;
+	mes "Please choose a cloth color between ^ff00000^000000 and ^ff0000"+(@limit_dye)+"^000000.";
+	input @picked;
+	if ((@picked < 0) || (@picked > @limit_dye)) {
+		mes "I'm sorry, I can't use that dye";
+		goto L_Dye_Pick;
+	}
+	set @current_dye,@picked;
+	setlook 7,@current_dye;
+	goto L_CH_Dye;
+
+	L_OldDye:
+	next;
+	setlook 7,@old_dye;
+	mes .@npcname$;
+	mes "Here you are, enjoy your old clothes!";
+	goto L_Done;
+
+
+
+	L_HairDye:
+	next;
+	mes .@npcname$;
+	mes "Lets see, out of my ^ff0000"+@limit_hair+"^000000 hair dyes, you're starting with number ^ff0000"+@current_hair+"^000000.";
+	mes "What would you like to do?";
+	menu "Change my hair color!",L_CH_HairDye,"Change something else.",L_Start,"Nothing, thank you.",L_Nothing;
+
+
+	L_CH_HairDye:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have hairdye number ^ff0000"+@current_hair+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 3;
+	if (@current_hair < @limit_hair) {
+		if (@current_hair > 0) {
+			menu "See the next Dye [^ff0000"+(@current_hair+1)+"^000000]",L_HairDye_Next,"See the last Dye [^ff0000"+(@current_hair-1)+"^000000]",L_HairDye_Last,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		} else 	{
+			menu "See the next Dye [^ff0000"+(@current_hair+1)+"^000000]",L_HairDye_Next,"See the last Dye [^ff0000"+(@limit_hair)+"^000000]",L_HairDye_Last,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		}
+	} else {
+		if (@current_hair > 0) {
+			menu "See the next Dye [^ff0000"+0+"^000000]",L_HairDye_Next,"See the last Dye [^ff0000"+(@current_hair-1)+"^000000]",L_HairDye_Last,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		} else 	{
+			menu "See the next Dye [^ff0000"+0+"^000000]",L_HairDye_Next,"See the last Dye [^ff0000"+(@limit_hair)+"^000000]",L_HairDye_Last,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		}
+	}
+
+	L_CH_HairDye_B:
+//	next;
+//	mes .@npcname$;
+//	mes "You currently have hairdye number ^ff0000"+@current_hair+"^000000.";
+//	mes "What would you like to do?";
+	set .@savemode, 3;
+	if (@current_hair < @limit_hair) {
+		if (@current_hair > 0) {
+			menu "See the last Dye [^ff0000"+(@current_hair-1)+"^000000]",L_HairDye_Last,"See the next Dye [^ff0000"+(@current_hair+1)+"^000000]",L_HairDye_Next,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		} else 	{
+			menu "See the last Dye [^ff0000"+(@limit_hair)+"^000000]",L_HairDye_Last,"See the next Dye [^ff0000"+(@current_hair+1)+"^000000]",L_HairDye_Next,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		}
+	} else {
+		if (@current_hair > 0) {
+			menu "See the last Dye [^ff0000"+(@current_hair-1)+"^000000]",L_HairDye_Last,"See the next Dye [^ff0000"+0+"^000000]",L_HairDye_Next,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		} else 	{
+			menu "See the last Dye [^ff0000"+(@limit_hair)+"^000000]",L_HairDye_Last,"See the next Dye [^ff0000"+0+"^000000]",L_HairDye_Next,"Pick my own Dye",L_HairDye_Pick,"I like this one! [^ff0000"+(@current_hair)+"^000000]",L_Done,"Save this!",L_Save,"I'd like my old hair dye back please",L_OldHairDye;
+		}
+	}
+
+	L_HairDye_Next:
+	if (@current_hair < @limit_hair) {
+		set @current_hair,@current_hair+1;
+	} else {
+		set @current_hair,0;
+	}
+	setlook 6,@current_hair;
+	goto L_CH_HairDye;
+
+
+	L_HairDye_Last:
+	if (@current_hair > 0) {
+		set @current_hair,@current_hair-1;
+	} else {
+		set @current_hair,@limit_hair;
+	}
+	setlook 6,@current_hair;
+	goto L_CH_HairDye_B;
+
+	L_HairDye_Pick:
+	next;
+	mes .@npcname$;
+	mes "Please choose a hair color between ^ff00000^000000 and ^ff0000"+(@limit_hair)+"^000000.";
+	input @picked;
+	if ((@picked < 0) || (@picked > @limit_hair)) {
+		mes "I'm sorry, I can't use that hair dye";
+		goto L_HairDye_Pick;
+	}
+	set @current_hair,@picked;
+	setlook 6,@current_hair;
+	goto L_CH_HairDye;
+
+	L_OldHairDye:
+	next;
+	setlook 6,@old_hair;
+	mes .@npcname$;
+	mes "Here you are, enjoy your hair!";
+	goto L_Done;
+
+	L_Memo:
+	next;
+	mes .@npcname$;
+	mes "So you prefer the styles you have used before.. Which one would you like?";
+	if (colors1 != 1)
+		set .@slot1$, "Nothing";
+	else
+		set .@slot1$, "[^ff0000"+colors1hair+"^000000] - Hairstyle, [^ff0000"+colors1dye+"^000000] - Dye, [^ff0000"+colors1hairdye+"^000000] - HairDye";
+		
+	if (colors2 != 1)
+		set .@slot2$, "Nothing";
+	else
+		set .@slot2$, "[^ff0000"+colors2hair+"^000000] - Hairstyle, [^ff0000"+colors2dye+"^000000] - Dye, [^ff0000"+colors2hairdye+"^000000] - HairDye";
+		
+		
+	if (colors3 != 1)
+		set .@slot3$, "Nothing";
+	else
+		set .@slot3$, "[^ff0000"+colors3hair+"^000000] - Hairstyle, [^ff0000"+colors3dye+"^000000] - Dye, [^ff0000"+colors3hairdye+"^000000] - HairDye";
+	
+	set .@picked, select(.@slot1$,.@slot2$,.@slot3$,"None actually.");
+	switch(.@picked) {
+		case 1:
+			next;
+			if (colors1 != 1) {
+				mes .@npcname$;
+				mes "You want me to put nothing on you?!?!??";
+				mes " ";
+				mes "HOW ABSURD! To think that you would rather walk around in rags and with awful looking hair than with my hand-tailored outfits and exquisite hairstyles!";
+				close;
+			}
+			mes .@npcname$;
+			mes "Here you are!";
+			setlook 1,colors1hair;
+			setlook 6,colors1hairdye;
+			setlook 7,colors1dye;
+			break;
+		case 2:
+			next;
+			if (colors2 != 1) {
+				mes .@npcname$;
+				mes "You want me to put nothing on you?!?!??";
+				mes " ";
+				mes "HOW ABSURD! To think that you would rather walk around in rags and with awful looking hair than with my hand-tailored outfits and exquisite hairstyles!";
+				close;
+			}
+			setlook 1,colors2hair;
+			setlook 6,colors2hairdye;
+			setlook 7,colors2dye;
+			break;
+		case 3:
+			next;
+			if (colors3 != 1) {
+				mes .@npcname$;
+				mes "You want me to put nothing on you?!?!??";
+				mes " ";
+				mes "HOW ABSURD! To think that you would rather walk around in rags and with awful looking hair than with my hand-tailored outfits and exquisite hairstyles!";
+				close;
+			}
+			setlook 1,colors3hair;
+			setlook 6,colors3hairdye;
+			setlook 7,colors3dye;
+			break;
+		case 4:
+		goto L_Done;
+	}
+	close;
+	
+	L_Save:
+	if (colors1 != 1)
+		set .@slot1$, "Nothing";
+	else
+		set .@slot1$, "[^ff0000"+colors1hair+"^000000] - Hairstyle, [^ff0000"+colors1dye+"^000000] - Dye, [^ff0000"+colors1hairdye+"^000000] - HairDye";
+		
+	if (colors2 != 1)
+		set .@slot2$, "Nothing";
+	else
+		set .@slot2$, "[^ff0000"+colors2hair+"^000000] - Hairstyle, [^ff0000"+colors2dye+"^000000] - Dye, [^ff0000"+colors2hairdye+"^000000] - HairDye";
+		
+	if (colors3 != 1)
+		set .@slot3$, "Nothing";
+	else
+		set .@slot3$, "[^ff0000"+colors3hair+"^000000] - Hairstyle, [^ff0000"+colors3dye+"^000000] - Dye, [^ff0000"+colors3hairdye+"^000000] - HairDye";
+	
+	set .@picked, select(.@slot1$,.@slot2$,.@slot3$,"I don't want to save.");
+	if (.@picked == 4) {
+		if (.@savemode == 1) {
+			goto L_Styles;
+		} else if (.@savemode == 2) {
+			goto L_Outift;
+		} else if (.@savemode == 3) {
+			goto L_HairDye;
+		}
+	}
+	switch(.@savemode) {
+		case 1:
+			set .@menname$, "Save Hairstyle";
+			break;
+		case 2:
+			set .@menname$, "Save Cloth Dye";
+			break;
+		case 3:
+			set .@menname$, "Save Hair Dye";
+			break;
+		default:
+			set .@menname$, "NPC is breaking ._.";
+	}
+	switch(select(.@menname$,"Save entire look")) {
+		case 1:
+			if (.@savemode == 1) {
+				setd "colors"+.@picked+"hair", @current_hairstyle;
+			} else if (.@savemode == 2) {
+				setd "colors"+.@picked+"dye", @current_dye;
+			} else if (.@savemode == 3) {
+				setd "colors"+.@picked+"hairdye", @current_hair;
+			}
+			break;
+		case 2:
+			setd "colors"+.@picked+"hair", @current_hairstyle;
+			setd "colors"+.@picked+"dye", @current_dye;
+			setd "colors"+.@picked+"hairdye", @current_hair;
+			break;
+	}
+	next;
+	setd "colors"+.@picked, 1;
+	mes .@npcname$;
+	mes "Your style has been saved!";
+	if (.@savemode == 1) {
+		goto L_Styles;
+	} else if (.@savemode == 2) {
+		goto L_Outfit;
+	} else if (.@savemode == 3) {
+		goto L_HairDye;
+	}
+	close;
+	
+	L_Done:
+	next;
+	mes .@npcname$;
+	mes "You look fabulous! Would you like to change anything else?";
+	if (select("Yes!","No.") == 1) {
+		goto L_Start;
+	} else {
+		next;
+		mes .@npcname$;
+		mes "I'm glad to see you like your new look as well!";
+	}
+	close;		
+
+	L_Nothing:
+	next;
+	mes .@npcname$;
+	mes "Then why are you here wasting my time?";
+	close;
+	
+	L_Start:
+	next;
+	goto L_StartTop;
+
+}

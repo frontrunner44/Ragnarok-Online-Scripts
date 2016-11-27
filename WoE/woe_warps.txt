@@ -1,0 +1,35 @@
+alde_gld,284,160,4	script	#AldGLD01	45,2,2,{
+OnTouch:
+if(faction == $aldfaction) {warp "aldebaran",39,140; end;}
+if(faction != $aldfaction) {warp "eathena",255,174; end;}
+}
+
+pay_gld,374,149,4	script	#PayGld01	45,2,2,{
+OnTouch:
+if(faction == $payfaction) {warp "payon",21,151; end;}
+if(faction != $payfaction) {warp "eathena",255,174; end;}
+}
+
+prt_gld,159,25,4	script	#PrtGLD01	45,2,2,{
+OnTouch:
+if(faction == $prtfaction) {warp "prt_castle",102,178; end;}
+if(faction != $prtfaction) {warp "eathena",255,175; end;}
+}
+
+gef_fild13,41,373,4	script	#GefGLD01	45,2,2,{
+OnTouch:
+if(faction == $geffaction) {warp "gef_fild07",40,23; end;}
+if(faction != $geffaction) {warp "eathena",255,174; end;}
+}
+
+aru_gld,195,363,4	script	#VeinGLD01	45,2,2,{
+OnTouch:
+if(faction == $veinfaction) {warp "ve_fild02",191,24; end;}
+if(faction != $veinfaction) {warp "eathena",255,174; end;}
+}
+
+sch_gld,354,89,4	script	#YunoGLD01	45,2,2,{
+OnTouch:
+if(faction == $yunfaction) {warp "yuno",25,126; end;}
+if(faction != $yunfaction) {warp "eathena",255,174; end;}
+}

@@ -1,0 +1,10 @@
+//=============================================
+//===========Written By Zero===================
+//=============================================
+RDacademy.gat,95,30,5	script	Head Staff#LhzH	833,{
+
+if(faction == 2) {mes "Shoo!"; close;}
+callfunc "MainStaff";
+end;
+}
+

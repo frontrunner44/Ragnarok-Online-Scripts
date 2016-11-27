@@ -1,0 +1,6 @@
+Guild tax system
+
+Basically, the guild that controls the middle castle of Prontera at the end of the War of Emperium controls the tax system of the server. The guild master of that guild manages the system. You talk to an NPC, and that NPC would be responsible for controlling the taxes of the server. As the guild master, you can choose to tax services of NPCs from 0% to 30%. NPCs such as the warper, healer, as well as storage would be affected by this. Let's say the warper's prices were usually 100z per warp. Now the price is increased to 130z. Where does that taxed money go, you ask? The money is then collectable at any time as long as WoE is not on by the guildmaster by talking to the NPC. If the guildmaster fails to retrieve his collection of zeny before WoE starts, and he loses the castle, after WoE, the money is now in possession of the new guildleader of the guild that controls the middle castle. We can use variables to achieve this.
+
+Assistance:
+http://ro-enhance.net/index.php?autocom=downloads&showfile=4768

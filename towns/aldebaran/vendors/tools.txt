@@ -1,0 +1,8 @@
+aldeba_in,88,161,3	script	Tool Shop#Alde01	97,{
+callshop "GlobTool01",0;
+}
+
+//==================
+// -- Duplicates
+//==================
+aldeba_in,79,161,6	duplicate(Tool Shop#Alde01)	Tool Shop#AldeDupe01	732

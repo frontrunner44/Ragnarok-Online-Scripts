@@ -1,0 +1,3 @@
+prt_gld,197,142,5	script	Spark of Knowledge#04	802,{
+
+}

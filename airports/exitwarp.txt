@@ -1,0 +1,66 @@
+//================
+// Written By Zero
+//================
+
+
+// Arzeon Airship
+//===============
+airplane,243,74,4	script	#AirplaneExit	45,2,2,{
+OnTouch:
+if(faction == 2) {warp "airplane_01",87,59; set warpselect,0; end;}
+if(warpselect == 0) {warp "lighthalzen",261,75; end;}
+if(warpselect == 111) {warp "lighthalzen",261,75; set warpselect,0;}
+if(warpselect == 1) {warp "pronair",135,32; set warpselect,0;  }
+if(warpselect == 2) {warp "aldair",135,32; set warpselect,0;  }
+if(warpselect == 3) {warp "louair",135,32; set warpselect,0;  }
+if(warpselect == 4) {warp "einair",135,32; set warpselect,0;  }
+if(warpselect == 5) {warp "airport",135,32; set warpselect,0;  }
+if(warpselect == 6) {warp "geffair",135,32; set warpselect,0;  }
+if(warpselect == 7) {warp "hugair",135,32; set warpselect,0;  }
+if(warpselect == 8) {warp "ayoair",135,32; set warpselect,0;  }
+if(warpselect == 9) {warp "morair",135,32; set warpselect,0;  }
+if(warpselect == 10) {warp "payair",135,32; set warpselect,0;  }
+if(warpselect == 11) {warp "izlair",135,32; set warpselect,0;  }
+if(warpselect == 12) {warp "comair",135,32; set warpselect,0;  }
+if(warpselect == 13) {warp "gonair",135,32; set warpselect,0;  }
+if(warpselect == 14) {warp "umbair",135,32; set warpselect,0;  }
+if(warpselect == 15) {warp "amaair",135,32; set warpselect,0;  }
+if(warpselect == 16) {warp "veinair",135,32; set warpselect,0;  }
+if(warpselect == 17) {warp "eathena",205,144; set warpselect,0;  }
+if(warpselect == 18) {warp "albair",135,32; set warpselect,0; }
+if(warpselect == 19) {warp "y_airport",135,32; set warpselect,0; }
+sleep2 2000;
+announce "Welcome to "+@mapname2$+".",bc_self;
+end;
+}
+
+
+// Destra Airship
+//===============
+airplane_01,243,74,4	script	#Airplane2Exit	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",87,59; set warpselect,0; end;}
+if(warpselect == 0) {warp "rachair",137,37; end;}
+if(warpselect == 222) {warp "rachair",137,37; set warpselect,0;}
+if(warpselect == 1) {warp "pronair",135,32; set warpselect,0;  }
+if(warpselect == 2) {warp "aldair",135,32; set warpselect,0;  }
+if(warpselect == 3) {warp "louair",135,32; set warpselect,0;  }
+if(warpselect == 4) {warp "einair",135,32; set warpselect,0;  }
+if(warpselect == 5) {warp "airport",135,32; set warpselect,0;  }
+if(warpselect == 6) {warp "geffair",135,32; set warpselect,0;  }
+if(warpselect == 7) {warp "hugair",135,32; set warpselect,0;  }
+if(warpselect == 8) {warp "ayoair",135,32; set warpselect,0;  }
+if(warpselect == 9) {warp "morair",135,32; set warpselect,0;  }
+if(warpselect == 10) {warp "payair",135,32; set warpselect,0;  }
+if(warpselect == 11) {warp "izlair",135,32; set warpselect,0;  }
+if(warpselect == 12) {warp "comair",135,32; set warpselect,0;  }
+if(warpselect == 13) {warp "gonair",135,32; set warpselect,0;  }
+if(warpselect == 14) {warp "umbair",135,32; set warpselect,0;  }
+if(warpselect == 15) {warp "amaair",135,32; set warpselect,0;  }
+if(warpselect == 16) {warp "veinair",135,32; set warpselect,0;  }
+if(warpselect == 17) {warp "eathena",205,144; set warpselect,0;  }
+if(warpselect == 18) {warp "albair",135,32; set warpselect,0; }
+if(warpselect == 19) {warp "y_airport",135,32; set warpselect,0; }
+announce "Welcome to "+@mapname2$+".",bc_self;
+end;
+}

@@ -1,0 +1,163 @@
+louyang,219,161,5	script	Guide#Lou01	780,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $loufaction) {
+	mes .@name$;
+	mes "Hmph!";
+	close;
+	}
+
+mes .@name$;
+mes "What location would you like for me to mark on your minimap?";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Weapons & Armor",L_gear,"- Hotel",L_hotel,"- Quests",L_quests,"- Point Trader & Tool Shop",L_point,"- Storage",L_storage,"- Delete Marks",L_delete,"- Nevermind",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Louyang!";
+	savepoint "louyang",220,155;
+	close;
+
+	L_gear:
+	viewpoint 1,145,171,1,0xF0000;
+	close;
+
+	L_hotel:
+	viewpoint 1,279,164,2,0xF0000;
+	close;
+
+	L_point:
+	viewpoint 1,140,101,3,0xF0000;
+	close;
+
+	L_storage:
+	viewpoint 1,126,117,4,0xF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "Marks deleted.";
+	viewpoint 2,145,171,1,0xF0000;
+	viewpoint 2,279,164,2,0xF0000;
+	viewpoint 2,140,101,3,0xF0000;
+	viewpoint 2,126,117,4,0xF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30866,.@amount;
+	close;
+
+
+
+
+//====================
+// -- Quests
+//====================
+L_quests:
+if(mantsandp == 0) set .@questlist$[0],"- Clear The Area";
+if(mantsandp == 1) set .@questlist$[1],"- Clear The Area(In Progress)";
+mes .@name$;
+mes "Here is a list of currently available quests.";
+next;
+menu .@questlist$[0],L_cleara,.@questlist$[1],L_onclear,"- Nothing",-;
+close;
+
+	L_cleara:
+	mes .@name$;
+	mes "We need someone to clear out the area. Can you kill 60 Mantis and 40 Mi Gao?";
+	next;
+	menu "- Accept",L_aclear,"- No thanks",-;
+	close;
+
+		L_aclear:
+		mes .@name$;
+		mes "Thank you. Return to me when you are done.";
+		close2;
+		set mantsandp,1;
+		set mantsand$,"Clear The Area";
+		announce "New quest added to Adventure Logs!",bc_self;
+		end;
+	
+	L_onclear:
+	if(mantkilled >= 60 && gaokilled >= 40) {
+		mes .@name$;
+		mes "Thanks so much! Here are your rewards.";
+		set fpoints,fpoints+2700;
+		set zeny,zeny+230000;
+		getitem 30881,20;
+		getexp 19400000,15000000;
+		dispbottom "You have recieved +2,700FP and +230,000z.";
+		announce "Quest Update: Clear The Way quest complete!",bc_self;
+		set mantkilled,0;
+		set gaokilled,0;
+		set mantsand$,"";
+		set mantsandp,2;
+		close;
+		}
+	mes .@name$;
+	mes "You have killed "+mantkilled+"/60 Mantis and "+gaokilled+"/40 Mi Gao.";
+	close;
+
+OnMant:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			if(mantsandp == 1 && mantkilled < 60) {
+				set mantkilled,mantkilled+1;
+				announce "Quest Update: Killed "+mantkilled+"/60 Mantis.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(mantsandp == 1 && mantkilled < 60) {
+	set mantkilled,mantkilled+1;
+	announce "Quest Update: Killed "+mantkilled+"/60 Mantis.",bc_self;
+	}
+end;
+
+OnGao:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			if(mantsandp == 1 && gaokilled < 40) {
+				set gaokilled,gaokilled+1;
+				announce "Quest Update: Killed "+gaokilled+"/40 Mi Gao.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(mantsandp == 1 && gaokilled < 40) {
+	set gaokilled,gaokilled+1;
+	announce "Quest Update: Killed "+gaokilled+"/40 Mi Gao.",bc_self;
+	}
+end;
+}

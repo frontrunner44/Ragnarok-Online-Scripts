@@ -1,0 +1,17 @@
+airplane,95,80,4	script	Manager#Man01	69,{
+set .@name$,"[^0000ffWaitress^000000]";
+mes .@name$;
+mes "Welcome! What would you like to eat?";
+close2;
+callshop "AirFood#123",0;
+end;
+}
+airplane_01,95,80,4	script	Manager#Man02	69,{
+set .@name$,"[^0000ffWaitress^000000]";
+mes .@name$;
+mes "Welcome! What would you like to eat?";
+close2;
+callshop "AirFood#123",0;
+end;
+}
+-	shop	AirFood#123	139,580:-1,515:-1,548:-1,573:-1,562:-1,563:-1,567:-1,12097:-1,12064:-1,12093:-1

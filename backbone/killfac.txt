@@ -1,0 +1,112 @@
+-	script	Killer#01	-1,{
+
+OnPCKillEvent:
+getmapxy(.@map$,.@x,.@y,0);
+
+//===================================
+// -- Disabled in PvP Rooms
+//===================================
+setarray .@block$[0],"onevsone","rwc01","pvp_n_1-5","aldeg_cas01","aldeg_cas02","aldeg_cas03","aldeg_cas04","aldeg_cas05","gefg_cas01","gefg_cas02","gefg_cas03","gefg_cas04","gefg_cas05","payg_cas01","payg_cas02","payg_cas03","payg_cas04","payg_cas05","schg_cas01","schg_cas02","schg_cas03","schg_cas04","schg_cas05","arug_cas01","arug_cas02","arug_cas03","arug_cas04","arug_cas05","alloutpvp";
+for(set .@i, 0; .@i < getarraysize(.@block$); set .@i, .@i + 1) {
+	if(.@map$ == .@block$[.@i]) {
+		dispbottom "Faction vs Faction PK rewards are disabled on this map.";
+		end;
+	}
+}
+
+//=======================
+// -- PvP Drops Arrays
+//=======================
+setarray .@pvpdrops[0],4252,4040,4272,4272,4103,4103,4433,4091,4027,4079,4084,4077,4073,4044,4218,4022,4034,4051,4064,4034,4244,4290,4070,4160,4381,4417,4050,4097,4100,4107,4257,4402,4129,4285,4015,4088,4108,4159,4334,4071,4133,4013,4439,4322,4222,4045,4146,4067,4414,4058,4012,4043,4018,4094,4390,4202,4004,4002,4026,4019,4035,4076,4055,4341,4057,4085,4121,4104,4017,4092,4037,4086,4225,4096,4281,4242,4023,4213,4298,4170,4173,4105,4031,4315,4008,4011,4003,4014,4216,4078;
+setarray .@pvpdrops2[0],4016,4189,4241,4229,4122,4052,4258,4330,4110,4161,4412,4366,4112,4132,4127,4010,2625,2607,2622,2624,2701,2623,2621,2626,2406,2412,2404,2424,2506,2504,2528,2104,2130,2102,2108,2123,2106,2114,2125,2306,2378,2315,2310,2317,2319,2342,2308,2364,2311,2353,2313,2365,2326,2322,2333,2367,2336,2331,2329,5168,5137,2254,2285,5172,2217,2227,2233,5165,2255,5170,2229,5096,5110,2237,2267,2240,2262,5220,5156,5155,5403,2218,2265,5361,5377,2241,2266,5004,2268,2270;
+setarray .@pvpdrops3[0],5204,5811,5074,2276,2296,5401,5135,2205,5245,2286,5068,2212,5154,2243,2203,2204,5006,2291,2260,2239,5043,2242,5325,2202,2263,5086,5089,7157,5400,5090,2297,5176,5314,5143,5130,5043,5087,5397,5203,5272,5088,2292,7568,504,505,506,656,12243,645,12016,607,610,608,522,1164,1417,1624,1264;
+
+//=====================================
+// -- Double FP for defending
+//=====================================
+if(.@map$ == "prontera" && faction == $prtfaction) set .@defend, 1;
+if(.@map$ == "aldebaran" && faction == $aldfaction) set .@defend, 1;
+if(.@map$ == "amatsu" && faction == $amafaction) set .@defend, 1;
+if(.@map$ == "comodo" && faction == $comfaction) set .@defend, 1;
+if(.@map$ == "einbroch" && faction == $einbfaction) set .@defend, 1;
+if(.@map$ == "einbech" && faction == $einfaction) set .@defend, 1;
+if(.@map$ == "geffen" && faction == $geffaction) set .@defend, 1;
+if(.@map$ == "gonryun" && faction == $gonfaction) set .@defend, 1;
+if(.@map$ == "hugel" && faction == $hugfaction) set .@defend, 1;
+if(.@map$ == "izlude" && faction == $izlfaction) set .@defend, 1;
+if(.@map$ == "louyang" && faction == $loufaction) set .@defend, 1;
+if(.@map$ == "umbala" && faction == $umbfaction) set .@defend, 1;
+if(.@map$ == "veins" && faction == $veinfaction) set .@defend, 1;
+if(.@map$ == "payon" && faction == $payfaction) set .@defend, 1;
+if(.@map$ == "ayothaya" && faction == $ayofaction) set .@defend, 1;
+if(.@map$ == "morocc" && faction == $morfaction) set .@defend, 1;
+if(.@map$ == "yuno" && faction == $yunofaction) set .@defend, 1;
+if(.@map$ == "alberta" && faction == $albfaction) set .@defend, 1;
+
+//=============================
+// -- Faction vs Faction
+//=============================
+	set .@tempfac,faction;
+	set .@blimit,BaseLevel;
+	attachrid killedrid;
+	// Phoenix Downs Disabled
+	//******************************************
+	if(autrevive == 1) {
+		dispbottom "Phoenix Downs are disabled in pvp. Auto revive is now turned off.";
+		set autrevive,0;
+		}
+	//****************************************
+	// End of Disable
+	if(faction == .@tempfac) {
+		attachrid killerrid;
+		if(fpoints < 50) {set fpoints,0; end;}
+		set fpoints,fpoints-50;
+		set plkilled,plkilled+1;
+		if(faction == 1) set $arzkp,$arzkp+1;
+		if(faction == 2) set $deskp,$deskp+1;
+		dispbottom "You have lost 50FP for killing a player from your own faction.";
+		end;
+		}
+	// -- Killed player is too low.
+	//=======================================
+	if(.@blimit-BaseLevel >= 20) {
+		attachrid killerrid;
+		set plkilled,plkilled+1;
+		dispbottom "You have gained 0FP for killing a player 20+ levels below you.";
+		end;
+		}
+	if(faction != .@tempfac) {
+		attachrid killerrid;
+		// Town Defence
+		//*******************************************
+		if(.@defend == 1) {
+			if(faction == 1) set $arzpoints,$arzpoints+400;
+			if(faction == 1) set $arzkp,$arzkp+1;
+			if(faction == 2) set $despoints,$despoints+400;
+			if(faction == 2) set $deskp,$deskp+1;
+			set fpoints,fpoints+400;
+			set plkilled,plkilled+1;
+			dispbottom "You have contributed 400 Global FP to your faction for defending one of it's towns and have recieved 400FP as well.";
+			for(set .@i, 0; .@i < getarraysize(.@pvpdrops); set .@i, .@i + 1) {
+				set .@droprate,rand(1,10000);
+				if(.@droprate == 1) getitem .@pvpdrops[.@i],1;
+				}
+			for(set .@i, 0; .@i < getarraysize(.@pvpdrops2); set .@i, .@i + 1) {
+				set .@droprate,rand(1,10000);
+				if(.@droprate == 1) getitem .@pvpdrops2[.@i],1;
+				}
+			for(set .@i, 0; .@i < getarraysize(.@pvpdrops3); set .@i, .@i + 1) {
+				set .@droprate,rand(1,10000);
+				if(.@droprate == 1) getitem .@pvpdrops3[.@i],1;
+				}
+			end;
+			}
+		//*******************************************
+		set fpoints,fpoints+200;
+		set plkilled,plkilled+1;
+		if(faction == 1) set $arzkp,$arzkp+1;
+		if(faction == 2) set $deskp,$deskp+1;
+		dispbottom "You recieve 200FP for killing a player from another faction.";
+		end;
+		}
+}

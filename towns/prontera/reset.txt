@@ -1,0 +1,38 @@
+prt_in.gat,38,104,4	script	Reset Girl#Prt	893,{
+set .@name$,"[^0000ffReset Girl^000000]";
+if(faction != $prtfaction) {
+	mes .@name$;
+	mes "I cannot offer you my services.";
+	close;
+	}
+mes .@name$;
+mes "Hello, "+strcharinfo(0);
+next;
+mes .@name$;
+mes "I can reset your stats or skills, and best of all, it's free!";
+next;
+mes .@name$;
+mes "Remember, you may have to relog for changes to take effect.";
+next;
+menu "- Reset Stats",L_stats,"- Reset Skills",L_skills,"- Reset Both",L_both,"- Nevermind",-;
+close;
+
+	L_stats:
+	mes .@name$;
+	mes "Your stats have been reset!";
+	ResetStatus;
+	close;
+
+	L_skills:
+	mes .@name$;
+	mes "Your skills have been reset!";
+	ResetSkill;
+	close;
+
+	L_both:
+	mes .@name$;
+	mes "Your stats and skills have been reset!";
+	ResetSkill;
+	ResetStatus;
+	close;
+}

@@ -1,0 +1,16 @@
+que_ng,72,31,2	script	Boonji	83,{
+if(faction != $amafaction) {
+mes "[Boonji]";
+mes "......";
+close;}
+callshop "Boonji#nin1",0;
+}
+que_ng,73,26,5	script	Boonray	83,{
+if(faction != $amafaction) {
+mes "[Boonji]";
+mes "......";
+close;}
+callshop "Boonray#nin2",0;
+}
+que_ng,72,31,2	shop	Boonji#nin1	139,13250:-1,13251:-1,13252:-1,13253:-1,13254:-1
+que_ng,73,26,5	shop	Boonray#nin2	139,2117:-1,7521:-1,7522:-1,7523:-1,7524:-1

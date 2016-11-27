@@ -1,0 +1,9 @@
+gonryun.gat,173,85,5	script	Armor Shop#Gon01	72,{
+if(faction != $gonfaction) {
+	mes "....."; 
+	close;
+	}
+callshop "Equipment#GonEquip",0;
+}
+
+-	shop	Equipment#GonEquip	139,2303:-1,2305:-1,2312:-1,2330:-1,2316:-1,2403:-1,2405:-1,2501:-1

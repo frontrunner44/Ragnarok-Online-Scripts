@@ -1,0 +1,4 @@
+prt_in.gat,63,60,2	script	Refiner#Prt01	813,{
+set @name$,"Angal the Refiner";
+callfunc "G_Refine";
+}

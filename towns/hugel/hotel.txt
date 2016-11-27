@@ -1,0 +1,42 @@
+hu_in01,245,108,5	script	Clerk#HuHotel	816,{
+set .@name$,"[^0000ffClerk^000000]";
+if(faction != $hugfaction) {
+	mes .@name$;
+	mes "My services are only for those who provide for this city!";
+	close;
+	}
+
+mes .@name$;
+mes "Welcome to the Hugel Hotel.";
+next;
+mes .@name$;
+mes "This hotel is top quality, you're garunteed better sleep here than anywhere else!";
+next;
+mes .@name$;
+mes "Sleeping here will give you a 50% increase in experience and drop rates for 30 minutes.";
+next;
+mes .@name$;
+mes "Would you like to sleep here for 1,500Z?";
+next;
+menu "- Yes",L_sleep,"- No thanks",-;
+close;
+
+L_sleep:
+if(Zeny < 1500) {
+mes .@name$;
+mes "You do not seem to have enough money. Sorry.";
+close;
+}
+set zeny,zeny-1500;
+mes .@name$;
+mes "Hope you enjoy your stay!";
+next;
+warp "hu_in01",255,5;
+specialeffect2 579;
+specialeffect2 14;
+sc_start 30,900000,10;
+sc_start SC_EXPBOOST,1800000,50;
+sc_start SC_ITEMBOOST,1800000,50;
+percentheal 100,100;
+end;
+}

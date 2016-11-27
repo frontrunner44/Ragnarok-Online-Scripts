@@ -1,0 +1,91 @@
+veins,225,152,5	script	Guide#Veins	731,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $veinfaction) { 
+	mes .@name$;
+	mes "If you love life, I consider you leave now."; 
+	close;
+	}
+
+mes .@name$;
+mes "Having trouble finding a specific location?";
+next;
+menu "- Save Here",L_save,"- Town Scrolls",L_scrolls,"- Thor Dungeon",L_thor,"- Hotel",hotel,"- Storage",storage,"- Weapons & Armor",weparm,"- Tool Shop",toolshop,"- Nameless Island",L_namel,"- Delete Marks",delmarks,"- Nothing",-;
+close;
+
+L_save:
+mes .@name$;
+mes "Your save point has been saved!";
+close2;
+savepoint "veins",223,147;
+end;
+
+hotel:
+viewpoint 1,113,278,1,0xFF0000;
+close;
+
+storage:
+viewpoint 1,135,189,2,0xFF0000;
+close;
+
+weparm:
+viewpoint 1,135,189,3,0xFF0000;
+close;
+
+toolshop:
+viewpoint 1,230,163,4,0xFF0000;
+close;
+
+delmarks:
+viewpoint 2,113,278,1,0xFF0000;
+viewpoint 2,135,189,2,0xFF0000;
+viewpoint 2,135,189,3,0xFF0000;
+viewpoint 2,230,163,4,0xFF0000;
+close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30862,.@amount;
+	close;
+
+	L_thor:
+	mes .@name$;
+	mes "Are you sure you want to be warped to Thor Dungeon?";
+	next;
+	menu "- Yes",L_yesthor,"- No",-;
+	close;
+
+		L_yesthor:
+		warp "thor_v01",21,229;
+		end;
+
+	L_namel:
+	mes .@name$;
+	mes "Would you like to warp to Nameless Island?";
+	next;
+	menu "- Yes",L_ynamel,"- No",-;
+	close;
+
+		L_ynamel:
+		warp "nameless_n",256,215;
+		close;
+}

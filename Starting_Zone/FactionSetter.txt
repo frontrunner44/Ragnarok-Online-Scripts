@@ -1,0 +1,181 @@
+new_zone02,84,116,5	script	Arzeon Recruiter	56,{
+if(begphase >= 1) end;
+set .@name$,"[^0000ffArzeon Recruiter^000000]";
+cutin "arzrecruit",0;
+if(#factionin == 2 || faction == 2) goto L_notfromarz;
+if(#factionin == 1) goto L_surearz;
+mes .@name$;
+mes "Welcome, new recruit.";
+next;
+mes .@name$;
+mes "I see that you are ready to join a Faction. Let me teach you about Arzeon Faction.";
+next;
+mes .@name$;
+mes "We are a very powerful, yet laid back Kingdom. We use violence as a last resort.";
+next;
+mes .@name$;
+mes "Our headquaters are currently in Lighthalzen.";
+next;
+mes .@name$;
+mes "Though we are a wealthy Kingdom, we do not let this go to our heads. We are good to our people and protect them with our lives.";
+next;
+mes .@name$;
+mes "Our out look on life is a pretty down to Earth and logical view of the world.";
+next;
+mes .@name$;
+mes "We aren't pure naturalists, but we do not submit ourselves to prayer, or any form of worship. We find it weakminded";
+next;
+mes .@name$;
+mes "We put belief in ourselves before any Gods.";
+next;
+mes .@name$;
+mes "We fight to protect our people, and provide a better life for them.";
+next;
+mes .@name$;
+mes "Do you wish to join us?";
+next;
+menu "- Join Arzeon",joinarz,"- Nevermind",-;
+mes .@name$;
+mes "Sure thing. Just let me know.";
+close2;
+cutin "",255;
+end;
+
+	joinarz:
+	mes .@name$;
+	mes "Make sure you want to do this. After you join, there's no turning back.";
+	next;
+	mes "[^ff0000Server^000000]";
+	mes "(Factions are Account Based. All of your characters must join the same Faction.)";
+	next;
+	menu "- Join Arzeon",L_surearz,"- Nevermind",-;
+	close2;
+	cutin "",255;
+	end;
+
+		L_surearz:
+		if(countitem(30004) > 0) {
+			mes .@name$;
+			mes "Please take the referral to the guard outside.";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes .@name$;
+		mes "Take this to the Guard outside of this building. He will tell you what to do from there.";
+		getitem 30004,1;
+		close2;
+		announce "New quest added to your Adventure Logs!",bc_self;
+		set beginner$,"Training Time!";
+		set begphase,1;
+		atcommand "@fakename [Arzeon] "+strcharinfo(0);
+		set faction,1;
+		set #factionin,1;
+		cutin "",255;
+		end;
+
+
+	L_notfromarz:
+	mes .@name$;
+	mes "You have already joined Destra. Please talk to the other recruiter.";
+	close2;
+	cutin "",255;
+	end;
+
+
+}
+
+new_zone02,115,116,3 	script	Destra Recruiter	920,{
+if(begphase >= 1) end;
+set .@name$,"[^0000ffDestra Recruiter^000000]";
+cutin "destrarecruit",0;
+if(#factionin == 1) goto notfromdestra;
+if(#factionin == 2) goto joindestra2;
+mes .@name$;
+mes "Welcome, soldier!";
+mes "I'll teach you a little about Destra Faction.";
+next;
+mes .@name$;
+mes "We are a very proud and determined Faction.";
+next;
+mes .@name$;
+mes "We consider ourselves to be spiritually advanced, and practice much meditation.";
+next;
+mes .@name$;
+mes "Our headquaters are currently in Rachel.";
+next;
+mes .@name$;
+mes "Our view on life is a more spiritual view. We see the world as all one life form. Everyone is connected.";
+next;
+mes .@name$;
+mes "We fight to keep the purity of this world. Ridding it of it's evil.";
+next;
+mes .@name$;
+mes "We believe that the way we live can effect the world and shape it into a better or worse place.";
+next;
+mes .@name$;
+mes "We strive to assure we change it for the positive.";
+next;
+mes .@name$;
+mes "Would you like to join us?";
+next;
+menu "- Join Destra",joindestra,"- Nevermind",-;
+mes .@name$;
+mes "Please, if you wish to join us, talk to me again.";
+close2;
+cutin "",255;
+end;
+
+	joindestra:
+	mes .@name$;
+	mes "Be sure of your choice, for it will not be undoable. Once you're in, you're in for good.";
+	next;
+	mes "[^ff0000Server^000000]";
+	mes "(Factions are Account Based. All of your characters must join the same Faction.)";
+	next;
+	menu "- Join Destra",joindestra2,"- Nevermind",-;
+	close2;
+	cutin "",255;
+	end;
+
+		joindestra2:
+		if(countitem(30005) > 0) {
+			mes .@name$;
+			mes "Please bring that referral to the guard outside.";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes .@name$;
+		mes "Please bring this referral to the Guard outside of this building. He will tell you what to do from there.";
+		close2;
+		getitem 30005,1;
+		atcommand "@fakename [Destra] "+strcharinfo(0);
+		set faction,2;
+		set #factionin,2;
+		announce "New quest added to your Adventure Logs!",bc_self;
+		set beginner$,"Training Time!";
+		set begphase,1;
+		cutin "",255;
+		end;
+
+
+	notfromdestra:
+	mes .@name$;
+	mes "You have already joined Arzeon, please do not speak to me again.";
+	close2;
+	cutin "",255;
+
+}
+
+new_zone02,87,114,5	script	Arzeon Guard	852,{
+mes "[Guard]";
+mes "Hmph!";
+close;
+}
+
+new_zone02,112,113,5	script	Destra Guard	946,{
+mes "[Guard]";
+mes "The Goddess be with you!";
+close;
+}

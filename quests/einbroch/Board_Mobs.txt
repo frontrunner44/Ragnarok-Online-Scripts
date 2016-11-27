@@ -1,0 +1,55 @@
+-	script	BioMobs	-1,{
+
+OnRemover:
+// Party
+if(getcharid(1) != 0){
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(axeremove == 1 && countitem(30009) < 30) {
+			set .@temp,rand(1,3);
+			if(.@temp == 1) {
+				getitem 30009,1;
+				announce "Collected "+countitem(30009)+" of 30 Worn Axes.",bc_self;
+				}
+			}
+		}
+	}
+	end;
+}
+// No Party
+if(axeremove == 1 && countitem(30009) < 30) {
+	set .@temp,rand(1,3);
+	if(.@temp == 1) {
+		getitem 30009,1;
+		announce "Collected "+countitem(30009)+" of 30 Worn Axes.",bc_self;
+		end;
+		}
+announce "Could not salvage a Worn Axe.",bc_self;
+end;
+}
+end;
+
+OnFly:
+if(getcharid(1) != 0) {
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(biofly == 1 && bioflykilled < 70) {
+			set bioflykilled,bioflykilled+1;
+			announce "Quest Update: Killed "+bioflykilled+" of 70 Anopheles",bc_self;
+			}
+		}
+	}
+	end;
+}
+if(biofly == 1 && bioflykilled < 70) {
+	set bioflykilled,bioflykilled+1;
+	announce "Quest Update: Killed "+bioflykilled+" of 70 Anopheles",bc_self;
+	}
+end;
+}

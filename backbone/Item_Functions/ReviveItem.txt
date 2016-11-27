@@ -1,0 +1,28 @@
+function	script	ReviveItem	{
+
+if(autrevive == 1) {
+	set autrevive,0;
+	dispbottom "Item deactivated. You will no longer be automatically revived upon death.";
+	end;
+	}
+set autrevive,1;
+dispbottom "Item activated. You will be automatically revived the next time you die.";
+end;
+}
+
+-	script	ReviveEvent	-1,{
+OnPCDieEvent:
+sleep2 2000;
+if(autrevive == 1) {
+	addtimer 1000,"ReviveEvent::OnRevive";
+	end;
+
+	OnRevive:
+	atcommand "@alive";
+	dispbottom "Phoenix Down used!";
+	set autrevive,0;
+	delitem 30504,1;
+	end;
+	}
+end;
+}

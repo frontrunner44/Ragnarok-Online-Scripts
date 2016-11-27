@@ -1,0 +1,447 @@
+eathena_in,159,44,5	script	1vs1	728,{
+
+//===============
+//-- Configs
+//===============
+set .@name$,"[^0000ffPvP Staff^000000]";
+if(getgmlevel() >= 80) {
+	set .@gmmenu$,"- Reset NPC";
+	}
+
+//=============
+//-- Checks
+//=============
+if(strcharinfo(0) == $@ovoname$[0] && $@onevsone[8] == 1) goto L_reclaim;
+if(strcharinfo(0) == $@ovoname$[1] && $@onevsone[8] == 1) goto L_reclaim;
+if(strcharinfo(0) == $@ovoname$[0]) goto L_await;
+if(strcharinfo(0) == $@ovoname$[1]) goto L_await2;
+if($@onevsone[8] != 0) {
+	mes .@name$;
+	mes "You are not allowed to register for one vs one at this time. Please wait up to 15 minutes.";
+	close;
+	}
+if(getmapusers("pvp_n_1-2") != 0) {
+	mes .@name$;
+	mes "Another fight is currently underway. Please wait untill it is over.";
+	close;
+	}
+
+//==============
+//-- Script
+//==============
+mes .@name$;
+mes "Hello, what would you like to do?";
+next;
+menu .@gmmenu$,gmmenu,"- Instructions",L_instruc,"- Register",L_register,"- Nothing",-;
+mes .@name$;
+mes "Have a good day!";
+close;
+
+	L_instruc:
+	mes .@name$;
+	mes "Coming soon...";
+	close;
+
+	//=============================
+	//-- First Registration
+	//=============================
+	L_register:
+	if($@onevsone[0] != 0) goto L_register2;
+	mes .@name$;
+	mes "Please input the ^0000ffItem ID^000000 of the item you wish to bet on the fight or 0 to cancel.";
+	input .@itembet;
+	next;
+	if(.@itembet == 0) {
+		mes .@name$;
+		mes "Cancled.";
+		close;
+		}
+	if(countitem(.@itembet) < 1) {
+		mes .@name$;
+		mes "You do not have this item.";
+		next;
+		goto L_register;
+		}
+	mes .@name$;
+	mes "Input the amount of Zeny you wish to bet or 0 to skip.";
+	input .@zenybet;
+	next;
+	if(zeny < .@zenybet) {
+		mes .@name$;
+		mes "You do not have that much Zeny.";
+		close;
+		}
+	mes .@name$;
+	mes "Review the data below and verify that you wish to submit your registration.";
+	mes " ";
+	mes "^0000ffItem Bet:^000000 "+getitemname(.@itembet);
+	mes "^0000ffZeny Bet:^000000 "+.@zenybet;
+	next;
+	menu "- Accept",L_accept,"- Nevermind",-;
+	close;
+			
+		//=============================
+		//-- Accept Registration
+		//=============================
+		L_accept:
+		mes .@name$;
+		mes "Registration complete. Please wait up to 15 minutes for another player to challenge you.";
+		close2;
+		setarray $@onevsone[0],.@itembet,.@zenybet,BaseLevel,Class;
+		set $@ovoname$[0],strcharinfo(0);
+		announce "Server: "+strcharinfo(0)+" has registered for a 1v1 fight and has bet the item: "+getitemname($@onevsone[0])+" and "+$@onevsone[1]+" Zeny.",0;
+		initnpctimer;
+		delitem $@onevsone[0],1;
+		set zeny,zeny-$@onevsone[1];
+		end;
+
+		//====================
+		//-- First Await
+		//====================
+		L_await:
+		if($@onevsone[4] == 0) {
+			mes .@name$;
+			mes "No one has challenged you yet.";
+			next;
+			menu "- Cancel Registration",L_cancel,"- Wait",-;
+			close;
+			}
+		mes .@name$;
+		mes "Another player has registered to fight with you. Please review the details below and decide what to do.";
+		mes " ";
+		mes "^0000ffPlayer Name:^000000 "+$@ovoname$[1];
+		mes "^0000ffPlayer Level:^000000 "+$@onevsone[6];
+		mes "^0000ffPlayer Class:^000000 "+$@onevsone[7];
+		mes "^0000ffItem Bet:^000000 "+getitemname($@onevsone[4]);
+		mes "^0000ffZeny Bet:^000000 "+$@onevsone[5];
+		next;
+		menu "- Accept Challenge",L_achal,"- Deny",-;
+		mes .@name$;
+		mes "Challenge denied.";
+		close2;
+		attachrid getcharid(3,$@ovoname$[1]);
+		announce "Your 1v1 challenge has been denied.",bc_self;
+		cleararray $@onevsone[4],0,4;
+		set $@ovoname$[1],"";
+		end;
+		
+
+				//=============================
+				//-- Cancel Registration
+				//=============================
+				L_cancel:
+				stopnpctimer;
+				mes .@name$;
+				mes "Registration cancled!";
+				getitem $@onevsone[0],1;
+				set zeny,zeny+$@onevsone[1];
+				close2;
+				cleararray $@onevsone[0],0,9;
+				cleararray $@ovoname$[0],"",3;
+				end;
+
+				///////////////////////*
+				///Accept Challenge///*
+				/////////////////////*
+				L_achal:
+				stopnpctimer;
+				mes .@name$;
+				mes "Challenge accepted. The other player will be given 5 minutes to respond.";
+				close2;
+				initnpctimer;
+				set $@onevsone[8],3;
+				warp "pvp_n_1-2",100,63;
+				pcblockmove getcharid(3,$@ovoname$[0]),1;
+				attachrid getcharid(3,$@ovoname$[1]);
+				announce "Your challenge has been accepted, you have 5 minutes to respond.",bc_self;
+				end;
+
+
+	//===========================
+	//-- Second Registration
+	//===========================
+	L_register2:
+	mes .@name$;
+	mes "Someone else has registered first.";
+	next;
+	mes .@name$;
+	mes "View the information below and verify if you want to challenge this person in a 1v1 match.";
+	mes " ";
+	mes "^0000ffPlayer Name:^000000 "+$@ovoname$[0];
+	mes "^0000ffPlayer LeveL:^000000 "+$@onevsone[2];
+	mes "^0000ffPlayer Class ID:^000000 "+$@onevsone[3];
+	mes "^0000ffItem Bet:^000000 "+getitemname($@onevsone[0]);
+	mes "^0000ffZeny Bet:^000000 "+$@onevsone[1];
+	next;
+	mes .@name$;
+	mes "Do you wish to challenge this person?";
+	next;
+	menu "- Yes",L_chal,"- No",-;
+	close;
+
+		//=====================
+		//-- Second Verify
+		//=====================
+		L_chal:
+		mes .@name$;
+		mes "Please input the item ID you wish to bet on the fight or 0 to cancel.";
+		input .@itembet;
+		next;
+		if(.@itembet == 0) {
+			mes .@name$;
+			mes "Cancled.";
+			close;
+			}
+		if(countitem(.@itembet) < 1) {
+			mes .@name$;
+			mes "You do not have this item.";
+			next;
+			goto L_chal;
+			}
+		mes .@name$;
+		mes "Please input the amount of zeny you wish to bet or 0 to skip.";
+		input .@zenybet;
+		next;
+		if(zeny < .@zenybet) {
+			mes .@name$;
+			mes "You do not have that much Zeny.";
+			close;
+			}
+		mes "Please review your bet and verify if you wish to continue.";
+		mes " ";
+		mes "^0000ffItem:^000000 "+getitemname(.@itembet);
+		mes "^0000ffZeny:^000000 "+.@zenybet;
+		next;
+		menu "- Accept",L_accept2,"- Nevermind",-;
+		close;
+		
+			//===========================
+			//-- Second Await Accept
+			//===========================
+			L_accept2:
+			mes .@name$;
+			mes "Registration accepted. The other player will be contacted when this window is closed.";
+			next;
+			mes .@name$;
+			mes "Please give the other player 5 minutes to respond.";
+			close2;
+			setarray $@onevsone[4],.@itembet,.@zenybet,BaseLeveL,Class;
+			set $@ovoname$[1],strcharinfo(0);
+			attachrid getcharid(3,$@ovoname$[0]);
+			announce "Another player has registered to fight you. You have 5 minutes to accept this challenge.",bc_self;
+			set $@onevsone[8],2;
+			initnpctimer;
+			end;
+
+
+			//=====================
+			//-- Second Await
+			//=====================
+			L_await2:
+			if($@onevsone[8] == 3) {
+				stopnpctimer;
+				set $@onevsone[8],0;
+				mes .@name$;
+				mes "Your challenge has been accepted. Close this window to start the fight.";
+				close2;
+				warp "pvp_n_1-2",100,135;
+				pcblockmove getcharid(3,$@ovoname$[1]),1;
+				sleep 2000;
+				mapannounce "pvp_n_1-2","The fight will start in 5 seconds!",0;
+				sleep 1000;
+				mapannounce "pvp_n_1-2","The fight will start in 4 seconds!",0;
+				sleep 1000;
+				mapannounce "pvp_n_1-2","The fight will start in 3 seconds!",0;
+				sleep 1000;
+				mapannounce "pvp_n_1-2","The fight will start in 2 seconds!",0;
+				sleep 1000;
+				mapannounce "pvp_n_1-2","The fight will start in 1 second!",0;
+				mapannounce "pvp_n_1-2","The fight has begun!",0;
+				pcblockmove getcharid(3,$@ovoname$[0]),0;
+				pcblockmove getcharid(3,$@ovoname$[1]),0;
+				end;
+				}
+			mes .@name$;
+			mes "Still waiting for the other player to accept or deny your challenge.";
+			close;
+
+
+
+	//======================
+	//-- Reclaim items
+	//======================
+	L_reclaim:
+	if(strcharinfo(0) == $@ovoname$[0]) {
+		mes .@name$;
+		mes "Here is your Item and Zeny!";
+		close2;
+		getitem $@onevsone[0],1;
+		set zeny,zeny+$@onevsone[1];
+		if($@onevsone[4] == 0) {
+			stopnpctimer;
+			cleararray $@onevsone[0],0,9;
+			cleararray $@ovoname$[0],"",3;
+			}
+		end;
+		}
+	if(strcharinfo(0) == $@ovoname$[1]) {
+		mes .@name$;
+		mes "Here is your Item and Zeny!";
+		close2;
+		getitem $@onevsone[4],1;
+		set zeny,zeny+$@onevsone[5];
+		if($@onevsone[0] == 0) {
+			stopnpctimer;
+			cleararray $@onevsone[0],0,9;
+			cleararray $@ovoname$[0],"",3;
+			}
+		end;
+		}
+
+
+//==================
+//-- Timer(5 Min)
+//==================
+OnTimer300000:
+// Checks
+if($@onevsone[8] == 0) end;
+if($@onevsone[8] >= 2) {
+	attachrid getcharid(3,$@ovoname[0]);
+	announce "The timer has ended. You have 5 minutes to get your items back.",bc_self;
+	attachrid getcharid(3,$@ovoname[1]);
+	announce "The timer has ended. You have 5 minutes to get your items back.",bc_self;
+	set $@onevsone[8],1;
+	initnpctimer;
+	end;
+	}
+
+// Normal
+attachrid getcharid(3,$@ovoname$[0]);
+dispbottom "The time has ran out. The npc has reset.";
+if($@onevsone[4] != 0) {
+	attachrid getcharid(3,$@ovoname$[1]);
+	dispbottom "The time has ran out. The npc has reset.";
+	}
+cleararray $@onevsone[0],0,9;
+cleararray $@ovoname$[0],"",3;
+stopnpctimer;
+mapwarp "pvp_n_1-2","alberta",218,45;
+end;
+
+//======================
+//-- Timer(15 Min)
+//======================
+OnTimer900000:
+attachrid getcharid(3,$@ovoname$[0]);
+dispbottom "No one has challenged you. You have 5 minutes to reclaim your items.";
+set $@onevsone[8],1;
+initnpctimer;
+end;
+
+//=============
+//-- Reset
+//=============
+gmmenu:
+mes .@name$;
+mes "NPC reset.";
+close2;
+cleararray $@onevsone[0],0,9;
+cleararray $@ovoname$[0],"",3;
+stopnpctimer;
+mapwarp "pvp_n_1-2","eathena_in",153,39;
+end;
+
+
+}
+//===================
+//-- Second NPC
+//===================
+pvp_n_1-2,101,99,5	script	Referee	903,{
+
+set .@name$,"[^0000ffReferee^000000]";
+
+//===============
+//-- Checks
+//===============
+if($@onevsone[8] == 1) goto L_reclaim;
+if($@ovoname$[2] == strcharinfo(0)) goto L_winner;
+if(getmapusers("pvp_n_1-2") == 2) {
+	mes .@name$;
+	mes "The fight has not yet ended.";
+	close;
+	}
+
+//==============
+//-- Script
+//==============
+mes .@name$;
+mes "It appears as if the other player has not yet arrived. Would you like to cancel the fight?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	//=====================
+	//-- Cancel Fight
+	//=====================
+	L_yes:
+	mes .@name$;
+	mes "Fight cancled!";
+	close2;
+	mapwarp "pvp_n_1-2","alberta",218,45;
+	attachrid getcharid(3,$@ovoname$[1]);
+	announce "The fight has been cancled by the other player.",bc_self;
+	cleararray $@onevsone[0],0,9;
+	cleararray $@ovoname$[0],"",3;
+	end;
+
+	//==============
+	//-- Winner
+	//==============
+	L_winner:
+	mes "[Referee]";
+	mes "Congradulations! You've won the fight! Here's your rewards...";
+	next;
+	getitem $@onevsone[0],1;
+	getitem $@onevsone[4],1;
+	set zeny,zeny+$@onevsone[1]+$@onevsone[5];
+	set .@wonzeny,.@wonzeny+$@onevsone[1]+$@onevsone[5];
+	dispbottom "Recieved "+ .@wonzeny +" Zeny.";
+	mes "[Referee]";
+	mes "See you next time!";
+	close2;
+	cleararray $@onevsone[0],0,9;
+	cleararray $@ovoname$[0],"",3;
+	warp "alberta",218,45;
+	end;
+
+	//=====================
+	//-- Reclaim Items
+	//=====================
+	L_reclaim:
+	mes .@name$;
+	mes "Here are your items!";
+	close2;
+	getitem $@onevsone[0],1;
+	set zeny,zeny+$@onevsone[1];
+	if($@onevsone[4] == 0) {
+		stopnpctimer;
+		cleararray $@onevsone[0],0,9;
+		cleararray $@ovoname$[0],"",3;
+		}
+	warp "alberta",218,45;
+	end;
+	
+OnPCKillEvent:
+if($@ovoname$[0] == strcharinfo(0)) {
+	announce "Server: "+ $@ovoname$[0] +" has defeated "+ $@ovoname$[1] +" in a One Versus One fight",0;
+	set $@ovoname$[2],$@ovoname$[0];
+	savepoint "eathena_in",153,39;
+	end;
+	}
+if($@ovoname$[1] == strcharinfo(0)) {
+	announce "Server: "+ $@ovoname$[1] +" has defeated "+ $@ovoname$[0] +" in a One Versus One fight.",0;
+	set $@ovoname$[2],$@ovoname$[1];
+	savepoint "eathena_in",153,39;
+	end;
+	}
+}

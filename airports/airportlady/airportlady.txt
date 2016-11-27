@@ -1,0 +1,442 @@
+////////////////////*
+///Airport Staff///*
+//////////////////*
+
+//====================
+// -- Ground Zero
+//====================
+eathena,207,144,6	script	Airport Lady#GZAirL	117,{
+
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Prontera's Airport
+//===================
+pronair,123,47,5	script	Airport Lady#PronAirL	117,{
+
+if(faction != $prtfaction) { mes "......"; close; }
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Aldebaran's Airport
+//====================
+aldair,123,47,5	script	Airport Lady#AldAirL	117,{
+
+if(faction != $aldfaction) { mes "........"; close; }
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Amatsu's Airport Lady
+//======================
+amaair,123,47,5	script	Airport Lady#AmaAirL	117,{
+
+if(faction != $amafaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Ayothaya's Airport Lady
+//========================
+ayoair,123,47,5	script	Airport Lady#AyoAirL	117,{
+
+if(faction != $ayofaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Comodo's Airport Lady
+//========================
+comair,123,47,5	script	Airport Lady#ComAirL	117,{
+
+if(faction != $comfaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Einbech's Airport Lady
+//========================
+einair,123,47,5	script	Airport Lady#EinAirL	117,{
+
+if(faction != $einfaction) {mes "...."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Geffen's Airport Lady
+//======================
+geffair,123,47,5	script	Airport Lady#GeffAirL	117,{
+
+if(faction != $geffaction) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Gonryun's Airport Lady
+//=======================
+gonair,123,47,5	script	Airport Lady#GonAirL	117,{
+
+if(faction != $gonfaction) {mes "......."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Hugel's Airport Lady
+//=====================
+hugair,123,47,5	script	Airport Lady#HugAirL	117,{
+
+if(faction != $hugfaction) {mes "...."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Izlude's Airport Lady
+//======================
+izlair,123,47,5	script	Airport Lady#IzlAirL	117,{
+
+if(faction != $izlfaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Louyang's Airport Lady
+//=======================
+louair,123,47,5	script	Airport Lady#LouAirL	117,{
+
+if(faction != $loufaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Morocc's Airport Lady
+//======================
+morair,123,47,5	script	Airport Lady#MorAirL	117,{
+
+if(faction != $morfaction) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Payon's Airport Lady
+//=====================
+payair,123,47,5	script	Airport Lady#PayAirL	117,{
+
+if(faction != $payfaction) {mes "......."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Rachel's Airport Lady
+//======================
+rachair,123,47,5	script	Airport Lady#RachAirL	117,{
+
+if(faction == 1) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Veins' Airport Lady
+//====================
+veinair,123,47,5	script	Airport Lady#VeinAirL	117,{
+
+if(faction != $veinfaction) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Einbroch's Airport Lady
+//========================
+airport,123,47,5	script	Airport Lady#EinbAirLB	117,{
+
+if(faction != $einbfaction) {mes "....."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Yuno's Airport Lady
+//====================
+y_airport,123,47,5	script	Airport Lady#YunAirL	117,{
+
+if(faction != $yunofaction) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+} 
+
+// Lighthalzen's Airport Lady
+//===========================
+lhz_airport,123,47,5	script	Airport Lady#LhzAirL	117,{
+
+if(faction == 2) {mes "......"; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+// Umbala's Airport Lady
+//======================
+umbair,123,47,5	script	Airport Lady#UmbAirL	117,{
+
+if(faction != $umbfaction) {mes "......."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+// Alberta's Airport Lady
+//=======================
+albair,123,47,5	script	Airport Lady#AlbAirL	117,{
+
+if(faction == $albfaction) { mes "...."; close;}
+if(faction == 1) {
+	set @mapname$,"airplane";
+	}
+if(faction == 2) {
+	set @mapname$,"airplane_01";
+	}
+callfunc "AirportLady";
+}
+
+
+/////////////////*
+///Duplicates///*
+///////////////*
+
+
+// Alberta Duplicates
+//====================
+albair,133,47,5	duplicate(Airport Lady#GZAirL)	Airport Lady#LadyDupe1	116
+albair,143,47,5	duplicate(Airport Lady#GZAirL)	Airport Lady#LadyDupe2	112
+albair,153,47,5	duplicate(Airport Lady#GZAirL)	Airport Lady#LadyDupe3	113
+albair,163,47,5	duplicate(Airport Lady#GZAirL)	Airport Lady#LadyDupe4	114
+
+// Umbala's Duplicates
+//====================
+umbair,133,47,5	duplicate(Airport Lady#UmbAirL)	Airport Lady#LadyDupe5	116
+umbair,143,47,5	duplicate(Airport Lady#UmbAirL)	Airport Lady#LadyDupe6	112
+umbair,153,47,5	duplicate(Airport Lady#UmbAirL)	Airport Lady#LadyDupe7	113
+umbair,163,47,5	duplicate(Airport Lady#UmbAirL)	Airport Lady#LadyDupe8	114
+
+// Lighthalzen's Duplicates
+//====================
+lhz_airport,133,47,5	duplicate(Airport Lady#LhzAirL)	Airport Lady#LadyDupe9	116
+lhz_airport,143,47,5	duplicate(Airport Lady#LhzAirL)	Airport Lady#LadyDupe10	112
+lhz_airport,153,47,5	duplicate(Airport Lady#LhzAirL)	Airport Lady#LadyDupe11	113
+lhz_airport,163,47,5	duplicate(Airport Lady#LhzAirL)	Airport Lady#LadyDupe12	114
+
+// Yuno's Duplicates
+//====================
+y_airport,133,47,5	duplicate(Airport Lady#YunAirL)	Airport Lady#LadyDupe13	116
+y_airport,143,47,5	duplicate(Airport Lady#YunAirL)	Airport Lady#LadyDupe14	112
+y_airport,153,47,5	duplicate(Airport Lady#YunAirL)	Airport Lady#LadyDupe15	113
+y_airport,163,47,5	duplicate(Airport Lady#YunAirL)	Airport Lady#LadyDupe16	114
+
+// Einbroch's Duplicates
+//====================
+airport,133,47,5	duplicate(Airport Lady#EinbAirLB)	Airport Lady#LadyDupe17	116
+airport,143,47,5	duplicate(Airport Lady#EinbAirLB)	Airport Lady#LadyDupe18	112
+airport,153,47,5	duplicate(Airport Lady#EinbAirLB)	Airport Lady#LadyDupe19	113
+airport,163,47,5	duplicate(Airport Lady#EinbAirLB)	Airport Lady#LadyDupe20	114
+
+// Veins' Duplicates
+//====================
+veinair,133,47,5	duplicate(Airport Lady#VeinAirL)	Airport Lady#LadyDupe21	116
+veinair,143,47,5	duplicate(Airport Lady#VeinAirL)	Airport Lady#LadyDupe22	112
+veinair,153,47,5	duplicate(Airport Lady#VeinAirL)	Airport Lady#LadyDupe23	113
+veinair,163,47,5	duplicate(Airport Lady#VeinAirL)	Airport Lady#LadyDupe24	114	
+
+// Rachel's Duplicates
+//====================
+rachair,133,47,5	duplicate(Airport Lady#RachAirL)	Airport Lady#LadyDupe25	116
+rachair,143,47,5	duplicate(Airport Lady#RachAirL)	Airport Lady#LadyDupe26	112
+rachair,153,47,5	duplicate(Airport Lady#RachAirL)	Airport Lady#LadyDupe27	113
+rachair,163,47,5	duplicate(Airport Lady#RachAirL)	Airport Lady#LadyDupe28	114
+
+// Payon's Duplicates
+//====================
+payair,133,47,5	duplicate(Airport Lady#PayAirL)	Airport Lady#LadyDupe29	116
+payair,143,47,5	duplicate(Airport Lady#PayAirL)	Airport Lady#LadyDupe30	112
+payair,153,47,5	duplicate(Airport Lady#PayAirL)	Airport Lady#LadyDupe31	113
+payair,163,47,5	duplicate(Airport Lady#PayAirL)	Airport Lady#LadyDupe32	114
+
+// Morocc's Duplicates
+//====================
+morair,133,47,5	duplicate(Airport Lady#MorAirL)	Airport Lady#LadyDupe33	116
+morair,143,47,5	duplicate(Airport Lady#MorAirL)	Airport Lady#LadyDupe34	112
+morair,153,47,5	duplicate(Airport Lady#MorAirL)	Airport Lady#LadyDupe35	113
+morair,163,47,5	duplicate(Airport Lady#MorAirL)	Airport Lady#LadyDupe36	114
+
+// Louyang's Duplicates
+//====================
+louair,133,47,5	duplicate(Airport Lady#LouAirL)	Airport Lady#LadyDupe37	116
+louair,143,47,5	duplicate(Airport Lady#LouAirL)	Airport Lady#LadyDupe38	112
+louair,153,47,5	duplicate(Airport Lady#LouAirL)	Airport Lady#LadyDupe39	113
+louair,163,47,5	duplicate(Airport Lady#LouAirL)	Airport Lady#LadyDupe40	114
+
+// Izlude's Duplicates
+//====================
+izlair,133,47,5	duplicate(Airport Lady#IzlAirL)	Airport Lady#LadyDupe41	116
+izlair,143,47,5	duplicate(Airport Lady#IzlAirL)	Airport Lady#LadyDupe42	112
+izlair,153,47,5	duplicate(Airport Lady#IzlAirL)	Airport Lady#LadyDupe43	113
+izlair,163,47,5	duplicate(Airport Lady#IzlAirL)	Airport Lady#LadyDupe44	114
+
+// Hugel's Duplicates
+//===================
+hugair,133,47,5	duplicate(Airport Lady#HugAirL)	Airport Lady#LadyDupe45	116
+hugair,143,47,5	duplicate(Airport Lady#HugAirL)	Airport Lady#LadyDupe46	112
+hugair,153,47,5	duplicate(Airport Lady#HugAirL)	Airport Lady#LadyDupe47	113
+hugair,163,47,5	duplicate(Airport Lady#HugAirL)	Airport Lady#LadyDupe48	114
+
+// Gonryun's Duplicates
+//=====================
+gonair,133,47,5	duplicate(Airport Lady#GonAirL)	Airport Lady#LadyDupe49	116
+gonair,143,47,5	duplicate(Airport Lady#GonAirL)	Airport Lady#LadyDupe50	112
+gonair,153,47,5	duplicate(Airport Lady#GonAirL)	Airport Lady#LadyDupe51	113
+gonair,163,47,5	duplicate(Airport Lady#GonAirL)	Airport Lady#LadyDupe52	114
+
+// Geffen's Duplicates
+//====================
+geffair,133,47,5	duplicate(Airport Lady#GeffAirL)	Airport Lady#LadyDupe53	116
+geffair,143,47,5	duplicate(Airport Lady#GeffAirL)	Airport Lady#LadyDupe54	112
+geffair,153,47,5	duplicate(Airport Lady#GeffAirL)	Airport Lady#LadyDupe55	113
+geffair,163,47,5	duplicate(Airport Lady#GeffAirL)	Airport Lady#LadyDupe56	114
+
+// Einbech's Duplicates
+//====================
+einair,133,47,5	duplicate(Airport Lady#EinAirL)	Airport Lady#LadyDupe57	116
+einair,143,47,5	duplicate(Airport Lady#EinAirL)	Airport Lady#LadyDupe58	112
+einair,153,47,5	duplicate(Airport Lady#EinAirL)	Airport Lady#LadyDupe59	113
+einair,163,47,5	duplicate(Airport Lady#EinAirL)	Airport Lady#LadyDupe60	114
+
+// Comodo's Duplicates
+//====================
+comair,133,47,5	duplicate(Airport Lady#ComAirL)	Airport Lady#LadyDupe61	116
+comair,143,47,5	duplicate(Airport Lady#ComAirL)	Airport Lady#LadyDupe62	112
+comair,153,47,5	duplicate(Airport Lady#ComAirL)	Airport Lady#LadyDupe63	113
+comair,163,47,5	duplicate(Airport Lady#ComAirL)	Airport Lady#LadyDupe64	114
+
+// Ayothaya's Duplicates
+//====================
+ayoair,133,47,5	duplicate(Airport Lady#AyoAirL)	Airport Lady#LadyDupe65	116
+ayoair,143,47,5	duplicate(Airport Lady#AyoAirL)	Airport Lady#LadyDupe66	112
+ayoair,153,47,5	duplicate(Airport Lady#AyoAirL)	Airport Lady#LadyDupe67	113
+ayoair,163,47,5	duplicate(Airport Lady#AyoAirL)	Airport Lady#LadyDupe68	114
+
+// Amatsu's Duplicates
+//====================
+amaair,133,47,5	duplicate(Airport Lady#AmaAirL)	Airport Lady#LadyDupe69	116
+amaair,143,47,5	duplicate(Airport Lady#AmaAirL)	Airport Lady#LadyDupe70	112
+amaair,153,47,5	duplicate(Airport Lady#AmaAirL)	Airport Lady#LadyDupe71	113
+amaair,163,47,5	duplicate(Airport Lady#AmaAirL)	Airport Lady#LadyDupe72	114
+
+// Aldebaran's Duplicates
+//====================
+aldair,133,47,5	duplicate(Airport Lady#AldAirL)	Airport Lady#LadyDupe73	116
+aldair,143,47,5	duplicate(Airport Lady#AldAirL)	Airport Lady#LadyDupe74	112
+aldair,153,47,5	duplicate(Airport Lady#AldAirL)	Airport Lady#LadyDupe75	113
+aldair,163,47,5	duplicate(Airport Lady#AldAirL)	Airport Lady#LadyDupe76	114
+
+// Prontera Duplicates
+//====================
+pronair,133,47,5	duplicate(Airport Lady#PronAirL)	Airport Lady#LadyDupe77	116
+pronair,143,47,5	duplicate(Airport Lady#PronAirL)	Airport Lady#LadyDupe78	112
+pronair,153,47,5	duplicate(Airport Lady#PronAirL)	Airport Lady#LadyDupe79	113
+pronair,163,47,5	duplicate(Airport Lady#PronAirL)	Airport Lady#LadyDupe80	114

@@ -1,0 +1,27 @@
+prontera,154,183,5	script	Recruiter1#01	56,{
+set .@name$,"[^0000ffNPC Name^000000]";
+if(#incivil == 2) goto L_civi2; // Can't join this civil if the player has a character from the other civilization.
+if(#incivil == 1) goto L_yes; // Forces the player into civil if the player already has another character in this civilization.
+
+mes .@name$;
+mes "Civilization information here.";
+next;
+mes .@name$;
+mes "Would you like to join this civilization?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	mes .@name$;
+	mes "Welcome to Civilization 1!";
+	atcommand "@fakename [Civil 1] "+strcharinfo(0);
+	set civil,1; // This variable allows other npcs to check what civilization the player is in.
+	set #incivil,1; // Bonds the civilization to the players account.
+	close;
+
+	L_civi2:
+	mes .@name$;
+	mes "You do not belong to this civilization. Please talk to the other recruiter.";
+	close;
+}

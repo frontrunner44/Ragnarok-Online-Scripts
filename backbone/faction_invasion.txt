@@ -1,0 +1,139 @@
+////////////////////////////////////////////////////////////
+/// Script Notes ///////////////////////////////////////////
+////////////////////////////////////////////////////////////
+/// The announcement will be displayed in red and can //////
+/// only happen once every 15 minutes. /////////////////////
+////////////////////////////////////////////////////////////
+-	script	FactionInvasion	-1,{
+
+OnPCLoadMapEvent:
+//====================
+// -- Safeguard
+//====================
+if(getgmlevel() >= 80) end;
+if($@invasionwait == 1) {
+	end;
+	}
+
+//=================================
+// -- Faction Name Setting
+//=================================
+if(faction == 1) {
+	set .@name$,"Arzeon";
+	}
+if(faction == 2) {
+	set .@name$,"Destra";
+	}
+
+//================
+// -- Script
+//================
+getmapxy(.@map$,@x,@y,0);
+if(.@map$ == "prontera" && faction != $prtfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Prontera!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "aldebaran" && faction != $aldfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Aldebaran!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "amatsu" && faction != $amafaction){
+	announce "Alert: "+.@name$+" member(s) have been spotted in Amatsu!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "comodo" && faction != $comfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Comodo!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "einbroch" && faction != $einbfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Einbroch!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "einbech" && faction != $einfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Einbech!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "geffen" && faction != $geffaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Geffen!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "gonryun" && faction != $gonfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Gonryun!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "hugel" && faction != $hugfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Hugel!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "izlude" && faction != $izlfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Izlude!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "louyang" && faction != $loufaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Louyang!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "umbala" && faction != $umbfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Umbala!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "veins" && faction != $veinfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Veins!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "payon" && faction != $payfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Payon!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "ayothaya" && faction != $ayofaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Ayothaya!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "morocc" && faction != $morfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Morocc!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "yuno" && faction != $yunofaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Yuno!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	}
+if(.@map$ == "rachel" && faction == 1) {
+	atcommand "@die";
+	announce "The Destra Guards have killed "+strcharinfo(0)+" for trying to get into Rachel.",bc_map;
+	end;
+	}
+if(.@map$ == "lighthalzen" && faction == 2) {
+	atcommand "@die";
+	announce "The Arzeon Guards have killed "+strcharinfo(0)+" for trying to get into Lighthalzen.",bc_map;
+	end;
+	}
+if(.@map$ == "alberta" && faction != $albfaction) {
+	announce "Alert: "+.@name$+" member(s) have been spotted in Alberta!",0,0xff0000;
+	initnpctimer;
+	set $@invasionwait,1;
+	end;
+	}
+end;
+
+	OnTimer15000:
+	set $@invasionwait,0;
+	stopnpctimer;
+	end;
+}

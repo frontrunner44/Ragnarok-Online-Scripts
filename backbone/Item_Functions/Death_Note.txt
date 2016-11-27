@@ -1,0 +1,49 @@
+// Written by Zero of ChaosRO
+
+function	script	death_note	{
+set .@name$,"[^ff0000Server^000000]";
+if(agitcheck() == 1) {
+	mes .@name$;
+	mes "Death Note cannot be accessed during WoE.";
+	close;
+	}
+
+mes .@name$;
+mes "Who's name would you like to write down in the death note?";
+input .@player$;
+next;
+if(getmapxy(.@map$,@x,@y,0,.@player$) != 0) goto L_notfound;
+if(getmapxy(.@map$,@x,@y,0,.@player$) == 0) goto L_found;
+
+	L_notfound:
+	mes .@name$;
+	mes "The player "+ .@player$ +" is currently offline.";
+	close;
+
+	L_found:
+	mes .@name$;
+	mes "How would you like "+.@player$+" to die?";
+	input .@death$;
+	next;
+	mes .@name$;
+	mes "The player will be killed in 10 seconds.";
+	close2;
+	sleep2 10000;
+	if(getmapxy(.@map$,@x,@y,0,.@player$) != 0) {
+		dispbottom "The player "+ .@player$ +" has logged out before the timer ran out.";
+		end;
+	}
+	set .@invoker,getcharid(3);
+	attachrid getcharid(3,.@player$);
+	if(getgmlevel() == 80) {
+		attachrid .@invoker;
+		dispbottom "You are not allowed to kill Staff Members.";
+		end;
+	}
+	percentheal -100,-100;
+	attachrid .@invoker;
+	delitem 30852,1;
+	announce "Server: "+.@player$+" has been killed from "+.@death$+".",0,0xFF0000;
+	dispbottom "Death has been confirmed. The player was on "+ @map$ +" when he or she died.";
+	end;
+	}

@@ -1,0 +1,138 @@
+-	script	GZBoard	-1,{
+
+//==================
+// -- Zombies
+//==================
+OnZombie:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			if(zombie50phase == 1) {
+			if(zombieslayed >= 50) end;
+				set zombieslayed,zombieslayed+1;
+				announce "Quest Update: Killed "+zombieslayed+"/50 Zombies.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(zombie50phase == 1) {
+	if(zombieslayed >= 50) end;
+	set zombieslayed,zombieslayed+1;
+	announce "Quest Update: Killed "+zombieslayed+"/50 Zombies.",bc_self;
+	}
+	end;
+
+
+//==================
+// -- Skeletons
+//==================
+OnNoisey:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(noiseyphase == 1) {
+				if(noiseykilled >= 60) end;
+				set noiseykilled,noiseykilled+1;
+				announce "Quest Update: Killed "+noiseykilled+"/60 Skeletons.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(noiseyphase == 1) {
+	if(noiseykilled >= 60) end;
+	set noiseykilled,noiseykilled+1;
+	announce "Quest Update: Killed "+noiseykilled+"/60 Skeletons.",bc_self;
+	}
+end;
+
+//==========================
+// -- Skeleton Slayer
+//==========================
+OnSoldier:
+if(getcharid(1) != 0){
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(soldierskelz == 1) {
+				if(soldierkilled >= 70) end;
+				set soldierkilled,soldierkilled+1;
+				announce "Quest Update: Killed "+soldierkilled+"/70 Soldier Skeletons.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(soldierskelz == 1) {
+	if(soldierkilled >= 70) end;
+	set soldierkilled,soldierkilled+1;
+	announce "Quest Update: Killed "+soldierkilled+"/70 Soldier Skeletons.",bc_self;
+	}
+end;
+
+OnArcher:
+if(getcharid(1) != 0){
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(soldierskelz == 1) {
+				if(archerskilled >= 70) end;
+				set archerskilled,archerskilled+1;
+				announce "Quest Update: Killed "+archerskilled+"/70 Archer Skeletons.",bc_self;
+				}
+			}
+		}
+		end;
+	}
+if(soldierskelz == 1) {
+	if(archerkilled >= 70) end;
+	set archerskilled,archerskilled+1;
+	announce "Quest Update: Killed "+archerskilled+"/70 Archer Skeletons.",bc_self;
+	}
+end;
+
+//==========================
+// -- Tough Egg Shells
+//==========================
+OnEggs:
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma,$@partymemberaid,.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			if(countitem(30007) >= 10) end;
+			if(eggdelivery == 1) {
+				set .@num,rand(1,3);
+				if(.@num == 1) {
+					getitem 30007,1;
+					announce "Quest Update: Collected "+countitem(30007)+"/10 Hard Egg Shells.",bc_self;
+					}
+				}
+			}
+		}
+		end;
+	}
+if(countitem(30007) >= 10) end;
+if(eggdelivery == 1) {
+	set .@num,rand(1,3);
+	if(.@num == 1) {
+		getitem 30007,1;
+		announce "Quest Update: Collected "+countitem(30007)+"/10 Hard Egg Shells.",bc_self;
+		end;
+		}
+	announce "Quest Update: Did not find a Hard Egg Shell.",bc_self;
+	}
+end;
+}

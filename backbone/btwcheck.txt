@@ -1,0 +1,56 @@
+function	script	BTWCheck	{
+
+//======================================
+// -- Butterfly Wing Safeguard
+//======================================
+        if(getsavepoint(0) == "prontera" && faction != $prtfaction){
+            L_ResetSave:
+                if(faction == 2){
+                    savepoint "rachel",130,110;
+			warp "SavePoint",0,0;
+			dispbottom "Your savepoint has been reset to Rachel due to the enemy owning your previous save point.";
+			end;
+                }else if(faction == 1){
+                    savepoint "lighthalzen",158,92;
+			warp "SavePoint",0,0;
+			dispbottom "Your savepoint has been reset to Lighthalzen due to the enemy owning your previous save point.";
+			end;
+                }
+            end;
+        }else if(getsavepoint(0) == "aldebaran" && faction != $aldfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "louyang" && faction != $loufaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "einbech" && faction != $einfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "einbroch" && faction != $einbfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "geffen" && faction != $geffaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "hugel" && faction != $hugfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "ayothaya" && faction != $ayofaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "morocc" && faction != $morfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "payon" && faction != $payfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "izlude" && faction != $izlfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "comodo" && faction != $comfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "gonryun" && faction != $gonfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "umbala" && faction != $umbfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "amatsu" && faction != $amafaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "veins" && faction != $veinfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "yuno" && faction != $yunofaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "morocc" && faction != $morfaction){
+	    goto L_ResetSave;
+	}
+	warp "SavePoint",0,0;
+}

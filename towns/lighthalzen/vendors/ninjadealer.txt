@@ -1,0 +1,17 @@
+lhz_in02.gat,17,210,5	script	Ninja Dealer#Lhz01	98,{
+if(faction == 2) {
+mes "[Saku]";
+mes ".......";
+close;
+}
+mes "[Saku]";
+mes "I heard that in a town called Amatsu, they sell these even cheaper!";
+next;
+mes "[Saku]";
+mes "It's not me making these prices, blame my boss!";
+next;
+callshop "LhzNin",0;
+close;
+}
+
+-	shop	LhzNin	139,7521:400,7522:400,7523:400,7524:700

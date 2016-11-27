@@ -1,0 +1,94 @@
+aldebaran,140,123,5	script	Guide#AldeBa01	707,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $aldfaction) {
+	mes .@name$;
+	mes "Leave at once.";
+	close;
+	}
+mes .@name$;
+mes "Welcome to Aldebaran. Would you like me to mark something on your minimap?";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Shops",L_shops,"- Hotel",L_hotel,"- Aldebaran Dungeon",L_aldun,"- Lutie",L_lutie,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Aldebaran!";
+	savepoint "aldebaran",140,119;
+	close;
+
+	L_shops:
+	viewpoint 1,58,222,1,0xFF0000;
+	close;
+
+	L_hotel:
+	viewpoint 1,91,234,2,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "Marks deleted.";
+	viewpoint 2,58,222,1,0xFF0000;
+	viewpoint 2,91,234,2,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30856,.@amount;
+	close;
+
+	L_lutie:
+	mes .@name$;
+	mes "Would you like a warp to Lutie?";
+	next;
+	menu "- Yes",L_ylutie,"- No thanks",-;
+	close;
+
+		L_ylutie:
+		warp "xmas",149,64;
+		end;
+
+	L_aldun:
+	mes .@name$;
+	mes "Would you like to warp to Aldebaran Dungeon?";
+	next;
+	menu "- Yes",L_ydun,"- No thanks",-;
+	close;
+
+		L_yes:
+		warp "alde_dun01",252,81;
+		end;
+}
+
+alde_dun01,256,84,5	script	Guide#Alde3	105,{
+set .@name$,"[^0000ffAldebaran Warper^000000]";
+mes .@name$;
+mes "Would you like to warp to Aldebaran?";
+next;
+menu "- Yes",L_yes,"- No thanks",-;
+close;
+
+	L_yes:
+	warp "aldebaran",142,121;
+	end;
+}

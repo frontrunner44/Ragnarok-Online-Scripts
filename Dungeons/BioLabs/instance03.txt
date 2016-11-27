@@ -1,0 +1,63 @@
+-	script	BioInst3	-1,{
+
+	OnTower:
+	set $@biocount3,$@biocount3+1;
+	if($@biocount3 == 4) {
+		monster "biolabs03_3",120,132,"Madzen Kolanoa",2008,1,"BioInst3::OnBoss";
+		announce "Server: The seals have been broken. Madzen Kolanoa is on the loose!",bc_map;
+		set $@biocount3,0;
+		end;
+		}
+	announce "Server: "+ $@biocount3 +" of 4 Chaos Seals have been broken!",bc_map;
+	end;
+	
+	OnBoss:
+	announce "Server: Madzen Kolanoa has been defeated, proceed to the center of biolabs03_3 and collect your rewards!",bc_map;
+	monster "biolabs01_3",165,28,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs01_3",149,270,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs02_3",16,81,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	monster "biolabs03_3",139,260,"Chaos Seal",2010,1,"BioInst3::OnTower";
+	// Treasure Chests
+	set .@num,rand(24,34);
+	areamonster "biolabs03_3",146,39,132,28,"Treasure Chest",1324,.@num;
+	end;
+
+	OnLimitation:
+	initnpctimer;
+	end;
+
+	OnTimer7200000:
+	mapannounce "biolabs01_3","You have 30 minutes left in this instance.",0;
+	mapannounce "biolabs02_3","You have 30 minutes left in this instance.",0;
+	mapannounce "biolabs03_3","You have 30 minutes left in this instance.",0;
+	end;
+
+
+	OnTimer9000000:
+	stopnpctimer;
+	mapannounce "biolabs01_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "biolabs02_3","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "biolabs03_3","Your time has ended. You will now be warped out of the instance.",0;
+	sleep2 3000;
+	mapwarp "biolabs01_3","einbroch",64,200,$@bioparty;
+	mapwarp "biolabs02_3","einbroch",64,200,$@bioparty;
+	mapwarp "biolabs03_3","einbroch",64,200,$@bioparty;
+	set $@bioparty3,0;
+	end;
+
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "biolabs01_3") {
+	viewpoint 1,165,28,1,0xFF0000;
+	viewpoint 1,149,270,2,0xFF0000;
+	}
+if(.@map$ == "biolabs02_3") {
+	viewpoint 1,16,81,3,0xFF0000;
+	}
+if(.@map$ == "biolabs03_3") {
+	viewpoint 1,139,260,4,0xFF0000;
+	}
+end;
+
+}

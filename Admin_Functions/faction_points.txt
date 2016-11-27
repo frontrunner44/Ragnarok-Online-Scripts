@@ -1,0 +1,42 @@
+function	script	FactionPoints	{
+
+mes "[System]";
+mes "What would you like to do?";
+next;
+menu "- Get FP",getfac,"- Delete FP",delfac,"- Reset FP",L_reset,"- Nothing",-;
+close;
+
+	L_reset:
+	mes "[System]";
+	mes "Your FP have been reset to 0.";
+	close2;
+	set fpoints,0;
+	end;
+
+	getfac:
+	mes "[System]";
+	mes "How many FP do you wish to recieve?";
+	input .@gmfac;
+	next;
+	mes "[System]";
+	mes "Done! Enjoy your FP!";
+	set fpoints,fpoints+.@gmfac;
+	close;
+	
+	delfac:
+	mes "[System]";
+	mes "How many FP would you like to get rid of?";
+	input .@gmfac;
+	next;
+	if(.@gmfac > fpoints) {
+		mes "[System]";
+		mes "That is too many. We don't want to go into the negetives now!";
+		next;
+		goto delfac;
+	} else {
+		mes "[System]";
+		mes "Done! You have lowered your FP!";
+		set fpoints,fpoints-.@gmfac;
+		close;
+			}
+}

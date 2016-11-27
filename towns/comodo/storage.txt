@@ -1,0 +1,16 @@
+cmd_in02,98,208,5	script	Storage#ComodStor	86,{
+if(faction != $comfaction) {
+    mes "....";
+    close;
+}
+
+mes "[^0000ffStorage^000000]";
+mes "What would you like to open?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+close;
+}

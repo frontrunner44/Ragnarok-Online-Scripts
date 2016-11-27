@@ -1,0 +1,67 @@
+eathena,260,168,5	script	Spark of Knowledge#05	802,{
+
+set .@name$,"[^0000ffSpark^000000]";
+menu "- Learn about Dungeon Instances",L_dungeon,"- Learn about Mission Boards",-;
+mes .@name$;
+mes "Mission boards are usually found outside of dungeons.";
+next;
+mes .@name$;
+mes "The faction leaders use these boards to post up missions that they would like their soldiers to complete.";
+next;
+mes .@name$;
+mes "Usually Mission Boards will give players dungeon related quests, such as grinding mobs.";
+next;
+mes .@name$;
+mes "Accepting all of the quests on a mission board before entering a dungeon is a very useful way to get extra rewards!";
+close;
+
+	L_dungeon:
+	mes .@name$;
+	mes "Dungeon instances are similar to those found on other games.";
+	next;
+	mes .@name$;
+	mes "In order to enter a dungeon instance, you must first be in a party, regardless of if it's full or not.";
+	next;
+	mes .@name$;
+	mes "In order to spot a dungeon instance, simply look for a floating dark blue crystal as seen right here.";
+	next;
+	mes .@name$;
+	mes "After entering an instance, the entire dungeon is available to your party(s) only.";
+	next;
+	mes .@name$;
+	mes "However, once you enter a timer will start, and you are allowed to stay in the instance for a certain amount of time.";
+	next;
+	mes .@name$;
+	mes "Each dungeon instance has up to four identical versions of itself, allowing four individual instances to be active at once.";
+	next;
+	mes .@name$;
+	mes "While in an instance, rates are double the normal server rates.";
+	next;
+	mes .@name$;
+	mes "In each instance there are four 'Chaos Seals', that when broken, spawns a unique Boss Mob.";
+	next;
+	mes .@name$;
+	mes "These Boss Mobs will usually require a full party(s) to defeat.";
+	next;
+	mes .@name$;
+	mes "When defeated, Boss Mobs can drop VERY valuable items, including custom gear such as headgears, wings and more.";
+	next;
+	mes .@name$;
+	mes "They also have a chance to drop two MvP cards at a higher than normal chance.";
+	next;
+	mes .@name$;
+	mes "Once a Boss Mob is defeated, a random amount of treasure chests will spawn as a reward.";
+	next;
+	mes .@name$;
+	mes "The amount of treasure chests that spawn will vary depending on the dungeon instance.";
+	next;
+	mes .@name$;
+	mes "Please note that the dungeon instance beside me is a neutral dungeon instance, meaning that it does not belong to only one faction.";
+	next;
+	mes .@name$;
+	mes "Any faction may enter this instance. However, other dungeon instances can be found in other towns.";
+	next;
+	mes .@name$;
+	mes "Meaning that only the faction who owns that town can use the instance.";
+	close;
+}

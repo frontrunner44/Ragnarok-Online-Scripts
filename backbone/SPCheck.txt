@@ -1,0 +1,70 @@
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+// - This Script will check a players save point when they die.  |
+// - If the location of their save point is owned by the enemy,  |
+// - they will be saved and warped to their home town.           |
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+
+-	script	Savepoint	-1,{
+
+
+
+OnPCDieEvent:
+	//=============================
+	// -- Storage Container
+	//=============================
+	set .@chance,rand(1,5);
+	if(.@chance == 5 && countitem(30509) != 0) {
+		delitem 30509,1;
+		dispbottom "Storage container has been broken.";
+	}
+
+	//================================
+	// -- Savepoint Safeguard
+	//================================
+        if(getsavepoint(0) == "prontera" && faction != $prtfaction){
+            L_ResetSave:
+                if(faction == 2){
+                    savepoint "rachel",130,110;
+                }else if(faction == 1){
+                    savepoint "lighthalzen",158,92;
+                }
+            end;
+        }else if(getsavepoint(0) == "aldebaran" && faction != $aldfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "louyang" && faction != $loufaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "einbech" && faction != $einfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "einbroch" && faction != $einbfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "geffen" && faction != $geffaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "hugel" && faction != $hugfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "ayothaya" && faction != $ayofaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "morroc" && faction != $morfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "payon" && faction != $payfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "izlude" && faction != $izlfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "comodo" && faction != $comfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "gonryun" && faction != $gonfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "umbala" && faction != $umbfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "amatsu" && faction != $amafaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "veins" && faction != $veinfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "yuno" && faction != $yunofaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "alberta" && faction != $albfaction){
+	    goto L_ResetSave;
+	}else if(getsavepoint(0) == "morocc" && faction != $morfaction){
+	    goto L_ResetSave;
+	}
+end;
+}

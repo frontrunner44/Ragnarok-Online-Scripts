@@ -1,0 +1,193 @@
+payon,145,230,5	script	Temple of Honor	819,{
+
+//=================
+// -- Config
+//=================
+set .@name$,"[^0000ffInstance Crystal^000000]";
+if(faction != $payfaction) {
+	mes .@name$;
+	mes "Access denied.";
+	close;
+	}
+
+//===============
+// -- Check
+//===============
+if(BaseLevel < 60) {
+	mes .@name$;
+	mes "You must be at least level 60 to enter.";
+	close;
+	}
+
+//===============
+// -- Script
+//===============
+mes .@name$;
+mes "^880000Instance Name:^000000 Temple of Honor";
+mes "^880000Instance Level^000000: High";
+mes "^880000Minimum Level^000000: 70";
+mes "^880000Party Limit^000000: 1 party per instance";
+mes "^880000Dungeon Boss^000000: N/A";
+mes "^880000Boss Rewards^000000: 15 to 20 Chests";
+mes "^880000Entry Fee^000000: 100FP";
+next;
+mes .@name$;
+mes "Would you like to enter this instance?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	mes .@name$;
+	mes "Be sure that all of the party members you wish to bring along are ready to be warped.";
+	next;
+	mes .@name$;
+	mes "Any party members left behind can not enter once you are inside of the dungeon.";
+	next;
+	mes .@name$;
+	mes "You will be allowed 2 and a half hours in the instance to allow others to get a chance to enter as well.";
+	next;
+	menu "- I'm ready!",instance01,"- Not yet",-;
+	close;
+
+	instance01:
+	if(fpoints < 100) {
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		}
+	if(getcharid(1) == 0) {
+		mes .@name$;
+		mes "You must be in a party to enter.";
+		close;
+		}
+	if(getmapusers("toh01_1") != 0) goto instance02;
+	if(getmapusers("toh02_1") != 0) goto instance02;
+	if(getmapusers("toh03_1") != 0) goto instance02;
+	if(getmapusers("toh04_1") != 0) goto instance02;
+	if(getmapusers("toh05_1") != 0) goto instance02;
+	set fpoints,fpoints-100;
+	set $@tohcount,0;
+	set $@tohparty,getcharid(1);
+	donpcevent "tohInst::OnLimitation";
+	warpparty "toh01_1",150,37,getcharid(1);
+	sleep2 5000;
+	mapannounce "toh01_1","You are in instance 1 of 4.",0;
+	killmonster "toh01_1","All";
+	killmonster "toh02_1","All";
+	killmonster "toh03_1","All";
+	killmonster "toh04_1","All";
+	killmonster "toh05_1","All";
+	monster "toh01_1",149,227,"Chaos Seal",2010,1,"tohInst::OnTower";
+	monster "toh02_1",149,285,"Chaos Seal",2010,1,"tohInst::OnTower";
+	monster "toh03_1",149,228,"Chaos Seal",2010,1,"tohInst::OnTower";
+	monster "toh05_1",130,52,"Chaos Seal",2010,1,"tohInst::OnTower";
+	end;
+
+	instance02:
+	if(fpoints < 100) {
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		}
+	if(getcharid(1) == 0) {
+		mes .@name$;
+		mes "You must be in a party to enter.";
+		close;
+		}
+	if(getmapusers("toh01_2") != 0) goto instance03;
+	if(getmapusers("toh02_2") != 0) goto instance03;
+	if(getmapusers("toh03_2") != 0) goto instance03;
+	if(getmapusers("toh04_2") != 0) goto instance03;
+	if(getmapusers("toh05_2") != 0) goto instance03;
+	set fpoints,fpoints-100;
+	set $@tohcount2,0;
+	set $@tohparty2,getcharid(1);
+	donpcevent "tohInst2::OnLimitation";
+	warpparty "toh01_2",215,49,getcharid(1);
+	sleep2 5000;
+	mapannounce "toh01_2","You are in instance 2 of 4.",0;
+	killmonster "toh01_2","All";
+	killmonster "toh02_2","All";
+	killmonster "toh03_2","All";
+	killmonster "toh04_2","All";
+	killmonster "toh05_2","All";
+	monster "toh01_2",149,227,"Chaos Seal",2010,1,"tohInst2::OnTower";
+	monster "toh02_2",149,285,"Chaos Seal",2010,1,"tohInst2::OnTower";
+	monster "toh03_2",149,228,"Chaos Seal",2010,1,"tohInst2::OnTower";
+	monster "toh05_2",130,52,"Chaos Seal",2010,1,"tohInst2::OnTower";
+	end;
+
+	instance03:
+	if(fpoints < 100) {
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		}
+	if(getcharid(1) == 0) {
+		mes .@name$;
+		mes "You must be in a party to enter.";
+		close;
+		}
+	if(getmapusers("toh01_3") != 0) goto instance04;
+	if(getmapusers("toh02_3") != 0) goto instance04;
+	if(getmapusers("toh03_3") != 0) goto instance04;
+	if(getmapusers("toh04_3") != 0) goto instance04;
+	if(getmapusers("toh05_3") != 0) goto instance04;
+	set fpoints,fpoints-100;
+	set $@tohcount3,0;
+	set $@tohparty3,getcharid(1);
+	donpcevent "tohInst3::OnLimitation";
+	warpparty "toh01_3",215,49,getcharid(1);
+	sleep2 5000;
+	mapannounce "toh01_3","You are in instance 3 of 4.",0;
+	killmonster "toh01_3","All";
+	killmonster "toh02_3","All";
+	killmonster "toh03_3","All";
+	killmonster "toh04_3","All";
+	killmonster "toh05_3","All";
+	monster "toh01_3",149,227,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh02_3",149,285,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh03_3",149,228,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	monster "toh05_3",130,52,"Chaos Seal",2010,1,"tohInst3::OnTower";
+	end;
+
+	instance04:
+	if(fpoints < 100) {
+		mes .@name$;
+		mes "You do not have enough FP.";
+		close;
+		}
+	if(getcharid(1) == 0) {
+		mes .@name$;
+		mes "You must be in a party to enter.";
+		close;
+		}
+	if(getmapusers("toh01_4") != 0) goto L_infull;
+	if(getmapusers("toh02_4") != 0) goto L_infull;
+	if(getmapusers("toh03_4") != 0) goto L_infull;
+	if(getmapusers("toh04_4") != 0) goto L_infull;
+	if(getmapusers("toh05_4") != 0) goto L_infull;
+	set fpoints,fpoints-100;
+	set $@tohcount4,0;
+	set $@tohparty4,getcharid(1);
+	donpcevent "tohInst4::OnLimitation";
+	warpparty "toh01_4",215,49,getcharid(1);
+	sleep2 5000;
+	mapannounce "toh01_4","You are in instance 4 of 4.",0;
+	killmonster "toh01_4","All";
+	killmonster "toh02_4","All";
+	killmonster "toh03_4","All";
+	killmonster "toh04_4","All";
+	killmonster "toh05_4","All";
+	monster "toh01_4",149,227,"Chaos Seal",2010,1,"tohInst4::OnTower";
+	monster "toh02_4",149,285,"Chaos Seal",2010,1,"tohInst4::OnTower";
+	monster "toh03_4",149,228,"Chaos Seal",2010,1,"tohInst4::OnTower";
+	monster "toh05_4",130,52,"Chaos Seal",2010,1,"tohInst4::OnTower";
+	end;
+
+		L_infull:
+		mes .@name$;
+		mes "All instances of Biolabs are currently full.";
+		close;
+}

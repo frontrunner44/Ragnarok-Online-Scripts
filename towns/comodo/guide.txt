@@ -1,0 +1,70 @@
+comodo,209,145,5	script	Guide#ComGuide	707,{
+L_start:
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $comfaction) {
+	mes .@name$;
+	mes "Leave at once...";
+	close;
+	}
+mes .@name$;
+mes "Welcome to the beautiful town of Comodo.";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",L_hotel,"- Weapons & Armor",L_shops,"- Tool Shop",L_tools,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$; 
+	mes "You have now been saved in Comodo.";
+	savepoint "comodo",209,140;
+	next;
+	goto L_start;
+
+	L_hotel:
+	viewpoint 1,127,191,1,0xFF0000;
+	next;
+	goto L_start;
+
+	L_shops:
+	viewpoint 1,265,79,2,0xFF0000;
+	next;
+	goto L_start;
+
+	L_tools:
+	viewpoint 1,97,128,3,0xFF0000;
+	next;
+	goto L_start;
+
+	L_delete:
+	mes .@name$;
+	mes "All marks deleted.";
+	viewpoint 2,127,191,1,0xFF0000;
+	viewpoint 2,265,79,2,0xFF0000;
+	viewpoint 2,97,128,3,0xFF0000;
+	next;
+	goto L_start;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30859,.@amount;
+	close;
+}

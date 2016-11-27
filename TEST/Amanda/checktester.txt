@@ -1,0 +1,9 @@
+prontera,152,187,5	script	Civilization Tester	567,{
+
+set civil,0;
+set #incivil,0;
+set #cowner,0;
+set $civil$[0],"";
+dispbottom "Variables reset.";
+end;
+}

@@ -1,0 +1,11 @@
+lhz_in02.gat,17,202,4	script	Tools#Lhz01	102,{
+if(faction == 2) {mes "[Merchant]"; mes "........."; close;}
+callshop "GlobTool01",0;
+}
+
+lhz_in02.gat,32,145,5	script	Tools#Lhz02	904,{
+if(faction == 2) {mes "....."; close;}
+callshop "GlobTool01",0;
+}	
+
+

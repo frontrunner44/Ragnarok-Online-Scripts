@@ -1,0 +1,6 @@
+function	script	RaiseElixer	{
+atcommand strcharinfo(0)+":@raisemap";
+getmapxy(.@map$,.@x,.@y,0);
+mapannounce .@map$,"Server: A breeze of relief has passed through this map! All players revived!",0;
+end;
+}

@@ -1,0 +1,4 @@
+new_zone02,100,113,5	script	Server_Guide	743,{
+callfunc "ServerGuide";
+end;
+}

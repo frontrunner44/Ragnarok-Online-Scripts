@@ -1,0 +1,91 @@
+-	script	ChaosROTips	-1,{
+
+OnPCLoginEvent:
+if(tipsonoff == 1) end;
+set .@name$,"[^0000ffChaosRO Tips^000000]";
+set .@temp,rand(1,7);
+if(.@temp == 1) goto tip1;
+if(.@temp == 2) goto tip2;
+if(.@temp == 3) goto tip3;
+if(.@temp == 4) goto tip4;
+if(.@temp == 5) goto tip5;
+if(.@temp == 6) goto tip6;
+if(.@temp == 7) goto tip7;
+
+
+
+	tip1:
+	mes .@name$;
+	mes "^0000ffArmor Shops:^000000 Remember, some headgears are sold in different town's armor shops for a large amount of Zeny.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip2:
+	mes .@name$;
+	mes "^0000ffRaids:^000000 You can perform town or airship raids by visiting the Raid Instructor in your Faction's home town.";
+	next;
+	mes .@name$;
+	mes "These raids are an effective tactic to gaining an advantage over the opposing faction.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip3:
+	mes .@name$;
+	mes "When you see an npc with a question mark in it's name, this means that the npc has a quest to offer you.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip4:
+	mes .@name$;
+	mes "To enable easier leveling for players who are a part of the losing faction, we have added what is known as 'Contested Dungeons'.";
+	next;
+	mes .@name$;
+	mes "These dungeons can be warped to from any Home Town guide and are accessible regardless of what territory your faction owns.";
+	next;
+	mes .@name$;
+	mes "However, these dungeons are not instanced and are pvp enabled, meaning that you can be killed by the opposing faction while inside.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip5:
+	mes .@name$;
+	mes "ChaosRO boasts a PvP Loot system to provide rewards for those who defend their faction's territory.";
+	next;
+	mes .@name$;
+	mes "When you kill a player of the opposing faction who is on your Faction's territory, you have a chance to recieve many items normally only obtained in PvE.";
+	next;
+	mes .@name$;
+	mes "These items can range from cards, weapons, armor and more. Each item has an individual chance of .01% to drop.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip6:
+	mes .@name$;
+	mes "By visiting the Head Staff npc, you can perform many actions.";
+	next;
+	mes .@name$;
+	mes "The Head Staff npc allows you to Reset Stats/Skills, Trade coins for FP, Reset all of your quests so they can be completed again and more!";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+	tip7:
+	mes .@name$;
+	mes "Remember, every quest can be done more than once! To do this, visit the Head Staff npc and pay a fee to reset all of the quests you have completed and are currently on.";
+	next;
+	mes .@name$;
+	mes "You can turn off ChaosRO Tips by accessing your Adventure Logs.";
+	close;
+
+}

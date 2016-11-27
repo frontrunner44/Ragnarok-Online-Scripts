@@ -1,0 +1,6 @@
+// Don't torch this unless you know what to do =)
+npc: npc/ChaosRO/pvp_npcs/PVS/PVS_CONFIG.txt
+npc: npc/ChaosRO/pvp_npcs/PVS/PVS_MF.txt
+npc: npc/ChaosRO/pvp_npcs/PVS/PVS_NPCS.txt
+npc: npc/ChaosRO/pvp_npcs/PVS/PVS_TRIGGER.txt
+

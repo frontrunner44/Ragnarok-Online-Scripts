@@ -1,0 +1,33 @@
+RO2,120,309,5	script	Captain#New	49,{
+set .@name$,"[^0000ffCaptain^000000]";
+if(faction == 0) {
+	mes .@name$;
+	mes "You must be in a faction to leave this island.";
+	close;
+	}
+mes .@name$;
+mes "Where would you like to go?";
+next;
+menu "- Ground Zero",L_ground,"- Nevermind",-;
+close;
+
+
+	L_ground:
+	mes .@name$;
+	mes "Time to go home! Muwahaha!";
+	next;
+	warp "eathena",214,42;
+	end;
+
+	L_izl:
+	if(faction != $izlfaction) {
+		mes .@name$;
+		mes "You do not currently own Izlude.";
+		close;
+		}
+	mes .@name$;
+	mes "Here we go!";
+	next;
+	warp "izlude",175,181;
+	end;
+}

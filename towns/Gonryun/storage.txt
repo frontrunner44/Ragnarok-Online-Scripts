@@ -1,0 +1,17 @@
+gon_in.gat,115,95,5	script	Storage#Gon01	50,{
+if(faction != $gonfaction) {
+    mes "....";
+    close;
+}
+
+mes "[^ff0000Storage^000000]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

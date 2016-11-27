@@ -1,0 +1,87 @@
+odin_tem01,91,145,5	script	Captain#Odin1	810,{
+set .@name$,"[^0000ffCaptain^0000ff]";
+
+mes .@name$;
+mes "Where would you like to go?";
+next;
+menu "- Ground Zero",L_ground,"- Newbie Grounds",L_newb,"- Alberta",L_alb,"- Izlude",L_izl,"- Hugel",L_hug,"- Turtle Dungeon",L_turtle,"- Skull Island",L_skull,"- Nevermind",-;
+close;
+
+	L_hug:
+	if(faction != $hugfaction) {
+		mes .@name$;
+		mes "Your faction is not currently in control of hugel.";
+		close;
+		}
+	mes .@name$;
+	mes "Here we go!";
+	next;
+	warp "hugel",206,108;
+	end;
+	
+	L_alb:
+	if(faction != $albfaction) {
+		mes .@name$;
+		mes "Your faction is not currently in control of Alberta.";
+		close;
+		}
+	mes .@name$;
+	mes "Back to Alberta we go!";
+	next;
+	warp "alberta",192,152;
+	end;
+
+	L_newb:
+	mes .@name$;
+	mes "You're still a newb, eh? Oh well! Climb aboard!";
+	next;
+	warp "RO2",122,310;
+	end;
+
+	L_ground:
+	mes .@name$;
+	mes "Time to go home! Muwahaha!";
+	next;
+	warp "eathena",214,42;
+	end;
+
+	L_izl:
+	if(faction != $izlfaction) {
+		mes .@name$;
+		mes "You do not currently own Izlude.";
+		close;
+		}
+	mes .@name$;
+	mes "Here we go!";
+	next;
+	warp "izlude",175,181;
+	end;
+
+	L_turtle:
+	mes .@name$;
+	mes "Off we go!";
+	next;
+	warp "tur_dun01",158,39;
+	end;
+
+	L_sunk:
+	mes .@name$;
+	mes "All aboard!";
+	next;
+	warp "alb2trea",54,64;
+	end;
+
+	L_odin:
+	mes .@name$;
+	mes "Off we go to Odin Temple!";
+	next;
+	warp "odin_tem01",98,146;
+	end;
+
+	L_skull:
+	mes .@name$;
+	mes "Off we go!";
+	warp "izlu2dun",108,31;
+	end;
+
+}

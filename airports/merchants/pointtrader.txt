@@ -1,0 +1,9 @@
+airplane,47,61,6	script	Point Trader#PAir	893,{
+callfunc "PointTrader";
+end;
+}
+
+airplane_01,47,61,6	script	Point Trader#PAir2	721,{
+callfunc "PointTrader";
+end;
+}

@@ -1,0 +1,356 @@
+//===== eAthena Script =======================================================
+//= Cash Shop (7:33 PM 1/2/2008 Philippines)
+//===== By: ==================================================================
+//= Windsor
+//===== Current Version: =====================================================
+//= 1.5
+//===== Compatible With: =====================================================
+//= eAthena Stable/Trunk 11753+ TXT/SQL
+//===== Description: =========================================================
+//= A custom cash item shop... like the official one.
+//= Lvl 99 GMs can give cash Credits to players.
+//= Works with all kinds of items
+//============================================================================
+-	shop	F_Cash	139,501:50 //Do not edit this please.
+
+-	script	cashshop_conf		-1,{
+end;
+OnInit:
+	//-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-CONFIGURATION-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o\\
+	set $@cpoint$, "Chaos";				// Set the name of the donation Credits.
+	set $@webname$, "http://www.chaos-ro.net";	// Set the website's url to get the info about donations
+	set $@maxpoint, 20000; 				// The maximum cash point that a gm can give you.
+	set $@gmlvl, 99;				// Set the minumum lvl of gm to use the gm feature?
+	set $@npc$,"^000080[Donation Shop]^000000";	// Set the NPC name
+	set $@kickall,0;				// 1=the npc will use @kickall after you confirmed to delete all donation 
+	set $@clearannounce,0;				// make an announce before using @kickall, will not execute if $@kickall is 0
+	//-o-o-o-o-o-o-o-o-o-o-o-ooooo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o-o-o-o-o-o-oo-o-o-o-o-oo-o-o\\
+
+	npcshopdelitem "F_Cash",501; // do not edit this =)
+	if (getarraysize($cash_item) >= 1) {
+		npcshopitem "F_Cash",$cash_item[0],$cash_price[0];
+		for (set .@i,1; .@i < getarraysize($cash_item); set .@i,.@i+1) {
+			npcshopadditem "F_Cash",$cash_item[.@i],$cash_price[.@i];
+		}
+	}
+	end;
+}
+// See duplicates below to edit the npc's coordinates.
+eathena,253,159,8	script	Donation Shop Girl		893,{
+
+if(getgmlevel() == $@gmlvl) goto L_GM;
+if(strcharinfo(0) == "Chaos") goto L_GM;
+
+L_start:
+	mes $@npc$;
+	mes "Welcome to the Cash Item Shop";
+	mes "You currently have:";
+	mes "[ ^0000FF"+#cashpoint+"^000000 ] ^FF0000"+$@cpoint$+" Credits^000000";
+	next;
+	switch(select("-Buy Cash Items:-Information:-Cancel")) {
+
+	case 1:
+		close2;
+		callshop "F_Cash",1;
+		dispbottom "You currently have "+#cashpoint+" "+$@cpoint$+" Credits.";
+		end;
+	case 2:
+		mes $@npc$;
+		mes "In order to earn ^FF0000"+$@cpoint$+" Credits^000000, you need to donate money to ChaosRO.";
+		next;
+		mes "Each $1.00 donated will reward you with 10 Chaos Credits.";
+		next;
+		mes "Please visit ^338C60"+$@webname$+"^000000 for more information.";
+		close;
+	case 3:
+		close;
+		}
+
+L_GM:
+	mes $@npc$;
+	mes "Good day Master ^0000FF"+strcharinfo(0)+"^000000";
+	mes "What can I do for you?";
+	next;
+	switch(select("-View Cash Shop:-Manages Donations:-Manage Cash Shop:-Normal Menu")) {
+case 1:
+	close2;
+	callshop "F_Cash",1;
+	dispbottom "You currently have "+#cashpoint+" "+$@cpoint$+" Credits.";
+	end;
+case 2:
+	mes $@npc$;
+	mes "What would you like to do?";
+	next;
+	switch(select("-Give Donation Credits:-Clear All Donation Credits")) {
+case 1:
+	mes $@npc$;
+	mes "Are you sure you want to add a donation?";
+	next;
+	if(select("-No:-Yes")==2) goto L_adddonate;
+		goto L_canc;
+L_adddonate:
+	mes $@npc$;
+	mes "Please input the player's name.";
+	mes "-----------------------------------";
+	mes "Input ^FF00000^000000 to cancel";
+	next;
+	input .@dname$;
+	if(.@dname$ == "0") goto L_canc;
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		mes $@npc$;
+		mes "Player [ ^0000FF"+.@dname$+"^000000 ] is currently ^FF0000offline^000000.";
+		mes "Do you still want to continue?";
+		next;
+		if(select("-No:-Yes")==1) close;
+		goto L_donating;
+		}
+L_donating:
+	mes $@npc$;
+	mes "How many ^FF0000"+$@cpoint$+" Credits^000000 do you want to give?";
+	mes "-----------------------------------";
+	mes "Input ^FF00000^000000 to cancel";
+	next;
+	input .@cpoint;
+	if(.@cpoint == 0) goto L_canc;
+	else if(.@cpoint > $@maxpoint) {
+		mes $@npc$;
+		mes "The maximum number of ^FF0000"+$@cpoint$+"^000000 Credits that you can give is ^FF0000"+$@maxpoint+"^000000.";
+		close;
+		}
+	mes $@npc$;
+	mes "Name: ^FF0000"+.@dname$+"^000000";
+	mes "Credits to give: ^FF0000"+.@cpoint+"^000000";
+	next;
+	if(select("-Cancel:-^FF0000Confirm^000000")==2) {
+		if (!isloggedin(getcharid(3,.@dname$)) ) { goto L_confirmdonate2; }
+		goto L_confirmdonate;
+		}
+	close;
+L_confirmdonate:
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		mes $@npc$;
+		mes "The process cannot proceed because ^0000FF"+@donatorname$+"^000000 is currently ^FF0000offline^000000.";
+		close;
+		}
+	mes $@npc$;
+	mes "^338C60Processing Operation...^000000.";
+	mes " Giving [ ^0000FF"+.@cpoint+"^000000 ] ^FF0000"+$@cpoint$+" Credits^000000 to";
+	mes "[ ^0000FF"+.@dname$+"^000000 ]";
+	close2;
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		announce "Operation Failed.",bc_self,0x08F8C6;
+		dispbottom "The player is not connected anymore.";
+		end;
+		}
+	announce "Operation Successful.",bc_self,0x08F8C6;
+	dispbottom "[ "+.@cpoint+" ] "+$@cpoint$+" Credits has been given to [ "+.@dname$+" ]";
+	set @RID, getcharid(3,.@dname$);
+	attachrid(@RID);
+	set #cashpoint,#cashpoint+.@cpoint;
+	announce "You have received your donation rewards.",bc_self,0x08F8C6;
+	dispbottom "You now have "+#cashpoint+" "+$@cpoint$+" Credits.";
+	detachrid;
+	end;
+L_confirmdonate2:
+	if (isloggedin(getcharid(3,.@dname$)) ) {
+		announce "Operation Successful.",bc_self,0x08F8C6;
+		dispbottom "[ "+.@cpoint+" ] "+$@cpoint$+" Credits has been given to [ "+.@dname$+" ]";
+		set @RID, getcharid(3,.@dname$);
+		attachrid(@RID);
+		set #cashpoint,#cashpoint+.@cpoint;
+		announce "You have received your donation rewards.",bc_self,0x08F8C6;
+		dispbottom "You now have "+#cashpoint+" "+$@cpoint$+" Credits.";
+		detachrid;
+		end;
+		}
+	if (getarraysize($dnames$) == 128 ) { // there might be a chance when too many players don't want to claim prize
+	deletearray $dnames$[0],1;
+	deletearray $dCredits[0],1;
+	}
+set $dnames$[getarraysize($dnames$)],.@dname$;
+set $dCredits[getarraysize($dCredits)],.@cpoint;
+mes $@npc$;
+mes "[ ^0000FF"+.@cpoint+"^000000 ] ^FF0000"+$@cpoint$+" Credits^000000 to";
+mes "[ ^0000FF"+.@dname$+"^000000 ]";
+close;
+
+case 2:
+	mes $@npc$;
+	mes "Are you sure you want to clear all";
+	mes ""+$@cpoint$+" Credits from the server?";
+	next;
+	if(select("-No:-Yes")==1) goto L_canc;
+	mes $@npc$;
+	mes "All "+$@cpoint$+" Credits on the server has been deleted.";
+	set $clearCredits,$clearCredits+1;
+	close2;
+	switch ($@kickall) {
+	
+	default:
+		end;
+	case 1:
+		if($@clearannounce) {
+		announce "All players will be disconnected in 10 seconds.",bc_all;
+		sleep 1000;
+		announce "Please log-out now to avoid lost of items.",bc_all; // Not true,that is for players to log-out.
+		sleep 10000;
+		atcommand "@kickall";
+		end;
+			}
+		atcommand "@kickall";
+		end;
+	case 2:
+		detachrid;
+		for ( set .@i,2000000; .@i <= 2010000; set .@i, .@i + 1 ) { // 1990000 to make sure it loops through the sleep command
+		if ( .@i % 250 == 0 ) sleep 20;
+		if ( !attachrid(.@i) ) continue;
+		set #cashpoint,0;
+		set clearCredits,$clearCredits;
+				}
+    		if($@clearannounce)
+		announce "All "+$@cpoint$+" Credits on the server has been wiped by the admin.",bc_all;
+		}
+		end;
+	}
+case 3:
+	mes $@npc$;
+	mes "What would you like to do?";
+	next;
+	switch(select("Add Items:Remove Items:Clear All Items:Back")) {
+
+case 1:
+	mes $@npc$;
+	mes "Please input the ^0000FFitem id^000000.";
+	mes "-----------------------------------";
+	mes "Input ^FF00000^000000 to cancel";
+	next;
+	input .@item;
+	if(.@item == 0) goto L_canc;
+	mes $@npc$;
+	mes "Item: ^FF0000"+getitemname(.@item)+"^000000";
+	mes "Please set the item's price";
+	mes "-----------------------------------";
+	mes "Input ^FF00000^000000 to cancel";
+	next;
+	input .@price;
+	if(.@price ==0) goto L_canc;
+	mes $@npc$;
+	mes "Item: ^FF0000"+getitemname(.@item)+"^000000";
+	mes "Price: ^FF0000"+.@price+"^000000";
+	mes "Confirm?";
+	next;
+	if(select("-Cancel:-Confirm")==1) goto L_canc;
+
+	set $cash_item[getarraysize($cash_item)],.@item;
+	set $cash_price[getarraysize($cash_price)],.@price;
+	npcshopadditem "F_Cash",.@item,.@price;
+	mes $@npc$;
+	mes "^FF0000"+getitemname(.@item)+"^000000 is now added to the shop.";
+	close;
+case 2:
+	mes $@npc$;
+	mes "Please input the item id of the item that you want to remove.";
+	mes "-----------------------------------";
+	mes "Input ^FF00000^000000 to cancel";
+	next;
+	input .@remitem;
+	if(.@remitem == 0) goto L_canc;
+	mes $@npc$;
+	mes "Item: ^FF0000"+getitemname(.@remitem)+"^000000";
+	mes "Do you wish to remove this item from the shop?";
+	next;
+	if(select("-No:-Yes")==1) goto L_canc;
+	for (set @i,0; @i < getarraysize($cash_item); set @i,@i+1) {
+			if ($cash_item[@i] == .@remitem) {
+				deletearray $cash_item[@i],1;
+				deletearray $cash_price[@i],1;
+				npcshopdelitem "F_Cash",.@remitem;
+				mes $@npc$;
+				mes "^FF0000"+getitemname(.@remitem)+"^000000 has been remove from the shop.";
+				close;
+			} else {
+				mes $@npc$;
+				mes "^FF0000"+getitemname(.@remitem)+"^000000 is not on the shop item list.";
+				close;
+			}
+		}
+case 3:
+	mes $@npc$;
+	mes "Are you sure you want to delete all the items on the shop?";
+	next;
+	if(select("-No:-Yes")==1) goto L_canc;
+	
+	deletearray $cash_item[0],127;
+	deletearray $cash_price[0],127;
+	npcshopitem "F_Cash",501,1;
+	npcshopdelitem "F_Cash",501;
+	mes $@npc$;
+	mes "All items had been removed from the shop.";
+	close;
+case 4:
+	goto L_GM;
+	end;
+
+L_canc:
+	mes $@npc$;
+	mes "Service Canceled.";
+	close;
+	}
+
+case 4:
+	goto L_start;
+	}
+
+OnBuyItem:
+for (set .@i,0; .@i < getarraysize(@bought_nameid); set .@i,.@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			end;
+		}
+		set @cost,callfunc("F_CashPrice",@bought_nameid[.@i]);
+		if ((@cost*@bought_quantity[.@i]) > #cashpoint) {
+			dispbottom "Not enough "+$@cpoint$+" Credits.";
+		} else {
+			set #cashpoint,#cashpoint-@cost*@bought_quantity[.@i];
+			getitem @bought_nameid[.@i],@bought_quantity[.@i];
+			dispbottom "Thank You for buying.";
+			dispbottom "You now have "+#cashpoint+" "+$@cpoint$+" Credits.";
+		}		
+	}
+deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+end;
+
+OnInit:
+	npcshopattach "F_Cash",1;
+	initnpctimer;
+	end;
+
+OnTimer960000:
+npctalk "Hey there, why don't you have a look at my goodies ;)?";
+initnpctimer;
+end;
+
+OnPCLoginEvent:
+if(clearCredits != $clearCredits) {
+	set #cashpoint,0;
+	set clearCredits,$clearCredits;
+	}
+for ( set .@i,0; .@i < getarraysize($dnames$); set .@i,.@i + 1) {
+	if ( $dnames$[.@i] != strcharinfo(0) ) continue;
+	set #cashpoint,#cashpoint + $dCredits[.@i];
+	deletearray $dnames$[.@i],1;
+	deletearray $dCredits[.@i],1;
+	announce "You have received your donation rewards.",bc_self,0x08F8C6;
+	dispbottom "You now have "+#cashpoint+" "+$@cpoint$+" Credits.";
+	}
+end;
+}
+
+function	script	F_CashPrice	{
+		for (set .@i,0; .@i < getarraysize($cash_item); set .@i,.@i+1) {
+			if ($cash_item[.@i] == getarg(0)) {
+				return $cash_price[.@i];
+			}
+		}
+		return;
+}

@@ -1,0 +1,33 @@
+// Rachel 
+rachair,132,30,4	script	Media	918,{
+mes "[Media]";
+mes "I remember when I was younger.. Me and my boyfriend use to sneak onto the airship together and.. -giggle-";
+close;
+}
+rachair,156,37,2	script	Leran	915,{
+mes "[Leran]";
+mes "-sigh- .. I wish my husband would hurry and come back. The kids are getting hungry...";
+close;
+}
+rachair,147,27,5	script	Bark	931,{
+mes "[Bark]";
+mes "Few.. that was a long airship ride.";
+close;
+}
+
+// Lighthalzen
+lhzairport,134,31,5	script	Alain	91,{
+mes "[Alain]";
+mes "Tehee! I can't wait to ride the airship again. I love feeling the breeze on my face.";
+close;
+}
+lhzairport,130,39,2	script	Marnel	901,{
+mes "[Marnel]";
+mes "Hmmm. Why am I always nervous to board the airship! -Squints Eyes-";
+close;
+}
+lhzairport,153,34,5	script	Kid	896,{
+mes "[Kid]";
+mes "Mom said she'd wait for me in Alberta. She said the guards would take care of me!";
+close;
+}

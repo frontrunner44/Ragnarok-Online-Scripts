@@ -1,0 +1,290 @@
+ra_temsky.gat,97,59,5	script	Raid Instructor	953,{
+
+set .@name$,"[^0000ffRai^000000]";
+if(faction == 1) {
+	mes .@name$;
+	mes "Take this!";
+	close2;
+	percentheal -100,-100;
+	end;
+}
+if($@airraid[0] > 0 || $@airraid[1] > 0) goto raiding_airship;
+if($@townraid[1] == 1) goto raiding_town;
+start:
+mes .@name$;
+mes "Welcome soldier.";
+next;
+menu "- How do Town Raids work?",townraid,"- How do Airship Raids work?",airraid,"- How does Quick Travel Work?",L_hquick,"- Town Raid",raidtown,"- Airship Raid",raidair,"- Quick Travel",L_quick,"- Nothing",-;
+close;
+
+	L_hquick:
+	mes .@name$;
+	mes "Quick travel allows you to warp your entire party within one to two maps(Depending on it's location) of an enemy town.";
+	next;
+	mes .@name$;
+	mes "Using Quick Travel will consume 4,000 Global FP and 700,000z.";
+	close;
+
+	L_quick:
+	if($dragpoints < 4000) {
+		mes .@name$;
+		mes "Destra does not have enough Global Faction Points.";
+		close;
+		}
+	if(zeny < 700000) {
+		mes .@name$;
+		mes "You do not have enough Zeny.";
+		close;
+		}
+	callfunc "QuickTravel2";
+
+
+	townraid:
+	mes .@name$;
+	mes "Raiding an enemy town will consume 30,000 Global FP and 2,500,000z from the player initiating it.";
+	next;
+	mes .@name$;
+	mes "Once your faction has enough Global FP, any player from your faction may initiate a town raid.";
+	next;
+	mes .@name$;
+	mes "After the raid is initiated, a portal to the town being raided will open nearby and will dissapear after 10 minutes.";
+	next;
+	mes .@name$;
+	mes "When entering this portal, you will be saved near the portal, healed to max HP/SP and super buffed before being warped to a >random< location on the town being raided.";
+	close;
+	
+	airraid:
+	mes .@name$;
+	mes "Raiding an enemy airship will consume 300,000 Global Faction.";
+	next;
+	mes .@name$;
+	mes "Once your faction has enough Global Faction, any player from your faction may initiate an airship raid.";
+	next;
+	mes .@name$;
+	mes "However, to make sure that players won't abuse this feature to waist faction points, they must pay a";
+	mes "3,500,000 Zeny fee to initiate the raid.";
+	next;
+	mes .@name$;
+	mes "After the raid is initiated, a 5 minute timer will begin.";
+	next;
+	mes .@name$;
+	mes "During this timer, an announcement will be made warning the other faction that their airship will be raided.";
+	next;
+	mes .@name$;
+	mes "When the timer ends, all players on your airship will be warped onto the enemy aiship. At this time,";
+	mes "an emperium will spawn on the enemies airship.";
+	next;
+	mes .@name$;
+	mes "Your faction will have 5 minutes to break the emperium. If you succeed, the enemy airship will be";
+	mes "out of service for 15 minutes.";
+	next;
+	mes .@name$;
+	mes "This will give your faction a 15 minute advantage to rush as many towns as they can to take them down.";
+	close;
+	
+	raidtown:
+	if($zarpoints < 500000) {
+		mes .@name$;
+		mes "Your Faction does not have enough Global Faction Points.";
+		close; 
+	}
+	if(Zeny < 500000) {
+		mes .@name$;
+		mes "You do not have enough Zeny.";
+		close; 
+	}
+	mes .@name$;
+	mes "This will cost you 500,000 Global Faction and 2,500,000Z. Are you sure you want to do this?";
+	next;
+	menu "- Yes",yes,"- Nevermind",-;
+	close;
+		
+		yes:
+		callfunc "RachRaid";
+		end;
+
+			/////////////*
+			///Timers///*
+			///////////*
+
+			// Only for the airship - 15 Minutes
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			OnTimer900000:
+				announce "Repairs on the Arzeon airship has been complete.",16;
+				set $@airraid[1],0;
+				stopnpctimer;
+				end;
+
+
+			// 10 Minutes
+			//~~~~~~~~~~~
+			OnTimer600000:
+			announce "5 minutes untill Arzeon's airship is repaired.",0;
+			end;
+
+			// 5 Minutes
+			//~~~~~~~~~~
+			OnTimer300000:
+			if($@airraid[1] == 3) {
+				announce "10 minutes untill Arzeon's airhip is repaired.",0;
+				end;
+			}
+			if($@airraid[1] == 2) {
+				announce "Destra has failed to destroy Arzeon's airship.",16;
+				killmonsterall "airplane";
+				set $@airraid[1],0;
+				stopnpctimer;
+				end;
+			}
+			if($@airraid[1] == 1) {
+				announce "Destra's raid on Arzeon's airship has begun!",0;
+				mapwarp "airplane_01","airplane",77,188;
+				set $@airraid[1],2;
+				initnpctimer;
+				monster "airplane",236,52,"Emperium",1288,1,"DesEmp::OnAir";
+				doevent "ArzEmp::OnAirraid";
+				end;
+			}
+			announce "Destra's raid on "+$@townraid2$+" has begun!",0;
+			mapwarp "ra_temsky",$@townraid2$,0,0;
+			set $@townraid[1],0;
+			set $@townraid2$,"";
+			stopnpctimer;
+			end;
+
+
+			// 4 Minutes
+			//~~~~~~~~~~
+			OnTimer240000:
+			if($@airraid[1] == 3) {
+				end;
+			}
+			if($@airraid[1] == 2) {
+				announce "Destra has one minute left to destroy Arzeon's airship!",0;
+				end;
+			}
+			if($@airraid[1] == 1) {
+				announce "1 minute untill Destra's raid on Arzeon's airship begins.",0;
+				end;
+			}
+			announce "1 minute untill Destra's raid on "+$@townraid2$+" begins.",0;
+			end;
+
+
+			// 3 Minutes
+			//~~~~~~~~~~
+			OnTimer180000:
+			if($@airraid[1] >= 2) {
+				end;
+			}
+			if($@airraid[1] == 1) {
+				announce "2 minutes untill Destra's raid on Arzeon's Airship begins.",0;
+				end;
+			}
+			announce "2 minutes untill Destra's raid on "+$@townraid2$+" begins.",0;
+			end;
+			
+
+			// 2 Minutes
+			//~~~~~~~~~~
+			OnTimer120000:
+			if($@airraid[1] >= 2) {
+				end;
+			}
+			if($@airraid[1] == 1) {
+				announce "3 minutes untill Destra's raid on Arzeon's airship begins.",0;
+				end;
+			}
+			announce "3 minutes untill Destra's raid on "+$@townraid2$+" begins.",0;
+			end;
+
+			// 1 Minute
+			//~~~~~~~~~
+			OnTimer60000:
+			if($@airraid[1] >= 2) {
+				end;
+			}
+			if($@airraid[1] == 1) {
+				announce "4 minutes untill Destra's raid on Arzeon's airship begins.",0;
+				end;
+			}
+			announce "4 minutes untill Destra's raid on "+$@townraid2$+" begins.",0;
+			end;
+
+
+				
+
+	raidair:
+	if($dragpoints < 300000) {
+		mes .@name$;
+		mes "Your Faction does not have enough Global Faction Points.";
+		close;
+	}
+	if(Zeny < 3500000) {
+		mes .@name$;
+		mes "You do not have enough Zeny.";
+		close;
+	}
+	mes .@name$;
+	mes "Are you sure you want to do this?";
+	next;
+	mes .@name$;
+	mes "It will cost you 300,000 Global Faction Points and a personal fee of 3,500,000 Zeny.";
+	next;
+	menu "Yes",L_yes,"No",-;
+	close;
+
+		L_yes:
+		mes .@name$;
+		mes "Prepare for battle..";
+		close2;
+		set $dragpoints,$dragpoints-300000;
+		set zeny,zeny-3500000;
+		announce "Destra is mounting an attack on Arzeon's Airship! The raid will begin in 5 minutes.",0;
+		announce "All Destra members who wish to participate, wait on your airship to be warped.",0;
+		set $@airraid[1],1;
+		initnpctimer;
+		end;
+
+		raiding_airship:
+		mes .@name$;
+		mes "An airship raid is underway. We musn't start another raid right now.";
+		close;
+	
+
+
+		raiding_town:
+		mes .@name$;
+		mes "A town raid is underway. Please sit tight while we prepare for battle!";
+		close;
+}
+
+
+// Emperium Spawn NPC
+-	script	DesEmp	-1,{
+OnAir:
+set $@airraid[1],3;
+announce "Destra has destroyed Arzeon's airship! The airship will be unusable for the next 15 minutes!",0,0xff0000;
+initnpctimer;
+end;
+			// 15 Minutes
+			//~~~~~~~~~~~
+			OnTimer900000:
+			announce "Repairs on the Arzeon airship have been complete.",16;
+			set $@airraid[1],0;
+			stopnpctimer;
+			end;
+
+
+			// 10 Minutes
+			//~~~~~~~~~~~
+			OnTimer600000:
+			announce "5 minutes untill Arzeon's airship is repaired.",0;
+			end;
+
+			// 5 Minutes
+			//~~~~~~~~~~
+			OnTimer300000:
+			announce "10 minutes untill Arzeon's airhip is repaired.",0;
+			end;
+}

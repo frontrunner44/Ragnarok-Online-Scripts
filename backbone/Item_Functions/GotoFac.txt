@@ -1,0 +1,57 @@
+function	script	GotoFac	{
+mes "[^ff0000Server^000000]";
+mes "Please input the player you wish to warp to.";
+next;
+input .@person$;
+if (getmapxy(@map$,@x,@y,0,.@person$) != 0) goto L_notfound;
+if (getmapxy(@map$,@x,@y,0,.@person$) == 0) goto L_found;
+
+L_notfound:
+	mes "[^ff0000Server^000000]";
+	mes "The player "+ .@person$ +" is either offline or does not exist.";
+	close;
+
+L_found:
+	set .@origin,getcharid(3);
+	attachrid getcharid(3,.@person$);
+	set .@gmlevel,getgmlevel();
+	if(faction == 1) {
+	set .@infaction,1;
+	}
+	if(faction == 2) {
+	set .@infaction,2;
+	}
+	attachrid .@origin;
+	if(.@gmlevel > 1) {
+		mes "[^ff0000Server^000000]";
+		mes "The player you are trying to warp to is a Game Master.";
+		close;
+		}
+	if(faction == 1) {
+	if(.@infaction != 1) {
+		mes "[^ff0000Server^000000]";
+		mes "This person is not in your faction.";
+		close;
+	}	}
+	if(faction == 2) {
+	if(.@infaction != 2) {
+		mes "[^ff0000Server^000000]";
+		mes "This person is not in your facton.";
+		close;
+	}	}
+	mes "[^ff0000Server^000000]";
+	mes "Player found. "+ .@person$ +" is on the map "+ @map$ +".";
+	next;
+	mes "[^ff0000Server^000000]";
+	mes "Are you sure you want to warp to this player?";
+	next;
+	menu "Yes",yes,"Nevermind",-;
+	close;
+
+	yes:
+	misceffect "35";
+	sleep2 2000;
+	atcommand strcharinfo(0)+":@goto "+.@person$;
+	delitem 30500,1;
+	end;
+}

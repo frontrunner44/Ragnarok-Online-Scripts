@@ -1,0 +1,276 @@
+//===== Athena Script ========================================
+//= Party Announcer System
+//===== By: ==================================================
+//= Zell_ff8
+//=  -Made for Daegaladh, www.Sha-Ro.com Admin
+//=  -Can be found on RUNE, http://ro-enhanced.net
+//= Some Rights Reserved
+//=     http://creativecommons.org/licenses/by-nc-sa/2.5/ar/
+//===== Current Version: =====================================
+//= 1.10
+//===== Compatible With: =====================================
+//= eAthena SVN 9991+
+//===== Description: =========================================
+//= A script that store parties data to show them to other 
+//= users, something like a "Clasificados" section.
+//===== Additional Comments: =================================
+//= Can handle up to 100 parties at the same time, it uses
+//= a dinamic multiple-page menu to select them.
+//============================================================
+
+
+// $PARTYS_owner$[]
+// $PARTYS_time[]
+// $PARTYS_level[]
+// $PARTYS_broad[]
+// $PARTYS_lugar$[]
+// $PARTYS_quienes$[]
+// $PARTYS_detalle$[]
+
+
+-	script	party#Rach	-1,{
+OnWhisperGlobal:
+ if (compare(@whispervar0$,"update")) {
+ 	for (set @p,1;@p<=100;set @p,@p+1) {
+ 		if ($PARTYS_owner$[@p]==strcharinfo(0)) { set $PARTYS_time[@p],gettimetick(2);
+ 		dispbottom "Your party ad has been updated. It will remain for an hour.";  break;  }
+	}
+ }
+}
+
+
+
+rachel.gat,124,106,7	script	Party Organizer#Rach	899,{
+if(faction == 1) {mes "[Party Organizer]"; mes "Trying to betray your faction, eh?"; close;}
+
+if (getgmlevel()>0) { dispbottom "GM> Timer: "+(getnpctimer(0)/1000)+"/180, "+(getnpctimer(0)/2000)+"/180 || Continuo: "+getnpctimer(1); }
+if (getnpctimer(1)==0) { initnpctimer; if (getgmlevel()>0) { dispbottom "GM> Timer started.";  } }
+mes "[Party Organizer]";
+mes "I can list all parties who are seeking players,";
+mes "or you can give me your details, and I'll add them to the list for other players!";
+next;
+menu "I'm searching for a party",busca,"I want to add my party to the list.",anota,"Maybe later",salir;
+
+salir:
+
+next;mes "[Party Organizer]";
+mes "See you!";
+close;
+
+
+anota:
+next;mes "[Party Organizer]";
+for (set @p,1;@p<=100;set @p,@p+1) {
+ if ($PARTYS_owner$[@p]==strcharinfo(0)) { goto yatiene;  break;  }
+}
+mes "I'll write your party info down and display it on the list for one hour, or untill you cancel the listing.";
+next;mes "[Party Organizer]";
+mes "What's the average level of the players you're seeking?";
+mes "(write 0 to exit)";
+mete1:
+input @PARTY_midlv;
+if (@PARTY_midlv==0) close;
+if (@PARTY_midlv>150) goto mete1;
+next;
+mes "[Party Organizer]";
+mes "Why are you seeking a party?";
+mes "To kill an MVP? A questing group? A group to raid an enemy town?";
+mes "(write 0 to exit)";
+mes "Max 20 letters.";
+mete2:
+input @PARTY_lugar$;
+if (@PARTY_lugar$=="0") close;
+if (getstrlen(@PARTY_lugar$)>20) goto mete2;
+next;mes "[Party Organizer]";
+mes "Who are you seeking? (wich jobs, with wich equip)";
+mes "(write 0 to pass this)";
+input @PARTY_quienes$;
+if (@PARTY_quienes$=="0") set @PARTY_quienes$,"";
+next;mes "[Party Organizer]";
+mes " Any other info?";
+mes "   (write 0 to pass this)";
+input @PARTY_detalle$;
+if (@PARTY_detalle$=="0") set @PARTY_detalle$,"";
+next;mes "[Party Organizer]";
+mes "This is how your info will look on the list, tell me if it's ok.";
+next;mes "[Party Organizer]";
+mes " Party Owner: ^0000ff"+strcharinfo(0)+"^000000";
+mes " Avr. Level: ^006600"+@PARTY_midlv+"^000000";
+mes " Objective: ^666600"+@PARTY_lugar$+"^000000";
+mes " Seeks: ^006600"+@PARTY_quienes$+"^000000";
+mes " ";
+mes " Other Info: ^ff0000"+@PARTY_detalle$+"^000000";
+menu "Looks good to me.",-,"No, I want to change something",anota,"Nevermind.",salir;
+for (set @p,1;@p<=100;set @p,@p+1) {
+ if ($PARTYS_time[@p]==0) {
+  set $PARTYS_time[@p],gettimetick(2);
+  set $PARTYS_owner$[@p],strcharinfo(0);
+  set $PARTYS_level[@p],@PARTY_midlv;
+  set $PARTYS_lugar$[@p],@PARTY_lugar$;
+  set $PARTYS_quienes$[@p],@PARTY_quienes$;
+  set $PARTYS_detalle$[@p],@PARTY_detalle$;
+  set @PARTY_added,1;
+  break;
+ }
+}
+next;mes "[Party Organizer]";
+if (@PARTY_added) { emotion 21;mes "Your party has been added.";mes " ";
+mes "If you want to update the one hour limit, whisper to \"^ff0000npc:party^000000\" with the word \"^ff0000update^000000\".";
+
+// This is for announce it to cities for an exchange of an item, in my server is id 8100
+mes "Well, we're all done!";
+menu "Thanks!",nogracias;
+if (countitem(8100)<1) { next;mes "[Party Organizer]";mes "You don't have any special ticket."; goto nogracias; }
+delitem 8100,1;
+set $PARTYS_broad[@p],3;
+logmes "Party: Ticket taked to announce: "+$PARTYS_owner$[@p]+" / "+$PARTYS_lugar$[@p]+" / "+$PARTYS_level[@p];
+next; mes "[Party Organizer]";mes "Ok, i'll announce it three times.";
+ }
+nogracias:
+if (@PARTY_added!=1) { mes "I'm sorry, but i don't have space to write your party, wait for another party to expire."; }
+set @PARTY_added,0;
+close;
+
+
+yatiene:
+mes "You already have a party posted here, do you want to cancel it?";
+menu "Yes",-,"No",salir;
+deletearray $PARTYS_time[@p],1;
+deletearray $PARTYS_owner$[@p],1;
+deletearray $PARTYS_lugar$[@p],1;
+deletearray $PARTYS_level[@p],1;
+deletearray $PARTYS_quienes$[@p],1;
+deletearray $PARTYS_detalle$[@p],1;
+deletearray $PARTYS_broad[@p],1;
+next;mes "[Party Organizer]";
+mes "Ok, I've cancelled your party.";
+close;
+
+
+busca: 
+ cleararray @PARTY_activa[0],0,101;
+ set @t,0;set @i1,0; set @t2,0; set @menui$,"";set @menu,0;
+ for(set @p,1;@p<=100;set @p,@p+1) {
+  if ($PARTYS_time[@p]!=0) {  set @t,@t+1;set @PARTY_activa[@t],@p; }
+ }
+ next;mes "[Party Organizer]";
+ mes "There is a total of ^ff0000"+@t+"^000000 active parties...";
+ while (@t2<@t) {
+ set @menui$,"";
+  for(set @i1,1;@i1<=getarraysize(@PARTY_activa);set @i1,@i1+1) {
+   if (@PARTY_activa[@t2+@i1]) { 
+   	set @menui$,@menui$+(@t2+@i1)+". "+$PARTYS_lugar$[@PARTY_activa[(@t2+@i1)]]+" (Lv "+$PARTYS_level[@PARTY_activa[(@t2+@i1)]]+"):"; 
+   } else { break; }
+   if (@i1==10) { break; }
+  }
+  if (@i1<10) { set @i1,@i1-1; }
+  set @menui$,@menui$+" Next: Exit";
+  set @menu,select(@menui$);
+  
+  if (@menu==(@i1+2)) { mes " ";mes "See you soon.";close; }
+  
+  if (@menu<=(@i1)) { goto showparty; }
+  set @t2,@t2+@i1;
+ 
+ }
+close;
+
+
+showparty:
+ next;mes "[Party Organizer]";set @party_s,(@t2+@menu);
+ mes "You have chosen party N°:"+@party_s;
+mes " Party Owner: ^0000ff"+$PARTYS_owner$[@party_s]+"^000000";
+mes " Party Level: ^006600"+$PARTYS_level[@party_s]+"^000000";
+mes " Place: ^666600"+$PARTYS_lugar$[@party_s]+"^000000";
+mes " Seeks: ^006600"+$PARTYS_quienes$[@party_s]+"^000000";
+mes " ";
+mes " Other Info: ^ff0000"+$PARTYS_detalle$[@party_s]+"^000000";
+if (getgmlevel()>0) { 
+mes "Time: "+$PARTYS_time[@party_s]+" ("+gettimetick(2)+")";
+mes "Added "+((gettimetick(2)-$PARTYS_time[@party_s])/60)+" mins ago.";
+menu "(GM) Ok",-,"(GM) Delete it",deletet; }
+ close;
+
+
+deletet:
+ 			deletearray $PARTYS_time[@party_s],1;
+			deletearray $PARTYS_owner$[@party_s],1;
+			deletearray $PARTYS_lugar$[@party_s],1;
+			deletearray $PARTYS_quienes$[@party_s],1;
+			deletearray $PARTYS_detalle$[@party_s],1;
+			deletearray $PARTYS_level[@party_s],1;
+			deletearray $PARTYS_broad[@party_s],1;
+			close;
+
+OnTimer15000:
+OnTimer30000:
+OnTimer45000:			
+OnTimer60000:			
+OnTimer75000:			
+OnTimer90000:			
+OnTimer105000:			
+OnTimer120000:			
+OnTimer135000:			
+OnTimer150000:			
+OnTimer165000:			
+OnTimer175000:			
+  set .@t,0;
+ for(set .@p,1;.@p<=100;set .@p,.@p+1) {
+  if ($PARTYS_time[.@p]!=0) {  set .@t,.@t+1; }
+ }
+ if (.chat > 0) { delwaitingroom; set .chat,0; }
+ if (.@t==1) { set .chat,1;waitingroom "There is 1 active party.",0; } 
+ if (.@t > 1) {  set .chat,1;waitingroom "There are "+.@t+" active parties.",0; }
+ end;
+
+
+OnTimer180000:
+  setnpctimer 0;startnpctimer;
+ 	for (set .@p,1;.@p<=100;set .@p,.@p+1) {
+ 		if ($PARTYS_time[.@p]<(gettimetick(2)-(60*60))) { 
+ 			deletearray $PARTYS_time[.@p],1;
+			deletearray $PARTYS_owner$[.@p],1;
+			deletearray $PARTYS_lugar$[.@p],1;
+			deletearray $PARTYS_quienes$[.@p],1;
+			deletearray $PARTYS_detalle$[.@p],1;
+			deletearray $PARTYS_level[.@p],1;
+			deletearray $PARTYS_broad[.@p],1;
+		
+			}
+	}
+	for (set .@p,1;.@p<=100;set .@p,.@p+1) {
+	 		if ($PARTYS_broad[.@p]>0 && $PARTYS_time[.@p]!=0) {
+ 		set .@partstring$,"[Party] "+$PARTYS_owner$[.@p]+" seeks party to "+$PARTYS_lugar$[.@p]+", avr. lv "+$PARTYS_level[.@p];
+		mapannounce "prontera",.@partstring$,bc_map,0xFFFFBB;mapannounce "prt_in",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "morocc",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "payon",.@partstring$,bc_map,0xFFFFBB;mapannounce "pay_arche",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "yuno",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "alberta",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "lighthalzen",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "louyang",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "comodo",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "jawaii",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "aldebaran",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "izlude",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "umbala",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "amatsu",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "gonryun",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "ayothaya",.@partstring$,bc_map,0xFFFFBB;
+		mapannounce "xmas",.@partstring$,bc_map,0xFFFFBB;
+
+
+		set $PARTYS_broad[.@p],($PARTYS_broad[.@p]-1);
+		logmes "Party: Announced: "+$PARTYS_owner$[.@p]+" / "+$PARTYS_lugar$[.@p]+" / "+$PARTYS_level[.@p];
+ 		
+ 		}
+ 		}
+  end;
+  
+
+  
+
+
+ OnInit:
+   initnpctimer();
+   end;
+}

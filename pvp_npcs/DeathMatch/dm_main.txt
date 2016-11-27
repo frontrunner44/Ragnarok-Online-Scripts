@@ -1,0 +1,79 @@
+eathena_in,155,44,5	script	Death Match Staff#Main	946,{
+
+//==================//
+// <-- Config -- > //
+//================//
+set .@name$,"[^0000ffDM Staff^000000]";
+
+//==================//
+// <-- Script -- > //
+//================//
+mes .@name$;
+mes "Hello, what would you like to do? It is very suggested that you read the instructions before entering.";
+next;
+menu "- Instructions",L_instruc,"- Enter Arena",-;
+set dmpoints,0;
+set dmdeaths,0;
+warp "pvp_n_room",55,35;
+end;
+
+	L_instruc:
+	mes .@name$;
+	mes "Coming soon...";
+	close;
+
+//==============================//
+// <-- Death Amount Config -- > //
+//============================//
+OnInit:
+set $@dmamount,5;
+end;
+}
+
+//======================//
+// <-- Reward NPC -- > //
+//====================//
+pvp_n_room,51,38,8	script	Death Match Staff#Reward	860,{
+
+//===================//
+// <-- Configs -- > //
+//=================//
+set .@name$,"[^0000ffDM Staff^000000]";
+
+//=================//
+// <-- Script --> //
+//===============//
+mes .@name$;
+mes "You have "+ dmpoints +" Death Match points.";
+next;
+mes .@name$;
+mes "What would you like to do?";
+next;
+menu "- Leave Arena",L_leave,"- Rewards",-;
+mes .@name$;
+mes "Not yet implimented. For the time being if you have any kills you will recieve 20 faction points.";
+close2;
+if(dmpoints >= 20) {
+	set fpoints,fpoints+20;
+	set dmpoints,0;
+	announce "Recieved 20 Faction Points.",bc_self;
+	}
+end;
+
+	L_leave:
+	mes .@name$;
+	mes "If you leave, your points will be reset. Are you sure you want to leave?";
+	next;
+	menu "- Yes",L_yes,"- No",-;
+	close;
+
+		L_yes:
+		mes .@name$;
+		mes "Thanks for coming!";
+		close2;
+		set dmpoints,0;
+		set dmdeaths,0;
+		savepoint "eathena",256,166;
+		warp "eathena",256,166;
+		end;
+}

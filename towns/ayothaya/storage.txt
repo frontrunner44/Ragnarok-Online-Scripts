@@ -1,0 +1,17 @@
+ayothaya,98,208,5	script	Storage#AyoStor	82,{
+if(faction != $ayofaction) {
+    mes "....";
+    close;
+}
+
+mes "[^0000ffStorage^000000]";
+mes "What would you like to open?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

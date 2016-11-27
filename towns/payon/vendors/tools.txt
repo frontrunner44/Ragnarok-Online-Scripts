@@ -1,0 +1,3 @@
+payon_in02.gat,87,34,5	script	Tools#Pay01	67,{
+callshop "GlobTool01",0;
+}

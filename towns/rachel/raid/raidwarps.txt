@@ -1,0 +1,511 @@
+ra_temsky,89,61,4	script	raidprt2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "prontera",0,0;
+}
+
+ra_temsky,89,61,4	script	raidalde2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "aldebaran",0,0;
+}
+
+ra_temsky,89,61,4	script	raidlou2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "louyang",0,0;
+}
+
+ra_temsky,89,61,4	script	raideinb2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "einbech",0,0;
+}
+
+ra_temsky,89,61,4	script	raideinbr2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "einbroch",0,0;
+}
+
+ra_temsky,89,61,4	script	raidgeff2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "geffen",0,0;
+}
+
+ra_temsky,89,61,4	script	raidhug2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "hugel",0,0;
+}
+
+ra_temsky,89,61,4	script	raidayo2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "ayothaya",0,0;
+}
+
+ra_temsky,89,61,4	script	raidmor2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "morocc",0,0;
+}
+
+ra_temsky,89,61,4	script	raidpay2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "payon",0,0;
+}
+
+ra_temsky,89,61,4	script	raidizl2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //improve concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "izlude",0,0;
+}
+
+ra_temsky,89,61,4	script	raidcom2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //impreove concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "Comodo",0,0;
+}
+
+ra_temsky,89,61,4	script	raidgon2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //impreove concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "gonryun",0,0;
+}
+
+ra_temsky,89,61,4	script	raidumb2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //impreove concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "umbala",0,0;
+}
+
+ra_temsky,89,61,4	script	raidama2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //impreove concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "amatsu",0,0;
+}
+
+ra_temsky,89,61,4	script	raidvein2	45,2,2,{
+OnTouch:
+heal 100,100;
+savepoint "ra_temsky",92,55;
+// Buffs Player
+sc_start 21,600000,10; //Endure
+sc_start 32,600000,10; //increase AGI
+sc_start 31,600000,10; //signum crusis
+sc_start 29,600000,10; //angelus
+sc_start 30,600000,10; //blessing
+sc_start 23,600000,10; //impreove concentration
+sc_start 35,600000,10; //impositio manus
+sc_start 36,600000,10; //suffragium
+sc_start 38,600000,10; //benedictio
+sc_start 39,600000,10; //kyrie eleison
+sc_start 40,600000,10; //magnificat
+sc_start 41,600000,10; //gloria
+sc_start 44,600000,10; //weapon perfection
+sc_start 57,600000,10; //aspdpotion2
+sc_start 60,600000,10; //speedup1
+sc_start 120,600000,10; //true sight
+sc_start 121,600000,10; //wind walk
+sc_start 142,600000,10; //dodge
+sc_start 153,600000,10; //regeneration
+sc_start 108,600000,10; //aura blade
+percentheal 100,100;
+dispbottom "Buffs will last for 10 minutes.";
+dispbottom "Warping in 5 seconds... prepare for blood.";
+sleep2 5000;
+warp "veins",0,0;
+}

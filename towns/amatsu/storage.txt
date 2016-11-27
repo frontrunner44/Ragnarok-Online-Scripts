@@ -1,0 +1,13 @@
+ama_in01.gat,95,19,5	script	Storage#Ama01	727,{
+
+mes "[Storage]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

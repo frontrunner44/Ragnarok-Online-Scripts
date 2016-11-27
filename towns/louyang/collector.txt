@@ -1,0 +1,32 @@
+lou_fild01,238,353,5	script	!!Marley!!	91,{
+
+set .@name$,"[^0000ffMarley^000000]";
+if($loufaction != faction) {
+	mes .@name$;
+	mes "What are you looking at?";
+	close;
+	}
+
+mes .@name$;
+mes "I'll give you 1FP for ever Mantis Sythe you bring me.";
+next;
+menu "- Trade in",L_trade,"- No thanks",-;
+close;
+
+	L_trade:
+	mes .@name$;
+	mes "How many would you like to give me?";
+	input .@amount;
+	next;
+	if(countitem(1031) < .@amount) {
+		mes .@name$;
+		mes "I'm sorry, but you do not have that many.";
+		close;
+		}
+	mes .@name$;
+	mes "Thank you!";
+	set fpoints,fpoints+.@amount;
+	delitem 1031,.@amount;
+	dispbottom "You have recieved +"+.@amount+"FP by faction farming!";
+	close;
+}

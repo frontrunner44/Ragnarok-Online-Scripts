@@ -1,0 +1,13 @@
+yuno_in01,163,22,5	script	Storage#YunS01	727,{
+
+mes "[^0000ffStorage^000000]";
+mes "Would you like to open your storage?";
+next;
+menu "- Storage",storage,"- Nothing.",-;
+close;
+
+storage:
+openstorage;
+
+close;
+}

@@ -1,0 +1,12 @@
+aldebaran,222,222,5	script	Santa	718,{
+set .@name$,"[^0000ffSanta^000000]";
+mes .@name$;
+mes "Ho ho! Would you like to visit lutie?";
+next;
+menu "- Yes",L_yes,"- No",-;
+close;
+
+	L_yes:
+	warp "xmas_fild01",78,242;
+	end;
+}

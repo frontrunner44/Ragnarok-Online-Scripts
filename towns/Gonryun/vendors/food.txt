@@ -1,0 +1,5 @@
+gonryun.gat,145,94,3	script	Food Vendor#Gon01	69,{
+if(faction != $gonfaction) {mes "....."; close;}
+callshop "Food#GonFood",0;
+}
+-	shop	Food#GonFood	139,519:-1,517:-1,551:30,564:80

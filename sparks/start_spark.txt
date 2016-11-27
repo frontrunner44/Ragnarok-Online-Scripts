@@ -1,0 +1,43 @@
+newbiezone.gat,124,58,5	script	Spark of Knowledge#14	802,{
+set .@name$,"[^0000ffSpark^000000]";
+mes .@name$;
+mes "Welcome to ChaosRO, The Revolution of Ragnarok.";
+next;
+mes .@name$;
+mes "Before you start your adventure, I must ensure that you have a grasp on this world.";
+next;
+mes .@name$;
+mes "ChaosRO is a unique Private Server, and therefore there have been many gameplay modifications and unique features added.";
+next;
+mes .@name$;
+mes "Before you start playing, we advise that you please view our website and read the 'Server Guide' found on our forums.";
+next;
+mes .@name$;
+mes "I am what you call a ^0000ffSpark of Knowledge^000000. You will run into many of my kind in this world.";
+next;
+mes .@name$;
+mes "Our purpose is to give you bits of information to help you get around in this world easier.";
+next;
+mes .@name$;
+mes "So when you see more like me, ^0000ffbe sure to talk to them^000000. If you don't, you'll be missing out on alot of useful information.";
+next;
+mes .@name$;
+mes "Do not pass up an opportunity to talk to a Spark of Knowledge.";
+next;
+mes .@name$;
+mes "You can start learning more about the server by talking to the 'Server Guide' npc in the newbie grounds.";
+next;
+mes .@name$;
+mes "In the newbie grounds, you will also be able to choose which faction you would like to join.";
+next;
+mes .@name$;
+mes "When you believe you have the knowledge to continue, please let me know.";
+next;
+menu "- Newbie Grounds",gotrain,"- Not yet!",-;
+close;
+
+	gotrain:
+	warp "new_zone02",99,70;
+	savepoint "new_zone02",99,70;
+	end;
+}

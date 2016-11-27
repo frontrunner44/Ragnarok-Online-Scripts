@@ -1,0 +1,11 @@
+ra_in01.gat,176,381,5	script	Gear#Rach01	85,{
+
+
+
+
+// Weapon Shop NPC
+//================
+if(faction == 1) { mes "I can't help you, sorry."; close; }
+callshop "GlobGear01",0;
+
+}

@@ -1,0 +1,21 @@
+RDacademy,66,10,5	script	Treasure#t01	111,{
+if(treasure01 == 0) {
+	mes "[^0000ff???^000000]";
+	mes "Found 1,000z in the flower pot!";
+	set zeny,zeny+1000;
+	set treasure01,1;
+	close;
+	}
+end;
+}
+
+RDacademy,84,11,5	script	Treasure#t02	111,{
+if(treasure02 == 0) {
+	mes "[^0000ff???^000000]";
+	mes "Found something burried in the dirt of this flower pot!";
+	getitem 501,3;
+	set treasure02,1;
+	close;
+	}
+end;
+}

@@ -1,0 +1,13 @@
+For party oriented quests and other features
+if(getcharid(1) != 0) {
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount; 
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+		if(attachrid(.@pma[.@i])){
+			set fpoints,fpoints+100;
+			dispbottom "Congradulations! Recieved 100 faction points.";
+			} 
+		} 
+		end;
+	}

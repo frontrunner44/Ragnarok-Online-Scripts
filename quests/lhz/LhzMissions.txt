@@ -1,0 +1,76 @@
+RDacademy,98,25,5	script	?Mission Guard?#Lhz01	852,{
+
+if(lhzmphase == 2) goto phase_2;
+if(lhzmphase == 1) goto phase_1;
+mes "[Guard]";
+mes "Welcome soldier. I have a few missions that need to be taken care of.";
+next;
+menu "Listen.",listen,"Too Busy.",-;
+mes "[Guard]";
+mes "I see...";
+close;
+
+	listen:
+	mes "[Guard]";
+	mes "We need to destroy Metaling. The job pays well.";
+	next;
+	mes "[Guard]";
+	mes "Go to 'lhz_fild01' and kill 30 of them and report back to me.";
+	close2;
+	set lhzmission$,"Metaling Mission";
+	set lhzmphase,1;
+	announce "New quest added to your Adventure Logs!",bc_self;
+	end;
+
+	phase_1:
+	if(mobmetal < 30) {
+		mes "[Guard]";
+		mes "Hurry and finish the damn job, Soldier!";
+		close;
+	}
+	mes "[Guard]";
+	mes "Eh.. nice job. Not bad at all. I'll reccomend you for more jobs soon.";
+	close2;
+	set lhzmphase,2;
+	set lhzmission$,"";
+	set mobmetal,0;
+	set fpoints,fpoints+55;
+	dispbottom "Recieved 155 faction points.";
+	getexp 3000,0;
+	getitem 30881,3;
+	soundeffect "battlewon.wav",0;
+	announce "Quest Update: Metaling Mission quest complete.",bc_self;
+	end;
+
+	phase_2:
+	mes "[Guard]";
+	mes "Nice work, soldier.";
+	close;
+
+}
+
+// The Mobs
+//=========
+-	script	MobMetaling	-1,{
+
+OnMetal:
+if(getcharid(1) != 0) {
+getpartymember getcharid(1),2;
+set .@pmc,$@partymembercount;
+copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+	if(attachrid(.@pma[.@i])){
+		if(lhzmphase == 1) {
+			set mobmetal,mobmetal+1;
+			announce "Quest Update: You have killed "+ mobmetal +"/30 Hotwired Metaling.",bc_self;
+			}
+		}
+	}
+	end;
+}
+if(lhzmphase == 1) {
+	set mobmetal,mobmetal+1;
+	announce "Quest Update: You have killed "+ mobmetal +"/30 Hotwired Metaling.",bc_self;
+	}
+end;
+}

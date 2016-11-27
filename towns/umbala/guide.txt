@@ -1,0 +1,88 @@
+umbala,101,156,5	script	Guide#UmbG	784,{
+set .@name$,"[^0000ffGuide^000000]";
+if(faction != $umbfaction) {
+	mes .@name$;
+	mes "Get out of this town!";
+	close;
+	}
+mes .@name$;
+mes "Welcome to Umbala!";
+next;
+menu "- Save",L_save,"- Town Scrolls",L_scrolls,"- Hotel",L_hotel,"- Weapon Shop",L_wep,"- Tool Shop",L_tools,"- Niflheim",L_nif,"- Delete Marks",L_delete,"- Nothing",-;
+close;
+
+	L_save:
+	mes .@name$;
+	mes "You have been saved in Umbala!";
+	savepoint "umbala",96,155;
+	close;
+
+	L_hotel:
+	viewpoint 1,95,183,1,0xFF0000;
+	close;
+
+	L_wep:
+	viewpoint 1,126,152,2,0xFF0000;
+	close;
+
+	L_tools:
+	viewpoint 1,136,127,3,0xFF0000;
+	close;
+
+	L_delete:
+	mes .@name$;
+	mes "Marks deleted.";
+	viewpoint 2,95,183,1,0xFF0000;
+	viewpoint 2,126,152,2,0xFF0000;
+	viewpoint 2,136,127,3,0xFF0000;
+	close;
+
+	L_scrolls:
+	mes .@name$;
+	mes "How many scrolls would you like to purchase? They cost "+$scrollprice+"FP each.";
+	next;
+	mes .@name$;
+	mes "Enter 0 to cancel.";
+	input .@amount;
+	next;
+	if(.@amount == 0) {
+		mes .@name$;
+		mes "I see. Come back anytime.";
+		close;
+		}
+	if(.@amount*$scrollprice > fpoints) {
+		mes .@name$;
+		mes "You don't have enough FP for that many scrolls.";
+		next;
+		goto L_scrolls;
+		}
+	mes .@name$;
+	mes "Here you go!";
+	set fpoints,fpoints-.@amount*$scrollprice;
+	getitem 30869,.@amount;
+	close;
+
+	L_nif:
+	mes .@name$;
+	mes "Would you like to warp to Niflheim?";
+	next;
+	menu "- Yes",L_ynif,"- No thanks",-;
+	close;
+
+		L_ynif:
+		warp "niflheim",21,152;
+		end;
+}
+niflheim,27,158,5	script	Guide#Nif	85,{
+
+set .@name$,"[^0000ffGuide^000000]";
+mes .@name$;
+mes "Would you like to warp back to Umbala?";
+next;
+menu "- Yes",L_yes,"- No thanks",-;
+close;
+
+	L_yes:
+	warp "umbala",89,157;
+	end;
+}

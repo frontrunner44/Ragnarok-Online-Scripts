@@ -1,0 +1,102 @@
+-	script	Configuration	-1,{
+
+OnInit:
+//===========================
+// -- Town Scroll Price
+//===========================
+set $scrollprice,10000;
+
+//=======================
+// -- Name Settings
+//=======================
+set $@facname1$,"[Arzeon]";
+set $@facname2$,"[Destra]";
+
+//=========================
+// -- Disabled Warps
+//=========================
+// Home Towns
+disablenpc "rachel01";
+disablenpc "rachel70";
+disablenpc "lhz036";
+disablenpc "lhz036a";
+disablenpc "lhz035";
+disablenpc "lhz035a";
+
+// Prontera Church
+disablenpc "prt004";
+disablenpc "prtch001";
+
+// Lhz Airport
+disablenpc "lairp3";
+disablenpc "lairp4a";
+
+// Starting Area
+disablenpc "newwarp6003";
+
+
+// Boat Captains
+disablenpc "Edgar#izlude";
+disablenpc "Sailor#izlude";
+disablenpc "Boatman#hugel";
+
+// Rachel Temple
+disablenpc "sanctuary15";
+disablenpc "lhz_dun1-1";
+
+// Dungeons
+disablenpc "ice001";
+
+// Guild Castle Area --> Towns
+disablenpc "aldg002";
+disablenpc "payg001-1";
+disablenpc "prtg002";
+disablenpc "payonwarp002";
+disablenpc "geff13-1";
+disablenpc "aldg002";
+disablenpc "arug002";
+disablenpc "schg002";
+
+// Lighthalzen
+disablenpc "lairp4";
+disablenpc "lairp3a";
+disablenpc "lairp4a";
+disablenpc "lairp3";
+
+//=======================
+// -- Raid Warps
+//=======================
+disablenpc "raidprt";
+disablenpc "raidalde";
+disablenpc "raidlou";
+disablenpc "raideinb";
+disablenpc "raideinbr";
+disablenpc "raidgeff";
+disablenpc "raidhug";
+disablenpc "raidayo";
+disablenpc "raidmor";
+disablenpc "raidpay";
+disablenpc "raidizl";
+disablenpc "raidcom";
+disablenpc "raidgon";
+disablenpc "raidumb";
+disablenpc "raidama";
+disablenpc "raidvein";
+disablenpc "raidprt2";
+disablenpc "raidalde2";
+disablenpc "raidlou2";
+disablenpc "raideinb2";
+disablenpc "raideinbr2";
+disablenpc "raidgeff2";
+disablenpc "raidhug2";
+disablenpc "raidayo2";
+disablenpc "raidmor2";
+disablenpc "raidpay2";
+disablenpc "raidizl2";
+disablenpc "raidcom2";
+disablenpc "raidgon2";
+disablenpc "raidumb2";
+disablenpc "raidama2";
+disablenpc "raidvein2";
+end;
+}

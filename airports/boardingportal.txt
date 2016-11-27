@@ -1,0 +1,147 @@
+// Prontera's Boarding Portal
+//===========================
+pronair.gat,142,61,4	script	#PronteraBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Rachel's Boarding Portal
+//=========================
+rachair.gat,142,61,4	script	#RachelBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Lighthalzen's Boarding Portal
+//==============================
+lhzairport.gat,142,61,4	script	#LighthalzenBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Hugel's Boarding Portal
+//========================
+hugair.gat,142,61,4	script	#HugelBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Aldebaran's Boarding Portal
+//===========================
+aldair.gat,142,61,4	script	#AldebaranBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Louyang's Boarding Portal
+//===========================
+louair.gat,142,61,4	script	#LouyangBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Einbech's Boarding Portal
+//===========================
+einair.gat,142,61,4	script	#EinbechBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Geffen's Boarding Portal
+//===========================
+geffair.gat,142,61,4	script	#GeffenBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Ayothaya's Boarding Portal
+//===========================
+ayoair.gat,142,61,4	script	#AyothayaBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Morocc's Boarding Portal
+//===========================
+morair.gat,142,61,4	script	#MoroccBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Payon's Boarding Portal
+//===========================
+payair.gat,142,61,4	script	#PayonBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Izlude's Boarding Portal
+//===========================
+izlair.gat,142,61,4	script	#IzludeBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Comodo's Boarding Portal
+//===========================
+comair.gat,142,61,4	script	#ComodoBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Gonryun's Boarding Portal
+//===========================
+gonair.gat,142,61,4	script	#GonryunBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+// Umbala's Boarding Portal
+//===========================
+umbair.gat,142,61,4	script	#UmbalaBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Amatsu's Boarding Portal
+//===========================
+amaair.gat,142,61,4	script	#AmatsuBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Veins' Boarding Portal
+//===========================
+veinair.gat,142,61,4	script	#VeinsBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+
+
+// Yuno's Boarding Portal
+//===========================
+y_airport.gat,142,61,4	script	#YunoBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Alberta's Boarding Portal
+//===========================
+albair.gat,142,61,4	script	#AlbertaBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}
+
+// Einbroch's Boarding Portal
+//===========================
+airport.gat,142,61,4	script	#EinbBoarding	45,2,2,{
+OnTouch:
+if(faction == 1) {warp "airplane",88,58; end;} else {warp "airplane_01",88,58; end;}
+}

@@ -1,0 +1,107 @@
+-	script	NeutralDun4	-1,{
+
+	OnTower:
+	set $@neutraldun4,$@neutraldun4+1;
+	if($@neutraldun4 == 4) {
+		monster "abyss05_4",120,132,"King Zombie",2007,1,"NeutralDun4::OnBoss";
+		announce "Server: The seals have been broken. King Zombie has been released!",bc_map;
+		set $@neutraldun4,0;
+		end;
+		}
+	announce "Server: "+ $@neutraldun4 +" of 4 Chaos Seals have been broken!",bc_map;
+	end;
+	
+	OnBoss:
+	if(getcharid(1) != 0) {
+		getpartymember getcharid(1),2;
+		set .@pmc,$@partymembercount; 
+		copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+		for(set .@i,0; .@i < .@pmc; set .@i,.@i+1) {
+			if(attachrid(.@pma[.@i])){
+				if(kozphase == 1) {
+					set kingkilled,1;
+					announce "You have killed "+kingkilled+"/1 King Zombie!",bc_self;
+					}
+				if(Class == Job_Assassin_Cross) {
+					set .@temp,rand(1,100);
+					if(.@temp <= 10) {
+						getitem 30713,1;
+						}
+					}
+				}
+			}
+		}
+	announce "Server: King Zombie has been defeated, proceed to the center of abyss05_4 and collect your rewards!",bc_map;
+	monster "abyss01_4",135,132,"Chaos Seal",2010,1,"NeutralDun4::OnTower";
+	monster "abyss02_4",241,245,"Chaos Seal",2010,1,"NeutralDun4::OnTower";
+	monster "abyss03_4",208,121,"Chaos Seal",2010,1,"NeutralDun4::OnTower";
+	monster "abyss05_4",126,137,"Chaos Seal",2010,1,"NeutralDun4::OnTower";
+	// Treasure Chests
+	set .@num,rand(6,10);
+	areamonster "abyss05_4",120,130,103,126,"Treasure Chest",1324,.@num;
+	// Party Script -- Token Rewards
+	getpartymember getcharid(1),2;
+	set .@pmc,$@partymembercount;
+	copyarray .@pma[0],$@partymemberaid[0],.@pmc;
+	for(set .@i,0; .@i < .@pmc; set .@i,.@i+1){
+		if(attachrid(.@pma[.@i])){
+			set .@temp,rand(50,100);
+			set .@temp2,rand(5,20);
+			set .@temp3,rand(5,20);
+			getitem 30880,.@temp;
+			getitem 30882,.@temp2;
+			getitem 30878,.@temp3;
+			dispbottom "Recieved "+.@temp+" Garmet Tokens.";
+			dispbottom "Recieved "+.@temp2+" Footwear Tokens.";
+			dispbottom "Recieved "+.@temp3+" Armor Tokens.";
+			}
+		}
+	end;
+
+	OnLimitation:
+	initnpctimer;
+	end;
+
+	OnTimer7200000:
+	mapannounce "abyss01_4","You have 30 minutes left in this instance.",0;
+	mapannounce "abyss02_4","You have 30 minutes left in this instance.",0;
+	mapannounce "abyss03_4","You have 30 minutes left in this instance.",0;
+	mapannounce "abyss04_4","You have 30 minutes left in this instance.",0;
+	mapannounce "abyss05_4","You have 30 minutes left in this instance.",0;
+	end;
+
+
+	OnTimer9000000:
+	stopnpctimer;
+	mapannounce "abyss01_4","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "abyss02_4","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "abyss03_4","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "abyss04_4","Your time has ended. You will now be warped out of the instance.",0;
+	mapannounce "abyss05_4","Your time has ended. You will now be warped out of the instance.",0;
+	sleep2 3000;
+	mapwarp "abyss01_4","eathena",258,171,$@abyssparty1;
+	mapwarp "abyss02_4","eathena",258,171,$@abyssparty1;
+	mapwarp "abyss03_4","eathena",258,171,$@abyssparty1;
+	mapwarp "abyss04_4","eathena",258,171,$@abyssparty1;
+	mapwarp "abyss05_4","eathena",258,171,$@abyssparty1;
+	set $@abyssparty4,0;
+	end;
+
+
+OnPCLoadMapEvent:
+getmapxy(.@map$,.@x,.@y,0);
+if(.@map$ == "abyss01_4") {
+	viewpoint 1,134,132,1,0xFF0000;
+	}
+if(.@map$ == "abyss02_4") {
+	viewpoint 1,241,245,2,0xFF0000;
+	}
+if(.@map$ == "abyss03_4") {
+	viewpoint 1,208,121,3,0xFF0000;
+	}
+if(.@map$ == "abyss05_4") {
+	viewpoint 1,126,137,4,0xFF0000;
+	}
+end;
+
+}

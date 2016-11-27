@@ -1,0 +1,11 @@
+ve_in.gat,252,308,3	script	Bread Vendor#Veins	69,{
+if(faction != $veinfaction) {mes "....."; close;}
+callshop "VeinFood",0;
+}
+ve_in.gat,252,302,3	script	Fruit Vendor#Veins	66,{
+if(faction != $veinfaction) {mes "....."; close;}
+callshop "VeinFood2",0;
+}
+-	shop	VeinFood	139,580:-1,590:-1
+
+-	shop	VeinFood2	139,512:-1,513:-1,522:-1

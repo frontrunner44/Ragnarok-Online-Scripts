@@ -1,0 +1,4 @@
+lhz_in02,279,22,2	script	Refiner#LhzR01	52,{
+set @name$,"[^0000ffBlane the Refiner^000000]";
+callfunc "G_Refine";
+}

@@ -1,0 +1,29 @@
+//Set mapflag for each PVS map
+force_1-1	mapflag	loadevent
+force_1-1	mapflag	nomemo
+force_1-1	mapflag	noteleport
+force_1-1	mapflag	nosave	SavePoint
+rwc01	mapflag	nosave	SavePoint
+rwc02	mapflag	nosave	SavePoint
+rwc03	mapflag	nosave	SavePoint
+rwc01	mapflag	nomemo
+rwc02	mapflag	nomemo
+rwc03	mapflag	nomemo
+rwc01	mapflag	nobranch
+rwc02	mapflag	nobranch
+rwc03	mapflag	nobranch
+rwc01	mapflag	nopenalty
+rwc02	mapflag	nopenalty
+rwc03	mapflag	nopenalty
+rwc01	mapflag	pvp
+rwc02	mapflag	pvp
+rwc03	mapflag	pvp
+rwc01	mapflag	partylock
+rwc02	mapflag	partylock
+rwc03	mapflag	partylock
+rwc01	mapflag	nightenabled
+//rwc02	mapflag	nightenabled
+//rwc03	mapflag	nightenabled
+rwc01	mapflag	noreturn
+rwc02	mapflag	noreturn
+rwc03	mapflag	noreturn

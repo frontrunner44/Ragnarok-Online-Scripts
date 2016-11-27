@@ -1,0 +1,4 @@
+ra_in01.gat,119,385,5	script	Refiner#Rach	951,{
+set @name$,"Angel";
+callfunc "G_Refine";
+}
